@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOLVYN — The Financial Control Plane for AI Infrastructure</title>
+  <meta name="description" content="Meter, attribute, govern and audit every AI API call across your organization. Financial-grade infrastructure for teams that ship AI at scale.">
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/">
+  <meta property="og:title"       content="TOLVYN — The Financial Control Plane for AI Infrastructure">
+  <meta property="og:description" content="Meter, attribute, govern and audit every AI API call across your organization.">
+  <meta property="og:image"       content="assets/og-placeholder.svg">
+  <!-- Twitter -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="TOLVYN — Financial Control Plane for AI Infrastructure">
+  <meta name="twitter:description" content="Meter, attribute, govern and audit every AI API call across your organization.">
+  <meta name="twitter:image"       content="assets/og-placeholder.svg">
+  <!-- Security -->
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cloud.umami.is; img-src 'self' data:;">
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────────────── -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="pages/how-it-works.html">How it Works</a></li>
+      <li><a href="pages/pricing.html">Pricing</a></li>
+      <li><a href="pages/docs.html">Docs</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signin" class="nav__signin" target="_blank" rel="noopener noreferrer">Sign In</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Get Started</a>
+    </div>
+
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" role="menu">
+    <a href="pages/how-it-works.html" role="menuitem">How it Works</a>
+    <a href="pages/pricing.html" role="menuitem">Pricing</a>
+    <a href="pages/docs.html" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--orange);font-weight:700;">Get Started →</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="hero" aria-labelledby="hero-headline">
+  <div class="container">
+    <div class="hero__eyebrow anim-fade-up">
+      <span class="live-dot" aria-hidden="true"></span>
+      Financial-grade AI infrastructure
+    </div>
+
+    <h1 id="hero-headline" class="anim-fade-up">
+      The Financial Control Plane<br>for <span>AI Infrastructure</span>
+    </h1>
+
+    <p class="hero__sub anim-fade-up">
+      Meter, attribute, govern and audit every AI API call across your
+      organization. Financial-grade infrastructure for teams that ship AI at scale.
+    </p>
+
+    <div class="hero__ctas anim-fade-up">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+        Start Free Trial
+      </a>
+      <a href="pages/docs.html" class="btn btn-ghost btn-lg">
+        View Docs
+      </a>
+    </div>
+
+    <div class="proof-bar" aria-label="Supported AI providers">
+      <span class="label" style="font-size:0.7rem;">Works with</span>
+      <span class="proof-bar__dot" aria-hidden="true"></span>
+      <span class="proof-bar__item">Anthropic</span>
+      <span class="proof-bar__dot" aria-hidden="true"></span>
+      <span class="proof-bar__item">OpenAI</span>
+      <span class="proof-bar__dot" aria-hidden="true"></span>
+      <span class="proof-bar__item">Google</span>
+      <span class="proof-bar__dot" aria-hidden="true"></span>
+      <span class="proof-bar__item">Any Provider</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Feature Cards ─────────────────────────────────────────────────── -->
+<section aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="label">Core capabilities</p>
+      <h2 id="features-heading">Everything you need to govern AI spending</h2>
+    </div>
+
+    <div class="cards">
+      <!-- Immutable Ledger -->
+      <div class="card reveal" data-delay="1">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h3>Immutable Ledger</h3>
+        <p>Hash-chained audit trail. Every request recorded. Tamper-proof.</p>
+      </div>
+
+      <!-- Cost Attribution -->
+      <div class="card reveal" data-delay="2">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3v18h18"/>
+            <path d="m7 16 4-5 4 3 4-6"/>
+          </svg>
+        </div>
+        <h3>Cost Attribution</h3>
+        <p>Know exactly which team, service, and model drove every dollar.</p>
+      </div>
+
+      <!-- Budget Governance -->
+      <div class="card reveal" data-delay="3">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Budget Governance</h3>
+        <p>Set hard limits. Get alerts before you overspend. Never surprise bills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Who It's For ───────────────────────────────────────────────────── -->
+<section aria-labelledby="who-heading">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="label">Who it's for</p>
+      <h2 id="who-heading">Built for teams building with AI</h2>
+    </div>
+
+    <div class="cards">
+      <!-- Engineering Teams -->
+      <div class="card reveal" data-delay="1">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="16,18 22,12 16,6"/>
+            <polyline points="8,6 2,12 8,18"/>
+          </svg>
+        </div>
+        <h3>Engineering Teams</h3>
+        <p>Your team makes hundreds of API calls daily. You need to know which service, which model, and what it cost — without digging through invoices.</p>
+      </div>
+
+      <!-- Finance & FinOps -->
+      <div class="card reveal" data-delay="2">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3>Finance &amp; FinOps</h3>
+        <p>AI spend is growing faster than your visibility into it. TOLVYN gives you an immutable audit trail and real-time budget controls — before the bill arrives.</p>
+      </div>
+
+      <!-- Platform & Infrastructure -->
+      <div class="card reveal" data-delay="3">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+            <line x1="6" y1="6" x2="6.01" y2="6"/>
+            <line x1="6" y1="18" x2="6.01" y2="18"/>
+          </svg>
+        </div>
+        <h3>Platform &amp; Infrastructure</h3>
+        <p>You own the AI infrastructure. TOLVYN sits in the proxy layer — no SDK changes, no code refactors, full governance from day one.</p>
+      </div>
+    </div>
+
+    <div style="max-width:700px;margin:40px auto 0;padding:20px 24px;background:var(--surface);border-left:3px solid var(--orange);border-radius:8px;" class="reveal">
+      <p style="font-size:0.9rem;line-height:1.7;margin:0;">TOLVYN works with any team using AI provider APIs (Anthropic, OpenAI, Google, and others). It is not designed for consumer chat interfaces.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Live Terminal ──────────────────────────────────────────────────── -->
+<section aria-labelledby="terminal-heading">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="label">Real-time visibility</p>
+      <h2 id="terminal-heading">Watch every AI request as it happens</h2>
+      <p>A live feed of every API call — team, model, cost, and latency — the moment it lands.</p>
+    </div>
+
+    <div class="terminal-wrap reveal">
+      <div class="terminal-bar" aria-hidden="true">
+        <span class="terminal-dot terminal-dot--red"></span>
+        <span class="terminal-dot terminal-dot--yellow"></span>
+        <span class="terminal-dot terminal-dot--green"></span>
+        <span class="terminal-title">tolvyn — bash</span>
+      </div>
+      <div class="terminal-screen" id="terminal-screen" aria-live="polite" aria-label="Live terminal output">
+        <div class="terminal-lines" id="terminal-lines"></div>
+        <span class="terminal-cursor" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works Preview ──────────────────────────────────────────── -->
+<section aria-labelledby="how-preview-heading">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="label">How it works</p>
+      <h2 id="how-preview-heading">Up and running in minutes</h2>
+      <p>Four steps from your first request to full financial visibility.</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step__num" aria-hidden="true">1</div>
+        <h3>Connect</h3>
+        <p>Point your AI SDK to the TOLVYN proxy endpoint. No code changes required.</p>
+      </div>
+      <div class="step">
+        <div class="step__num" aria-hidden="true">2</div>
+        <h3>Proxy</h3>
+        <p>Every request passes through TOLVYN. Captured, hashed, and forwarded instantly.</p>
+      </div>
+      <div class="step">
+        <div class="step__num" aria-hidden="true">3</div>
+        <h3>Attribute</h3>
+        <p>Costs linked to teams, services, and models automatically via metadata tags.</p>
+      </div>
+      <div class="step">
+        <div class="step__num" aria-hidden="true">4</div>
+        <h3>Govern</h3>
+        <p>Set budgets, configure alerts, enforce limits — from a single dashboard.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a href="pages/how-it-works.html" class="btn btn-ghost">See full explanation →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Pricing Teaser ─────────────────────────────────────────────────── -->
+<section aria-labelledby="pricing-teaser-heading">
+  <div class="container">
+    <div class="pricing-teaser reveal">
+      <p class="label">Pricing</p>
+      <h2 id="pricing-teaser-heading">Start free. Scale when you're ready.</h2>
+      <p>Free trial with 1,000 requests. No credit card required. Founding partner discounts available.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Start Free Trial</a>
+        <a href="pages/pricing.html" class="btn btn-ghost btn-lg">View Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <p class="footer__copy">
+      © 2026 TOLVYN. All rights reserved. &nbsp;·&nbsp;
+      <a href="mailto:founder@tolvyn.io">founder@tolvyn.io</a>
+    </p>
+    <nav class="footer__links" aria-label="Footer navigation">
+      <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="pages/docs.html">Docs</a>
+      <a href="pages/privacy.html">Privacy</a>
+      <a href="pages/terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

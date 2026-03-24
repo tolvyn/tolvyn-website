@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works — TOLVYN</title>
+  <meta name="description" content="Learn how TOLVYN's proxy architecture meters, attributes, and governs every AI API call across your organization.">
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/pages/how-it-works.html">
+  <meta property="og:title"       content="How It Works — TOLVYN">
+  <meta property="og:description" content="TOLVYN's four-step proxy architecture: Connect, Proxy, Attribute, Govern.">
+  <meta property="og:image"       content="../assets/og-placeholder.svg">
+  <!-- Security -->
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cloud.umami.is; img-src 'self' data:;">
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────────────── -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="how-it-works.html" style="color:var(--text);">How it Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signin" class="nav__signin" target="_blank" rel="noopener noreferrer">Sign In</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Get Started</a>
+    </div>
+
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" role="menu">
+    <a href="how-it-works.html" role="menuitem">How it Works</a>
+    <a href="pricing.html" role="menuitem">Pricing</a>
+    <a href="docs.html" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--orange);font-weight:700;">Get Started →</a>
+  </div>
+</nav>
+
+<!-- ── Page Hero ─────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container">
+    <p class="label anim-fade-up">Architecture</p>
+    <h1 class="anim-fade-up">How TOLVYN Works</h1>
+    <p class="anim-fade-up" style="font-size:1.15rem;max-width:600px;margin-top:16px;">
+      A lightweight, transparent proxy sits between your application and every
+      AI provider. Zero latency penalty. Total financial visibility.
+    </p>
+  </div>
+</section>
+
+<!-- ── Technical Diagram ─────────────────────────────────────────────── -->
+<section aria-labelledby="diagram-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Architecture overview</p>
+      <h2 id="diagram-heading">The proxy model</h2>
+      <p>TOLVYN intercepts every AI request before it reaches the provider — recording, attributing, and enforcing limits in real time.</p>
+    </div>
+
+    <div class="diagram reveal">
+      <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" aria-label="TOLVYN proxy architecture diagram" role="img">
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#f97316"/>
+          </marker>
+          <marker id="arrow-back" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
+            <path d="M8,0 L8,6 L0,3 z" fill="#7c8494"/>
+          </marker>
+        </defs>
+
+        <!-- Your App -->
+        <rect x="10" y="90" width="140" height="80" rx="10" fill="#161920" stroke="#1e2128" stroke-width="1.5"/>
+        <text x="80" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">Your Application</text>
+        <text x="80" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7c8494">SDK / HTTP</text>
+
+        <!-- Arrow: App → Proxy -->
+        <line x1="152" y1="118" x2="228" y2="118" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="190" y="112" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#f97316">request</text>
+        <!-- Arrow back: Proxy → App -->
+        <line x1="228" y1="132" x2="152" y2="132" stroke="#7c8494" stroke-width="1.5" marker-end="url(#arrow-back)"/>
+        <text x="190" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7c8494">response</text>
+
+        <!-- TOLVYN Proxy -->
+        <rect x="230" y="70" width="160" height="120" rx="10" fill="#1a1d25" stroke="#f97316" stroke-width="1.8"/>
+        <text x="310" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#f97316">TOLVYN</text>
+        <text x="310" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#e8eaf0">Proxy</text>
+        <text x="310" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#7c8494">meter · hash · route</text>
+        <text x="310" y="160" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#7c8494">attribute · govern</text>
+
+        <!-- Arrow: Proxy → Provider -->
+        <line x1="392" y1="118" x2="468" y2="118" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <text x="430" y="112" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#f97316">forward</text>
+        <line x1="468" y1="132" x2="392" y2="132" stroke="#7c8494" stroke-width="1.5" marker-end="url(#arrow-back)"/>
+        <text x="430" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7c8494">response</text>
+
+        <!-- AI Provider -->
+        <rect x="470" y="90" width="140" height="80" rx="10" fill="#161920" stroke="#1e2128" stroke-width="1.5"/>
+        <text x="540" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">AI Provider</text>
+        <text x="540" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7c8494">any model API</text>
+
+        <!-- Arrow down: Proxy → Ledger -->
+        <line x1="310" y1="192" x2="310" y2="226" stroke="#f97316" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4,3"/>
+        <text x="322" y="215" font-family="Inter,sans-serif" font-size="10" fill="#f97316">write</text>
+
+        <!-- Ledger -->
+        <rect x="220" y="228" width="180" height="24" rx="6" fill="#161920" stroke="#1e2128" stroke-width="1.5"/>
+        <text x="310" y="244" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7c8494">immutable ledger</text>
+
+        <!-- Dashboard -->
+        <rect x="630" y="90" width="150" height="80" rx="10" fill="#161920" stroke="#1e2128" stroke-width="1.5"/>
+        <text x="705" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">Dashboard</text>
+        <text x="705" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#7c8494">costs · alerts</text>
+        <text x="705" y="152" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#7c8494">budgets · audit</text>
+
+        <!-- Arrow: Ledger → Dashboard -->
+        <line x1="400" y1="240" x2="624" y2="155" stroke="#7c8494" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-back)"/>
+        <text x="520" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7c8494">realtime analytics</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4 Steps ───────────────────────────────────────────────────────── -->
+<section aria-labelledby="steps-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Step by step</p>
+      <h2 id="steps-heading">Four steps to full visibility</h2>
+    </div>
+
+    <div class="hiw-steps">
+
+      <!-- Step 1: Connect -->
+      <div class="hiw-step reveal">
+        <div class="hiw-step__num" aria-hidden="true">1</div>
+        <div class="hiw-step__body">
+          <h3>Connect</h3>
+          <p>
+            Change a single environment variable in your application —
+            <code class="mono">TOLVYN_BASE_URL</code> — to route your AI SDK calls through
+            TOLVYN's proxy. No SDK changes, no code refactors, no downtime.
+            Works with any HTTP-based model API.
+          </p>
+          <p>
+            Use your existing API keys. TOLVYN passes them through securely and
+            never stores credentials in plaintext. TLS everywhere, end to end.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2: Proxy -->
+      <div class="hiw-step reveal">
+        <div class="hiw-step__num" aria-hidden="true">2</div>
+        <div class="hiw-step__body">
+          <h3>Proxy</h3>
+          <p>
+            Every request is received by TOLVYN's proxy layer, which operates
+            with sub-millisecond overhead. The request metadata — model, token
+            counts, latency, status — is captured and appended to the
+            <strong>immutable ledger</strong>.
+          </p>
+          <p>
+            Each ledger entry is hash-chained to the previous, making it
+            cryptographically tamper-proof. Any retroactive modification of a
+            record breaks the chain — immediately detectable.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3: Attribute -->
+      <div class="hiw-step reveal">
+        <div class="hiw-step__num" aria-hidden="true">3</div>
+        <div class="hiw-step__body">
+          <h3>Attribute</h3>
+          <p>
+            Tag requests with arbitrary metadata — <code class="mono">team</code>,
+            <code class="mono">service</code>, <code class="mono">environment</code>,
+            <code class="mono">feature</code> — via HTTP headers or the TOLVYN SDK helper.
+            TOLVYN uses these tags to break down costs at any granularity you care about.
+          </p>
+          <p>
+            See which team spent $2,400 on GPT-4o last week, which microservice
+            is driving token growth, and which model is delivering the best
+            cost-per-output ratio — all in one dashboard.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 4: Govern -->
+      <div class="hiw-step reveal">
+        <div class="hiw-step__num" aria-hidden="true">4</div>
+        <div class="hiw-step__body">
+          <h3>Govern</h3>
+          <p>
+            Set hard spending limits per team, per service, or per model. Define
+            alert thresholds at 50%, 80%, and 95% of budget. TOLVYN can
+            automatically block requests once a budget is exhausted — no surprise
+            invoices at month end.
+          </p>
+          <p>
+            Finance teams get a complete audit trail. Engineering teams get
+            guardrails. Everyone stays aligned on AI spend without slowing down
+            development velocity.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA ───────────────────────────────────────────────────────────── -->
+<section aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="pricing-teaser reveal">
+      <p class="label">Get started</p>
+      <h2 id="cta-heading">Ready to take control of your AI costs?</h2>
+      <p>Free trial. No credit card required. Up and running in minutes.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Start Free Trial</a>
+        <a href="pricing.html" class="btn btn-ghost btn-lg">View Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <p class="footer__copy">
+      © 2026 TOLVYN. All rights reserved. &nbsp;·&nbsp;
+      <a href="mailto:founder@tolvyn.io">founder@tolvyn.io</a>
+    </p>
+    <nav class="footer__links" aria-label="Footer navigation">
+      <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="docs.html">Docs</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
