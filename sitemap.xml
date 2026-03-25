@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tolvyn.io/</loc><priority>1.0</priority></url>
-  <url><loc>https://tolvyn.io/pages/how-it-works.html</loc><priority>0.8</priority></url>
-  <url><loc>https://tolvyn.io/pages/pricing.html</loc><priority>0.8</priority></url>
-  <url><loc>https://tolvyn.io/pages/docs.html</loc><priority>0.7</priority></url>
-  <url><loc>https://tolvyn.io/pages/privacy.html</loc><priority>0.3</priority></url>
-  <url><loc>https://tolvyn.io/pages/terms.html</loc><priority>0.3</priority></url>
+  <url><loc>https://tolvyn.io/</loc><priority>1.0</priority><lastmod>2026-03-25</lastmod></url>
+  <url><loc>https://tolvyn.io/pages/how-it-works.html</loc><priority>0.8</priority><lastmod>2026-03-25</lastmod></url>
+  <url><loc>https://tolvyn.io/pages/pricing.html</loc><priority>0.8</priority><lastmod>2026-03-25</lastmod></url>
+  <url><loc>https://tolvyn.io/pages/docs.html</loc><priority>0.7</priority><lastmod>2026-03-25</lastmod></url>
+  <url><loc>https://tolvyn.io/pages/privacy.html</loc><priority>0.3</priority><lastmod>2026-03-25</lastmod></url>
+  <url><loc>https://tolvyn.io/pages/terms.html</loc><priority>0.3</priority><lastmod>2026-03-25</lastmod></url>
 </urlset>
