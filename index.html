@@ -11,12 +11,17 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="TOLVYN — The Financial Control Plane for AI Infrastructure">
   <meta property="og:description" content="Meter, attribute, govern and audit every AI API call across your organization. Financial-grade infrastructure for teams that ship AI at scale.">
-  <meta property="og:image"       content="assets/og-placeholder.svg">
+  <meta property="og:image"       content="https://tolvyn.io/assets/og-image.png">
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="TOLVYN — The Financial Control Plane for AI Infrastructure">
   <meta name="twitter:description" content="Meter, attribute, govern and audit every AI API call across your organization. Financial-grade infrastructure for teams that ship AI at scale.">
-  <meta name="twitter:image"       content="assets/og-placeholder.svg">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/og-image.png">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://tolvyn.io/">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" href="/assets/og-image.png">
   <!-- Security -->
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -74,8 +79,9 @@
     </h1>
 
     <p class="hero__sub anim-fade-up">
-      Meter, attribute, govern and audit every AI API call across your
-      organization. Financial-grade infrastructure for teams that ship AI at scale.
+      Know exactly what your teams are spending on AI.
+      Set budgets that actually enforce. Generate audit
+      trails your finance team can trust.
     </p>
 
     <div class="hero__ctas anim-fade-up">
@@ -265,6 +271,60 @@
 </section>
 
 
+<!-- ── FAQ ───────────────────────────────────────────────────────────── -->
+<section style="max-width:720px;margin:0 auto;padding:64px 24px">
+  <h2 style="color:#F1F5F9;font-size:28px;font-weight:700;text-align:center;margin-bottom:40px">Common Questions</h2>
+
+  <div style="display:flex;flex-direction:column;gap:24px">
+
+    <div style="border-bottom:1px solid #1E293B;padding-bottom:24px">
+      <h3 style="color:#F1F5F9;font-size:16px;font-weight:600;margin-bottom:8px">
+        Does TOLVYN read my prompts?
+      </h3>
+      <p style="color:#94A3B8;font-size:14px;line-height:1.6">
+        No. TOLVYN only captures metadata — token counts,
+        model used, cost, latency. Your prompt and response
+        content never touches our storage.
+      </p>
+    </div>
+
+    <div style="border-bottom:1px solid #1E293B;padding-bottom:24px">
+      <h3 style="color:#F1F5F9;font-size:16px;font-weight:600;margin-bottom:8px">
+        What happens if TOLVYN goes down?
+      </h3>
+      <p style="color:#94A3B8;font-size:14px;line-height:1.6">
+        Nothing. Our SDK is fail-open by design — if TOLVYN
+        is unreachable, your AI calls route directly to the
+        provider. Your business never stops because of us.
+      </p>
+    </div>
+
+    <div style="border-bottom:1px solid #1E293B;padding-bottom:24px">
+      <h3 style="color:#F1F5F9;font-size:16px;font-weight:600;margin-bottom:8px">
+        How is this different from checking the OpenAI dashboard?
+      </h3>
+      <p style="color:#94A3B8;font-size:14px;line-height:1.6">
+        OpenAI shows your total bill. TOLVYN shows which
+        team, which service, which feature caused it — with
+        budgets that block spending before it happens and
+        an audit trail that holds up to scrutiny.
+      </p>
+    </div>
+
+    <div>
+      <h3 style="color:#F1F5F9;font-size:16px;font-weight:600;margin-bottom:8px">
+        How long does integration take?
+      </h3>
+      <p style="color:#94A3B8;font-size:14px;line-height:1.6">
+        Five minutes. Change one import line in Python
+        or Node.js. Or set one environment variable.
+        No YAML, no agents, no config files.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── Pricing Teaser ─────────────────────────────────────────────────── -->
 <section aria-labelledby="pricing-teaser-heading">
   <div class="container">
@@ -278,6 +338,21 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- ── Demo Booking ──────────────────────────────────────────────────── -->
+<section style="background:#111827;padding:64px 24px;text-align:center;border-top:1px solid #1E293B">
+  <p style="color:#94A3B8;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px">NOT READY TO TRY YET?</p>
+  <h2 style="color:#F1F5F9;font-size:24px;font-weight:600;margin-bottom:8px">
+    Get a 15-minute product walkthrough
+  </h2>
+  <p style="color:#94A3B8;font-size:15px;margin-bottom:24px">
+    I'll show you exactly how TOLVYN works on a live demo. No deck, no sales pitch.
+  </p>
+  <a href="mailto:founder@tolvyn.io?subject=Demo request"
+    style="background:#F97316;color:#fff;padding:12px 28px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;display:inline-block">
+    Book a 15-min Demo →
+  </a>
 </section>
 
 <!-- ── Footer ────────────────────────────────────────────────────────── -->
