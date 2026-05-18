@@ -1,0 +1,42 @@
+/* TOLVYN Design Tokens
+   Single source of truth for all visual constants.
+   Import this file first in main.css.
+   Do not add layout or component styles here.
+*/
+
+:root {
+  /* backgrounds */
+  --bg:              #0a0c10;
+  --bg-secondary:    #0d0f14;
+  --surface:         #111318;
+  --surface-2:       #161920;
+  --border:          #1e2128;
+  --border-light:    #252830;
+
+  /* mint green accent system */
+  --accent:          #00D9A3;
+  --accent-dim:      #00b389;
+  --accent-muted:    rgba(0, 217, 163, 0.12);
+  --accent-glow:     rgba(0, 217, 163, 0.25);
+
+  /* text */
+  --text:            #e8eaf0;
+  --text-secondary:  #9aa0b0;
+  --text-muted:      #5a6070;
+
+  /* status */
+  --red:             #ef4444;
+  --yellow:          #f59e0b;
+  --green:           #22c55e;
+  --blue:            #3b82f6;
+
+  /* type */
+  --sans:            'Inter', system-ui, -apple-system, sans-serif;
+  --mono:            'JetBrains Mono', ui-monospace, monospace;
+
+  /* semantic */
+  --radius:          8px;
+  --radius-lg:       12px;
+  --radius-xl:       16px;
+  --transition:      150ms ease;
+}
