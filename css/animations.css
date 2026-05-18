@@ -1,6 +1,6 @@
-/* TOLVYN — animations.css */
+/* TOLVYN — animations.css (mint green) */
 
-/* ─── Keyframes ──────────────────────────────────────────────────────── */
+/* ── Keyframes ───────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -12,9 +12,9 @@
 }
 
 @keyframes pulse-ring {
-  0%   { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); }
-  70%  { box-shadow: 0 0 0 12px rgba(249,115,22,0); }
-  100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+  0%   { box-shadow: 0 0 0 0 var(--accent-glow); }
+  70%  { box-shadow: 0 0 0 12px rgba(0, 217, 163, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 217, 163, 0); }
 }
 
 @keyframes shimmer {
@@ -22,7 +22,7 @@
   100% { background-position: 400px 0; }
 }
 
-/* ─── Hero entrance ──────────────────────────────────────────────────── */
+/* ── Hero entrance ───────────────────────────────────────────────── */
 .anim-fade-up {
   opacity: 0;
   animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -32,40 +32,34 @@
 .hero h1       { animation-delay: 0.15s; }
 .hero__sub     { animation-delay: 0.25s; }
 .hero__ctas    { animation-delay: 0.35s; }
-.proof-bar     { animation-delay: 0.45s; animation-name: fadeUp; opacity: 0;
-                 animation-duration: 0.7s;
-                 animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-                 animation-fill-mode: forwards; }
+.hero__trust   { animation-delay: 0.45s; }
+.proof-bar     {
+  animation-delay: 0.45s;
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+  opacity: 0;
+}
 
-/* ─── Scroll-triggered reveal ────────────────────────────────────────── */
+/* ── Scroll-triggered reveal ─────────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Stagger delays for card groups */
-.reveal[data-delay="1"] { transition-delay: 0.1s; }
-.reveal[data-delay="2"] { transition-delay: 0.2s; }
-.reveal[data-delay="3"] { transition-delay: 0.3s; }
-.reveal[data-delay="4"] { transition-delay: 0.4s; }
+/* Stagger delays for grids */
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.reveal[data-delay="5"] { transition-delay: 0.40s; }
+.reveal[data-delay="6"] { transition-delay: 0.48s; }
 
-/* ─── Orange dot pulse (CTA) ─────────────────────────────────────────── */
-.live-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--orange);
-  display: inline-block;
-  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-}
-
-/* ─── Button hover glow ──────────────────────────────────────────────── */
+/* ── Button hover shimmer ────────────────────────────────────────── */
 .btn-primary {
   position: relative;
   overflow: hidden;
@@ -77,11 +71,12 @@
   inset: 0;
   background: linear-gradient(120deg,
     transparent 30%,
-    rgba(255,255,255,0.12) 50%,
+    rgba(255, 255, 255, 0.18) 50%,
     transparent 70%);
   background-size: 400px 100%;
   opacity: 0;
   transition: opacity 0.3s;
+  pointer-events: none;
 }
 
 .btn-primary:hover::after {
@@ -89,30 +84,15 @@
   animation: shimmer 0.7s ease forwards;
 }
 
-/* ─── Nav scroll transition ──────────────────────────────────────────── */
-.nav {
-  transition: background 0.3s ease, border-color 0.3s ease,
-              backdrop-filter 0.3s ease;
-}
-
-/* ─── Plan card hover ────────────────────────────────────────────────── */
-.plan {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease,
-              transform 0.25s ease;
-}
-.plan:hover { transform: translateY(-3px); }
-
-/* ─── Step connector animation ───────────────────────────────────────── */
+/* ── Step connector hover ────────────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
-  .step__num {
-    transition: box-shadow 0.3s ease;
-  }
+  .step__num { transition: box-shadow 0.3s ease; }
   .step:hover .step__num {
-    box-shadow: 0 0 0 6px rgba(249,115,22,0.15);
+    box-shadow: 0 0 0 6px var(--accent-muted);
   }
 }
 
-/* ─── Respect reduced motion ─────────────────────────────────────────── */
+/* ── Reduced motion ──────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -122,5 +102,6 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal { opacity: 1; transform: none; }
+  .reveal,
+  .anim-fade-up { opacity: 1; transform: none; }
 }

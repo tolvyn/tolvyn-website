@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Docs — TOLVYN</title>
-  <meta name="description" content="TOLVYN documentation. Full API reference, integration guides, and tutorials.">
+  <title>Security — TOLVYN</title>
+  <meta name="description" content="How TOLVYN protects your data and your provider keys. Encryption, tenant isolation, ledger integrity, sub-processors, responsible disclosure.">
+
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://tolvyn.io/pages/docs.html">
+  <meta property="og:url"         content="https://tolvyn.io/pages/security.html">
   <meta property="og:site_name"   content="TOLVYN">
-  <meta property="og:title"       content="Docs — TOLVYN">
-  <meta property="og:description" content="TOLVYN documentation. Full API reference, integration guides, and tutorials.">
+  <meta property="og:title"       content="Security — TOLVYN">
+  <meta property="og:description" content="How TOLVYN protects your data and your provider keys.">
   <meta property="og:image"       content="https://tolvyn.io/assets/og-image.png">
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="Docs — TOLVYN">
-  <meta name="twitter:description" content="TOLVYN documentation. Full API reference, integration guides, and tutorials.">
+  <meta name="twitter:title"       content="Security — TOLVYN">
+  <meta name="twitter:description" content="How TOLVYN protects your data and your provider keys.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/og-image.png">
-
-  <link rel="canonical" href="https://docs.tolvyn.io">
+  <link rel="canonical" href="https://tolvyn.io/pages/security.html">
 
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="icon" type="image/png" href="/assets/og-image.png">
@@ -41,14 +41,14 @@
 </head>
 <body>
 
-<nav class="nav scrolled" role="navigation" aria-label="Main navigation">
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
     <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
     <ul class="nav__links" role="list">
       <li><a href="product.html">Product</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="cost-index.html">Cost Index</a></li>
-      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" class="active">Docs</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
     </ul>
     <div class="nav__actions">
@@ -68,33 +68,113 @@
   </div>
 </nav>
 
-<main class="redirect-wrap" role="main" aria-labelledby="redirect-heading">
+<section class="page-hero">
   <div class="container">
-    <div style="max-width:480px;margin-inline:auto;">
-      <div style="width:64px;height:64px;border-radius:50%;background:var(--accent-muted);border:2px solid rgba(0, 217, 163, 0.35);display:grid;place-items:center;margin:0 auto 28px;" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D9A3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14,2 14,8 20,8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10,9 9,9 8,9"/>
-        </svg>
-      </div>
-
-      <p class="label" style="margin-bottom:12px;">Documentation</p>
-      <h1 id="redirect-heading" style="font-size:2rem;margin-bottom:16px;">Redirecting you to the docs</h1>
-      <p style="margin-bottom:32px;">
-        The full TOLVYN documentation lives at
-        <code class="mono">docs.tolvyn.io</code>.
-        You'll be redirected in <strong style="color:var(--text);" id="redirect-countdown">3</strong> seconds.
-      </p>
-
-      <a href="https://docs.tolvyn.io" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-        Open Docs Now
-      </a>
-    </div>
+    <p class="label anim-fade-up">Security</p>
+    <h1 class="anim-fade-up">Security</h1>
+    <p class="anim-fade-up">How TOLVYN protects your data and your provider keys.</p>
   </div>
-</main>
+</section>
+
+<div class="container container--narrow" style="padding-bottom:96px;">
+  <div class="docs-main">
+
+    <section>
+      <h2>Encryption</h2>
+      <p><strong>At rest:</strong> all data is encrypted with AES-256-GCM, including the ledger,
+      attribution metadata, budgets, alerts, and all sub-systems. Encryption keys are managed
+      via our cloud provider's KMS with automatic rotation.</p>
+      <p><strong>In transit:</strong> TLS 1.3 only. Older protocols are disabled at the load
+      balancer. HSTS is enabled site-wide with a one-year max-age.</p>
+    </section>
+
+    <section>
+      <h2>Tenant isolation</h2>
+      <p>
+        Postgres Row-Level Security policies are enforced on every table that holds tenant data.
+        Every query (including via the dashboard, API, CLI, and the proxy itself) executes
+        inside a session with <code class="mono">SET app.tenant_id = $1</code>, and RLS rejects
+        cross-tenant access at the database layer. No application-level check, no opportunity
+        for a forgotten <code class="mono">WHERE tenant_id = ?</code> to leak data.
+      </p>
+    </section>
+
+    <section>
+      <h2>Provider keys</h2>
+      <p>
+        Your OpenAI, Anthropic, and Google keys are encrypted at rest with AES-256-GCM under a
+        tenant-specific subkey. Keys are <strong>never logged</strong>, <strong>never returned
+        in API responses</strong> (only redacted prefixes for UI display), and only ever
+        decrypted in-memory during proxy request processing.
+      </p>
+    </section>
+
+    <section>
+      <h2>Ledger integrity</h2>
+      <p>
+        Every ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a
+        per-tenant key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
+        no gaps, no duplicates, even under concurrent writes. Verify any record range with
+        <code class="mono">tolvyn ledger verify</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>What we never store</h2>
+      <ul>
+        <li>Prompt content</li>
+        <li>Response content</li>
+        <li>Any PII contained in prompts or responses</li>
+        <li>Provider API keys in plaintext</li>
+      </ul>
+      <p>We capture <strong>metadata only</strong>: model, token counts, cost, latency, status,
+      and your attribution tags. That's the minimum needed for financial governance, and it's
+      the maximum we record.</p>
+    </section>
+
+    <section>
+      <h2>Backup &amp; recovery</h2>
+      <p>
+        Daily encrypted snapshots of all tenant data, retained for 30 days. Point-in-time
+        recovery available for the most recent 7 days. Backups are stored in a separate
+        availability zone from the primary database.
+      </p>
+    </section>
+
+    <section>
+      <h2>Compliance</h2>
+      <p>
+        TOLVYN is <strong>not SOC 2 certified yet</strong>. We're targeting SOC 2 Type I in
+        late 2026. We're happy to walk Enterprise customers through our controls in detail
+        ahead of certification.
+      </p>
+    </section>
+
+    <section>
+      <h2>Sub-processors</h2>
+      <ul>
+        <li><strong>Utho</strong> — primary hosting and managed Postgres (Mumbai region).</li>
+        <li><strong>Cloudflare</strong> — CDN, DNS, edge security.</li>
+        <li><strong>Sentry</strong> — error tracking. We scrub PII before send and disable
+        breadcrumb capture in proxy code paths.</li>
+      </ul>
+      <p>That's the full list. We will email you 30 days before adding any new sub-processor
+      that handles tenant data.</p>
+    </section>
+
+    <section>
+      <h2>Responsible disclosure</h2>
+      <p>
+        Found a security issue? Email
+        <a href="mailto:security@tolvyn.io">security@tolvyn.io</a>. PGP key on request.
+        We commit to acknowledging within 24 hours and providing a substantive response
+        (fix timeline or non-issue explanation) within 5 business days. We do not currently
+        run a paid bug bounty but we publicly credit reporters and send swag.
+      </p>
+    </section>
+
+  </div>
+</div>
 
 <footer class="footer" role="contentinfo">
   <div class="container">

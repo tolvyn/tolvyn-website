@@ -1,0 +1,12 @@
+/cost-index     /pages/cost-index.html    200
+/pricing        /pages/pricing.html       200
+/product        /pages/product.html       200
+/security       /pages/security.html      200
+/company        /pages/company.html       200
+/customers      /pages/customers.html     200
+/how-it-works   /pages/how-it-works.html  200
+/privacy        /pages/privacy.html       200
+/terms          /pages/terms.html         200
+/docs           https://docs.tolvyn.io    301
+/signup         https://app.tolvyn.io/signup  301
+/login          https://app.tolvyn.io/login   301
