@@ -289,6 +289,7 @@ client = OpenAI(api_key="sk-...")
 from tolvyn import OpenAI
 client = OpenAI(
     tolvyn_api_key="tlv_live_...",
+    openai_api_key="sk-...",      # enables fail-open fallback
     team="engineering",
     service="chatbot-api"
 )
@@ -301,6 +302,7 @@ const client = new OpenAI({ apiKey: 'sk-...' })
 import { OpenAI } from 'tolvyn'
 const client = new OpenAI({
   tolvynApiKey: 'tlv_live_...',
+  openAIApiKey: 'sk-...',        // enables fail-open fallback
   team: 'engineering',
   service: 'chatbot-api'
 })</code></pre></div>
@@ -317,6 +319,9 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
 
     <p style="text-align:center;margin-top:20px;color:var(--text-muted);font-family:var(--mono);font-size:0.85rem;">
       pip install tolvyn &nbsp;·&nbsp; npm install tolvyn &nbsp;·&nbsp; go get github.com/tolvyn/tolvyn-go
+    </p>
+    <p style="text-align:center;margin-top:8px;color:var(--text-muted);font-size:0.9rem;max-width:640px;margin-inline:auto;">
+      Works with OpenAI, Anthropic, and Google. If TOLVYN is unreachable, SDK mode automatically retries against the provider directly.
     </p>
   </div>
 </section>
