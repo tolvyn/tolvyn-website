@@ -238,8 +238,8 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <p>Subscribe to four event types, or use the <code class="mono">alert.all</code> wildcard.</p>
 
         <ul>
-          <li><code class="tag">alert.budget</code> — any budget threshold crossed</li>
-          <li><code class="tag">alert.anomaly</code> — cost anomaly detected</li>
+          <li><code class="tag">alert.budget_threshold</code> — any budget threshold crossed</li>
+          <li><code class="tag">alert.cost_anomaly</code> — cost anomaly detected</li>
           <li><code class="tag">alert.model_change</code> — service switched models</li>
           <li><code class="tag">alert.pricing_change</code> — provider changed a model price</li>
           <li><code class="tag">alert.all</code> — receive all of the above</li>
@@ -356,7 +356,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
 
         <h3>Daily scrape</h3>
         <p>
-          At <code class="mono">02:30 UTC</code> TOLVYN scrapes the public pricing pages of every
+          Every day TOLVYN automatically checks the public pricing pages of every
           supported provider. Diffs are captured, persisted, and surface in the operator console.
         </p>
 
@@ -462,7 +462,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
           <li><a href="cost-index.html">Cost Index</a></li>
           <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
-          <li><a href="https://github.com/tolvyn/tolvyn-server/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
         </ul>
       </div>
       <div class="footer__col">
