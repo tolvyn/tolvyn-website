@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cost attribution: which team, customer &amp; feature drove the bill — TOLVYN</title>
+  <meta name="description" content="Your AI invoice arrived and finance wants to know which team, customer, or feature drove the spike. Provider dashboards only show the total. TOLVYN attributes every request — see spend broken down by team, service, user, end customer, and model.">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/use-cases/cost-attribution-per-customer.html">
+  <meta property="og:site_name"   content="TOLVYN">
+  <meta property="og:title"       content="Cost attribution: which team, customer &amp; feature drove the bill — TOLVYN">
+  <meta property="og:description" content="Stop guessing which team or customer drove the AI bill. TOLVYN attributes every request and shows the breakdown.">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Cost attribution: which team, customer &amp; feature drove the bill — TOLVYN">
+  <meta name="twitter:description" content="Stop guessing which team or customer drove the AI bill. TOLVYN attributes every request and shows the breakdown.">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <link rel="canonical" href="https://tolvyn.io/use-cases/cost-attribution-per-customer.html">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#00D9A3">
+
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- Scoped styles for the attribution table + step flow only — existing design tokens, no global CSS edits. -->
+  <style>
+    .uc-wrap { overflow-x: auto; }
+    .uc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+    .uc-table th {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 600;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .uc-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .uc-table td:first-child { color: var(--text); font-weight: 500; }
+    .uc-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 8px 0 20px;
+    }
+    .uc-flow__step {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      font-size: 0.86rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .uc-flow__arrow { color: var(--text-muted); font-size: 0.9rem; }
+    .uc-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    @media (max-width: 768px) {
+      .uc-table { font-size: 0.8rem; }
+      .uc-table th, .uc-table td { padding: 8px 10px; }
+    }
+  </style>
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+    <ul class="nav__links" role="list">
+      <li><a href="../pages/product.html">Product</a></li>
+      <li><a href="../pages/pricing.html">Pricing</a></li>
+      <li><a href="../pages/cost-index.html">Cost Index</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" role="menu">
+    <a href="../pages/product.html" role="menuitem">Product</a>
+    <a href="../pages/pricing.html" role="menuitem">Pricing</a>
+    <a href="../pages/cost-index.html" role="menuitem">Cost Index</a>
+    <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="label anim-fade-up">Use case</p>
+    <h1 class="anim-fade-up">Know which team, customer, and feature drove your AI bill</h1>
+  </div>
+</section>
+
+<div class="container container--narrow" style="padding-bottom:96px;">
+  <div class="docs-main">
+
+    <section>
+      <h2>The invoice arrived. Now finance wants answers.</h2>
+      <p>
+        Your OpenAI or Anthropic bill jumped 40% this month. Finance asks the obvious question:
+        <em>which team, which customer, which feature caused it?</em> You open the provider's
+        dashboard — and it shows you one number: the total. There's no per-team line, no
+        per-customer line, no way to tell whether it was the new feature you shipped or one
+        power-user hammering an endpoint.
+      </p>
+      <p>
+        So the spike becomes a manual investigation: grep logs, guess at traffic, email around.
+        By the time you have an answer, it's next month and the question has changed.
+      </p>
+    </section>
+
+    <section>
+      <h2>TOLVYN attributes every request — so the bill explains itself</h2>
+      <p>
+        TOLVYN sits as a proxy in front of your providers. Every request that passes through is
+        metered and tagged, so spend is attributed the moment it happens. Instead of one total,
+        the dashboard breaks the bill down across the dimensions that actually matter:
+      </p>
+      <div class="uc-wrap">
+        <table class="uc-table">
+          <thead>
+            <tr>
+              <th>Break the bill down by</th>
+              <th>How a request is tagged</th>
+              <th>Answers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Team</td>
+              <td><code class="mono">X-Tolvyn-Team</code></td>
+              <td>Which internal team's spend grew?</td>
+            </tr>
+            <tr>
+              <td>Service</td>
+              <td><code class="mono">X-Tolvyn-Service</code></td>
+              <td>Which service or feature drove it?</td>
+            </tr>
+            <tr>
+              <td>End customer</td>
+              <td><code class="mono">X-Tolvyn-End-Customer</code></td>
+              <td>What does each customer actually cost to serve?</td>
+            </tr>
+            <tr>
+              <td>User</td>
+              <td><code class="mono">X-Tolvyn-User</code></td>
+              <td>Is one user responsible for the spike?</td>
+            </tr>
+            <tr>
+              <td>Model</td>
+              <td>provider-reported model</td>
+              <td>Did a switch to a pricier model cause it?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Each of these has its own breakdown view in the dashboard, plus a filterable request log.
+        Requests can also carry <code class="mono">X-Tolvyn-Feature</code> and
+        <code class="mono">X-Tolvyn-Agent</code> tags, which are recorded on every request and
+        used for attribution and filtering.
+      </p>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="uc-flow" aria-label="Pipeline: proxy, tag, meter, attribute, view">
+        <span class="uc-flow__step">Proxy</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Tag</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Meter</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Attribute</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">View</span>
+      </div>
+      <ul>
+        <li><strong>Proxy.</strong> Point your traffic at TOLVYN — one base-URL change, or a drop-in SDK for Python, Node, or Go. It forwards to OpenAI, Anthropic, or Google unchanged.</li>
+        <li><strong>Tag.</strong> Add <code class="mono">X-Tolvyn-*</code> headers (or set them once in the SDK) to mark each request with the team, service, user, or customer it belongs to.</li>
+        <li><strong>Meter.</strong> TOLVYN counts tokens using the provider's own reported usage and computes cost in microdollars with exact decimal arithmetic — not floating-point estimates.</li>
+        <li><strong>Attribute.</strong> The cost is recorded against the request's tags, metadata only — prompts and responses are never stored.</li>
+        <li><strong>View.</strong> The dashboard shows spend broken down by team, service, end customer, user, and model, with a request log you can filter and export to CSV.</li>
+      </ul>
+      <h3>One honest caveat</h3>
+      <p>
+        Attribution is only as good as your tags. A request that arrives <strong>untagged</strong>
+        is still metered accurately, but it rolls up to the organization total as
+        <em>unassigned</em> — it won't appear under a specific team or customer until you tag it.
+        Tagging is a one-time setup per service, and the SDK makes it a single line.
+      </p>
+    </section>
+
+    <section>
+      <h2>What this is — and what it isn't</h2>
+      <p>
+        TOLVYN gives you the <strong>attributed cost data</strong>: the accurate, per-dimension
+        breakdown of what your AI actually cost and who drove it. That's the input finance needs
+        for cost allocation, COGS-per-customer, and chargeback conversations.
+      </p>
+      <p>
+        TOLVYN is <strong>not a billing system</strong> — it does not issue invoices, charge your
+        customers, or replace your provider's billing. It answers "who spent what, and can I prove
+        it?" — and because every record is written to a tamper-evident
+        <a href="../pages/security.html">audit ledger</a>, the numbers hold up when someone asks
+        you to back them.
+      </p>
+    </section>
+
+    <section>
+      <h2>Stop guessing where the bill went</h2>
+      <p>
+        Tag your traffic once, and the next invoice explains itself. Free to start — 10,000
+        requests a month, no card required.
+      </p>
+      <div class="uc-cta">
+        <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Start free — 10,000 requests</a>
+        <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">Book a call</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>TOLVYN</h4>
+        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
+          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
+          <li><a href="../pages/cost-index.html">Cost Index</a></li>
+          <li><a href="../compare/helicone.html">TOLVYN vs Helicone</a></li>
+          <li><a href="cost-attribution-per-customer.html">Cost Attribution</a></li>
+          <li><a href="audit-trail-for-ai-spend.html">Audit Trail</a></li>
+          <li><a href="metering-ai-to-bill-customers.html">Usage-Based Metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migration/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="../pages/company.html">About</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="../pages/customers.html">Customers</a></li>
+          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="../pages/privacy.html">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html">Terms of Service</a></li>
+          <li><a href="../pages/security.html">Security</a></li>
+          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
+        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/nav.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/main.js" defer></script>
+</body>
+</html>
