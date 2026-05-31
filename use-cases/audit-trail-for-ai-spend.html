@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prove your AI spend records weren't altered — TOLVYN</title>
+  <meta name="description" content="When finance or an auditor asks you to prove your AI cost records are complete and unaltered, a dashboard total isn't evidence. TOLVYN writes every metered request to a tamper-evident, hash-chained, HMAC-signed ledger you can verify on demand.">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
+  <meta property="og:site_name"   content="TOLVYN">
+  <meta property="og:title"       content="Prove your AI spend records weren't altered — TOLVYN">
+  <meta property="og:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request — verifiable on demand.">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Prove your AI spend records weren't altered — TOLVYN">
+  <meta name="twitter:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request — verifiable on demand.">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <link rel="canonical" href="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#00D9A3">
+
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- Scoped styles for the step flow only — existing design tokens, no global CSS edits. -->
+  <style>
+    .uc-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 8px 0 20px;
+    }
+    .uc-flow__step {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      font-size: 0.86rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .uc-flow__arrow { color: var(--text-muted); font-size: 0.9rem; }
+    .uc-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  </style>
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+    <ul class="nav__links" role="list">
+      <li><a href="../pages/product.html">Product</a></li>
+      <li><a href="../pages/pricing.html">Pricing</a></li>
+      <li><a href="../pages/cost-index.html">Cost Index</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" role="menu">
+    <a href="../pages/product.html" role="menuitem">Product</a>
+    <a href="../pages/pricing.html" role="menuitem">Pricing</a>
+    <a href="../pages/cost-index.html" role="menuitem">Cost Index</a>
+    <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="label anim-fade-up">Use case</p>
+    <h1 class="anim-fade-up">Prove your AI spend records weren't altered</h1>
+  </div>
+</section>
+
+<div class="container container--narrow" style="padding-bottom:96px;">
+  <div class="docs-main">
+
+    <section>
+      <h2>"Prove these numbers are complete and unaltered."</h2>
+      <p>
+        It's the question finance, an auditor, or a customer's procurement team eventually asks:
+        <em>how do we know your AI cost records are the whole picture and nobody edited them?</em>
+        A dashboard total can't answer it. Numbers in a dashboard are just rows in a database —
+        rows can be updated, deleted, or quietly back-dated, and a screenshot of a total proves
+        nothing about what's behind it.
+      </p>
+      <p>
+        For cost allocation, COGS sign-off, or any compliance review, you don't need a prettier
+        report. You need a record you can <strong>demonstrate wasn't tampered with</strong>.
+      </p>
+    </section>
+
+    <section>
+      <p class="section-label">The moat</p>
+      <h2>Every request lands in a tamper-evident ledger</h2>
+      <p>
+        Every AI request metered by TOLVYN writes one entry to an append-only ledger. The ledger
+        is built so that any change to a past record is detectable — not as a policy, but
+        cryptographically.
+      </p>
+      <p>
+        Every ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a
+        per-tenant key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
+        no gaps, no duplicates, even under concurrent writes. Each entry is written in the
+        <strong>same database transaction</strong> as the request it accounts for, so there are no
+        orphaned or partial records — every metered request has exactly one ledger entry, and
+        every ledger entry has its request.
+      </p>
+      <p>
+        Because each record's hash includes the previous record's hash, altering any single entry
+        breaks the chain from that point forward — and the break is detectable at the exact record
+        where it happened.
+      </p>
+    </section>
+
+    <section>
+      <h2>Verify on demand</h2>
+      <p>
+        Re-derive and check any range of the chain with one command. Verification recomputes every
+        record hash and HMAC signature, confirms each links to the previous record, and pinpoints
+        the <strong>first record that doesn't verify</strong> if anything was touched.
+      </p>
+      <pre class="code-block"><code><span class="tk-comment"># Verify any range of your tenant's ledger</span>
+$ tolvyn ledger verify
+✓ hash chain intact
+✓ all HMAC signatures valid
+✓ no sequence gaps</code></pre>
+      <p>
+        You can also export the full ledger to CSV for your own records, your auditor, or your
+        data warehouse.
+      </p>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="uc-flow" aria-label="Pipeline: request, meter, append, sign, verify">
+        <span class="uc-flow__step">Request</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Meter</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Append (hash-chain)</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Sign (HMAC)</span>
+        <span class="uc-flow__arrow">→</span>
+        <span class="uc-flow__step">Verify</span>
+      </div>
+      <ul>
+        <li><strong>Request &amp; meter.</strong> A request passes through the proxy and is metered — provider-reported tokens, cost in microdollars.</li>
+        <li><strong>Append.</strong> A ledger entry is written in the same transaction, chained by SHA-256 to the previous entry, with a gap-free sequence number under a per-tenant advisory lock.</li>
+        <li><strong>Sign.</strong> The record is signed with HMAC-SHA256 using a per-tenant key, proving both integrity and authenticity.</li>
+        <li><strong>Verify.</strong> Anytime, re-derive the chain with <code class="mono">tolvyn ledger verify</code> — it reports the first record that fails, or confirms the range is intact.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why it matters</h2>
+      <p>
+        This turns "our dashboard says we spent $X" into evidence a finance team or auditor can
+        actually rely on. Instead of trusting a number, they can verify the record behind it — and
+        you can hand them a ledger export plus a verification they can re-run themselves.
+      </p>
+    </section>
+
+    <section>
+      <h2>What this is — and what it isn't</h2>
+      <p>
+        The ledger gives you the <strong>audit evidence</strong> you use for your own compliance,
+        cost-allocation, and finance reviews. It is a verifiable record of what was spent — not a
+        certification that TOLVYN holds on your behalf.
+      </p>
+      <p>
+        To be precise: <strong>TOLVYN is not SOC 2 or ISO certified yet</strong> (we're targeting
+        SOC 2 Type I in late 2026). We don't claim a compliance badge we haven't earned. What we
+        provide is the tamper-evident ledger, on-demand verification, and CSV export — the raw
+        evidence your auditors and finance team can work with directly.
+      </p>
+    </section>
+
+    <section>
+      <h2>Make your AI spend provable</h2>
+      <p>
+        Start metering today and every request lands in your ledger from the first call. Free to
+        start — 10,000 requests a month, no card required.
+      </p>
+      <div class="uc-cta">
+        <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Start free — 10,000 requests</a>
+        <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">Book a call</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>TOLVYN</h4>
+        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
+          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
+          <li><a href="../pages/cost-index.html">Cost Index</a></li>
+          <li><a href="../compare/helicone.html">TOLVYN vs Helicone</a></li>
+          <li><a href="cost-attribution-per-customer.html">Cost Attribution</a></li>
+          <li><a href="audit-trail-for-ai-spend.html">Audit Trail</a></li>
+          <li><a href="metering-ai-to-bill-customers.html">Usage-Based Metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migration/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="../pages/company.html">About</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="../pages/customers.html">Customers</a></li>
+          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="../pages/privacy.html">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html">Terms of Service</a></li>
+          <li><a href="../pages/security.html">Security</a></li>
+          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
+        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/nav.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/main.js" defer></script>
+</body>
+</html>

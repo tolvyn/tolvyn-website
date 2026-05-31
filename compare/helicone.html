@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOLVYN vs Helicone — TOLVYN</title>
+  <meta name="description" content="TOLVYN vs Helicone: observability versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, an immutable audit ledger, and enforced budgets versus Helicone's logging, caching, and prompt tooling.">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/compare/helicone.html">
+  <meta property="og:site_name"   content="TOLVYN">
+  <meta property="og:title"       content="TOLVYN vs Helicone — TOLVYN">
+  <meta property="og:description" content="Observability versus a financial control plane for AI. An honest, two-sided comparison.">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="TOLVYN vs Helicone — TOLVYN">
+  <meta name="twitter:description" content="Observability versus a financial control plane for AI. An honest, two-sided comparison.">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <link rel="canonical" href="https://tolvyn.io/compare/helicone.html">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#00D9A3">
+
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- Scoped styles for the comparison table only — uses existing design tokens, no global CSS edits. -->
+  <style>
+    .cmp-wrap { overflow-x: auto; }
+    .cmp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+    .cmp-table th {
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 600;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .cmp-table th.cmp-col-tolvyn { color: var(--accent); }
+    .cmp-table td {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .cmp-table td:first-child { color: var(--text); font-weight: 500; }
+    .cmp-yes { color: var(--green); font-weight: 600; }
+    .cmp-no  { color: var(--text-muted); }
+    @media (max-width: 768px) {
+      .cmp-table { font-size: 0.8rem; }
+      .cmp-table th, .cmp-table td { padding: 8px 10px; }
+    }
+  </style>
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+    <ul class="nav__links" role="list">
+      <li><a href="../pages/product.html">Product</a></li>
+      <li><a href="../pages/pricing.html">Pricing</a></li>
+      <li><a href="../pages/cost-index.html">Cost Index</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" role="menu">
+    <a href="../pages/product.html" role="menuitem">Product</a>
+    <a href="../pages/pricing.html" role="menuitem">Pricing</a>
+    <a href="../pages/cost-index.html" role="menuitem">Cost Index</a>
+    <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="label anim-fade-up">Compare</p>
+    <h1 class="anim-fade-up">TOLVYN vs Helicone</h1>
+  </div>
+</section>
+
+<div class="container container--narrow" style="padding-bottom:96px;">
+  <div class="docs-main">
+
+    <section>
+      <h2>Two different jobs</h2>
+      <p>
+        <strong>Helicone is an observability platform.</strong> It sits in front of your LLM calls
+        and gives you logging, request tracing, dashboards, caching, and prompt tooling — built to
+        help engineers <em>debug and improve</em> what their AI is doing.
+      </p>
+      <p>
+        <strong>TOLVYN is a financial control plane.</strong> It sits in the same place — a proxy in
+        front of your providers — but its job is <em>governance of spend</em>: per-request cost
+        attribution, an immutable audit ledger, and budgets that actually block requests before the
+        provider is called. Different question: not "what did my AI say?" but "who spent what, can I
+        prove it, and can I stop it?"
+      </p>
+      <p>
+        They overlap at the proxy, and plenty of teams run both. This page is an honest read on where
+        each one is the right tool — including where Helicone is clearly ahead.
+      </p>
+    </section>
+
+    <section>
+      <h2>Side by side</h2>
+      <div class="cmp-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th class="cmp-col-tolvyn">TOLVYN</th>
+              <th>Helicone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary purpose</td>
+              <td>Financial control plane — cost governance &amp; audit</td>
+              <td>Observability — logging, tracing, debugging</td>
+            </tr>
+            <tr>
+              <td>Provider coverage</td>
+              <td>OpenAI, Anthropic, Google</td>
+              <td class="cmp-yes">100+ providers</td>
+            </tr>
+            <tr>
+              <td>Request &amp; response logging</td>
+              <td>Metadata only — prompts/responses never stored</td>
+              <td class="cmp-yes">Full request/response logs (its core strength)</td>
+            </tr>
+            <tr>
+              <td>Response caching</td>
+              <td class="cmp-no">Not offered</td>
+              <td class="cmp-yes">Yes</td>
+            </tr>
+            <tr>
+              <td>Prompt management &amp; experiments</td>
+              <td class="cmp-no">Not offered</td>
+              <td class="cmp-yes">Yes</td>
+            </tr>
+            <tr>
+              <td>Cost &amp; token metering</td>
+              <td>Provider-reported tokens, microdollar precision</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Cost-attribution breakdown views</td>
+              <td class="cmp-yes">By model, team, service, user, end customer</td>
+              <td>By user, properties, sessions</td>
+            </tr>
+            <tr>
+              <td>Immutable audit ledger (hash-chain + HMAC + verify)</td>
+              <td class="cmp-yes">Yes</td>
+              <td class="cmp-no">No</td>
+            </tr>
+            <tr>
+              <td>Budget enforcement that blocks before the provider call</td>
+              <td class="cmp-yes">Hard budgets, per-plan quotas, scoped kill switch</td>
+              <td>Alerts &amp; rate limits</td>
+            </tr>
+            <tr>
+              <td>Export (request log + ledger CSV)</td>
+              <td class="cmp-yes">Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Migration-header compatibility</td>
+              <td>Reads <code class="mono">Helicone-*</code> and <code class="mono">X-Portkey-*</code> headers</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>SDKs</td>
+              <td>Python, Node, Go, CLI</td>
+              <td class="cmp-yes">Broad SDK &amp; framework coverage</td>
+            </tr>
+            <tr>
+              <td>Self-hosting</td>
+              <td>Single Go binary + PostgreSQL</td>
+              <td>Yes (Docker / Helm)</td>
+            </tr>
+            <tr>
+              <td>Maturity &amp; ecosystem</td>
+              <td>Newer, narrower scope</td>
+              <td class="cmp-yes">Mature, large community</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        If your bottleneck is <em>seeing and debugging</em> requests across many providers, Helicone
+        is the more complete product today. If your bottleneck is <em>proving and controlling spend</em>,
+        that's the gap TOLVYN was built for.
+      </p>
+    </section>
+
+    <section>
+      <h2>A note on Helicone's direction</h2>
+      <p>
+        In March 2026, Helicone announced it was joining Mintlify. According to the company's own
+        announcements, the open-source project moved into maintenance mode following the acquisition.
+        We're not going to characterize what that means for their roadmap — read it from the source:
+        Helicone's
+        <a href="https://www.helicone.ai" target="_blank" rel="noopener noreferrer">own announcements</a>
+        and their
+        <a href="https://github.com/Helicone/helicone" target="_blank" rel="noopener noreferrer">open-source repository</a>.
+      </p>
+      <p>
+        We mention it for one practical reason: if you're choosing an LLM gateway today, the
+        maintenance trajectory of whatever sits in your request path is a real factor. Verify it
+        for yourself against their channels above — don't take a competitor's word for it.
+      </p>
+    </section>
+
+    <section>
+      <h2>The ledger is the difference</h2>
+      <p>
+        Observability tools tell you what happened. TOLVYN gives you a record you can <em>prove</em>
+        wasn't altered. Every metered request writes one ledger entry, and the entries are chained.
+      </p>
+      <p>
+        Each ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a per-tenant
+        key. Sequence numbers are allocated under a Postgres advisory lock per tenant — no gaps, no
+        duplicates, even under concurrent writes. Anyone can re-derive the chain and pinpoint the
+        first tampered record with <code class="mono">tolvyn ledger verify</code>. The ledger entry is
+        written in the same transaction as the request it accounts for, so there are no orphaned or
+        partial records.
+      </p>
+      <p>
+        That's what turns "our dashboard says we spent $X" into evidence a finance team or auditor
+        can actually rely on. No mainstream observability tool ships a tamper-evident cost ledger —
+        it's a different design goal.
+      </p>
+    </section>
+
+    <section>
+      <h2>Which should you choose?</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Choose Helicone if…</h3>
+          <ul>
+            <li>You need deep request/response logging and tracing to debug AI behavior.</li>
+            <li>You call many providers and want one observability layer over all of them.</li>
+            <li>You want response caching and prompt management/experiments out of the box.</li>
+            <li>You value a mature, widely-adopted tool with a large community.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Choose TOLVYN if…</h3>
+          <ul>
+            <li>You need to attribute every dollar to a team, service, user, or customer.</li>
+            <li>You need budgets and quotas that <em>block</em> runaway spend before it happens.</li>
+            <li>You need a tamper-evident audit trail finance or compliance can rely on.</li>
+            <li>You want metadata-only governance — no prompt or response content stored.</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Not mutually exclusive: because TOLVYN reads <code class="mono">Helicone-*</code> attribution
+        headers, teams already instrumented for Helicone can point traffic at TOLVYN for cost control
+        without re-tagging their requests.
+      </p>
+    </section>
+
+    <section>
+      <h2>Moving from Helicone</h2>
+      <p>
+        Switching is a base-URL change plus a TOLVYN key — the proxy accepts
+        <code class="mono">Authorization: Bearer</code>, <code class="mono">x-api-key</code>, or
+        <code class="mono">x-goog-api-key</code>, and it understands your existing
+        <code class="mono">Helicone-User-Id</code> and properties so your attribution carries over.
+      </p>
+      <p>
+        <a href="https://docs.tolvyn.io/migration/from-helicone" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read the migration guide →</a>
+        &nbsp;
+        <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Start free</a>
+      </p>
+    </section>
+
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>TOLVYN</h4>
+        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
+          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
+          <li><a href="../pages/cost-index.html">Cost Index</a></li>
+          <li><a href="helicone.html">TOLVYN vs Helicone</a></li>
+          <li><a href="../use-cases/cost-attribution-per-customer.html">Cost Attribution</a></li>
+          <li><a href="../use-cases/audit-trail-for-ai-spend.html">Audit Trail</a></li>
+          <li><a href="../use-cases/metering-ai-to-bill-customers.html">Usage-Based Metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migration/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="../pages/company.html">About</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="../pages/customers.html">Customers</a></li>
+          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="../pages/privacy.html">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html">Terms of Service</a></li>
+          <li><a href="../pages/security.html">Security</a></li>
+          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
+        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/nav.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/main.js" defer></script>
+</body>
+</html>
