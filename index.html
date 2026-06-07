@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOLVYN — The Financial Control Plane for AI Infrastructure</title>
-  <meta name="description" content="TOLVYN is the system of record for every AI API call. Cost attribution, agent governance, immutable ledger, invoice reconciliation. Across OpenAI, Anthropic, and Google.">
+  <meta name="description" content="TOLVYN is the system of record for every AI API call. Cost attribution, agent governance, immutable ledger, invoice reconciliation. Across OpenAI, Anthropic, Google, and DeepSeek.">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
@@ -98,7 +98,7 @@
 
     <p class="hero__sub anim-fade-up">
       TOLVYN is the financial control plane for AI infrastructure —
-      the system of record for every API call across OpenAI, Anthropic, and Google.
+      the system of record for every API call across OpenAI, Anthropic, Google, and DeepSeek.
     </p>
 
     <div class="hero__ctas anim-fade-up">
@@ -165,7 +165,7 @@
     </div>
 
     <div class="diagram reveal">
-      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, and Google while writing to four outputs: immutable ledger, attribution, budget enforcement, and reconciliation.">
+      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, Google, and DeepSeek while writing to four outputs: immutable ledger, attribution, budget enforcement, and reconciliation.">
         <defs>
           <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0,0 L0,6 L8,3 z" fill="#00D9A3"/>
@@ -321,7 +321,7 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
       pip install tolvyn &nbsp;·&nbsp; npm install tolvyn &nbsp;·&nbsp; go get github.com/tolvyn/tolvyn-go
     </p>
     <p style="text-align:center;margin-top:8px;color:var(--text-muted);font-size:0.9rem;max-width:640px;margin-inline:auto;">
-      Works with OpenAI, Anthropic, and Google. If TOLVYN is unreachable, SDK mode automatically retries against the provider directly.
+      Works with OpenAI, Anthropic, Google, and DeepSeek. If TOLVYN is unreachable, SDK mode automatically retries against the provider directly.
     </p>
   </div>
 </section>
