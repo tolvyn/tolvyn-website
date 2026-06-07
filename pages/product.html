@@ -18,7 +18,7 @@
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
   <link rel="canonical" href="https://tolvyn.io/pages/product.html">
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
   <meta name="theme-color" content="#00D9A3">
 
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
@@ -74,7 +74,7 @@
   <div class="container">
     <p class="label anim-fade-up">Product</p>
     <h1 class="anim-fade-up">What TOLVYN does</h1>
-    <p class="anim-fade-up">The complete financial control layer for AI infrastructure. Eleven systems that work together so you always know what was spent, by whom, and why.</p>
+    <p class="anim-fade-up">The complete financial control layer for AI infrastructure. Twelve systems that work together so you always know what was spent, by whom, and why — across OpenAI, Anthropic, Google, and DeepSeek.</p>
   </div>
 </section>
 
@@ -89,6 +89,7 @@
         <li><a href="#ledger">The Immutable Ledger</a></li>
         <li><a href="#attribution">Attribution</a></li>
         <li><a href="#budgets">Budgets &amp; Enforcement</a></li>
+        <li><a href="#spend-quotas">Spend Quotas</a></li>
         <li><a href="#alerts">Alerts</a></li>
         <li><a href="#webhooks">Webhooks</a></li>
         <li><a href="#reconciliation">Reconciliation</a></li>
@@ -187,12 +188,19 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           it hits the provider.
         </p>
 
-        <h3>Hard vs soft mode</h3>
+        <h3>Three enforcement modes</h3>
         <p>
-          <strong>Hard mode</strong> — the proxy returns HTTP 429 with a <code class="tag">x-tolvyn-budget</code>
-          header explaining which budget was hit. Your application can fall back, queue, or
-          surface an error to the user.
-          <strong>Soft mode</strong> — the request goes through and an alert fires.
+          <strong>Soft mode</strong> — the request goes through and an alert fires. Nothing is
+          ever blocked.
+          <strong>Hard mode</strong> — at the cap the proxy returns HTTP 429 with a
+          <code class="tag">x-tolvyn-budget</code> header explaining which budget was hit,
+          before the provider is called. Your application can fall back, queue, or surface
+          an error to the user.
+          <strong>Approval mode (approve-and-wait)</strong> — at the cap the request is blocked
+          exactly like hard mode, but a pending approval is opened. An administrator grants a
+          <em>bounded</em> extension — an extra dollar amount, valid for a bounded time — after
+          which requests flow again until that grant's amount or time runs out. Governance
+          without a permanent block: route the decision to a human instead of just failing.
         </p>
 
         <h3>Scope hierarchy</h3>
@@ -207,6 +215,41 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           Token counts and per-model pricing are known before the request goes out. The proxy
           rejects a request that would push you over budget rather than incurring the charge
           and refusing the response.
+        </p>
+      </section>
+
+      <!-- 3b. Spend Quotas -->
+      <section id="spend-quotas">
+        <p class="section-label">Spend Quotas</p>
+        <h2>Spend quotas &amp; burn-rate forecast</h2>
+        <p>
+          Budgets enforce. Quotas give you foresight. A spend quota tracks spend along one
+          dimension and <strong>alerts</strong> as it climbs toward a limit — it
+          <strong>never blocks a request</strong>. Run them alongside budgets: the budget is
+          the wall, the quota is the early-warning line painted well before it.
+        </p>
+
+        <h3>Dimensions &amp; periods</h3>
+        <p>
+          Track spend per <strong>model, team, service, end-customer, or organization total</strong>,
+          over a <strong>daily, weekly, or monthly</strong> period. Set any number of percentage
+          thresholds — an alert fires as each one is crossed within the period.
+        </p>
+
+        <h3>Burn-rate forecast</h3>
+        <p>
+          Each quota projects whether you're on track to reach the limit before the period
+          resets, by extrapolating recent spend. The result is one of <strong>on track</strong>,
+          <strong>projected to hit the cap on &lt;date&gt;</strong>, <strong>already over</strong>,
+          or <strong>not enough data yet</strong>.
+        </p>
+
+        <h3>It's an estimate — not a guarantee</h3>
+        <p>
+          The forecast is a straight-line extrapolation of a trailing window of spend. Real
+          usage is spiky and non-linear, so the projected date is <em>guidance, not a
+          promise</em> — it exists to warn you early, not to predict the future precisely.
+          Quotas alert; they never block. Enforcement is the budget's job.
         </p>
       </section>
 
