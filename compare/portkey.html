@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TOLVYN vs Helicone — TOLVYN</title>
-  <meta name="description" content="TOLVYN vs Helicone: observability versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, an immutable audit ledger, and enforced budgets versus Helicone's logging, caching, and prompt tooling.">
+  <title>TOLVYN vs Portkey — TOLVYN</title>
+  <meta name="description" content="TOLVYN vs Portkey: an AI gateway versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, an immutable audit ledger, and enforced budgets versus Portkey's routing, guardrails, and gateway tooling.">
 
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://tolvyn.io/compare/helicone.html">
+  <meta property="og:url"         content="https://tolvyn.io/compare/portkey.html">
   <meta property="og:site_name"   content="TOLVYN">
-  <meta property="og:title"       content="TOLVYN vs Helicone — TOLVYN">
-  <meta property="og:description" content="Observability versus a financial control plane for AI. An honest, two-sided comparison.">
+  <meta property="og:title"       content="TOLVYN vs Portkey — TOLVYN">
+  <meta property="og:description" content="An AI gateway versus a financial control plane for AI. An honest, two-sided comparison.">
   <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="TOLVYN vs Helicone — TOLVYN">
-  <meta name="twitter:description" content="Observability versus a financial control plane for AI. An honest, two-sided comparison.">
+  <meta name="twitter:title"       content="TOLVYN vs Portkey — TOLVYN">
+  <meta name="twitter:description" content="An AI gateway versus a financial control plane for AI. An honest, two-sided comparison.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
-  <link rel="canonical" href="https://tolvyn.io/compare/helicone.html">
+  <link rel="canonical" href="https://tolvyn.io/compare/portkey.html">
 
   <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
   <meta name="theme-color" content="#00D9A3">
@@ -104,7 +104,7 @@
 <section class="page-hero">
   <div class="container">
     <p class="label anim-fade-up">Compare</p>
-    <h1 class="anim-fade-up">TOLVYN vs Helicone</h1>
+    <h1 class="anim-fade-up">TOLVYN vs Portkey</h1>
   </div>
 </section>
 
@@ -114,20 +114,16 @@
     <section>
       <h2>Two different jobs</h2>
       <p>
-        <strong>Helicone is an observability platform.</strong> It sits in front of your LLM calls
-        and gives you logging, request tracing, dashboards, caching, and prompt tooling — built to
-        help engineers <em>debug and improve</em> what their AI is doing.
+        Portkey is a capable AI gateway — routing, caching, reliability, and guardrails across
+        1,600+ models. As of May 2026 it's part of Palo Alto Networks, folding into the Prisma AIRS
+        security platform.
       </p>
       <p>
-        <strong>TOLVYN is a financial control plane.</strong> It sits in the same place — a proxy in
-        front of your providers — but its job is <em>governance of spend</em>: per-request cost
-        attribution, an immutable audit ledger, and budgets that actually block requests before the
-        provider is called. Different question: not "what did my AI say?" but "who spent what, can I
-        prove it, and can I stop it?"
-      </p>
-      <p>
-        They overlap at the proxy, and plenty of teams run both. This page is an honest read on where
-        each one is the right tool — including where Helicone is clearly ahead.
+        TOLVYN solves a narrower, deeper problem: knowing exactly which of your customers generated
+        which dollar of AI spend — and being able to prove it later. Both products sit inline. The
+        difference is what they're built around. Portkey optimizes for routing, reliability, and
+        enterprise security posture. TOLVYN optimizes for financial accuracy you can defend in front
+        of a CFO or an auditor.
       </p>
     </section>
 
@@ -139,105 +135,59 @@
             <tr>
               <th>Capability</th>
               <th class="cmp-col-tolvyn">TOLVYN</th>
-              <th>Helicone</th>
+              <th>Portkey</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Primary purpose</td>
-              <td>Financial control plane — cost governance &amp; audit</td>
-              <td>Observability — logging, tracing, debugging</td>
+              <td>Primary job</td>
+              <td>Financial attribution + audit ledger</td>
+              <td>AI gateway / LLMOps + security</td>
             </tr>
             <tr>
-              <td>Provider coverage</td>
-              <td>OpenAI, Anthropic, Google, DeepSeek</td>
-              <td class="cmp-yes">100+ providers</td>
-            </tr>
-            <tr>
-              <td>Request &amp; response logging</td>
-              <td>Metadata only — prompts/responses never stored</td>
-              <td class="cmp-yes">Full request/response logs (its core strength)</td>
-            </tr>
-            <tr>
-              <td>Response caching</td>
-              <td class="cmp-no">Not offered</td>
+              <td>Per-end-customer cost attribution</td>
               <td class="cmp-yes">Yes</td>
+              <td>Cost visibility, not the focus</td>
             </tr>
             <tr>
-              <td>Prompt management &amp; experiments</td>
-              <td class="cmp-no">Not offered</td>
-              <td class="cmp-yes">Yes</td>
-            </tr>
-            <tr>
-              <td>Cost &amp; token metering</td>
-              <td>Provider-reported tokens, microdollar precision</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Cost-attribution breakdown views</td>
-              <td class="cmp-yes">By model, team, service, user, end customer</td>
-              <td>By user, properties, sessions</td>
-            </tr>
-            <tr>
-              <td>Immutable audit ledger (hash-chain + HMAC + verify)</td>
+              <td>Immutable hash-chained ledger, verifiable on demand</td>
               <td class="cmp-yes">Yes</td>
               <td class="cmp-no">No</td>
             </tr>
             <tr>
-              <td>Budget enforcement that blocks before the provider call</td>
-              <td class="cmp-yes">Hard budgets, per-plan quotas, scoped kill switch</td>
-              <td>Alerts &amp; rate limits</td>
-            </tr>
-            <tr>
-              <td>Export (request log + ledger CSV)</td>
+              <td>Hard budget enforcement at the proxy</td>
               <td class="cmp-yes">Yes</td>
-              <td>Yes</td>
+              <td>Routing &amp; guardrails</td>
             </tr>
             <tr>
-              <td>Migration-header compatibility</td>
-              <td>Reads <code class="mono">Helicone-*</code> and <code class="mono">X-Portkey-*</code> headers</td>
-              <td>—</td>
+              <td>Independent product</td>
+              <td class="cmp-yes">Yes</td>
+              <td>Part of Palo Alto Networks</td>
             </tr>
             <tr>
-              <td>SDKs</td>
-              <td>Python, Node, Go, CLI</td>
-              <td class="cmp-yes">Broad SDK &amp; framework coverage</td>
-            </tr>
-            <tr>
-              <td>Self-hosting</td>
-              <td>Single Go binary + PostgreSQL</td>
-              <td>Yes (Docker / Helm)</td>
-            </tr>
-            <tr>
-              <td>Maturity &amp; ecosystem</td>
-              <td>Newer, narrower scope</td>
-              <td class="cmp-yes">Mature, large community</td>
+              <td>Best for</td>
+              <td>Teams reselling AI to multiple paying clients</td>
+              <td>Teams needing a broad gateway plus enterprise security</td>
             </tr>
           </tbody>
         </table>
       </div>
       <p>
-        If your bottleneck is <em>seeing and debugging</em> requests across many providers, Helicone
-        is the more complete product today. If your bottleneck is <em>proving and controlling spend</em>,
-        that's the gap TOLVYN was built for.
+        If your core need is routing across many models with enterprise security, Portkey fits. If
+        your core need is attributing every API dollar to a specific customer with a tamper-evident
+        record, that's TOLVYN.
       </p>
     </section>
 
     <section>
-      <h2>A note on Helicone's direction</h2>
+      <h2>A note on Portkey's direction</h2>
       <p>
-        In March 2026, Helicone announced it was joining Mintlify. According to the company's own
-        announcements, the open-source project moved into maintenance mode following the acquisition.
-        We're not going to characterize what that means for their roadmap — read it from the source:
-        Helicone's
-        <a href="https://www.helicone.ai" target="_blank" rel="noopener noreferrer">own announcements</a>
-        and their
-        <a href="https://github.com/Helicone/helicone" target="_blank" rel="noopener noreferrer">open-source repository</a>.
-      </p>
-      <p>
-        We mention it for one practical reason: if you're choosing an LLM gateway today, the
-        maintenance trajectory of whatever sits in your request path is a real factor. Verify it
-        for yourself against their channels above — don't take a competitor's word for it.
+        In April 2026 Palo Alto Networks announced its intent to acquire Portkey; the deal closed in
+        May 2026. Portkey is now positioned as the AI gateway for Prisma AIRS, Palo Alto's enterprise
+        security platform. That's a strong direction for teams who want gateway and security in one
+        suite. It also means Portkey is now a component of a large security platform rather than an
+        independent, focused tool. TOLVYN is independent and focused on one thing: the financial
+        record of your AI spend.
       </p>
     </section>
 
@@ -266,12 +216,11 @@
       <h2>Which should you choose?</h2>
       <div class="grid-2">
         <div class="card">
-          <h3>Choose Helicone if…</h3>
+          <h3>Choose Portkey if…</h3>
           <ul>
-            <li>You need deep request/response logging and tracing to debug AI behavior.</li>
-            <li>You call many providers and want one observability layer over all of them.</li>
-            <li>You want response caching and prompt management/experiments out of the box.</li>
-            <li>You value a mature, widely-adopted tool with a large community.</li>
+            <li>You need routing and failover across many model providers.</li>
+            <li>You want guardrails and prompt management in the gateway.</li>
+            <li>You're standardizing on Palo Alto Networks for AI security.</li>
           </ul>
         </div>
         <div class="card">
@@ -285,22 +234,19 @@
         </div>
       </div>
       <p>
-        Not mutually exclusive: because TOLVYN reads <code class="mono">Helicone-*</code> attribution
-        headers, teams already instrumented for Helicone can point traffic at TOLVYN for cost control
-        without re-tagging their requests.
+        These aren't mutually exclusive. A team can route through one layer and keep TOLVYN as the
+        financial system of record. They answer different questions.
       </p>
     </section>
 
     <section>
-      <h2>Moving from Helicone</h2>
+      <h2>Moving from Portkey</h2>
       <p>
-        Switching is a base-URL change plus a TOLVYN key — the proxy accepts
-        <code class="mono">Authorization: Bearer</code>, <code class="mono">x-api-key</code>, or
-        <code class="mono">x-goog-api-key</code>, and it understands your existing
-        <code class="mono">Helicone-User-Id</code> and properties so your attribution carries over.
+        Moving from Portkey takes minutes — change the proxy endpoint, keep your existing code. See
+        the Portkey migration guide.
       </p>
       <p>
-        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-helicone" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read the migration guide →</a>
+        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-portkey" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read the migration guide →</a>
         &nbsp;
         <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Start free</a>
       </p>

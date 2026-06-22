@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TOLVYN vs Helicone — TOLVYN</title>
-  <meta name="description" content="TOLVYN vs Helicone: observability versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, an immutable audit ledger, and enforced budgets versus Helicone's logging, caching, and prompt tooling.">
+  <title>TOLVYN vs Langfuse — TOLVYN</title>
+  <meta name="description" content="TOLVYN vs Langfuse: LLM observability versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, an immutable audit ledger, and enforced budgets versus Langfuse's tracing, evals, and prompt management.">
 
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://tolvyn.io/compare/helicone.html">
+  <meta property="og:url"         content="https://tolvyn.io/compare/langfuse.html">
   <meta property="og:site_name"   content="TOLVYN">
-  <meta property="og:title"       content="TOLVYN vs Helicone — TOLVYN">
-  <meta property="og:description" content="Observability versus a financial control plane for AI. An honest, two-sided comparison.">
+  <meta property="og:title"       content="TOLVYN vs Langfuse — TOLVYN">
+  <meta property="og:description" content="LLM observability versus a financial control plane for AI. An honest, two-sided comparison.">
   <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="TOLVYN vs Helicone — TOLVYN">
-  <meta name="twitter:description" content="Observability versus a financial control plane for AI. An honest, two-sided comparison.">
+  <meta name="twitter:title"       content="TOLVYN vs Langfuse — TOLVYN">
+  <meta name="twitter:description" content="LLM observability versus a financial control plane for AI. An honest, two-sided comparison.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
-  <link rel="canonical" href="https://tolvyn.io/compare/helicone.html">
+  <link rel="canonical" href="https://tolvyn.io/compare/langfuse.html">
 
   <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
   <meta name="theme-color" content="#00D9A3">
@@ -104,7 +104,7 @@
 <section class="page-hero">
   <div class="container">
     <p class="label anim-fade-up">Compare</p>
-    <h1 class="anim-fade-up">TOLVYN vs Helicone</h1>
+    <h1 class="anim-fade-up">TOLVYN vs Langfuse</h1>
   </div>
 </section>
 
@@ -114,20 +114,14 @@
     <section>
       <h2>Two different jobs</h2>
       <p>
-        <strong>Helicone is an observability platform.</strong> It sits in front of your LLM calls
-        and gives you logging, request tracing, dashboards, caching, and prompt tooling — built to
-        help engineers <em>debug and improve</em> what their AI is doing.
+        Langfuse is an excellent open-source LLM engineering platform — tracing, evaluations, prompt
+        management. It's built to help you debug and improve quality, and its SDK is async by design:
+        it observes from the side and never blocks a request.
       </p>
       <p>
-        <strong>TOLVYN is a financial control plane.</strong> It sits in the same place — a proxy in
-        front of your providers — but its job is <em>governance of spend</em>: per-request cost
-        attribution, an immutable audit ledger, and budgets that actually block requests before the
-        provider is called. Different question: not "what did my AI say?" but "who spent what, can I
-        prove it, and can I stop it?"
-      </p>
-      <p>
-        They overlap at the proxy, and plenty of teams run both. This page is an honest read on where
-        each one is the right tool — including where Helicone is clearly ahead.
+        TOLVYN is the opposite by design. It sits inline, so it can attribute every call to a customer
+        and enforce a budget — not just record what already happened. This isn't better versus worse;
+        it's two different jobs.
       </p>
     </section>
 
@@ -139,105 +133,48 @@
             <tr>
               <th>Capability</th>
               <th class="cmp-col-tolvyn">TOLVYN</th>
-              <th>Helicone</th>
+              <th>Langfuse</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Primary purpose</td>
-              <td>Financial control plane — cost governance &amp; audit</td>
-              <td>Observability — logging, tracing, debugging</td>
+              <td>Architecture</td>
+              <td>Inline proxy</td>
+              <td>Async observability, beside the path</td>
             </tr>
             <tr>
-              <td>Provider coverage</td>
-              <td>OpenAI, Anthropic, Google, DeepSeek</td>
-              <td class="cmp-yes">100+ providers</td>
+              <td>Primary job</td>
+              <td>Financial attribution + enforcement</td>
+              <td>Tracing, evals, quality</td>
             </tr>
             <tr>
-              <td>Request &amp; response logging</td>
-              <td>Metadata only — prompts/responses never stored</td>
-              <td class="cmp-yes">Full request/response logs (its core strength)</td>
+              <td>Can stop runaway spend before it lands</td>
+              <td class="cmp-yes">Yes — hard budgets block at the proxy</td>
+              <td class="cmp-no">No, observes only</td>
             </tr>
             <tr>
-              <td>Response caching</td>
-              <td class="cmp-no">Not offered</td>
-              <td class="cmp-yes">Yes</td>
+              <td>Per-end-customer cost attribution</td>
+              <td class="cmp-yes">Financial-grade</td>
+              <td>Cost shown per trace</td>
             </tr>
             <tr>
-              <td>Prompt management &amp; experiments</td>
-              <td class="cmp-no">Not offered</td>
-              <td class="cmp-yes">Yes</td>
-            </tr>
-            <tr>
-              <td>Cost &amp; token metering</td>
-              <td>Provider-reported tokens, microdollar precision</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Cost-attribution breakdown views</td>
-              <td class="cmp-yes">By model, team, service, user, end customer</td>
-              <td>By user, properties, sessions</td>
-            </tr>
-            <tr>
-              <td>Immutable audit ledger (hash-chain + HMAC + verify)</td>
+              <td>Immutable hash-chained ledger, verifiable on demand</td>
               <td class="cmp-yes">Yes</td>
               <td class="cmp-no">No</td>
             </tr>
             <tr>
-              <td>Budget enforcement that blocks before the provider call</td>
-              <td class="cmp-yes">Hard budgets, per-plan quotas, scoped kill switch</td>
-              <td>Alerts &amp; rate limits</td>
-            </tr>
-            <tr>
-              <td>Export (request log + ledger CSV)</td>
-              <td class="cmp-yes">Yes</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Migration-header compatibility</td>
-              <td>Reads <code class="mono">Helicone-*</code> and <code class="mono">X-Portkey-*</code> headers</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>SDKs</td>
-              <td>Python, Node, Go, CLI</td>
-              <td class="cmp-yes">Broad SDK &amp; framework coverage</td>
-            </tr>
-            <tr>
-              <td>Self-hosting</td>
-              <td>Single Go binary + PostgreSQL</td>
-              <td>Yes (Docker / Helm)</td>
-            </tr>
-            <tr>
-              <td>Maturity &amp; ecosystem</td>
-              <td>Newer, narrower scope</td>
-              <td class="cmp-yes">Mature, large community</td>
+              <td>Best for</td>
+              <td>Billing and margin accuracy across clients</td>
+              <td>Debugging and improving LLM apps</td>
             </tr>
           </tbody>
         </table>
       </div>
       <p>
-        If your bottleneck is <em>seeing and debugging</em> requests across many providers, Helicone
-        is the more complete product today. If your bottleneck is <em>proving and controlling spend</em>,
-        that's the gap TOLVYN was built for.
-      </p>
-    </section>
-
-    <section>
-      <h2>A note on Helicone's direction</h2>
-      <p>
-        In March 2026, Helicone announced it was joining Mintlify. According to the company's own
-        announcements, the open-source project moved into maintenance mode following the acquisition.
-        We're not going to characterize what that means for their roadmap — read it from the source:
-        Helicone's
-        <a href="https://www.helicone.ai" target="_blank" rel="noopener noreferrer">own announcements</a>
-        and their
-        <a href="https://github.com/Helicone/helicone" target="_blank" rel="noopener noreferrer">open-source repository</a>.
-      </p>
-      <p>
-        We mention it for one practical reason: if you're choosing an LLM gateway today, the
-        maintenance trajectory of whatever sits in your request path is a real factor. Verify it
-        for yourself against their channels above — don't take a competitor's word for it.
+        Because Langfuse is async, it can't enforce — by the time a trace is flushed, the spend
+        already happened. TOLVYN's hard budgets block the request at the proxy, before the provider is
+        ever called. That's the core difference: Langfuse tells you what happened; TOLVYN can stop
+        what shouldn't.
       </p>
     </section>
 
@@ -266,12 +203,11 @@
       <h2>Which should you choose?</h2>
       <div class="grid-2">
         <div class="card">
-          <h3>Choose Helicone if…</h3>
+          <h3>Choose Langfuse if…</h3>
           <ul>
-            <li>You need deep request/response logging and tracing to debug AI behavior.</li>
-            <li>You call many providers and want one observability layer over all of them.</li>
-            <li>You want response caching and prompt management/experiments out of the box.</li>
-            <li>You value a mature, widely-adopted tool with a large community.</li>
+            <li>You're debugging why an LLM response happened and whether it was good.</li>
+            <li>You need evals, prompt versioning, and tracing across chains and agents.</li>
+            <li>Your priority is application quality, not financial enforcement.</li>
           </ul>
         </div>
         <div class="card">
@@ -285,22 +221,18 @@
         </div>
       </div>
       <p>
-        Not mutually exclusive: because TOLVYN reads <code class="mono">Helicone-*</code> attribution
-        headers, teams already instrumented for Helicone can point traffic at TOLVYN for cost control
-        without re-tagging their requests.
+        Many teams run both: Langfuse for quality, TOLVYN for the money. They don't overlap.
       </p>
     </section>
 
     <section>
-      <h2>Moving from Helicone</h2>
+      <h2>Moving from Langfuse</h2>
       <p>
-        Switching is a base-URL change plus a TOLVYN key — the proxy accepts
-        <code class="mono">Authorization: Bearer</code>, <code class="mono">x-api-key</code>, or
-        <code class="mono">x-goog-api-key</code>, and it understands your existing
-        <code class="mono">Helicone-User-Id</code> and properties so your attribution carries over.
+        Moving to TOLVYN takes minutes — change one import or point your client at the proxy. See the
+        migration guides.
       </p>
       <p>
-        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-helicone" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read the migration guide →</a>
+        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read the migration guide →</a>
         &nbsp;
         <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Start free</a>
       </p>
