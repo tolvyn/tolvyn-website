@@ -4,20 +4,5 @@
 */
 'use strict';
 
-// Docs redirect (used by pages/docs.html if present)
-(function initDocsRedirect() {
-  const countdown = document.getElementById('redirect-countdown');
-  if (!countdown) return;
-
-  let seconds = 3;
-  countdown.textContent = seconds;
-
-  const timer = setInterval(() => {
-    seconds -= 1;
-    countdown.textContent = seconds;
-    if (seconds <= 0) {
-      clearInterval(timer);
-      window.location.href = 'https://docs.tolvyn.io';
-    }
-  }, 1000);
-})();
+// (No shared behaviors currently. Page-specific logic lives in the sibling
+//  scripts listed above.)

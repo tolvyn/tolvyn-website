@@ -11,14 +11,17 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="Product — TOLVYN">
   <meta property="og:description" content="The complete financial control layer for AI infrastructure.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
   <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="Product — TOLVYN">
   <meta name="twitter:description" content="The complete financial control layer for AI infrastructure.">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.svg">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
   <link rel="canonical" href="https://tolvyn.io/pages/product.html">
 
   <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
   <meta name="theme-color" content="#00D9A3">
 
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
@@ -167,7 +170,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           <li><strong>Feature</strong> — <code class="tag">X-Tolvyn-Feature</code> — autocomplete, summarize, classify</li>
           <li><strong>Agent</strong> — <code class="tag">X-Tolvyn-Agent</code> — sdr-agent, support-bot, code-reviewer</li>
           <li><strong>User</strong> — <code class="tag">X-Tolvyn-User</code> — your end user's ID, hashed before storage</li>
-          <li><strong>End-customer</strong> — <code class="tag">X-Tolvyn-Customer</code> — your customer ID for COGS-per-customer</li>
+          <li><strong>End-customer</strong> — <code class="tag">X-Tolvyn-End-Customer</code> — your customer ID for COGS-per-customer</li>
         </ul>
 
         <h3>Hierarchy</h3>
@@ -258,7 +261,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <p class="section-label">Alerts</p>
         <h2>Four alert types</h2>
         <ul>
-          <li><strong>Budget threshold</strong> — fires at 75% (warning) and 90%/100% (critical) of any budget scope.</li>
+          <li><strong>Budget threshold</strong> — fires at 50% (info), 75% (warning), and 90%/100% (critical) of any budget scope.</li>
           <li><strong>Cost anomaly</strong> — fires when cost-per-request deviates >3σ from rolling baseline (e.g. someone shipped a code change that switched gpt-4o-mini → gpt-4o).</li>
           <li><strong>Model change</strong> — fires when a service starts using a model it has never used before.</li>
           <li><strong>Pricing change</strong> — fires when a provider you depend on changes a model's price (see <a href="#pricing-changes">Pricing Change Governance</a>).</li>
@@ -453,10 +456,10 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <h2>SDKs &amp; Integration</h2>
 
         <ul>
-          <li><strong>Python</strong> — <code class="tag">tolvyn 0.1.7</code> — drop-in replacement for <code class="mono">openai</code>, <code class="mono">anthropic</code>, and Google's GenAI client.</li>
-          <li><strong>Node.js</strong> — <code class="tag">tolvyn 1.0.8</code> — drop-in replacement for <code class="mono">openai</code> and <code class="mono">@anthropic-ai/sdk</code>.</li>
+          <li><strong>Python</strong> — <code class="tag">tolvyn 0.1.8</code> — drop-in replacement for <code class="mono">openai</code>, <code class="mono">anthropic</code>, and Google's GenAI client.</li>
+          <li><strong>Node.js</strong> — <code class="tag">tolvyn 1.0.10</code> — drop-in replacement for <code class="mono">openai</code> and <code class="mono">@anthropic-ai/sdk</code>.</li>
           <li><strong>Go</strong> — <code class="tag">tolvyn-go v0.1.4</code> — idiomatic Go bindings.</li>
-          <li><strong>CLI</strong> — 55 commands and subcommands across ledger, budgets, alerts, agents, kill-switch, reconciliation, and savings.</li>
+          <li><strong>CLI</strong> — 56 commands and subcommands across ledger, budgets, alerts, agents, kill-switch, reconciliation, and savings.</li>
           <li><strong>Direct HTTP</strong> — change the base URL, keep your existing request code.</li>
         </ul>
 
@@ -494,6 +497,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
       <div class="footer__col">
         <h5>Product</h5>
         <ul>
+          <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
           <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
           <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
@@ -508,6 +512,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
           <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
           <li><a href="cost-index.html">Cost Index</a></li>
+          <li><a href="model-pricing.html">AI Model Pricing</a></li>
           <li><a href="../compare/helicone.html">TOLVYN vs Helicone</a></li>
           <li><a href="../compare/portkey.html">TOLVYN vs Portkey</a></li>
           <li><a href="../compare/langfuse.html">TOLVYN vs Langfuse</a></li>

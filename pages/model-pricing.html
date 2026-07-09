@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Model Pricing — OpenAI, Anthropic, Google &amp; DeepSeek $/MTok | TOLVYN</title>
+  <meta name="description" content="Current per-model API pricing — input, output, and cached $ per million tokens — for OpenAI, Anthropic, Google, and DeepSeek. Provider list prices from the open-source tolvyn-models database, synced daily.">
+  <meta name="robots" content="index, follow">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://tolvyn.io/pricing/ai-models">
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/pricing/ai-models">
+  <meta property="og:site_name"   content="TOLVYN">
+  <meta property="og:title"       content="AI Model Pricing — OpenAI, Anthropic, Google &amp; DeepSeek $/MTok | TOLVYN">
+  <meta property="og:description" content="Current per-model API pricing (input, output, cached $ per million tokens) across OpenAI, Anthropic, Google, and DeepSeek. Provider list prices from the open-source tolvyn-models database, synced daily.">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <!-- Twitter -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@tolvyn">
+  <meta name="twitter:title"       content="AI Model Pricing — OpenAI, Anthropic, Google &amp; DeepSeek $/MTok | TOLVYN">
+  <meta name="twitter:description" content="Current per-model API pricing (input, output, cached $ per million tokens) across OpenAI, Anthropic, Google, and DeepSeek. Synced daily from the open-source tolvyn-models database.">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+  <meta name="theme-color" content="#00D9A3">
+  <!-- Security — connect-src extended to raw.githubusercontent.com for the open-source tolvyn-models feed only -->
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://raw.githubusercontent.com; img-src 'self' data:;">
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <!-- Umami Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "TOLVYN AI Model Pricing Reference",
+    "description": "Current per-model API list prices (input, output, and cached USD per million tokens) for OpenAI, Anthropic, Google, and DeepSeek, sourced from the open-source tolvyn-models pricing database.",
+    "url": "https://tolvyn.io/pricing/ai-models",
+    "license": "https://tolvyn.io/pages/terms.html",
+    "isAccessibleForFree": true,
+    "creator": {
+      "@type": "Organization",
+      "name": "TOLVYN",
+      "url": "https://tolvyn.io"
+    },
+    "isBasedOn": "https://github.com/tolvyn/tolvyn-models"
+  }
+  </script>
+  <style>
+    /* ── Model pricing page ─────────────────────────────────────── */
+    .mp-hero { padding: 96px 0 56px; border-bottom: 1px solid var(--border); }
+    .mp-hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+    }
+    .mp-hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 18px;
+    }
+    .mp-hero .mp-intro { font-size: 1.1rem; max-width: 640px; line-height: 1.7; color: var(--text-secondary); }
+    .mp-asof {
+      margin-top: 22px; font-size: 0.85rem; color: var(--text-secondary); font-family: var(--mono);
+    }
+    .mp-asof strong { color: var(--accent); font-weight: 600; }
+    .mp-disclaimer {
+      margin-top: 14px; font-size: 0.84rem; line-height: 1.6; color: var(--text-muted);
+      max-width: 640px;
+    }
+
+    /* ── Section spacing ────────────────────────────────────────── */
+    .mp-section { padding-block: 56px; }
+
+    /* ── Table ─────────────────────────────────────────────────── */
+    .mp-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    table.mp-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .mp-table th {
+      padding: 12px 16px; text-align: left; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary);
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      white-space: nowrap; cursor: pointer; user-select: none;
+    }
+    .mp-table th:hover { color: var(--text); }
+    .mp-table th.sorted { color: var(--accent); }
+    .mp-table th .sort-icon { margin-left: 4px; opacity: 0.4; }
+    .mp-table th.sorted .sort-icon { opacity: 1; }
+    .mp-table th.num, .mp-table td.num { text-align: right; }
+    .mp-table td {
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      color: var(--text); white-space: nowrap;
+    }
+    .mp-table tr:last-child td { border-bottom: none; }
+    .mp-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .mp-table .mono { font-family: var(--mono); font-size: 0.82rem; }
+    .mp-model { font-weight: 500; }
+    .mp-model small { display: block; font-weight: 400; color: var(--text-muted); font-size: 0.72rem; margin-top: 2px; }
+
+    /* ── Provider badges (brand-identifier colors — data-viz exempt) ── */
+    .provider-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .provider-openai    { background: rgba(16,163,127,0.12); color: #10a37f; }
+    .provider-anthropic { background: rgba(209,154,102,0.12); color: #d19a66; }
+    .provider-google    { background: rgba(66,133,244,0.12);  color: #4285f4; }
+    .provider-deepseek  { background: rgba(139,124,246,0.12); color: #8b7cf6; }
+    .provider-other     { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
+
+    /* ── Loading / empty states ─────────────────────────────────── */
+    .mp-loading, .mp-empty { text-align: center; padding: 48px 24px; color: var(--text-secondary); font-size: 0.9rem; }
+    .mp-empty strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+
+    /* ── Source / attribution ───────────────────────────────────── */
+    .mp-source {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: var(--radius-lg);
+      padding: 32px 36px;
+    }
+    .mp-source h2 { font-size: 1.3rem; color: var(--text); margin-bottom: 20px; }
+    .mp-source ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .mp-source li { display: flex; gap: 12px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    .mp-source li::before { content: '—'; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+    .mp-source li strong { color: var(--text); }
+    .mp-source a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────────────── -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="product.html">Product</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="cost-index.html">Cost Index</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+    </div>
+
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" role="menu">
+    <a href="product.html" role="menuitem">Product</a>
+    <a href="pricing.html" role="menuitem">Pricing</a>
+    <a href="cost-index.html" role="menuitem">Cost Index</a>
+    <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="mp-hero" aria-labelledby="mp-hero-heading">
+  <div class="container">
+    <div class="eyebrow anim-fade-up">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;" aria-hidden="true"></span>
+      Model pricing
+    </div>
+    <h1 id="mp-hero-heading" class="anim-fade-up">AI model pricing reference</h1>
+    <p class="mp-intro anim-fade-up">
+      Provider list prices from our open-source pricing database (tolvyn-models), synced daily.
+      Input, output, and cached rates in USD per million tokens, across OpenAI, Anthropic, Google, and DeepSeek.
+    </p>
+    <p class="mp-asof anim-fade-up" id="mp-asof">Loading pricing data…</p>
+    <p class="mp-disclaimer anim-fade-up">
+      Prices are providers' published rates as of the date shown; verify with the provider before committing spend.
+    </p>
+  </div>
+</section>
+
+<!-- ── Pricing table ────────────────────────────────────────────────── -->
+<section class="mp-section" aria-labelledby="mp-table-heading">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:24px;">
+      <p class="label">Per-model list prices</p>
+      <h2 id="mp-table-heading">Current pricing by model</h2>
+      <p>USD per million tokens (MTok). Click any column header to sort. Click again to reverse.</p>
+    </div>
+    <div class="mp-table-wrap reveal" id="mp-table-wrap">
+      <div class="mp-loading">Loading pricing data…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Source / attribution ─────────────────────────────────────────── -->
+<section class="mp-section" style="padding-top:0;" aria-labelledby="mp-source-heading">
+  <div class="container">
+    <div class="mp-source reveal">
+      <h2 id="mp-source-heading">Source &amp; method</h2>
+      <ul>
+        <li>
+          <strong>Source:</strong>
+          Provider list prices from the open-source <a href="https://github.com/tolvyn/tolvyn-models" target="_blank" rel="noopener noreferrer">tolvyn-models</a>
+          pricing database (Apache-2.0), compiled from public pricing sources, operator-verified, and synced daily.
+        </li>
+        <li>
+          <strong>Effective date:</strong>
+          Each row shows the date that model's price was last updated in the database. The as-of date above is the database's last sync time.
+        </li>
+        <li>
+          <strong>Freshness:</strong>
+          If the database's last sync is more than 72 hours old, this page hides the table rather than risk showing a stale price.
+        </li>
+        <li>
+          <strong>Independence:</strong>
+          TOLVYN is not affiliated with OpenAI, Anthropic, Google, DeepSeek, or any AI provider. These are the providers' own published list prices, republished for reference only — always verify against the provider before committing spend.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>TOLVYN</h4>
+        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
+          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
+          <li><a href="cost-index.html">Cost Index</a></li>
+          <li><a href="model-pricing.html">AI Model Pricing</a></li>
+          <li><a href="../compare/helicone.html">TOLVYN vs Helicone</a></li>
+          <li><a href="../compare/portkey.html">TOLVYN vs Portkey</a></li>
+          <li><a href="../compare/langfuse.html">TOLVYN vs Langfuse</a></li>
+          <li><a href="../use-cases/cost-attribution-per-customer.html">Cost Attribution</a></li>
+          <li><a href="../use-cases/audit-trail-for-ai-spend.html">Audit Trail</a></li>
+          <li><a href="../use-cases/metering-ai-to-bill-customers.html">Usage-Based Metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="customers.html">Customers</a></li>
+          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
+        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/nav.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+(function () {
+  'use strict';
+
+  // Source of truth: the open-source tolvyn-models pricing DB, served as a static
+  // JSON snapshot fetched from GitHub raw (raw.githubusercontent.com). NOTE: this
+  // is the ONLY data fetch on the page and is deliberately isolated in
+  // fetchPricing() below — when a public pricing API endpoint (e.g.
+  // GET /v1/public/models) ships, repoint that one function at it; nothing else
+  // here needs to change.
+  const SOURCE_URL  = 'https://raw.githubusercontent.com/tolvyn/tolvyn-models/main/index.json';
+  const REPO_URL    = 'https://github.com/tolvyn/tolvyn-models';
+  const MAX_AGE_MS  = 72 * 60 * 60 * 1000; // staleness guard: never show prices older than 72h
+
+  // The single data-access boundary. Returns the parsed DB object, or throws.
+  async function fetchPricing() {
+    const r = await fetch(SOURCE_URL, { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }
+
+  // ── Formatting — mono numerals, FULL precision (never truncate a rate) ──
+  function fmtPrice(v) {
+    if (v === null || v === undefined || v === '') return '—';
+    const n = Number(v);
+    if (!isFinite(n)) return '—';
+    // Preserve every decimal the source provides; pad to a minimum of 2.
+    const s = String(n);
+    const decimals = s.indexOf('.') !== -1 ? s.split('.')[1].length : 0;
+    return '$' + n.toFixed(Math.max(2, decimals));
+  }
+
+  function providerBadge(p) {
+    const key = String(p || '').toLowerCase();
+    const cls = { openai: 'provider-openai', anthropic: 'provider-anthropic',
+                  google: 'provider-google', deepseek: 'provider-deepseek' }[key] || 'provider-other';
+    return '<span class="provider-badge ' + cls + '">' + escapeHtml(key || 'other') + '</span>';
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // ── Empty state (also the staleness / failure path) ──
+  function showEmpty(msg) {
+    document.getElementById('mp-asof').textContent = 'Pricing data temporarily unavailable.';
+    const wrap = document.getElementById('mp-table-wrap');
+    wrap.innerHTML = '<div class="mp-empty"><strong>Pricing data temporarily unavailable</strong>' +
+      escapeHtml(msg) + '</div>';
+  }
+
+  // ── Sortable table ──
+  let rows = [];
+  let sortKey = 'provider';
+  let sortAsc = true;
+
+  const COLS = [
+    { key: 'model_id',  label: 'Model',            num: false },
+    { key: 'provider',  label: 'Provider',         num: false },
+    { key: 'input',     label: 'Input $/MTok',     num: true },
+    { key: 'output',    label: 'Output $/MTok',    num: true },
+    { key: 'cached',    label: 'Cached $/MTok',    num: true },
+    { key: 'effective', label: 'Effective date',   num: false }
+  ];
+
+  function sortRows() {
+    rows.sort(function (a, b) {
+      let x = a[sortKey], y = b[sortKey];
+      // numeric-aware: nulls always sort last
+      const xn = (x === null || x === undefined), yn = (y === null || y === undefined);
+      if (xn && yn) return 0;
+      if (xn) return 1;
+      if (yn) return -1;
+      if (typeof x === 'number' && typeof y === 'number') return sortAsc ? x - y : y - x;
+      x = String(x); y = String(y);
+      return sortAsc ? x.localeCompare(y) : y.localeCompare(x);
+    });
+  }
+
+  function renderTable() {
+    sortRows();
+    const head = '<tr>' + COLS.map(function (c) {
+      const sorted = c.key === sortKey;
+      const arrow = sorted ? (sortAsc ? '▲' : '▼') : '↕';
+      return '<th class="' + (c.num ? 'num ' : '') + (sorted ? 'sorted' : '') +
+        '" data-key="' + c.key + '">' + c.label +
+        '<span class="sort-icon">' + arrow + '</span></th>';
+    }).join('') + '</tr>';
+
+    const body = rows.map(function (r) {
+      return '<tr>' +
+        '<td class="mp-model">' + escapeHtml(r.model_id) +
+          (r.display_name && r.display_name !== r.model_id ? '<small>' + escapeHtml(r.display_name) + '</small>' : '') + '</td>' +
+        '<td>' + providerBadge(r.provider) + '</td>' +
+        '<td class="num mono">' + fmtPrice(r.input) + '</td>' +
+        '<td class="num mono">' + fmtPrice(r.output) + '</td>' +
+        '<td class="num mono">' + fmtPrice(r.cached) + '</td>' +
+        '<td class="mono">' + (r.effective ? escapeHtml(r.effective) : '—') + '</td>' +
+        '</tr>';
+    }).join('');
+
+    document.getElementById('mp-table-wrap').innerHTML =
+      '<table class="mp-table"><thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
+
+    // wire header sorting
+    document.querySelectorAll('.mp-table th').forEach(function (th) {
+      th.addEventListener('click', function () {
+        const k = th.getAttribute('data-key');
+        if (k === sortKey) { sortAsc = !sortAsc; } else { sortKey = k; sortAsc = true; }
+        renderTable();
+      });
+    });
+  }
+
+  // ── Boot ──
+  async function init() {
+    let db;
+    try {
+      db = await fetchPricing();
+    } catch (e) {
+      showEmpty('The pricing database could not be reached. Please check back shortly, or view the source at ' +
+        'github.com/tolvyn/tolvyn-models.');
+      return;
+    }
+
+    const generatedAt = db && db.generated_at ? Date.parse(db.generated_at) : NaN;
+
+    // Staleness guard — zero stale prices, enforced here.
+    if (!isFinite(generatedAt) || (Date.now() - generatedAt) > MAX_AGE_MS) {
+      showEmpty('The pricing database has not synced within the last 72 hours, so prices are withheld to avoid ' +
+        'showing stale rates. The latest data is always available at github.com/tolvyn/tolvyn-models.');
+      return;
+    }
+
+    const models = (db.models || []).filter(function (m) { return m && !m.deprecated; });
+    if (!models.length) {
+      showEmpty('No active models are currently published in the pricing database.');
+      return;
+    }
+
+    // Prominent as-of date from generated_at.
+    const asof = new Date(generatedAt);
+    document.getElementById('mp-asof').innerHTML =
+      'Prices as of <strong>' + asof.toUTCString() + '</strong> · source: ' +
+      '<a href="' + REPO_URL + '" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">tolvyn-models</a>';
+
+    rows = models.map(function (m) {
+      const p = m.pricing || {};
+      return {
+        model_id:     m.model_id,
+        display_name: m.display_name || m.model_id,
+        provider:     m.provider,
+        input:        p.input_per_mtok  != null ? Number(p.input_per_mtok)  : null,
+        output:       p.output_per_mtok != null ? Number(p.output_per_mtok) : null,
+        cached:       p.cached_per_mtok != null ? Number(p.cached_per_mtok) : null,
+        effective:    m.pricing_updated_at || null
+      };
+    });
+
+    renderTable();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

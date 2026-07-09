@@ -5,13 +5,13 @@
 */
 
 :root {
-  /* backgrounds */
-  --bg:              #0a0c10;
-  --bg-secondary:    #0d0f14;
-  --surface:         #111318;
-  --surface-2:       #161920;
-  --border:          #1e2128;
-  --border-light:    #252830;
+  /* backgrounds — brand navy ramp (base = #0B0F1A) */
+  --bg:              #0B0F1A;
+  --bg-secondary:    #0E121C;
+  --surface:         #14181F;
+  --surface-2:       #191E27;
+  --border:          #222732;
+  --border-light:    #2A2F3B;
 
   /* mint green accent system */
   --accent:          #00D9A3;

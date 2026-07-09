@@ -138,7 +138,7 @@ p  { color: var(--text-secondary); }
   flex-shrink: 0;
 }
 .terminal-dot--red    { background: #ff5f57; }
-.terminal-dot--yellow { background: #febc2e; }
+.terminal-dot--yellow { background: var(--yellow); }
 .terminal-dot--green  { background: #28c840; }
 
 .terminal-title {

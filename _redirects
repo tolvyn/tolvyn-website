@@ -1,5 +1,6 @@
-/cost-index     /pages/cost-index.html    200
-/pricing        /pages/pricing.html       200
+/cost-index          /pages/cost-index.html     200
+/pricing/ai-models   /pages/model-pricing.html  200
+/pricing             /pages/pricing.html        200
 /product        /pages/product.html       200
 /security       /pages/security.html      200
 /company        /pages/company.html       200
