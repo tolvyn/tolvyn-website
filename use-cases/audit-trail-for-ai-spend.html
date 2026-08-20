@@ -133,9 +133,15 @@
         (Allocation is what that guarantees. Records removed later by your plan's data retention
         window are gone, and a chain whose oldest records have aged out simply starts at a higher
         sequence number.) Each entry is written in the
-        <strong>same database transaction</strong> as the request it accounts for, so there are no
-        orphaned or partial records — every metered request has exactly one ledger entry, and
-        every ledger entry has its request.
+        <strong>same database transaction</strong> as the request it accounts for, so at the moment
+        of writing, a metered request and its ledger entry commit together or not at all. (That is
+        what the shared transaction guarantees. Two things it does not. <strong>Retention breaks the
+        pairing:</strong> the nightly sweep deletes from the ledger and from the request records as
+        separate statements, so a one-to-one match does not survive a record ageing out of your
+        window. <strong>And a ledger entry attests that a request was metered, not that it
+        completed:</strong> a response stream cut partway through &mdash; by a provider reset or a
+        timeout &mdash; is metered on the bytes that arrived and produces an entry indistinguishable
+        from one that ran to completion.)
       </p>
       <p>
         Because each record's hash includes the previous record's hash, altering any single entry
