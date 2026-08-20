@@ -251,7 +251,7 @@
         wasn't altered. Every metered request writes one ledger entry, and the entries are chained.
       </p>
       <p>
-        Each ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a per-tenant
+        Each ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a server-side signing
         key. Sequence numbers are allocated under a Postgres advisory lock per tenant — no gaps, no
         duplicates, even under concurrent writes. Anyone can re-derive the chain and pinpoint the
         first tampered record with <code class="mono">tolvyn ledger verify</code>. The ledger entry is

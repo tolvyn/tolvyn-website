@@ -128,7 +128,7 @@
 
         <h3>HMAC-SHA256 signature</h3>
         <p>
-          On top of the hash chain, each record is signed with HMAC-SHA256 using a per-tenant key.
+          On top of the hash chain, each record is signed with HMAC-SHA256 using a server-side signing key.
           Signature verification proves both <strong>integrity</strong> (the record wasn't modified)
           and <strong>authenticity</strong> (the record was written by TOLVYN, not forged by someone
           with read access to the database).
