@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prove your AI spend records weren't altered — TOLVYN</title>
-  <meta name="description" content="When finance or an auditor asks you to prove your AI cost records are complete and unaltered, a dashboard total isn't evidence. TOLVYN writes every metered request to a tamper-evident, hash-chained, HMAC-signed ledger you can verify on demand.">
+  <meta name="description" content="When finance or an auditor asks you to prove your AI cost records weren't altered, a dashboard total isn't evidence. TOLVYN writes every metered request to a tamper-evident, hash-chained, HMAC-signed ledger you can verify on demand.">
 
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
@@ -104,7 +104,7 @@
   <div class="docs-main">
 
     <section>
-      <h2>"Prove these numbers are complete and unaltered."</h2>
+      <h2>"Prove these numbers weren't altered."</h2>
       <p>
         It's the question finance, an auditor, or a customer's procurement team eventually asks:
         <em>how do we know your AI cost records are the whole picture and nobody edited them?</em>
@@ -128,8 +128,11 @@
       </p>
       <p>
         Every ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a
-        per-tenant key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
-        no gaps, no duplicates, even under concurrent writes. Each entry is written in the
+        server-side signing key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
+        no gaps and no duplicates at the moment records are written, even under concurrent writes.
+        (Allocation is what that guarantees. Records removed later by your plan's data retention
+        window are gone, and a chain whose oldest records have aged out simply starts at a higher
+        sequence number.) Each entry is written in the
         <strong>same database transaction</strong> as the request it accounts for, so there are no
         orphaned or partial records — every metered request has exactly one ledger entry, and
         every ledger entry has its request.
@@ -175,7 +178,7 @@ $ tolvyn ledger verify
       <ul>
         <li><strong>Request &amp; meter.</strong> A request passes through the proxy and is metered — provider-reported tokens, cost in microdollars.</li>
         <li><strong>Append.</strong> A ledger entry is written in the same transaction, chained by SHA-256 to the previous entry, with a gap-free sequence number under a per-tenant advisory lock.</li>
-        <li><strong>Sign.</strong> The record is signed with HMAC-SHA256 using a per-tenant key, proving both integrity and authenticity.</li>
+        <li><strong>Sign.</strong> The record is signed with HMAC-SHA256 using a server-side signing key, proving both integrity and authenticity.</li>
         <li><strong>Verify.</strong> Anytime, re-derive the chain with <code class="mono">tolvyn ledger verify</code> — it reports the first record that fails, or confirms the range is intact.</li>
       </ul>
     </section>
@@ -197,10 +200,23 @@ $ tolvyn ledger verify
         certification that TOLVYN holds on your behalf.
       </p>
       <p>
+        One limit worth stating plainly, because the question at the top of this page has two
+        halves and verification only answers one of them. Verification proves the records you hold
+        were <strong>not altered</strong> and that they follow one another in an unbroken chain. It
+        cannot prove the set is <strong>complete</strong> &mdash; a record removed from the very start of
+        a chain leaves no gap between two survivors, only a chain that begins later than it once
+        did. Requests that never passed through the TOLVYN proxy never entered the ledger at all.
+        The verifier we ship says the same thing in its own output, and we would rather you read it
+        here first than discover it in front of an auditor.
+      </p>
+      <p>
         To be precise: <strong>TOLVYN is not SOC 2 or ISO certified yet</strong> (we're targeting
         SOC 2 Type I in late 2026). We don't claim a compliance badge we haven't earned. What we
-        provide is the tamper-evident ledger, on-demand verification, and CSV export — the raw
-        evidence your auditors and finance team can work with directly.
+        provide is the tamper-evident ledger and on-demand verification on every plan; CSV export
+        of the ledger from Starter up; and, on Scale and Enterprise, a signed evidence package
+        containing the records, a signed manifest, and a standalone verifier your auditor runs
+        themselves without holding any secret of ours. That is the raw evidence your auditors and
+        finance team work with directly.
       </p>
     </section>
 

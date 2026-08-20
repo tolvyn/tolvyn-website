@@ -115,7 +115,7 @@
       <h2>Ledger integrity</h2>
       <p>
         Every ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a
-        per-tenant key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
+        server-side signing key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
         no gaps, no duplicates, even under concurrent writes. Verify any record range with
         <code class="mono">tolvyn ledger verify</code>.
       </p>

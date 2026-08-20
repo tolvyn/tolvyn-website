@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOLVYN vs Helicone — TOLVYN</title>
-  <meta name="description" content="TOLVYN vs Helicone: observability versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, an immutable audit ledger, and enforced budgets versus Helicone's logging, caching, and prompt tooling.">
+  <meta name="description" content="TOLVYN vs Helicone: observability versus a financial control plane for AI. An honest, two-sided comparison — cost attribution, a tamper-evident audit ledger, and enforced budgets versus Helicone's logging, caching, and prompt tooling.">
 
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://tolvyn.io/compare/helicone.html">
@@ -124,7 +124,7 @@
       <p>
         <strong>TOLVYN is a financial control plane.</strong> It sits in the same place — a proxy in
         front of your providers — but its job is <em>governance of spend</em>: per-request cost
-        attribution, an immutable audit ledger, and budgets that actually block requests before the
+        attribution, a tamper-evident audit ledger, and budgets that actually block requests before the
         provider is called. Different question: not "what did my AI say?" but "who spent what, can I
         prove it, and can I stop it?"
       </p>
@@ -182,7 +182,7 @@
               <td>By user, properties, sessions</td>
             </tr>
             <tr>
-              <td>Immutable audit ledger (hash-chain + HMAC + verify)</td>
+              <td>Tamper-evident audit ledger (hash-chain + HMAC + verify)</td>
               <td class="cmp-yes">Yes</td>
               <td class="cmp-no">No</td>
             </tr>
@@ -251,7 +251,7 @@
         wasn't altered. Every metered request writes one ledger entry, and the entries are chained.
       </p>
       <p>
-        Each ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a per-tenant
+        Each ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a server-side signing
         key. Sequence numbers are allocated under a Postgres advisory lock per tenant — no gaps, no
         duplicates, even under concurrent writes. Anyone can re-derive the chain and pinpoint the
         first tampered record with <code class="mono">tolvyn ledger verify</code>. The ledger entry is
