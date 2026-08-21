@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI API Cost Index — Real Production Benchmarks | TOLVYN</title>
-  <meta name="description" content="Real-world GPT-4o, Claude Sonnet, and Gemini costs from production workloads. Monthly benchmarks from anonymized aggregate data.">
+  <title>AI API Cost Index — Methodology &amp; Privacy Floor | TOLVYN</title>
+  <meta name="description" content="How TOLVYN aggregates real AI API costs from proxied production traffic, and the k-anonymity floor that governs what can be published: no figure appears unless at least three organisations contribute to it.">
   <meta name="robots" content="index, follow">
   <!-- Canonical -->
   <link rel="canonical" href="https://tolvyn.io/cost-index">
@@ -336,13 +336,15 @@
   <div class="container">
     <div class="eyebrow anim-fade-up">
       <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;" aria-hidden="true"></span>
-      Updated monthly
+      Recomputed nightly &middot; published only above the privacy floor
     </div>
     <h1 id="ci-hero-heading" class="anim-fade-up">TOLVYN AI Cost Index</h1>
     <p class="anim-fade-up">
-      Real-world AI API costs from production workloads.
-      Updated monthly from anonymized, aggregated data across TOLVYN customers.
-      No sponsored content. No vendor-submitted data. Real costs from real production calls.
+      Real AI API costs, aggregated from production traffic that actually passed through the
+      TOLVYN proxy. No sponsored content, no vendor-submitted figures, no estimates.
+      <strong>No figure is published unless at least three organisations contribute to it</strong> —
+      a privacy floor applied before any number reaches this page, and the reason the index
+      below may show nothing.
     </p>
     <p class="hero-meta anim-fade-up" id="ci-generated-at">Loading data…</p>
   </div>
@@ -396,6 +398,19 @@
   <div class="container">
     <div class="methodology reveal">
       <h2 id="methodology-heading">Methodology</h2>
+
+      <p style="margin-bottom:18px">
+        <strong>The privacy floor, first, because it governs everything else.</strong>
+        A figure is published only when at least <strong>three separate organisations</strong>
+        contributed traffic to that exact bucket — same provider, same model, same period.
+        Buckets below three are discarded during collection: they are never stored in a
+        publishable form and never reach this page. The rule is applied before aggregation
+        rather than as a filter afterwards, so there is no version of this index in which one
+        customer's costs can be read off it. If your organisation were the only heavy user of a
+        model, that model would simply not appear here — and that is why the index can
+        legitimately show nothing.
+      </p>
+
       <ul>
         <li>
           <strong>Source:</strong>
@@ -411,7 +426,10 @@
         </li>
         <li>
           <strong>Minimum sample size:</strong>
-          Each data point requires at least 3 companies to contribute. Data points with fewer than 3 contributing companies are suppressed entirely.
+          Each data point requires at least 3 organisations to contribute; anything below that is
+          suppressed entirely rather than rounded, blurred, or noised. Suppression is the whole
+          mechanism — we do not publish a degraded figure in place of a withheld one, because a
+          degraded figure derived from one customer is still derived from one customer.
         </li>
         <li>
           <strong>How we calculate cost:</strong>
@@ -561,20 +579,28 @@
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       resp = await r.json();
     } catch (e) {
-      document.getElementById('ci-generated-at').textContent = 'Data unavailable — check back later.';
-      setEmpty('ci-headline-grid', 'No data available yet. Collection begins nightly at 03:00 UTC.');
-      setEmpty('ci-table-wrap',    'No data available yet.');
-      document.getElementById('ci-chart-loading').textContent = 'No data available yet.';
+      // A genuine fetch failure, distinct from a successful empty response.
+      document.getElementById('ci-generated-at').textContent = 'The index could not be loaded right now.';
+      setError('ci-headline-grid', 'The cost index could not be loaded. This is a problem on our side, not an empty index.');
+      setError('ci-table-wrap',    'The cost index could not be loaded.');
+      document.getElementById('ci-chart-loading').textContent = 'The cost index could not be loaded.';
       return;
     }
 
     const { generated_at, data, summary } = resp;
 
     // Generated-at banner
+    // "Last updated" over an empty index reads as "fresh figures were published
+    // today", when what happened is that a collection ran and published nothing.
+    // Only claim an update when there is something that was updated.
     const genEl = document.getElementById('ci-generated-at');
-    if (generated_at) {
+    const hasData = Array.isArray(summary) && summary.length > 0;
+    if (generated_at && hasData) {
       const d = new Date(generated_at);
       genEl.innerHTML = `Last updated: <span>${d.toUTCString()}</span>`;
+    } else if (generated_at) {
+      const d = new Date(generated_at);
+      genEl.innerHTML = `Last checked: <span>${d.toUTCString()}</span> — no bucket reached three contributing organisations.`;
     } else {
       genEl.style.display = 'none';
     }
@@ -584,9 +610,19 @@
     renderChart(data, summary);
   }
 
+  // Two different states, and conflating them was the defect. An EMPTY index is
+  // the privacy floor working as designed; a FAILED fetch is our problem. The old
+  // page said "Data collection in progress" for both, which was false in the first
+  // case — collection is not in progress, it has run nightly for months and
+  // correctly published nothing.
   function setEmpty(id, msg) {
     const el = document.getElementById(id);
-    if (el) el.innerHTML = `<div class="ci-empty"><strong>Data collection in progress</strong>${msg}</div>`;
+    if (el) el.innerHTML = `<div class="ci-empty"><strong>Nothing published yet — by design</strong>${msg}</div>`;
+  }
+
+  function setError(id, msg) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = `<div class="ci-empty"><strong>Could not load the index</strong>${msg}</div>`;
   }
 
   // ── Headline cards ───────────────────────────────────────────
@@ -595,7 +631,10 @@
     const top5 = (summary || []).slice(0, 5);
 
     if (!top5.length) {
-      grid.innerHTML = '<div class="ci-empty"><strong>Data collection in progress</strong>Benchmarks will appear after the first nightly collection.</div>';
+      grid.innerHTML = '<div class="ci-empty"><strong>Nothing published yet — by design</strong>'
+        + 'No model has yet been used by three or more organisations in a way that clears the '
+        + 'privacy floor, so publishing anything would mean narrowing the figures toward '
+        + 'individual customers. The collection runs nightly and publishes only what clears it.</div>';
       return;
     }
 
@@ -677,7 +716,9 @@
     });
 
     if (!tableData.length) {
-      wrap.innerHTML = '<div class="ci-empty"><strong>Data collection in progress</strong>Table will populate after the first nightly collection.</div>';
+      wrap.innerHTML = '<div class="ci-empty"><strong>Nothing published yet — by design</strong>'
+        + 'A per-model breakdown needs at least three contributing organisations per row. '
+        + 'None currently qualifies.</div>';
       return;
     }
 
@@ -729,7 +770,7 @@
 
     const top5ids = (summary || []).slice(0, 5).map(s => s.provider + '|' + s.model_id);
     if (!top5ids.length || !data.length) {
-      loading.textContent = 'No chart data available yet.';
+      loading.textContent = 'No trend published: no model clears the three-organisation floor.';
       return;
     }
 
@@ -751,7 +792,7 @@
     const allDates = [...new Set(data.filter(r => new Date(r.date) >= cutoff).map(r => r.date))].sort();
 
     if (!allDates.length) {
-      loading.textContent = 'No chart data available yet.';
+      loading.textContent = 'No trend published: no model clears the three-organisation floor.';
       return;
     }
 
