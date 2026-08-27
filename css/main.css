@@ -396,6 +396,9 @@ p  { color: var(--text-secondary); }
 .plan__price { display: flex; align-items: baseline; gap: 4px; margin-top: 6px; }
 .plan__amount { font-size: 2.4rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
 .plan__period { color: var(--text-secondary); font-size: 0.9rem; }
+/* INR is the price; the USD figure is an approximation and is styled to read
+   as one — subordinate to .plan__amount, never beside it in the same weight. */
+.plan__approx { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; }
 .plan__features { display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .plan__feature {
   display: flex;
