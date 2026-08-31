@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How It Works — TOLVYN</title>
-  <meta name="description" content="Learn how TOLVYN's proxy architecture meters, attributes, and governs every AI API call across your organization.">
+  <meta name="description" content="Learn how TOLVYN's proxy architecture meters, attributes, and governs every AI API call routed through it.">
 
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://tolvyn.io/pages/how-it-works.html">
@@ -84,7 +84,7 @@
     <div class="section-header reveal">
       <p class="section-label">Architecture overview</p>
       <h2 id="diagram-heading">The proxy model</h2>
-      <p>TOLVYN intercepts every AI request before it reaches the provider — recording, attributing, and enforcing limits in real time.</p>
+      <p>TOLVYN intercepts every AI request routed through it, before it reaches the provider — recording, attributing, and enforcing limits in real time.</p>
     </div>
 
     <div class="diagram reveal">
@@ -180,7 +180,7 @@
         <div class="hiw-step__body">
           <h3>Govern</h3>
           <p>Set hard spending limits per team, per service, or per model. Define alert thresholds at 50% (info), 75% (warning), and 90%/100% (critical) of budget. TOLVYN can automatically block requests once a budget is exhausted — no surprise invoices at month end.</p>
-          <p>Finance teams get a complete audit trail. Engineering teams get guardrails. Everyone stays aligned on AI spend without slowing down development velocity.</p>
+          <p>Finance teams get an audit trail of everything the proxy metered, plus reconciliation against the provider invoice to surface anything that did not go through it. Engineering teams get guardrails. Everyone stays aligned on AI spend without slowing down development velocity.</p>
         </div>
       </div>
     </div>

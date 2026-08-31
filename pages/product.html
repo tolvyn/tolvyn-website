@@ -113,10 +113,21 @@
         <p class="section-label">The moat</p>
         <h2>The Immutable Ledger</h2>
         <p>
-          Every AI request that passes through TOLVYN is recorded in an append-only ledger.
+          Every AI request metered by TOLVYN is recorded in an append-only ledger.
           Each entry is hashed with SHA-256, chained to the previous entry, and signed with HMAC-SHA256.
-          The result: a cryptographically verifiable record of every API call your organization
+          The result: a cryptographically verifiable record of every metered call your organization
           made to every AI provider, for as long as your plan&rsquo;s retention window holds it.
+        </p>
+        <p>
+          <strong>Metered is the operative word, and it is what makes the ledger worth having.</strong>
+          A request that never touches the proxy is never recorded &mdash; TOLVYN can only attest to
+          what it actually saw and charged. That boundary is deliberate: it is exactly what turns the
+          ledger into a measuring instrument. Because the ledger holds precisely the spend your
+          governance layer saw, subtracting it from the provider&rsquo;s invoice leaves the spend it
+          did <em>not</em> see. That difference is <a href="#reconciliation">reconciliation</a>, and
+          the shortfall it exposes is shadow AI. A ledger that claimed to hold everything could not
+          perform that subtraction &mdash; it would have nothing to compare against, and shadow AI
+          would be undetectable by construction.
         </p>
 
         <h3>How the chain works</h3>
@@ -162,7 +173,7 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
       <section id="attribution">
         <p class="section-label">Attribution</p>
         <h2>Six dimensions of cost attribution</h2>
-        <p>Every request is tagged across six dimensions. Slice cost reports by any combination.</p>
+        <p>Every metered request is tagged across six dimensions. Slice cost reports by any combination.</p>
 
         <ul>
           <li><strong>Team</strong> — <code class="tag">X-Tolvyn-Team</code> — engineering, marketing, support</li>
