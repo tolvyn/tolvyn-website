@@ -198,7 +198,7 @@
       <h2>The ledger is the difference</h2>
       <p>
         Observability tools tell you what happened. TOLVYN gives you a record you can <em>prove</em>
-        wasn't altered. Every metered request writes one ledger entry, and the entries are chained.
+        wasn't altered. Metered requests are written to an append-only ledger, each entry chained to the one before it.
       </p>
       <p>
         Each ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a server-side signing

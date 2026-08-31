@@ -10,12 +10,12 @@
   <meta property="og:url"         content="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="Prove your AI spend records weren't altered — TOLVYN">
-  <meta property="og:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request — verifiable on demand.">
+  <meta property="og:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request you meter — verifiable on demand.">
   <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="Prove your AI spend records weren't altered — TOLVYN">
-  <meta name="twitter:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request — verifiable on demand.">
+  <meta name="twitter:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request you meter — verifiable on demand.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
   <link rel="canonical" href="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
 
@@ -120,11 +120,20 @@
 
     <section>
       <p class="section-label">The moat</p>
-      <h2>Every request lands in a tamper-evident ledger</h2>
+      <h2>Every metered request lands in a tamper-evident ledger</h2>
       <p>
         Every AI request metered by TOLVYN writes one entry to an append-only ledger. The ledger
         is built so that any change to a past record is detectable — not as a policy, but
         cryptographically.
+      </p>
+      <p>
+        <strong>Metered is the boundary, and it is a feature.</strong> A request that never reaches
+        the proxy is never recorded — TOLVYN attests only to what it actually saw and charged.
+        That is what makes the ledger a measuring instrument rather than a claim: because it holds
+        exactly the spend your governance layer saw, subtracting it from the provider's invoice
+        leaves the spend it did not. That subtraction is
+        <a href="../pages/product.html#reconciliation">reconciliation</a>, and the shortfall it
+        exposes is shadow AI — spend on your provider keys that bypassed your controls entirely.
       </p>
       <p>
         Every ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a
@@ -229,7 +238,7 @@ $ tolvyn ledger verify
     <section>
       <h2>Make your AI spend provable</h2>
       <p>
-        Start metering today and every request lands in your ledger from the first call. Free to
+        Start metering today and every request you route through TOLVYN lands in your ledger from the first call. Free to
         start — 10,000 requests a month, no card required.
       </p>
       <div class="uc-cta">
