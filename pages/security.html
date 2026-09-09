@@ -182,14 +182,16 @@
         proxy.tolvyn.io, docs.tolvyn.io, and the TOLVYN CLI and SDKs.
       </p>
       <p>
-        <strong>Out of scope:</strong> our third-party providers &mdash; Cloudflare,
-        Razorpay, GitBook and Sentry &mdash; please report those to them directly;
-        denial-of-service and volumetric testing; social engineering of our team or
-        our customers; and physical attacks.
+        <strong>Out of scope:</strong> vulnerabilities in our third-party providers
+        themselves — Cloudflare, Razorpay, GitBook and Sentry — please report those
+        to them directly. <strong>Our own configuration on those platforms is in
+        scope</strong>, including the headers tolvyn.io serves and the content we
+        publish on docs.tolvyn.io. Also out of scope: denial-of-service and volumetric
+        testing; social engineering of our team or our customers; and physical attacks.
       </p>
       <p>
         <strong>Please don't:</strong> access, modify or retain another tenant's data
-        &mdash; stop as soon as you can demonstrate access, and tell us what you saw;
+        — stop as soon as you can demonstrate access, and tell us what you saw;
         run automated scanners against <code>proxy.tolvyn.io</code>, which forwards to
         paid model providers and bills real money on every request; degrade service for
         anyone else; or publish before we have responded within the window above.
