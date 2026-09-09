@@ -1,0 +1,6 @@
+Contact: mailto:security@tolvyn.io
+Expires: 2027-09-01T00:00:00.000Z
+Policy: https://tolvyn.io/security
+Acknowledgments: https://tolvyn.io/security#acknowledgments
+Preferred-Languages: en
+Canonical: https://tolvyn.io/.well-known/security.txt
