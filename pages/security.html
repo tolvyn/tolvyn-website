@@ -83,31 +83,37 @@
 
     <section>
       <h2>Encryption</h2>
-      <p><strong>At rest:</strong> all data is encrypted with AES-256-GCM, including the ledger,
-      attribution metadata, budgets, alerts, and all sub-systems. Encryption keys are managed
-      via our cloud provider's KMS with automatic rotation.</p>
-      <p><strong>In transit:</strong> TLS 1.3 only. Older protocols are disabled at the load
-      balancer. HSTS is enabled site-wide with a one-year max-age.</p>
+      <p><strong>At rest:</strong> your provider API keys are encrypted at the application
+      layer with AES-256-GCM, and each ciphertext is bound to its tenant and provider so a
+      mis-scoped read fails rather than decrypts. Database backups are encrypted with
+      <code class="mono">age</code> before they leave the host and stored in Cloudflare R2 under
+      object lock. We make no claim about disk-level encryption.</p>
+      <p><strong>In transit:</strong> TLS 1.2 and TLS 1.3 with ECDHE AES-GCM cipher suites only;
+      older protocols are refused. HSTS is enabled site-wide with a one-year max-age, including
+      subdomains.</p>
     </section>
 
     <section>
       <h2>Tenant isolation</h2>
       <p>
-        Postgres Row-Level Security policies are enforced on every table that holds tenant data.
-        Every query (including via the dashboard, API, CLI, and the proxy itself) executes
-        inside a session with <code class="mono">SET app.tenant_id = $1</code>, and RLS rejects
-        cross-tenant access at the database layer. No application-level check, no opportunity
-        for a forgotten <code class="mono">WHERE tenant_id = ?</code> to leak data.
+        Postgres Row-Level Security policies cover the 27 tables that hold tenant rows; the two
+        token tables (password reset, email verification) are looked up by token hash instead.
+        Work done for a tenant &mdash; dashboard, API, CLI, and the proxy &mdash; runs inside a
+        transaction that switches to a non-bypass database role and sets a transaction-local
+        tenant id, so the policies apply and reset at commit. Enforcement has been on in
+        production since June 2026. Pre-authentication lookups (login, API-key resolution) and
+        the operator API scope by the credential presented rather than by RLS.
       </p>
     </section>
 
     <section>
       <h2>Provider keys</h2>
       <p>
-        Your OpenAI, Anthropic, Google, and DeepSeek keys are encrypted at rest with AES-256-GCM under a
-        tenant-specific subkey. Keys are <strong>never logged</strong>, <strong>never returned
-        in API responses</strong> (only redacted prefixes for UI display), and only ever
-        decrypted in-memory during proxy request processing.
+        Your OpenAI, Anthropic, Google, and DeepSeek keys are encrypted at rest with AES-256-GCM
+        under a server-side key, with the ciphertext bound to your tenant and the provider. Keys
+        are <strong>never logged</strong>, <strong>never returned by the API in any form</strong>
+        (the provider-keys endpoint returns the provider, key version and rotation date only),
+        and are decrypted in memory only while a proxy request is being forwarded.
       </p>
     </section>
 
@@ -137,31 +143,35 @@
     <section>
       <h2>Backup &amp; recovery</h2>
       <p>
-        Daily encrypted snapshots of all tenant data, retained for 30 days. Point-in-time
-        recovery available for the most recent 7 days. Backups are stored in a separate
-        availability zone from the primary database.
+        A daily encrypted database backup, kept for 35 days, and a monthly backup written on
+        the 1st, kept for 400 days. Backups are encrypted with <code class="mono">age</code>
+        before upload and stored off-host in Cloudflare R2 with object lock, so the host cannot
+        delete its own history. Recovery is from these backups; we do not offer point-in-time
+        recovery.
       </p>
     </section>
 
     <section>
       <h2>Compliance</h2>
       <p>
-        TOLVYN is <strong>not SOC 2 certified yet</strong>. We're targeting SOC 2 Type I in
-        late 2026. We're happy to walk Enterprise customers through our controls in detail
-        ahead of certification.
+        TOLVYN holds <strong>no third-party certification</strong> today. We're happy to walk
+        Enterprise customers through our controls in detail.
       </p>
     </section>
 
     <section>
       <h2>Sub-processors</h2>
       <ul>
-        <li><strong>Cloud infrastructure</strong> — primary hosting and managed database (India, Mumbai region).</li>
-        <li><strong>Cloudflare</strong> — CDN, DNS, edge security.</li>
-        <li><strong>Sentry</strong> — error tracking. We scrub PII before send and disable
-        breadcrumb capture in proxy code paths.</li>
+        <li><strong>Utho</strong> — hosting (Mumbai, India): the application server and its Postgres database.</li>
+        <li><strong>Cloudflare</strong> — DNS, CDN, R2 (encrypted backups), Pages (this website).</li>
+        <li><strong>Google Workspace</strong> — email for the tolvyn.io domain.</li>
+        <li><strong>Zoho Mail</strong> — SMTP relay for transactional email (verification, invites, receipts, alerts, digests).</li>
+        <li><strong>Razorpay</strong> — payments and subscriptions.</li>
+        <li><strong>Sentry</strong> — error monitoring for the server: exception events tagged with release and environment.</li>
+        <li><strong>GitBook</strong> — documentation hosting.</li>
       </ul>
-      <p>That's the full list. We will email you 30 days before adding any new sub-processor
-      that handles tenant data.</p>
+      <p>That's the full list. We notify customers by email at least 30 days before adding a
+      sub-processor.</p>
     </section>
 
     <section>
