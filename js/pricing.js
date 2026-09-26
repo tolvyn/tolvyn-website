@@ -1,21 +1,7 @@
 /* TOLVYN — pricing.js
-   Pricing page interactions: billing toggle, code tabs, founding-partner counter.
+   Pricing page interactions: code tabs, contact scroll.
 */
 'use strict';
-
-// Billing period toggle (UI-only for now; no annual prices yet)
-(function initBillingToggle() {
-  const toggle = document.querySelector('.pricing-toggle');
-  if (!toggle) return;
-  const buttons = toggle.querySelectorAll('button');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.body.dataset.billing = btn.dataset.period;
-    });
-  });
-})();
 
 // Code tabs (Python / Node / curl)
 (function initCodeTabs() {
