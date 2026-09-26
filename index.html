@@ -290,11 +290,11 @@
 from openai import OpenAI
 client = OpenAI(api_key="sk-...")
 
-# After (2-line change)
+# After
 from tolvyn import OpenAI
 client = OpenAI(
     tolvyn_api_key="tlv_live_...",
-    openai_api_key="sk-...",      # enables fail-open fallback
+    openai_api_key="sk-...",      # REQUIRED for fail-open; no key, no fallback
     team="engineering",
     service="chatbot-api"
 )
@@ -303,11 +303,11 @@ client = OpenAI(
 import OpenAI from 'openai'
 const client = new OpenAI({ apiKey: 'sk-...' })
 
-// After (2-line change)
+// After
 import { OpenAI } from 'tolvyn'
 const client = new OpenAI({
   tolvynApiKey: 'tlv_live_...',
-  openAIApiKey: 'sk-...',        // enables fail-open fallback
+  openAIApiKey: 'sk-...',        // REQUIRED for fail-open; no key, no fallback
   team: 'engineering',
   service: 'chatbot-api'
 })</code></pre></div>
