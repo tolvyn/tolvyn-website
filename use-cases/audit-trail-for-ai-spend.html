@@ -139,18 +139,20 @@
         Every ledger record is hash-chained (SHA-256) and signed with HMAC-SHA256 using a
         server-side signing key. Sequence numbers are allocated under a Postgres advisory lock per tenant —
         no gaps and no duplicates at the moment records are written, even under concurrent writes.
-        (Allocation is what that guarantees. Records removed later by your plan's data retention
-        window are gone, and a chain whose oldest records have aged out simply starts at a higher
-        sequence number.) Each entry is written in the
-        <strong>same database transaction</strong> as the request it accounts for, so at the moment
-        of writing, a metered request and its ledger entry commit together or not at all. (That is
-        what the shared transaction guarantees. Two things it does not. <strong>Retention breaks the
-        pairing:</strong> the nightly sweep deletes from the ledger and from the request records as
-        separate statements, so a one-to-one match does not survive a record ageing out of your
-        window. <strong>And a ledger entry attests that a request was metered, not that it
-        completed:</strong> a response stream cut partway through &mdash; by a provider reset or a
-        timeout &mdash; is metered on the bytes that arrived and produces an entry indistinguishable
-        from one that ran to completion.)
+        <strong>and retention never removes one.</strong> Data retention works by redacting the
+        request records in place &mdash; clearing the identifying fields and keeping the row. It
+        never deletes a row, and it never touches the ledger. So the chain has no gaps at either
+        end: it starts at record 1 for the life of your account and verifies from there, however
+        old the oldest record is. A retention window shortens what the request records can tell you
+        about <em>who</em>; it does not shorten the proof of <em>what was charged</em>. Each entry
+        is written in the
+        <strong>same database transaction</strong> as the request it accounts for, so a metered
+        request and its ledger entry commit together or not at all, and the pairing survives
+        retention for the same reason &mdash; the request row is still there. (One thing the shared
+        transaction does not give you. <strong>A ledger entry attests that a request was metered,
+        not that it completed:</strong> a response stream cut partway through &mdash; by a provider
+        reset or a timeout &mdash; is metered on the bytes that arrived and produces an entry
+        indistinguishable from one that ran to completion.)
       </p>
       <p>
         Because each record's hash includes the previous record's hash, altering any single entry
@@ -166,11 +168,13 @@
         record hash and HMAC signature, confirms each links to the previous record, and pinpoints
         the <strong>first record that doesn't verify</strong> if anything was touched.
       </p>
-      <pre class="code-block"><code><span class="tk-comment"># Verify any range of your tenant's ledger</span>
+      <pre class="code-block"><code><span class="tk-comment"># Verify your tenant's whole ledger</span>
 $ tolvyn ledger verify
-✓ hash chain intact
-✓ all HMAC signatures valid
-✓ no sequence gaps</code></pre>
+✓ Chain verified — 4,821 records, all hashes valid
+
+<span class="tk-comment"># Or one range of it</span>
+$ tolvyn ledger verify --from-seq 4000 --to-seq 4821
+✓ Chain verified — 822 records, all hashes valid</code></pre>
       <p>
         You can also export the full ledger to CSV for your own records, your auditor, or your
         data warehouse.
