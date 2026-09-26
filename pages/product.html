@@ -116,7 +116,9 @@
           Every AI request metered by TOLVYN is recorded in an append-only ledger.
           Each entry is hashed with SHA-256, chained to the previous entry, and signed with HMAC-SHA256.
           The result: a cryptographically verifiable record of every metered call your organization
-          made to every AI provider, for as long as your plan&rsquo;s retention window holds it.
+          made to every AI provider. <strong>Retention never trims it.</strong> The retention job
+          redacts request content in place and does not touch ledger records, so the chain stays
+          complete and verifiable however old it is.
         </p>
         <p>
           <strong>Metered is the operative word, and it is what makes the ledger worth having.</strong>
@@ -134,7 +136,9 @@
         <p>
           Each ledger record holds a <code class="tag">prev_hash</code> field pointing at the
           SHA-256 hash of the previous record's serialized payload. Any retroactive modification
-          of any record breaks the chain — and breakage is detectable in O(1) at any sequence number.
+          of any record breaks the chain. Verification re-walks the range and reports the first
+          sequence number that does not link, so a break is located exactly rather than merely
+          detected.
         </p>
 
         <h3>HMAC-SHA256 signature</h3>
@@ -153,12 +157,12 @@
 
         <h3>Verification endpoint</h3>
         <pre class="code-block"><code><span class="tk-comment"># Verify the entire ledger for your tenant</span>
-$ tolvyn ledger verify --from 1 --to latest
-verifying 4,821 records...
-✓ hash chain intact
-✓ all HMAC signatures valid
-✓ no sequence gaps
-ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
+$ tolvyn ledger verify
+✓ Chain verified — 4,821 records, all hashes valid
+
+<span class="tk-comment"># Or verify one range</span>
+$ tolvyn ledger verify --from-seq 4000 --to-seq 4821
+✓ Chain verified — 822 records, all hashes valid</code></pre>
 
         <h3>What it proves — and what it doesn't</h3>
         <p>
@@ -180,15 +184,16 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           <li><strong>Service</strong> — <code class="tag">X-Tolvyn-Service</code> — chatbot-api, search-svc, content-gen</li>
           <li><strong>Feature</strong> — <code class="tag">X-Tolvyn-Feature</code> — autocomplete, summarize, classify</li>
           <li><strong>Agent</strong> — <code class="tag">X-Tolvyn-Agent</code> — sdr-agent, support-bot, code-reviewer</li>
-          <li><strong>User</strong> — <code class="tag">X-Tolvyn-User</code> — your end user's ID, hashed before storage</li>
+          <li><strong>User</strong> — <code class="tag">X-Tolvyn-User</code> — stored exactly as you send it, not hashed. <strong>Send a pseudonym or an internal id if you do not want real user identifiers stored with us.</strong></li>
           <li><strong>End-customer</strong> — <code class="tag">X-Tolvyn-End-Customer</code> — your customer ID for COGS-per-customer</li>
         </ul>
 
         <h3>Hierarchy</h3>
         <p>
-          Dimensions are independent — but in the dashboard they nest naturally: end-customer
-          → team → service → feature → agent → user. Roll up to any level for board reports;
-          drill down to any level for incident response.
+          Dimensions are independent: each is its own column, and you can group or filter by any
+          of them. Only team and service are also written as a stored hierarchy path
+          (<code class="mono">org/&lt;tenant&gt;/team/&lt;team&gt;/service/&lt;service&gt;</code>) — the
+          other dimensions are not nested under it.
         </p>
       </section>
 
@@ -197,7 +202,8 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <p class="section-label">Budgets</p>
         <h2>Budgets &amp; Enforcement</h2>
         <p>
-          Set spending limits at any granularity. Choose how strictly they're enforced.
+          Set spending limits at four scopes — organization, team, service and agent. Choose how
+          strictly they're enforced.
           Get pre-request cost estimation so the proxy can refuse a request <em>before</em>
           it hits the provider.
         </p>
@@ -226,9 +232,11 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
 
         <h3>Pre-request cost estimation</h3>
         <p>
-          Token counts and per-model pricing are known before the request goes out. The proxy
-          rejects a request that would push you over budget rather than incurring the charge
-          and refusing the response.
+          Per-model pricing is known before the request goes out; token counts are
+          <strong>estimated</strong> — input from the request size, output from the request's
+          <code class="mono">max_tokens</code> or a default when it is absent. The proxy rejects a
+          request whose estimate would push you over budget rather than incurring the charge and
+          refusing the response.
         </p>
       </section>
 
@@ -273,15 +281,16 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <h2>Four alert types</h2>
         <ul>
           <li><strong>Budget threshold</strong> — fires at 50% (info), 75% (warning), and 90%/100% (critical) of any budget scope.</li>
-          <li><strong>Cost anomaly</strong> — fires when cost-per-request deviates >3σ from rolling baseline (e.g. someone shipped a code change that switched gpt-4o-mini → gpt-4o).</li>
-          <li><strong>Model change</strong> — fires when a service starts using a model it has never used before.</li>
+          <li><strong>Cost anomaly</strong> — fires when a request costs at least <strong>10&times;</strong> the average of the last 100 requests for that service (e.g. someone shipped a code change that switched gpt-4o-mini → gpt-4o).</li>
+          <li><strong>Model change</strong> — fires when the model serving a service changes <em>and</em> the cost per request moves significantly with it: at least 2&times; up, or at least 50% down.</li>
           <li><strong>Pricing change</strong> — fires when a provider you depend on changes a model's price (see <a href="#pricing-changes">Pricing Change Governance</a>).</li>
         </ul>
 
         <h3>Severity</h3>
         <p>
-          Two levels: <strong>warning</strong> (informational) and <strong>critical</strong>
-          (action required). Critical alerts always page; warnings are configurable.
+          Three levels: <strong>info</strong>, <strong>warning</strong> and
+          <strong>critical</strong>. Severity is carried on the alert and on the webhook payload so
+          you can route it in your own on-call tooling — TOLVYN does not page anyone itself.
         </p>
 
         <h3>Delivery</h3>
@@ -306,15 +315,14 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <p>
           Every webhook payload is signed with HMAC-SHA256 using your endpoint secret.
           Verify the <code class="tag">X-Tolvyn-Signature</code> header before processing.
-          Replay protection via <code class="tag">X-Tolvyn-Timestamp</code> with a 5-minute tolerance.
         </p>
 
         <h3>Retry policy with jitter</h3>
         <p>
-          Failed deliveries (non-2xx response or timeout) are retried with exponential backoff
-          (1s, 4s, 16s, 1m, 5m, 30m) plus uniform jitter to prevent thundering-herd.
-          Six attempts total over ~36 minutes before the event is moved to a dead-letter queue
-          visible in the dashboard.
+          Failed deliveries (non-2xx response or timeout) are retried on a fixed schedule &mdash;
+          1 minute, 5 minutes, 30 minutes, then 2 hours &mdash; with &plusmn;10% jitter so a fleet of
+          tenants does not retry at the same instant. <strong>Five attempts in total</strong>, after
+          which the delivery is marked failed and no further attempt is made.
         </p>
       </section>
 
@@ -340,13 +348,6 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
           your observability. The reconciliation report names the model, the gap amount,
           and the date range — so you can hunt down the source.
         </p>
-
-        <h3>Three-way match</h3>
-        <p>
-          Available on Growth and above: the proxy ledger, the provider invoice, and your
-          customer billing system can be reconciled simultaneously — so you can prove
-          unit economics per customer line by line.
-        </p>
       </section>
 
       <!-- 7. Savings -->
@@ -368,9 +369,9 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
 
         <h3>Output</h3>
         <p>
-          Each recommendation includes: estimated monthly savings, affected service, suggested
-          migration steps, and confidence interval. You can dismiss, defer, or schedule
-          the recommendation directly from the dashboard.
+          Each recommendation includes the affected service and model, its current and optimized
+          cost, the estimated saving, and the recommendation text. You can dismiss a recommendation
+          from the dashboard.
         </p>
       </section>
 
@@ -387,17 +388,18 @@ ledger integrity: <span class="tk-keyword">PASS</span></code></pre>
         <h3>Five scope types</h3>
         <ul>
           <li><strong>Org-wide</strong> — stop all AI traffic immediately</li>
-          <li><strong>Provider</strong> — stop all traffic to a specific provider</li>
-          <li><strong>Model</strong> — stop all traffic to a specific model</li>
+          <li><strong>Team</strong> — stop all traffic from a specific team</li>
           <li><strong>Service</strong> — stop all traffic from a specific service</li>
           <li><strong>Agent</strong> — stop a specific agent (most common)</li>
+          <li><strong>API key</strong> — stop a single key without touching the rest</li>
         </ul>
 
         <h3>Activation</h3>
         <p>
-          Dashboard, CLI (<code class="mono">tolvyn kill agent sdr-agent</code>), or API.
-          Activation is logged to the ledger with operator identity. Deactivation requires the
-          same role that activated.
+          Dashboard, CLI (<code class="mono">tolvyn kill agent sdr-agent</code>), or API. The
+          identity that activated a switch is recorded with it. <strong>Deactivation requires an
+          admin</strong> — a member who can arm a kill switch cannot necessarily disarm it, which is
+          deliberate.
         </p>
       </section>
 
