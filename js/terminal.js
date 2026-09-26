@@ -12,17 +12,14 @@
   // Pipe-separated rows are pre-tokenized so each column gets its own color.
   const LINES = [
     [{ cls: 'tl-cmd', text: '$ tolvyn tail --service chatbot-api' }],
-    [{ cls: 'tl-hdr', text: 'TIME     | TEAM/SERVICE      | MODEL         | TOKENS | COST    | LATENCY' }],
-    row('14:23:01', 'eng/chatbot-api  ', 'gpt-4o       ', ' 1,247', '$0.0089', '340ms'),
-    row('14:23:02', 'eng/search-svc   ', 'claude-sonnet', ' 2,104', '$0.0252', '890ms'),
-    row('14:23:03', 'support/bot      ', 'gpt-4o-mini  ', '   456', '$0.0003', '120ms'),
-    [{ cls: 'tl-alert', text: '[ALERT]  eng/chatbot-api cost/req jumped 47x (model: gpt-4o-mini → gpt-4o)' }],
-    row('14:23:05', 'mktg/content     ', 'gpt-4o       ', ' 3,847', '$0.0312', '1.2s'),
-    [{ cls: 'tl-budget', text: '[BUDGET] eng/chatbot-api at 87% of $500/mo hard budget' }],
-    row('14:23:07', 'eng/chatbot-api  ', 'gpt-4o       ', '   892', '$0.0071', '280ms'),
-    [{ cls: 'tl-ledger', text: '[LEDGER] seq=4821 hash=a3f7c2d1 ✓ chain intact' }],
-    row('14:23:09', 'data/pipeline    ', 'claude-haiku ', '12,450', '$0.0094', '2.1s'),
-    [{ cls: 'tl-save',  text: '[SAVE]   data/pipeline: switch claude-haiku → gemini-flash saves $340/mo' }],
+    [{ cls: 'tl-hdr', text: 'TIME     | TEAM/SERVICE           | MODEL            |   TOKENS |     COST |  LATENCY' }],
+    [{ cls: 'tl-pipe', text: '─────────┼────────────────────────┼──────────────────┼──────────┼──────────┼─────────' }],
+    row('14:23:01', 'eng/chatbot-api  ', 'gpt-4o          ', '   1,247', ' $0.0089', '   340ms'),
+    row('14:23:02', 'eng/search-svc   ', 'claude-opus-4-6 ', '   2,104', ' $0.0252', '   890ms'),
+    row('14:23:03', 'support/bot      ', 'gpt-4o-mini     ', '     456', ' $0.0003', '   120ms'),
+    row('14:23:05', 'mktg/content     ', 'gpt-4o          ', '   3,847', ' $0.0312', '    1.2s'),
+    row('14:23:07', 'eng/chatbot-api  ', 'gpt-4o          ', '     892', ' $0.0071', '   280ms'),
+    row('14:23:09', 'data/pipeline    ', 'claude-haiku-4-5', '  12,450', ' $0.0094', '    2.1s'),
   ];
 
   function row(time, team, model, tokens, cost, latency) {
