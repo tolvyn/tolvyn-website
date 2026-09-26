@@ -115,7 +115,7 @@
     </div>
 
     <p class="hero__trust anim-fade-up">
-      Live since March 2026 · Open-source pricing database · Apache 2.0 SDKs
+      Live since March 2026 · Open-source pricing database · MIT and Apache-2.0 SDKs
     </p>
 
     <!-- Live terminal -->
@@ -166,7 +166,7 @@
     <div class="section-header section-header--center reveal">
       <p class="section-label">How it works</p>
       <h2 id="how-heading">A proxy that turns every call it meters into a financial record</h2>
-      <p>One environment variable change. No SDK refactor. Sub-millisecond overhead.</p>
+      <p>Register your provider key with TOLVYN once, point your SDK's base URL at the proxy, and swap your provider key for a TOLVYN key. No SDK refactor.</p>
     </div>
 
     <div class="diagram reveal">
@@ -246,7 +246,7 @@
     <div class="diff-grid">
       <div class="diff-tile reveal" data-delay="1">
         <h3>Immutable Ledger</h3>
-        <p>Every AI request TOLVYN meters is hash-chained and HMAC-signed. Cryptographic proof, not logs. The CFO can verify it. The auditor can verify it.</p>
+        <p>Every AI request TOLVYN meters is hash-chained and HMAC-signed. Cryptographic proof, not logs. Your CFO or auditor can re-verify the hash chain themselves with the script shipped in every evidence package &mdash; the HMAC is keyed on a secret TOLVYN holds, so it detects tampering by anyone without that key.</p>
       </div>
       <div class="diff-tile reveal" data-delay="2">
         <h3>Per-End-Customer Attribution</h3>
@@ -266,7 +266,7 @@
       </div>
       <div class="diff-tile reveal" data-delay="6">
         <h3>Pricing Change Alerts</h3>
-        <p>When OpenAI changes prices, customers using affected models get an alert with an exact impact estimate.</p>
+        <p>When OpenAI changes prices, customers using affected models get an alert projecting the monthly impact from their last 30 days of usage.</p>
       </div>
     </div>
   </div>
