@@ -152,8 +152,8 @@
         <div class="hiw-step__num" aria-hidden="true">1</div>
         <div class="hiw-step__body">
           <h3>Connect</h3>
-          <p>Change a single environment variable in your application — <code class="mono">TOLVYN_BASE_URL</code> — to route your AI SDK calls through TOLVYN's proxy. No SDK changes, no code refactors, no downtime. Works with any HTTP-based model API.</p>
-          <p>Use your existing API keys. TOLVYN passes them through securely and never stores credentials in plaintext. TLS everywhere, end to end.</p>
+          <p>Point your AI SDK's base URL at TOLVYN's proxy. Our own SDKs read it from <code class="mono">TOLVYN_PROXY_URL</code>; with a provider's official SDK you set that SDK's own base-URL option. No SDK changes, no code refactors, no downtime. Works with any HTTP-based model API.</p>
+          <p>Register your provider key with TOLVYN once. It is stored encrypted, never in plaintext, and your application then sends a TOLVYN key instead — TOLVYN substitutes the provider key on the way out. <strong>Your provider key stops living in your application's configuration</strong>, and rotating it is one change in one place. TLS everywhere, end to end.</p>
         </div>
       </div>
 
