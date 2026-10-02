@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — TOLVYN</title>
-  <meta name="description" content="Writing from the TOLVYN team on AI cost, metering and spend control.">
+  <meta name="description" content="Articles from TOLVYN on AI API cost: attributing spend to customers and teams, setting budgets, and reconciling against provider invoices.">
 
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://tolvyn.io/blog">
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="Blog — TOLVYN">
-  <meta property="og:description" content="Writing from the TOLVYN team on AI cost, metering and spend control.">
+  <meta property="og:description" content="Articles from TOLVYN on AI API cost: attributing spend to customers and teams, setting budgets, and reconciling against provider invoices.">
   <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="Blog — TOLVYN">
-  <meta name="twitter:description" content="Writing from the TOLVYN team on AI cost, metering and spend control.">
+  <meta name="twitter:description" content="Articles from TOLVYN on AI API cost: attributing spend to customers and teams, setting budgets, and reconciling against provider invoices.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
   <link rel="canonical" href="https://tolvyn.io/blog">
+  <link rel="alternate" type="application/rss+xml" title="TOLVYN Blog" href="https://tolvyn.io/blog/rss.xml">
 
   <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
@@ -42,14 +43,66 @@
 
   <!-- Scoped styles for the post list only — existing design tokens, no global CSS edits. -->
   <style>
-    .post-list { list-style: none; margin: 0; padding: 0; }
-    .post-card { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-lg); padding: 28px; }
-    .post-card time { color: var(--text-muted); font-size: 0.9rem; }
+    .blog-intro { color: var(--text-secondary); font-size: 1.1rem; max-width: 680px; }
+    .post-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+    .post-card { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-lg); padding: 28px; transition: border-color var(--transition); }
+    .post-card:hover { border-color: var(--accent-muted); }
+    .post-card__meta { color: var(--text-muted); font-size: 0.9rem; }
     .post-card h2 { font-size: 1.4rem; margin: 8px 0 10px; line-height: 1.35; }
     .post-card h2 a:hover { color: var(--accent); }
     .post-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
     .post-card__more { color: var(--accent); font-weight: 600; }
   </style>
+
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "TOLVYN Blog",
+    "description": "Articles from TOLVYN on AI API cost: attributing spend to customers and teams, setting budgets, and reconciling against provider invoices.",
+    "url": "https://tolvyn.io/blog",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "TOLVYN",
+      "url": "https://tolvyn.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tolvyn.io/assets/brand/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "How to find out what each customer costs you in OpenAI or Anthropic spend",
+        "url": "https://tolvyn.io/blog/ai-cost-per-customer",
+        "datePublished": "2026-10-12"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tolvyn.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://tolvyn.io/blog"
+      }
+    ]
+  }
+  </script>
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
 </head>
@@ -63,6 +116,7 @@
       <li><a href="/pages/pricing.html">Pricing</a></li>
       <li><a href="/pages/cost-index.html">Cost Index</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="/blog">Blog</a></li>
       <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
     </ul>
     <div class="nav__actions">
@@ -77,6 +131,7 @@
     <a href="/pages/pricing.html" role="menuitem">Pricing</a>
     <a href="/pages/cost-index.html" role="menuitem">Cost Index</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="/blog" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
     <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
   </div>
@@ -85,19 +140,24 @@
 <section class="page-hero">
   <div class="container container--narrow">
     <h1 class="anim-fade-up">Blog</h1>
+    <p class="blog-intro anim-fade-up">We write about AI API cost: attribution, budgets and reconciliation.</p>
   </div>
 </section>
 
 <div class="container container--narrow" style="padding-bottom:96px;">
+  <!-- POSTS: newest first. To add a post, copy one <li class="post-list__item"> block to the TOP of this list
+       and change the five marked values. See BLOG.md. -->
   <ul class="post-list" role="list">
-    <li>
+
+    <li class="post-list__item">
       <article class="post-card">
-        <time datetime="2026-10-12">12 Oct 2026</time>
+        <p class="post-card__meta"><time datetime="2026-10-12">12 Oct 2026</time> · 5 min read</p>
         <h2><a href="/blog/ai-cost-per-customer">How to find out what each customer costs you in OpenAI or Anthropic spend</a></h2>
         <p>Your AI bill is one number. Here are three ways to break it down by customer, what each one misses, and how to check your numbers against the provider's invoice.</p>
-        <a class="post-card__more" href="/blog/ai-cost-per-customer">Read the post →</a>
+        <a class="post-card__more" href="/blog/ai-cost-per-customer" aria-label="Read: How to find out what each customer costs you in OpenAI or Anthropic spend">Read the post →</a>
       </article>
     </li>
+
   </ul>
 </div>
 
@@ -122,6 +182,7 @@
       <div class="footer__col">
         <h5>Resources</h5>
         <ul>
+          <li><a href="/blog">Blog</a></li>
           <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
           <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
           <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
