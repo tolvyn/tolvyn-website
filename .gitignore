@@ -1,0 +1,4 @@
+# Wrangler's local state and cache (miniflare sqlite, account cache).
+# 1.7M of machine-local scratch as of 2026-10-02, regenerated on demand.
+# BE-409: it appeared untracked once wrangler was first run against this repo.
+.wrangler/
