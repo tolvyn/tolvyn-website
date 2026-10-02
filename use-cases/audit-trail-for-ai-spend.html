@@ -7,7 +7,7 @@
   <meta name="description" content="When finance or an auditor asks you to prove your AI cost records weren't altered, a dashboard total isn't evidence. TOLVYN writes every metered request to a tamper-evident, hash-chained, HMAC-signed ledger you can verify on demand.">
 
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
+  <meta property="og:url"         content="https://tolvyn.io/use-cases/audit-trail-for-ai-spend">
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="Prove your AI spend records weren't altered — TOLVYN">
   <meta property="og:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request you meter — verifiable on demand.">
@@ -17,7 +17,7 @@
   <meta name="twitter:title"       content="Prove your AI spend records weren't altered — TOLVYN">
   <meta name="twitter:description" content="A tamper-evident, hash-chained, HMAC-signed ledger of every AI request you meter — verifiable on demand.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
-  <link rel="canonical" href="https://tolvyn.io/use-cases/audit-trail-for-ai-spend.html">
+  <link rel="canonical" href="https://tolvyn.io/use-cases/audit-trail-for-ai-spend">
 
   <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
@@ -68,13 +68,13 @@
 
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
-    <a href="../index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+    <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
     <ul class="nav__links" role="list">
-      <li><a href="../pages/product.html">Product</a></li>
-      <li><a href="../pages/pricing.html">Pricing</a></li>
-      <li><a href="../pages/cost-index.html">Cost Index</a></li>
+      <li><a href="/pages/product">Product</a></li>
+      <li><a href="/pages/pricing">Pricing</a></li>
+      <li><a href="/pages/cost-index">Cost Index</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
-      <li><a href="/blog">Blog</a></li>
+      <li><a href="/blog/">Blog</a></li>
       <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
     </ul>
     <div class="nav__actions">
@@ -85,11 +85,11 @@
     </button>
   </div>
   <div class="mobile-menu" role="menu">
-    <a href="../pages/product.html" role="menuitem">Product</a>
-    <a href="../pages/pricing.html" role="menuitem">Pricing</a>
-    <a href="../pages/cost-index.html" role="menuitem">Cost Index</a>
+    <a href="/pages/product" role="menuitem">Product</a>
+    <a href="/pages/pricing" role="menuitem">Pricing</a>
+    <a href="/pages/cost-index" role="menuitem">Cost Index</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
-    <a href="/blog" role="menuitem">Blog</a>
+    <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
     <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
   </div>
@@ -134,7 +134,7 @@
         That is what makes the ledger a measuring instrument rather than a claim: because it holds
         exactly the spend your governance layer saw, subtracting it from the provider's invoice
         leaves the spend it did not. That subtraction is
-        <a href="../pages/product.html#reconciliation">reconciliation</a>, and the shortfall it
+        <a href="/pages/product#reconciliation">reconciliation</a>, and the shortfall it
         exposes is shadow AI — spend on your provider keys that bypassed your controls entirely.
       </p>
       <p>
@@ -266,7 +266,7 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
       <div class="footer__col">
         <h5>Product</h5>
         <ul>
-          <li><a href="../pages/how-it-works.html">How It Works</a></li>
+          <li><a href="/pages/how-it-works">How It Works</a></li>
           <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
           <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
           <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
@@ -277,18 +277,18 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
       <div class="footer__col">
         <h5>Resources</h5>
         <ul>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href="/blog/">Blog</a></li>
           <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
           <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
           <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
-          <li><a href="../pages/cost-index.html">Cost Index</a></li>
-          <li><a href="../pages/model-pricing.html">AI Model Pricing</a></li>
-          <li><a href="../compare/helicone.html">TOLVYN vs Helicone</a></li>
-          <li><a href="../compare/portkey.html">TOLVYN vs Portkey</a></li>
-          <li><a href="../compare/langfuse.html">TOLVYN vs Langfuse</a></li>
-          <li><a href="cost-attribution-per-customer.html">Cost Attribution</a></li>
-          <li><a href="audit-trail-for-ai-spend.html">Audit Trail</a></li>
-          <li><a href="metering-ai-to-bill-customers.html">Usage-Based Metering</a></li>
+          <li><a href="/pages/cost-index">Cost Index</a></li>
+          <li><a href="/pages/model-pricing">AI Model Pricing</a></li>
+          <li><a href="/compare/helicone">TOLVYN vs Helicone</a></li>
+          <li><a href="/compare/portkey">TOLVYN vs Portkey</a></li>
+          <li><a href="/compare/langfuse">TOLVYN vs Langfuse</a></li>
+          <li><a href="/use-cases/cost-attribution-per-customer">Cost Attribution</a></li>
+          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit Trail</a></li>
+          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-Based Metering</a></li>
           <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
           <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
         </ul>
@@ -296,18 +296,18 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
       <div class="footer__col">
         <h5>Company</h5>
         <ul>
-          <li><a href="../pages/company.html">About</a></li>
+          <li><a href="/pages/company">About</a></li>
           <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="../pages/customers.html">Customers</a></li>
+          <li><a href="/pages/customers">Customers</a></li>
           <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h5>Legal</h5>
         <ul>
-          <li><a href="../pages/privacy.html">Privacy Policy</a></li>
-          <li><a href="../pages/terms.html">Terms of Service</a></li>
-          <li><a href="../pages/security.html">Security</a></li>
+          <li><a href="/pages/privacy">Privacy Policy</a></li>
+          <li><a href="/pages/terms">Terms of Service</a></li>
+          <li><a href="/pages/security">Security</a></li>
           <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
         </ul>
       </div>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>TOLVYN Blog</title>
-    <link>https://tolvyn.io/blog</link>
+    <link>https://tolvyn.io/blog/</link>
     <atom:link href="https://tolvyn.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Articles from TOLVYN on AI API cost: attributing spend to customers and teams, setting budgets, and reconciling against provider invoices.</description>
     <language>en</language>

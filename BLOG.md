@@ -6,6 +6,19 @@ one HTML file plus four small edits elsewhere. Work on a branch, never directly 
 Throughout, `<slug>` is the post's URL slug (lowercase, hyphens), e.g. `ai-cost-per-customer`.
 The public URL is always `https://tolvyn.io/blog/<slug>` — no `.html`, no trailing slash.
 
+**URL rule for the whole site:** every canonical, `og:url`, JSON-LD URL, sitemap entry and
+internal link uses the page's *final* URL under Cloudflare Pages — the one that returns 200 with
+no redirect. Pages strips `.html` (308), so:
+
+| File | Final URL |
+|---|---|
+| `blog/<slug>.html` | `https://tolvyn.io/blog/<slug>` |
+| `blog/index.html` | `https://tolvyn.io/blog/` (trailing slash — `/blog` 308s to it) |
+| `pages/pricing.html` | `https://tolvyn.io/pages/pricing` |
+| `index.html` | `https://tolvyn.io/` |
+
+Never link to `….html`, to `/blog` without the slash, or to a `_redirects` alias such as `/pricing`.
+
 ## 1. Create the page
 
 ```bash
@@ -33,7 +46,7 @@ In `blog/<slug>.html`, change **every** occurrence of the old post's values:
 - [ ] `<h1>` = post title. Exactly **one** `<h1>` on the page; sections are `<h2>`, sub-sections `<h3>`
 - [ ] Date line: `<time datetime="YYYY-MM-DD">D Mon YYYY</time> · N min read · Author`
 - [ ] Replace the article text inside `<article class="docs-main post-body">`. Inline code: `<code class="mono">…</code>`. External links: `target="_blank" rel="noopener noreferrer"`
-- [ ] End of page: keep the CTA box; point the "Related:" link at the most relevant use-case or product page
+- [ ] End of page: keep the CTA box; point the "Related:" link at the most relevant use-case or product page, using its final URL (e.g. `/use-cases/cost-attribution-per-customer`, not `….html`)
 
 Reading time = words ÷ 230, rounded. To count words in the article:
 
@@ -61,11 +74,11 @@ In `blog/rss.xml`, copy one `<item>` to the **top** (newest first) and change `t
   at `/blog/<slug>` and 308-redirects `/blog/<slug>.html` to it. A `200` rewrite to the `.html`
   file loops against that redirect (ERR_TOO_MANY_REDIRECTS).
 - [ ] `sitemap.xml` — add `<url><loc>https://tolvyn.io/blog/<slug></loc><priority>0.8</priority><lastmod>YYYY-MM-DD</lastmod></url>`
-  and update the `lastmod` of `https://tolvyn.io/blog` to the same date.
+  and update the `lastmod` of `https://tolvyn.io/blog/` to the same date. Sitemap entries are final URLs only.
 
 ## 5. Internal links
 
-- [ ] Link **to** the new post from 1–2 relevant existing pages (a single "Further reading:" line at the end, like `use-cases/cost-attribution-per-customer.html`). Don't reword those pages.
+- [ ] Link **to** the new post (`/blog/<slug>`) from 1–2 relevant existing pages (a single "Further reading:" line at the end, like `use-cases/cost-attribution-per-customer.html`). Don't reword those pages.
 - [ ] Link **from** the post to the relevant product/use-case page (the "Related:" line).
 
 ## 6. Check before merging
@@ -82,6 +95,10 @@ print('json-ld ok')"
 npx wrangler pages dev . --port 8788
 curl -sIL http://127.0.0.1:8788/blog/<slug>        # must end in 200
 curl -sIL http://127.0.0.1:8788/blog/<slug>.html   # must 308 to /blog/<slug>, then 200
+curl -sI  http://127.0.0.1:8788/blog/               # 200, no redirect
+# every canonical and sitemap URL must answer 200 with ZERO redirects:
+for u in $(grep -o '<loc>[^<]*' sitemap.xml | sed 's|<loc>https://tolvyn.io||'); do
+  printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' http://127.0.0.1:8788$u)" "$u"; done
 ```
 
 - [ ] Exactly one `<h1>` per page; no horizontal scroll at 390px
