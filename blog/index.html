@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — TOLVYN</title>
+  <meta name="description" content="Writing from the TOLVYN team on AI cost, metering and spend control.">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://tolvyn.io/blog">
+  <meta property="og:site_name"   content="TOLVYN">
+  <meta property="og:title"       content="Blog — TOLVYN">
+  <meta property="og:description" content="Writing from the TOLVYN team on AI cost, metering and spend control.">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@tolvyn">
+  <meta name="twitter:title"       content="Blog — TOLVYN">
+  <meta name="twitter:description" content="Writing from the TOLVYN team on AI cost, metering and spend control.">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <link rel="canonical" href="https://tolvyn.io/blog">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+  <meta name="theme-color" content="#00D9A3">
+
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://cloud.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- Scoped styles for the post list only — existing design tokens, no global CSS edits. -->
+  <style>
+    .post-list { list-style: none; margin: 0; padding: 0; }
+    .post-card { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-lg); padding: 28px; }
+    .post-card time { color: var(--text-muted); font-size: 0.9rem; }
+    .post-card h2 { font-size: 1.4rem; margin: 8px 0 10px; line-height: 1.35; }
+    .post-card h2 a:hover { color: var(--accent); }
+    .post-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+    .post-card__more { color: var(--accent); font-weight: 600; }
+  </style>
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+    <ul class="nav__links" role="list">
+      <li><a href="/pages/product.html">Product</a></li>
+      <li><a href="/pages/pricing.html">Pricing</a></li>
+      <li><a href="/pages/cost-index.html">Cost Index</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+    </div>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" role="menu">
+    <a href="/pages/product.html" role="menuitem">Product</a>
+    <a href="/pages/pricing.html" role="menuitem">Pricing</a>
+    <a href="/pages/cost-index.html" role="menuitem">Cost Index</a>
+    <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container container--narrow">
+    <h1 class="anim-fade-up">Blog</h1>
+  </div>
+</section>
+
+<div class="container container--narrow" style="padding-bottom:96px;">
+  <ul class="post-list" role="list">
+    <li>
+      <article class="post-card">
+        <time datetime="2026-10-12">12 Oct 2026</time>
+        <h2><a href="/blog/ai-cost-per-customer">How to find out what each customer costs you in OpenAI or Anthropic spend</a></h2>
+        <p>Your AI bill is one number. Here are three ways to break it down by customer, what each one misses, and how to check your numbers against the provider's invoice.</p>
+        <a class="post-card__more" href="/blog/ai-cost-per-customer">Read the post →</a>
+      </article>
+    </li>
+  </ul>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>TOLVYN</h4>
+        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="/pages/how-it-works.html">How It Works</a></li>
+          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
+          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
+          <li><a href="/pages/cost-index.html">Cost Index</a></li>
+          <li><a href="/pages/model-pricing.html">AI Model Pricing</a></li>
+          <li><a href="/compare/helicone.html">TOLVYN vs Helicone</a></li>
+          <li><a href="/compare/portkey.html">TOLVYN vs Portkey</a></li>
+          <li><a href="/compare/langfuse.html">TOLVYN vs Langfuse</a></li>
+          <li><a href="/use-cases/cost-attribution-per-customer.html">Cost Attribution</a></li>
+          <li><a href="/use-cases/audit-trail-for-ai-spend.html">Audit Trail</a></li>
+          <li><a href="/use-cases/metering-ai-to-bill-customers.html">Usage-Based Metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="/pages/company.html">About</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="/pages/customers.html">Customers</a></li>
+          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/pages/privacy.html">Privacy Policy</a></li>
+          <li><a href="/pages/terms.html">Terms of Service</a></li>
+          <li><a href="/pages/security.html">Security</a></li>
+          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
+        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/nav.js" defer></script>
+<script src="/js/animations.js" defer></script>
+<script src="/js/main.js" defer></script>
+</body>
+</html>
