@@ -142,13 +142,14 @@
     <section>
       <h2>Option 3: Put a metering layer in front of the provider</h2>
       <p>The third way is to send calls through a layer that sits between your app and the provider. Your app tags each call with the customer and feature, the layer records tokens and cost, and you get a breakdown without writing the logging yourself.</p>
-      <p>This is what we built TOLVYN to do. You change the base URL, use a TOLVYN key, and add a header such as <code class="mono">X-Tolvyn-End-Customer</code> (and optionally feature, team or service). TOLVYN records model, tokens, latency and cost for every call, and shows spend per customer and per feature. It never stores prompts or responses.</p>
-      <p>Because it's in the request path, it can also do something logs can't: block a call before the provider is charged, once a hard budget for an organisation, team, service or agent would be exceeded.</p>
+      <p>This is what we built TOLVYN to do. You add your provider key to TOLVYN once, change the base URL, use a TOLVYN key, and add a header such as <code class="mono">X-Tolvyn-End-Customer</code> (and optionally feature, team or service). TOLVYN records model, tokens, latency and cost for the calls that go through it, and shows spend per feature and per customer (your top 100 customers by spend). It never stores prompts or responses.</p>
+      <p>Because it's in the request path, it can also do something logs can't: block a call before the provider is charged, once a hard budget for an organisation, team, service or agent would be exceeded. The check uses an estimate of the call's cost, and hard budgets are on paid plans (Starter and up).</p>
       <p><strong>Trade-offs, honestly:</strong></p>
       <ul>
         <li>It's one more service in the request path. Start with one non-critical service and measure the latency yourself.</li>
         <li>Hard budgets today work per organisation, team, service or agent, not per individual end customer yet.</li>
-        <li>It supports OpenAI, Anthropic, Google Gemini and DeepSeek. Not Bedrock, Vertex or Azure today.</li>
+        <li>It supports OpenAI, Anthropic, Google Gemini and DeepSeek. Not Bedrock or Vertex today, and Azure OpenAI only in a limited way.</li>
+        <li>Calls that bypass TOLVYN, for example an SDK falling back to the provider directly while TOLVYN is unreachable, aren't recorded.</li>
       </ul>
     </section>
 
@@ -160,7 +161,7 @@
         <li>Sum your per-customer numbers for the same period and the same provider.</li>
         <li>If they differ by more than a small margin, look for the causes in Option 2: streaming without usage, retries, cached or reasoning tokens, stale prices, or calls from outside the app.</li>
       </ol>
-      <p>TOLVYN does this step for you: upload the provider's invoice CSV and it compares it against what TOLVYN recorded for the same period. (OpenAI invoices are supported on every plan; Anthropic and Google on Growth and above.)</p>
+      <p>TOLVYN does this step for you: upload the usage export from your provider's console (the CSV with model and cost per line) and it compares it, month by month, against what TOLVYN recorded. (OpenAI on every plan; Anthropic and Google on Growth and above.)</p>
     </section>
 
     <section>
