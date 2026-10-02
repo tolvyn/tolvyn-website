@@ -106,6 +106,31 @@ for u in $(grep -o '<loc>[^<]*' sitemap.xml | sed 's|<loc>https://tolvyn.io||');
 
 ## 7. Publish (Cloudflare Pages, Direct Upload — a git push does NOT deploy)
 
+**RUN THIS FIRST, ON THE NIGHT — not in advance.** It proves the branch still
+merges into current `main`. Running it today proves only that it merged today:
+`main` moves, and the merge this tests is the one in the next block.
+
+```bash
+git fetch -q origin && git checkout -q -b tmp-mergetest <branch> && git merge --no-ff --no-commit origin/main; echo "exit=$?"; git diff --name-only --diff-filter=U; git merge --abort 2>/dev/null; git checkout -q <branch> && git branch -qD tmp-mergetest
+```
+
+**Run it with a clean working tree** (`git status --porcelain` empty): the test
+switches branches, and uncommitted edits to a file the merge touches will make
+it refuse for a reason that has nothing to do with the merge.
+
+**Clean is `exit=0` and NO filenames after it.** Any filename is a conflicted
+path — resolve it before touching the next block, with time to re-run §6's
+checks afterwards. The test runs on a throwaway branch and aborts, so neither
+`main` nor `<branch>` is modified whatever the result.
+
+**Why it is here and not in §6.** §6 checks the content; this checks the
+*merge*, which depends on what else has landed on `main` since the branch was
+cut — a thing that cannot be settled early. **2026-10-02: tested clean for
+`blog-1`, which also disproved an assumed conflict.** `blog-1` had already
+merged `main` at `62f0b1c`, so the Umami CSP fix (`7c76abc`) was already an
+ancestor and all 19 pages carried `gateway.umami.is`. **The assumed conflict
+would have cost an evening's work for nothing had it not been measured.**
+
 ```bash
 git switch main && git merge <branch> && git push origin main
 rm -rf /tmp/tolvyn-site && mkdir /tmp/tolvyn-site
