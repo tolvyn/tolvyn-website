@@ -57,8 +57,9 @@ In `blog/rss.xml`, copy one `<item>` to the **top** (newest first) and change `t
 
 ## 4. Routing and sitemap
 
-- [ ] `_redirects` — add, next to the existing blog lines:
-  `/blog/<slug>  /blog/<slug>.html  200`
+- [ ] **Do NOT add anything to `_redirects`.** Cloudflare Pages already serves `blog/<slug>.html`
+  at `/blog/<slug>` and 308-redirects `/blog/<slug>.html` to it. A `200` rewrite to the `.html`
+  file loops against that redirect (ERR_TOO_MANY_REDIRECTS).
 - [ ] `sitemap.xml` — add `<url><loc>https://tolvyn.io/blog/<slug></loc><priority>0.8</priority><lastmod>YYYY-MM-DD</lastmod></url>`
   and update the `lastmod` of `https://tolvyn.io/blog` to the same date.
 
@@ -76,8 +77,11 @@ python3 -c "import re,json,glob
 for f in glob.glob('blog/*.html'):
     for b in re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>', open(f).read(), re.S): json.loads(b)
 print('json-ld ok')"
-# preview locally, then open /blog and /blog/<slug> at phone width (390px) and desktop
-python3 -m http.server 8787   # serves *.html paths; extensionless URLs need the _redirects rewrite
+# preview locally with Pages' real routing, then open /blog/ and /blog/<slug>
+# at phone width (390px) and desktop. Stop it with Ctrl+C; delete the .wrangler/ folder it creates.
+npx wrangler pages dev . --port 8788
+curl -sIL http://127.0.0.1:8788/blog/<slug>        # must end in 200
+curl -sIL http://127.0.0.1:8788/blog/<slug>.html   # must 308 to /blog/<slug>, then 200
 ```
 
 - [ ] Exactly one `<h1>` per page; no horizontal scroll at 390px
