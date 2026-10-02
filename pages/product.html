@@ -282,7 +282,7 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
         <ul>
           <li><strong>Budget threshold</strong> — fires at 50% (info), 75% (warning), and 90%/100% (critical) of any budget scope.</li>
           <li><strong>Cost anomaly</strong> — fires when a request costs at least <strong>10&times;</strong> the average of the last 100 requests for that service (e.g. someone shipped a code change that switched gpt-4o-mini → gpt-4o).</li>
-          <li><strong>Model change</strong> — fires when the model serving a service changes <em>and</em> the cost per request moves significantly with it: at least 2&times; up, or at least 50% down.</li>
+          <li><strong>Model change</strong> — fires when a service's traffic has genuinely moved to a different model, not when a single call differs. It needs at least <strong>10 requests</strong> on the new model, <strong>mostly</strong> that model rather than a mix, <strong>still there 15 minutes later</strong>, and the cost per request at least <strong>2&times; up or 50% down</strong>. The wait is deliberate: a detector that fires on any change is one you learn to filter, and we watched that happen on our own traffic — five alerts in nine seconds — before we narrowed it. <em>So switching model for one call, or for a quick test, will not alert you.</em></li>
           <li><strong>Pricing change</strong> — fires when a provider you depend on changes a model's price (see <a href="#pricing-changes">Pricing Change Governance</a>).</li>
         </ul>
 
@@ -361,7 +361,7 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
 
         <h3>Four rules</h3>
         <ul>
-          <li><strong>Small-token requests on premium models</strong> — if &gt;80% of your gpt-4o requests use fewer than 500 tokens, gpt-4o-mini is likely the right model.</li>
+          <li><strong>Small-token requests on premium models</strong> — if more than <strong>100</strong> of your gpt-4o requests in the period used fewer than <strong>500 tokens</strong>, and moving them to gpt-4o-mini would save at least <strong>$1/month</strong>, you get a finding. The saving is computed from our live rate table at the moment the finding is written, not from a stored ratio.</li>
           <li><strong>Duplicate prompts</strong> — identical prompt signatures should hit cache, not the provider.</li>
           <li><strong>Underutilized prompt cache</strong> — long system prompts that don't trigger Anthropic's cache reuse.</li>
           <li><strong>Idle models</strong> — models you provisioned but barely use; consolidation simplifies governance.</li>
