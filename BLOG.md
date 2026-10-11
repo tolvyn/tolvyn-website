@@ -17,7 +17,27 @@ no redirect. Pages strips `.html` (308), so:
 | `pages/pricing.html` | `https://tolvyn.io/pages/pricing` |
 | `index.html` | `https://tolvyn.io/` |
 
-Never link to `….html`, to `/blog` without the slash, or to a `_redirects` alias such as `/pricing`.
+Never link to `….html`, to `/blog` without the slash, or to a `_redirects` alias such as
+`/pricing`.
+
+**AND NEVER CANONICALISE TO A `_redirects` ALIAS EITHER — not even a `200` rewrite.** The rule
+above was written about links and read as if it exempted canonicals, and `63d9e97` canonicalised
+two pages to `/cost-index` and `/pricing/ai-models` on the reasoning that a `200` rewrite "is how
+a page gets a first-class pretty URL". **Measured on production 2026-10-11: both return 308**, to
+`/pages/cost-index` and `/pages/model-pricing` — so the canonical, `og:url`, JSON-LD `url` and
+sitemap entry of those two pages all pointed at a redirect, which is the opposite of what that
+commit intended. Reverted on `fix/canonical-not-a-redirect-alias`.
+
+**Why the reasoning was tempting and still wrong.** A `200` rewrite in `_redirects` does serve
+content at the alias — but Pages' automatic `.html` stripping applies to the *rewrite target*, so
+a rule whose target ends in `.html` resolves to a 308 to the extensionless path. It is the same
+mechanism §4's "Do NOT add anything to `_redirects`" warns about for blog posts, one layer up.
+
+**A keyword-rich URL is still worth having; it just cannot be the canonical.** Keep the alias in
+`_redirects` for people to type and share, and point every machine-readable field at the path
+that answers 200. **The test is not "does this URL work" but `curl -sI <url> | head -1` returning
+`200` with no `location:` — and run it against production, because `wrangler pages dev` reports
+these two as 308 for a different reason and would agree with you by accident.**
 
 ## 1. Create the page
 
