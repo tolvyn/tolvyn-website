@@ -124,6 +124,33 @@ for u in $(grep -o '<loc>[^<]*' sitemap.xml | sed 's|<loc>https://tolvyn.io||');
 - [ ] Exactly one `<h1>` per page; no horizontal scroll at 390px
 - [ ] Every claim about TOLVYN checked against the code before publishing
 
+**A `200` IS NOT PROOF A PAGE EXISTS ON THIS SITE — CHECK THE `<title>`.** Cloudflare Pages
+answers an unmatched path with `404.html` at status 404 *only because that file exists*. Before
+2026-10-11 it did not, and Pages fell back to **the home page at status 200**: every typo, every
+dead link and every renamed path returned `200` with `<title>TOLVYN — The Financial Control
+Plane…` and `<link rel="canonical" href="https://tolvyn.io/">`. **Every status check in this
+file was therefore satisfiable by a page that was not there**, and the loop above would have
+reported `200` for a sitemap entry whose file had been deleted.
+
+So check the title, not the code:
+
+```bash
+for u in $(grep -o '<loc>[^<]*' sitemap.xml | sed 's|<loc>https://tolvyn.io||'); do
+  t=$(curl -s "http://127.0.0.1:8788$u" | grep -oE '<title>[^<]*' | head -1)
+  printf '%s  %s  %s\n' "$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8788$u")" "$u" "${t#<title>}"
+done
+```
+
+**Read the titles, not just the codes.** A `404` with `Page not found — TOLVYN` is a page that
+does not exist; a `200` whose title is the home page's — on any URL other than `/` — is the same
+thing wearing a success code, which is what this site did for every unknown path until a
+`404.html` existed. **Keep `404.html` out of `sitemap.xml`, give it `robots: noindex`, and give
+it no `canonical` and no `og:url`:** one file answers every bad URL, so it has no URL of its own
+to name, and naming one would invite indexing of exactly what `noindex` is there to prevent. The
+file is also reachable *as a page*: measured locally, `/404.html` 308s to `/404` and **`/404`
+answers 200** with `Page not found — TOLVYN`. That is the rule inverted — a success code on a
+not-found page — and it is precisely why the `noindex` is not optional.
+
 ## 7. Publish (Cloudflare Pages, Direct Upload — a git push does NOT deploy)
 
 **RUN THIS FIRST, ON THE NIGHT — not in advance.** It proves the branch still
