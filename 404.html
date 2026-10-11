@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — TOLVYN</title>
+  <meta name="description" content="That page does not exist. Links to the TOLVYN home page, the blog and the security page.">
+  <!-- NOINDEX. A 404 must never enter an index, and until this file existed
+       Cloudflare Pages answered every unknown path with the HOME PAGE at
+       status 200 — so unknown URLs were indexable duplicates of "/". -->
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="TOLVYN">
+  <meta property="og:title"       content="Page not found — TOLVYN">
+  <meta property="og:description" content="That page does not exist.">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@tolvyn">
+  <meta name="twitter:title"       content="Page not found — TOLVYN">
+  <meta name="twitter:description" content="That page does not exist.">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <!-- NO canonical and NO og:url, deliberately. This one file answers every
+       unknown path, so it has no URL of its own to name; a canonical here
+       would point every bad URL at one page and invite indexing of exactly
+       what robots=noindex is there to prevent. It is also NOT in sitemap.xml. -->
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+  <meta name="theme-color" content="#00D9A3">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- ROOT-ABSOLUTE, not ../css/. This file is served AT the unknown path, so a
+       relative href resolves against that path: ../css/ would work from
+       /pages/nope and break from /a/b/c/nope. -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="/pages/product">Product</a></li>
+      <li><a href="/pages/pricing">Pricing</a></li>
+      <li><a href="/pages/cost-index">Cost Index</a></li>
+      <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+    </div>
+
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" role="menu">
+    <a href="/pages/product" role="menuitem">Product</a>
+    <a href="/pages/pricing" role="menuitem">Pricing</a>
+    <a href="/pages/cost-index" role="menuitem">Cost Index</a>
+    <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
+    <a href="/blog/" role="menuitem">Blog</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+  </div>
+</nav>
+<section class="page-hero">
+  <div class="container">
+    <p class="label anim-fade-up">404</p>
+    <h1 class="anim-fade-up">That page does not exist</h1>
+    <p class="anim-fade-up" style="margin-top:12px;font-size:0.95rem;color:var(--text-muted);">
+      The link may be old, or the address may have a typo. Nothing is broken on your side.
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="legal-body">
+    <p>Three places that do exist:</p>
+    <ul>
+      <li><a href="/">The home page</a> — what TOLVYN is, and what it costs.</li>
+      <li><a href="/blog/">The blog</a> — how to measure and control AI spend.</li>
+      <li><a href="/pages/security">Security</a> — how we handle data, and how to report a vulnerability.</li>
+    </ul>
+    <p style="margin-top:28px;">
+      <a href="/" class="btn btn-primary">Back to the home page</a>
+    </p>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h4>TOLVYN</h4>
+        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="/pages/how-it-works">How It Works</a></li>
+          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
+          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
+          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
+          <li><a href="/pages/cost-index">Cost Index</a></li>
+          <li><a href="/pages/model-pricing">AI Model Pricing</a></li>
+          <li><a href="/compare/helicone">TOLVYN vs Helicone</a></li>
+          <li><a href="/compare/portkey">TOLVYN vs Portkey</a></li>
+          <li><a href="/compare/langfuse">TOLVYN vs Langfuse</a></li>
+          <li><a href="/use-cases/cost-attribution-per-customer">Cost Attribution</a></li>
+          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit Trail</a></li>
+          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-Based Metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="/pages/company">About</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="/pages/customers">Customers</a></li>
+          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/pages/privacy">Privacy Policy</a></li>
+          <li><a href="/pages/terms">Terms of Service</a></li>
+          <li><a href="/pages/security">Security</a></li>
+          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
+        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
