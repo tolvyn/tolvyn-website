@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOLVYN — The Financial Control Plane for AI Infrastructure</title>
-  <meta name="description" content="TOLVYN is the system of record for every AI API call it meters. Cost attribution, agent governance, immutable ledger, invoice reconciliation. Across OpenAI, Anthropic, Google, and DeepSeek.">
+  <meta name="description" content="TOLVYN is the system of record for every AI API call it meters. Cost attribution, agent governance, tamper-evident ledger, invoice reconciliation. Across OpenAI, Anthropic, Google, and DeepSeek.">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://tolvyn.io/">
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="TOLVYN — The Financial Control Plane for AI Infrastructure">
-  <meta property="og:description" content="The system of record for every AI API call you route through it. Cost attribution, agent governance, immutable ledger, invoice reconciliation.">
+  <meta property="og:description" content="The system of record for every AI API call you route through it. Cost attribution, agent governance, tamper-evident ledger, invoice reconciliation.">
   <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
 
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="TOLVYN — The Financial Control Plane for AI Infrastructure">
-  <meta name="twitter:description" content="The system of record for every AI API call you route through it. Cost attribution, agent governance, immutable ledger, invoice reconciliation.">
+  <meta name="twitter:description" content="The system of record for every AI API call you route through it. Cost attribution, agent governance, tamper-evident ledger, invoice reconciliation.">
   <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
 
   <!-- Canonical -->
@@ -172,7 +172,7 @@
     </div>
 
     <div class="diagram reveal">
-      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, Google, and DeepSeek while writing to four outputs: immutable ledger, attribution, budget enforcement, and reconciliation.">
+      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, Google, and DeepSeek while writing to four outputs: tamper-evident ledger, attribution, budget enforcement, and reconciliation.">
         <defs>
           <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0,0 L0,6 L8,3 z" fill="#00D9A3"/>
@@ -217,7 +217,7 @@
         <text x="727" y="296" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">generativelanguage</text>
 
         <!-- Output labels around the proxy -->
-        <text x="420" y="50"  text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#00D9A3">Immutable ledger</text>
+        <text x="420" y="50"  text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#00D9A3">Tamper-evident ledger</text>
         <text x="420" y="66"  text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">SHA-256 hash chain</text>
         <line x1="420" y1="78" x2="420" y2="118" stroke="#5a6070" stroke-width="1" stroke-dasharray="3,3"/>
 
@@ -247,7 +247,7 @@
 
     <div class="diff-grid">
       <div class="diff-tile reveal" data-delay="1">
-        <h3>Immutable Ledger</h3>
+        <h3>Tamper-Evident Ledger</h3>
         <p>Every AI request TOLVYN meters is hash-chained and HMAC-signed. Cryptographic proof, not logs. Your CFO or auditor can re-verify the hash chain themselves with the script shipped in every evidence package &mdash; the HMAC is keyed on a secret TOLVYN holds, so it detects tampering by anyone without that key.</p>
       </div>
       <div class="diff-tile reveal" data-delay="2">
@@ -260,7 +260,7 @@
       </div>
       <div class="diff-tile reveal" data-delay="4">
         <h3>Agent Governance</h3>
-        <p>Per-agent budgets. Runaway detection. Kill switch. Every AI agent on one ledger.</p>
+        <p>Per-agent budgets. Cost anomaly alerts — one call over 10× the recent average. Kill switch. Every AI agent on one ledger.</p>
       </div>
       <div class="diff-tile reveal" data-delay="5">
         <h3>Savings Analyzer</h3>
