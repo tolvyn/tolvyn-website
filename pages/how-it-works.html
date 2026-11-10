@@ -89,54 +89,54 @@
       <p>TOLVYN intercepts every AI request routed through it, before it reaches the provider — recording, attributing, and enforcing limits in real time.</p>
     </div>
 
-    <div class="diagram reveal">
+    <div class="diagram diagram--hiw reveal">
       <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" aria-label="TOLVYN proxy architecture diagram" role="img">
         <defs>
           <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
             <path d="M0,0 L0,6 L8,3 z" fill="#00D9A3"/>
           </marker>
           <marker id="arrow-back" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
-            <path d="M8,0 L8,6 L0,3 z" fill="#9aa0b0"/>
+            <path d="M8,0 L8,6 L0,3 z" fill="#A6ADBB"/>
           </marker>
         </defs>
 
-        <rect x="10" y="90" width="140" height="80" rx="10" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="80" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">Your Application</text>
-        <text x="80" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#9aa0b0">SDK / HTTP</text>
+        <rect x="10" y="90" width="140" height="80" rx="10" fill="#161B27" stroke="#2E3545" stroke-width="1.5"/>
+        <text x="80" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#E6E9EF">Your Application</text>
+        <text x="80" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#A6ADBB">SDK / HTTP</text>
 
         <line x1="152" y1="118" x2="228" y2="118" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arrow)"/>
         <text x="190" y="112" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#00D9A3">request</text>
-        <line x1="228" y1="132" x2="152" y2="132" stroke="#9aa0b0" stroke-width="1.5" marker-end="url(#arrow-back)"/>
-        <text x="190" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#9aa0b0">response</text>
+        <line x1="228" y1="132" x2="152" y2="132" stroke="#A6ADBB" stroke-width="1.5" marker-end="url(#arrow-back)"/>
+        <text x="190" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#A6ADBB">response</text>
 
-        <rect x="230" y="70" width="160" height="120" rx="10" fill="#0d0f14" stroke="#00D9A3" stroke-width="1.8"/>
+        <rect x="230" y="70" width="160" height="120" rx="10" fill="#0B0F1A" stroke="#00D9A3" stroke-width="1.8"/>
         <text x="310" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="800" fill="#00D9A3" letter-spacing="1">TOLVYN</text>
-        <text x="310" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#e8eaf0">Proxy</text>
-        <text x="310" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">meter · hash · route</text>
-        <text x="310" y="160" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">attribute · govern</text>
+        <text x="310" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#E6E9EF">Proxy</text>
+        <text x="310" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#A6ADBB">meter · hash · route</text>
+        <text x="310" y="160" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#A6ADBB">attribute · govern</text>
 
         <line x1="392" y1="118" x2="468" y2="118" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arrow)"/>
         <text x="430" y="112" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#00D9A3">forward</text>
-        <line x1="468" y1="132" x2="392" y2="132" stroke="#9aa0b0" stroke-width="1.5" marker-end="url(#arrow-back)"/>
-        <text x="430" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#9aa0b0">response</text>
+        <line x1="468" y1="132" x2="392" y2="132" stroke="#A6ADBB" stroke-width="1.5" marker-end="url(#arrow-back)"/>
+        <text x="430" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#A6ADBB">response</text>
 
-        <rect x="470" y="90" width="140" height="80" rx="10" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="540" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">AI Provider</text>
-        <text x="540" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#9aa0b0">any model API</text>
+        <rect x="470" y="90" width="140" height="80" rx="10" fill="#161B27" stroke="#2E3545" stroke-width="1.5"/>
+        <text x="540" y="124" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#E6E9EF">AI Provider</text>
+        <text x="540" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#A6ADBB">any model API</text>
 
         <line x1="310" y1="192" x2="310" y2="226" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4,3"/>
         <text x="322" y="215" font-family="Inter,sans-serif" font-size="10" fill="#00D9A3">write</text>
 
-        <rect x="220" y="228" width="180" height="24" rx="6" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="310" y="244" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#9aa0b0">tamper-evident ledger</text>
+        <rect x="220" y="228" width="180" height="24" rx="6" fill="#161B27" stroke="#2E3545" stroke-width="1.5"/>
+        <text x="310" y="244" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#A6ADBB">tamper-evident ledger</text>
 
-        <rect x="630" y="90" width="150" height="80" rx="10" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="705" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">Dashboard</text>
-        <text x="705" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">costs · alerts</text>
-        <text x="705" y="152" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">budgets · audit</text>
+        <rect x="630" y="90" width="150" height="80" rx="10" fill="#161B27" stroke="#2E3545" stroke-width="1.5"/>
+        <text x="705" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#E6E9EF">Dashboard</text>
+        <text x="705" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#A6ADBB">costs · alerts</text>
+        <text x="705" y="152" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#A6ADBB">budgets · audit</text>
 
-        <line x1="400" y1="240" x2="624" y2="155" stroke="#9aa0b0" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-back)"/>
-        <text x="520" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#9aa0b0">realtime analytics</text>
+        <line x1="400" y1="240" x2="624" y2="155" stroke="#A6ADBB" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-back)"/>
+        <text x="520" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#A6ADBB">realtime analytics</text>
       </svg>
     </div>
   </div>

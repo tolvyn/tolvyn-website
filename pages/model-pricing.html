@@ -245,10 +245,18 @@
   const MAX_AGE_MS  = 72 * 60 * 60 * 1000; // staleness guard: never show prices older than 72h
 
   // The single data-access boundary. Returns the parsed DB object, or throws.
+  // A request that hangs (headers or body) is aborted after 12 s and treated as a failure, so the page
+  // shows its error text instead of loading forever.
   async function fetchPricing() {
-    const r = await fetch(SOURCE_URL, { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
+    const ctl = new AbortController();
+    const timer = setTimeout(function () { ctl.abort(); }, 12000);
+    try {
+      const r = await fetch(SOURCE_URL, { cache: 'no-store', signal: ctl.signal });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return await r.json();
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
   // ── Formatting — mono numerals, FULL precision (never truncate a rate) ──
@@ -323,13 +331,13 @@
 
     const body = rows.map(function (r) {
       return '<tr>' +
-        '<td class="mp-model">' + escapeHtml(r.model_id) +
+        '<td class="mp-model" data-label="' + COLS[0].label + '">' + escapeHtml(r.model_id) +
           (r.display_name && r.display_name !== r.model_id ? '<small>' + escapeHtml(r.display_name) + '</small>' : '') + '</td>' +
-        '<td>' + providerBadge(r.provider) + '</td>' +
-        '<td class="num mono">' + fmtPrice(r.input) + '</td>' +
-        '<td class="num mono">' + fmtPrice(r.output) + '</td>' +
-        '<td class="num mono">' + fmtPrice(r.cached) + '</td>' +
-        '<td class="mono">' + (r.effective ? escapeHtml(r.effective) : '—') + '</td>' +
+        '<td data-label="' + COLS[1].label + '">' + providerBadge(r.provider) + '</td>' +
+        '<td class="num mono" data-label="' + COLS[2].label + '">' + fmtPrice(r.input) + '</td>' +
+        '<td class="num mono" data-label="' + COLS[3].label + '">' + fmtPrice(r.output) + '</td>' +
+        '<td class="num mono" data-label="' + COLS[4].label + '">' + fmtPrice(r.cached) + '</td>' +
+        '<td class="mono" data-label="' + COLS[5].label + '">' + (r.effective ? escapeHtml(r.effective) : '—') + '</td>' +
         '</tr>';
     }).join('');
 

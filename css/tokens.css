@@ -1,5 +1,4 @@
-/* TOLVYN design tokens. Mint = allowed, recorded, verified; amber = refused, limit reached.
-   Text colours pass AA on every surface. Breakpoints (media queries): 600, 900, 1200. */
+/* Tokens. Mint = allowed/verified; amber = refused/limit. Breakpoints 600, 900, 1200. */
 :root {
   --bg: #0B0F1A; --bg-secondary: #0D111C; --surface: #11151F; --surface-2: #161B27; --bg-veil: rgba(11, 15, 26, 0.94);
   --border: #232937; --border-light: #2E3545; --border-strong: #3A4254;

@@ -1,8 +1,6 @@
 /* TOLVYN components */
 
-/* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); min-height: 44px; padding: 0 var(--s-5); border: 1px solid transparent; border-radius: var(--radius); font: 600 var(--fs-sm)/1.2 var(--sans); letter-spacing: 0.005em; text-align: center; cursor: pointer; transition: background-color var(--transition), border-color var(--transition), color var(--transition); }
-.btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
 .btn-secondary, .btn-ghost { background: transparent; border-color: var(--border-strong); color: var(--text); }
@@ -12,7 +10,6 @@
 .btn-block { width: 100%; }
 @media (pointer: coarse) { .btn-sm { min-height: 44px; } }
 
-/* Panels */
 .card, .diff-tile, .plan, .migration, .pricing-teaser, .diagram, .code-tabs,
 .discount-banner, .terminal-wrap { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .card { padding: var(--s-6); transition: border-color var(--transition); }
@@ -21,13 +18,11 @@
 .card p  { font-size: var(--fs-sm); line-height: 1.65; }
 
 /* pointer highlight: the hairline brightens (js/main.js) */
-:is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner)::after { content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none; padding: 1px; border-radius: inherit; background: radial-gradient(180px circle at var(--mx, -400px) var(--my, -400px), rgba(230, 233, 239, 0.45), transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity var(--transition); }
+:is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner)::after { content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none; padding: 1px; border-radius: inherit; background: radial-gradient(180px circle at var(--mx, -400px) var(--my, -400px), rgba(230, 233, 239, 0.45), transparent 70%); mask-composite: exclude; opacity: 0; transition: opacity var(--transition); }
 :is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner):hover::after { opacity: 1; }
 
-/* The mono label */
 .label, .badge, .section-label, .hero__eyebrow, .eyebrow, .plan__name, .docs-sidebar__title, .cmp-table th, .uc-table th, .legal-body th, .ci-table th, .mp-table th, .uc-flow__step, .headline-card__model, .footer__col h5, .code-tabs__tab { font: 500 var(--fs-xs)/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
 
-/* Badge, tag, inline mono */
 .badge { display: inline-flex; align-items: center; gap: var(--s-2); padding: 3px var(--s-2); border: 1px solid var(--accent-line); border-radius: 2px; color: var(--accent); }
 .tag { display: inline-block; padding: 1px 6px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; font: 400 0.82em/1.5 var(--mono); color: var(--text); }
 .mono { padding: 1px 6px; border-radius: 3px; background: var(--accent-muted); font: 400 0.85em/1.5 var(--mono); color: var(--accent); }
@@ -40,7 +35,6 @@
 .section-header p:not(.section-label) { max-width: 37em; font-size: var(--fs-md); line-height: 1.6; }
 .section-header--end { margin-left: auto; }
 
-/* Code */
 .code-block, .code-tabs__panel pre { margin: 0; padding: var(--s-5); background: var(--bg); font: 400 0.8125rem/1.7 var(--mono); color: var(--text-secondary); overflow-x: auto; white-space: pre; tab-size: 2; }
 .code-block { border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .code-block code { font: inherit; color: inherit; }
