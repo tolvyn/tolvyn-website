@@ -1,12 +1,5 @@
 /* TOLVYN layout: reset, base, container, sections, grids, focus. */
 
-/* Box-drawing glyphs (─ ┼ │ …) from JetBrains Mono, which Google Fonts' subsets leave out; without them the
-   terminal's columns drift. 864 bytes, SIL Open Font License 1.1 (assets/fonts/OFL.txt). */
-@font-face {
-  font-family: 'JetBrains Mono Box'; font-display: swap; unicode-range: U+2500-257F;
-  src: url(../assets/fonts/jetbrains-mono-box.woff2) format('woff2');
-}
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + var(--s-5)); -webkit-text-size-adjust: 100%; }

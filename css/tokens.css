@@ -37,7 +37,7 @@
   /* type */
   --display: 'Archivo', 'Inter', system-ui, sans-serif;
   --sans:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono:    'JetBrains Mono', 'JetBrains Mono Box', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   --fs-xs:   0.75rem;    /* 12 */
   --fs-sm:   0.875rem;   /* 14 */
