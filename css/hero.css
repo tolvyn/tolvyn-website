@@ -17,7 +17,7 @@
   background: var(--bg) url(../assets/hero/gate-frame-sm.svg) center / contain no-repeat;
 }
 @media (min-width: 768px) {
-  .hero-gate { aspect-ratio: auto; height: 540px; background-image: url(../assets/hero/gate-frame.svg); }
+  .hero-gate { aspect-ratio: auto; height: 520px; background-image: url(../assets/hero/gate-frame.svg); }
 }
 .hero.is-live .hero-gate { background: none; }
 
@@ -42,7 +42,7 @@
 }
 .gate-hint.is-gone { opacity: 0; visibility: hidden; }
 .gate-kill {
-  position: absolute; top: 24px; right: 0; pointer-events: auto;
+  position: absolute; top: 18px; right: 0; pointer-events: auto;
   display: inline-flex; align-items: center; gap: var(--s-2); min-height: 40px; padding: 0 var(--s-4);
   background: var(--bg); border: 1px solid var(--border-strong); border-radius: var(--radius);
   font: 500 13px/1 var(--mono); color: var(--text); cursor: pointer;

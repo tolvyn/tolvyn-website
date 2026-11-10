@@ -62,10 +62,10 @@
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     S = { x: Math.round(mr.left - hr.left), y: Math.round(mr.top - hr.top), w: Math.round(mr.width), h: Math.round(mr.height) };
-    G.barY = S.y + 110;
-    G.top = S.y + 180;
-    G.ledgerY = S.y + S.h - 136;
-    G.bot = G.ledgerY - 30;
+    G.barY = S.y + 98;
+    G.top = S.y + 176;
+    G.ledgerY = S.y + S.h - 128;
+    G.bot = G.ledgerY - 26;
     G.gate = S.x + Math.round(S.w * 0.4);
     ctx.font = '500 14px ' + SANS;
     var lw = 0;
@@ -97,7 +97,7 @@
     var hx = S.w * limit / MAX;
     handle.style.left = hx + 'px';
     var right = hx > S.w - 160;
-    hint.style.top = (G.barY - S.y - 34) + 'px';
+    hint.style.top = (G.barY - S.y - 30) + 'px';
     hint.style.left = right ? '' : (hx + 16) + 'px';
     hint.style.right = right ? (S.w - hx + 16) + 'px' : '';
     handle.setAttribute('aria-valuenow', limit.toFixed(2));
@@ -248,8 +248,8 @@
     var small = '500 12px ' + MONO, over = spent > limit - 0.05;
     ctx.save(); if ('letterSpacing' in ctx) ctx.letterSpacing = '1px';
     text('EXAMPLE DATA', S.x, S.y + 12, small, C.muted); ctx.restore();
-    segs(S.x, S.y + 46, '500 26px ' + MONO, [['Spent ', C.text2], [money(shown), over ? C.amber : C.text], [' of ' + money(MAX), C.text2]]);
-    segs(S.x, S.y + 72, '400 15px ' + MONO, [['Refused ', C.text2], [refused + (refused === 1 ? ' call' : ' calls'), refused ? C.amber : C.text2],
+    segs(S.x, S.y + 44, '500 26px ' + MONO, [['Spent ', C.text2], [money(shown), over ? C.amber : C.text], [' of ' + money(MAX), C.text2]]);
+    segs(S.x, S.y + 68, '400 15px ' + MONO, [['Refused ', C.text2], [refused + (refused === 1 ? ' call' : ' calls'), refused ? C.amber : C.text2],
       [' · ', C.muted], [money(shownSaved), refused ? C.amber : C.text2], [' never charged', C.text2]]);
     // the meter: spend, the limit, and the part beyond the limit where calls are refused
     var bx = S.x, bw = S.w, by = G.barY, lx = bx + bw * limit / MAX;
@@ -260,7 +260,7 @@
     for (var hx = lx - 6; hx < bx + bw; hx += 5) { ctx.moveTo(hx, by + 3); ctx.lineTo(hx + 6, by - 3); }
     ctx.stroke(); ctx.restore();
     ctx.fillStyle = over ? C.amber : C.accent; ctx.fillRect(bx, by - 3, bw * clamp(shown / MAX, 0, 1), 6);
-    var f = '400 12px ' + MONO, ly = by + 26, lt = 'limit ' + money(limit);
+    var f = '400 12px ' + MONO, ly = by + 34, lt = 'limit ' + money(limit);   // clear of the handle, which reaches 19px below
     ctx.font = f; var half = ctx.measureText(lt).width / 2 + 6, cx = clamp(lx, bx + half, bx + bw - half);
     text(lt, cx, ly, '500 12px ' + MONO, C.text, 'center');
     if (cx - half > bx + 30) text('$0', bx, ly, f, C.muted);
@@ -270,10 +270,10 @@
 
   function drawFlow() {
     var gx = G.gate, i;
-    text('apps and agents →', S.x, G.top - 22, '400 12px ' + MONO, C.muted);
+    text('apps and agents →', S.x, G.top - 18, '400 12px ' + MONO, C.muted);
     ctx.save(); ctx.font = '800 12px ' + SANS; ctx.fillStyle = C.accent; ctx.textAlign = 'center';
     if ('letterSpacing' in ctx) ctx.letterSpacing = '2.5px';
-    ctx.fillText('TOLVYN', gx + 1, G.top - 22); ctx.restore();
+    ctx.fillText('TOLVYN', gx + 1, G.top - 18); ctx.restore();
     ctx.strokeStyle = C.strong; ctx.lineWidth = 1; ctx.setLineDash([2, 6]);
     G.lanes.forEach(function (y) { ctx.beginPath(); ctx.moveTo(S.x, y + 0.5); ctx.lineTo(G.port - 10, y + 0.5); ctx.stroke(); });
     ctx.setLineDash([]);
@@ -325,12 +325,12 @@
     var y0 = G.ledgerY, col = {}, f = '400 13px ' + MONO;
     G.cols.forEach(function (c) { col[c.key] = c; });
     ctx.fillStyle = C.border; ctx.fillRect(S.x, y0, S.w, 1);
-    text('LEDGER · example data', S.x, y0 + 20, '500 12px ' + MONO, C.muted);
-    text('prev', col.prev.x, y0 + 20, '400 12px ' + MONO, C.muted);
-    text('hash', col.hash.x, y0 + 20, '400 12px ' + MONO, C.muted);
+    text('LEDGER · example data', S.x, y0 + 18, '500 12px ' + MONO, C.muted);
+    text('prev', col.prev.x, y0 + 18, '400 12px ' + MONO, C.muted);
+    text('hash', col.hash.x, y0 + 18, '400 12px ' + MONO, C.muted);
     var list = rows.slice(-4), n = list.length;
     list.forEach(function (r, i) {
-      var target = y0 + 48 + (4 - n + i) * 26;
+      var target = y0 + 44 + (4 - n + i) * 24;
       r.y = r.y == null ? target + 16 : r.y + (target - r.y) * 0.22;
     });
     // the chain: each row's prev is the row above's hash, drawn as a link between the two cells
