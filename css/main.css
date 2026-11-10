@@ -119,7 +119,7 @@
   .home-cta .home-cta__actions { grid-row: 3; }
   .home-cta .home-cta__demo { grid-row: 4; }
 }
-.pricing-teaser .home-cta__demo { margin-bottom: 0; font-size: var(--fs-sm); color: var(--text-muted); }
+
 .home-cta__demo a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 @media (min-width: 600px) {
@@ -160,6 +160,7 @@
 .pricing-teaser { padding: var(--s-7) var(--s-6); }
 .pricing-teaser h2 { max-width: 20ch; margin-bottom: var(--s-4); }
 .pricing-teaser p:not(.section-label) { max-width: 60ch; margin-bottom: var(--s-5); font-size: var(--fs-md); }
+.pricing-teaser p.home-cta__demo { margin-bottom: 0; font-size: var(--fs-sm); color: var(--text-muted); }
 
 /* ── How-it-works steps ───────────────────────────────────────────── */
 .hiw-steps { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
