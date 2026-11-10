@@ -4,7 +4,6 @@
 /* ── Hero (homepage) ──────────────────────────────────────────────── */
 .hero { position: relative; overflow: hidden; overflow: clip; padding-block: var(--s-8); border-bottom: 1px solid var(--border); }
 .hero > .container { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; }
-.hero__eyebrow, .hero h1, .hero__sub, .hero__ctas, .hero__trust { position: relative; z-index: 1; }
 .hero__eyebrow {
   display: inline-flex; justify-self: start; align-items: center; gap: var(--s-2);
   margin-bottom: var(--s-5);
@@ -20,9 +19,13 @@
 
 @media (min-width: 1200px) {
   .hero { padding-block: var(--s-9) var(--s-8); }
-  .hero > .container { grid-template-columns: minmax(0, 13fr) minmax(0, 10fr); column-gap: var(--s-7); }
+  .hero > .container { grid-template-columns: minmax(0, 17fr) minmax(0, 23fr); column-gap: var(--s-7); align-items: center; }
   .hero > .container > * { grid-column: 1; }
-  .hero > .container > .hero-gate { grid-column: 2; grid-row: 1 / span 5; align-self: stretch; margin-top: 0; aspect-ratio: auto; min-height: 480px; }
+  .hero { padding-block: var(--s-8); }
+  .hero h1 { font-size: 2.75rem; }
+  .hero__sub { font-size: 1.0625rem; }
+  .hero__ctas .btn-lg { padding: 0 20px; }
+  .hero > .container > .hero-gate { grid-column: 2; grid-row: 1 / span 5; height: 560px; margin: 0 calc(-1 * var(--s-6)) 0 0; }
 }
 
 /* ── Inner page hero ──────────────────────────────────────────────── */
