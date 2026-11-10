@@ -30,13 +30,23 @@
   };
 
   // Controls: a slider handle for the limit, and a kill switch for one agent. Both work by keyboard.
-  var ui = document.createElement('div');
-  ui.className = 'gate-ui';
-  ui.innerHTML = '<div class="gate-track"><div class="gate-handle" role="slider" tabindex="0"' +
-    ' aria-label="Example budget limit" aria-valuemin="0.5" aria-valuemax="5"></div></div>' +
-    '<span class="gate-hint" aria-hidden="true">‹ drag the limit ›</span>' +
-    '<button class="gate-kill" type="button">Kill ' + KILL + '</button>';
-  var track = ui.children[0], handle = track.firstChild, hint = ui.children[1], killBtn = ui.children[2];
+  function node(tag, cls, text) {
+    var e = document.createElement(tag);
+    e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+  var ui = node('div', 'gate-ui'), track = node('div', 'gate-track'), handle = node('div', 'gate-handle'),
+    hint = node('span', 'gate-hint', '‹ drag the limit ›'), killBtn = node('button', 'gate-kill', 'Kill ' + KILL);
+  handle.setAttribute('role', 'slider');
+  handle.tabIndex = 0;
+  handle.setAttribute('aria-label', 'Example budget limit');
+  handle.setAttribute('aria-valuemin', '0.5');
+  handle.setAttribute('aria-valuemax', '5');
+  hint.setAttribute('aria-hidden', 'true');
+  killBtn.type = 'button';
+  track.appendChild(handle);
+  ui.append(track, hint, killBtn);
   canvas.className = 'gate-canvas';
   canvas.setAttribute('aria-hidden', 'true');
 

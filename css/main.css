@@ -37,6 +37,7 @@
 .page-hero .page-hero__meta, .post-meta, .ci-hero .hero-meta, .mp-asof, .mp-hero .mp-disclaimer {font:400 var(--fs-sm)/1.6 var(--mono); color:var(--text-muted);}
 .ci-hero .hero-meta, .mp-asof {margin-top:var(--s-5);}
 .hero-meta span, .mp-asof strong {color:var(--accent); font-weight:500;}
+.mp-asof a {color:var(--accent);}
 .page-hero:has(+ .container--narrow, + .container > .legal-body) > .container {max-width:880px;}
 .page-body {padding-block:var(--s-7) var(--s-9);}
 body > section:not([class]) {padding-block:var(--s-8);}
@@ -292,6 +293,7 @@ td:is(.cmp-no, .t-no) {color:var(--text-muted);}
 .headline-card {padding:var(--s-5); background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);}
 .headline-card__model {margin-bottom:var(--s-2); color:var(--text-secondary);}
 .headline-card__cost {margin-bottom:var(--s-2); font:500 1.75rem/1 var(--mono); letter-spacing:-0.02em; color:var(--text);}
+.headline-card__unit {margin-left:4px; font:400 0.9rem/1 var(--sans); color:var(--text-secondary);}
 .headline-card__meta {font-size:var(--fs-xs); color:var(--text-secondary);}
 .trend-up {color:var(--amber);}
 .trend-down {color:var(--accent);}
@@ -327,6 +329,8 @@ th.sorted .sort-icon {opacity:1;}
 .tooltip-text {position:absolute; bottom:calc(100% + 6px); left:50%; z-index:10; width:220px; padding:6px 10px; transform:translateX(-50%); visibility:hidden; opacity:0; pointer-events:none; white-space:normal; background:var(--surface-2); border:1px solid var(--border-light); border-radius:var(--radius); font-size:var(--fs-xs); color:var(--text); transition:opacity var(--transition);}
 .tooltip-wrap:hover .tooltip-text {visibility:visible; opacity:1;}
 .ci-chart-wrap {padding:var(--s-5);}
+.ci-chart {max-height:360px;}
+.ci-model {font-weight:500;}
 .ci-loading, .ci-empty, .mp-loading, .mp-empty {padding:var(--s-7) var(--s-5); text-align:center; font:400 var(--fs-sm)/1.6 var(--mono); color:var(--text-muted);}
 .headline-grid > :is(.ci-empty, .ci-loading) {grid-column:1 / -1; border:1px dashed var(--border-strong); border-radius:var(--radius-lg);}
 .ci-empty strong, .mp-empty strong {display:block; margin-bottom:var(--s-2); font:600 var(--fs-base)/1.4 var(--sans); color:var(--text);}
