@@ -120,25 +120,12 @@
       Live since March 2026 · Open-source pricing database · MIT and Apache-2.0 SDKs
     </p>
 
-    <!-- Live terminal -->
-    <div class="terminal-wrap reveal">
-      <div class="terminal-bar" aria-hidden="true">
-        <span class="terminal-dot terminal-dot--red"></span>
-        <span class="terminal-dot terminal-dot--yellow"></span>
-        <span class="terminal-dot terminal-dot--green"></span>
-        <span class="terminal-title">tolvyn — bash</span>
-      </div>
-      <div class="terminal-screen" id="terminal-screen" aria-live="polite" aria-label="Live terminal output">
-        <div class="terminal-lines" id="terminal-lines"></div>
-        <span class="terminal-cursor" aria-hidden="true"></span>
-      </div>
-    </div>
   </div>
 </section>
 
 
 <!-- ── THE PROBLEM ─────────────────────────────────────────────────── -->
-<section class="section" aria-labelledby="problem-heading">
+<section class="section home-problem" aria-labelledby="problem-heading">
   <div class="container">
     <div class="section-header section-header--center reveal">
       <p class="section-label">The problem</p>
@@ -163,9 +150,9 @@
 </section>
 
 <!-- ── HOW IT WORKS (architecture diagram) ─────────────────────────── -->
-<section class="section" style="padding-top:0;" aria-labelledby="how-heading">
+<section class="section home-how" aria-labelledby="how-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
+    <div class="section-header section-header--center section-header--end reveal">
       <p class="section-label">How it works</p>
       <h2 id="how-heading">A proxy that turns every call it meters into a financial record</h2>
       <p>Register your provider key with TOLVYN once, point your SDK's base URL at the proxy, and swap your provider key for a TOLVYN key. No SDK refactor.</p>
@@ -238,7 +225,7 @@
 </section>
 
 <!-- ── DIFFERENTIATORS ─────────────────────────────────────────────── -->
-<section class="section" aria-labelledby="diff-heading">
+<section class="section home-diff" aria-labelledby="diff-heading">
   <div class="container">
     <div class="section-header section-header--center reveal">
       <p class="section-label">What makes TOLVYN different</p>
@@ -246,7 +233,7 @@
     </div>
 
     <div class="diff-grid">
-      <div class="diff-tile reveal" data-delay="1">
+      <div class="diff-tile diff-tile--prove reveal" data-delay="1">
         <h3>Tamper-Evident Ledger</h3>
         <p>Every AI request TOLVYN meters is hash-chained and HMAC-signed. Cryptographic proof, not logs. Your CFO or auditor can re-verify the hash chain themselves with the script shipped in every evidence package &mdash; the HMAC is keyed on a secret TOLVYN holds, so it detects tampering by anyone without that key.</p>
       </div>
@@ -258,7 +245,7 @@
         <h3>Invoice Reconciliation</h3>
         <p>Upload your OpenAI / Anthropic / Google usage export. TOLVYN shows the gap: spend on your provider bill that did not go through TOLVYN.</p>
       </div>
-      <div class="diff-tile reveal" data-delay="4">
+      <div class="diff-tile diff-tile--stop reveal" data-delay="4">
         <h3>Agent Governance</h3>
         <p>Per-agent budgets. Cost anomaly alerts — one call over 10× the recent average. Kill switch. Every AI agent on one ledger.</p>
       </div>
@@ -275,9 +262,9 @@
 </section>
 
 <!-- ── INTEGRATION (5-min proof) ───────────────────────────────────── -->
-<section class="section" style="padding-top:0;" aria-labelledby="integration-heading">
+<section class="section home-integration" aria-labelledby="integration-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
+    <div class="section-header section-header--center section-header--end reveal">
       <p class="section-label">A base-URL change, or one import</p>
       <h2 id="integration-heading">Change how you connect. Everything else identical.</h2>
     </div>
@@ -324,10 +311,24 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
   -H "X-Tolvyn-Service: chatbot-api"</code></pre></div>
     </div>
 
-    <p style="text-align:center;margin-top:20px;color:var(--text-muted);font-family:var(--mono);font-size:0.85rem;">
+    <!-- Live terminal -->
+    <div class="terminal-wrap reveal">
+      <div class="terminal-bar" aria-hidden="true">
+        <span class="terminal-dot terminal-dot--red"></span>
+        <span class="terminal-dot terminal-dot--yellow"></span>
+        <span class="terminal-dot terminal-dot--green"></span>
+        <span class="terminal-title">tolvyn — bash</span>
+      </div>
+      <div class="terminal-screen" id="terminal-screen" aria-live="polite" aria-label="Live terminal output">
+        <div class="terminal-lines" id="terminal-lines"></div>
+        <span class="terminal-cursor" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <p class="home-install">
       pip install tolvyn &nbsp;·&nbsp; npm install tolvyn &nbsp;·&nbsp; go get github.com/tolvyn/tolvyn-go
     </p>
-    <p style="text-align:center;margin-top:8px;color:var(--text-muted);font-size:0.9rem;max-width:640px;margin-inline:auto;">
+    <p class="home-note">
       Works with OpenAI, Anthropic, Google, and DeepSeek. If TOLVYN is unreachable, SDK mode automatically retries against the provider directly.
     </p>
   </div>
@@ -351,30 +352,30 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
 <!-- ── COST INDEX TEASER ───────────────────────────────────────────── -->
 <section class="section-sm" aria-labelledby="cost-index-heading">
   <div class="container">
-    <div class="card reveal" style="max-width:720px;margin-inline:auto;padding:36px;text-align:center;">
-      <span class="badge" style="margin-bottom:16px;">
+    <div class="card home-index reveal">
+      <span class="badge">
         Privacy floor: three organisations minimum
       </span>
-      <h3 id="cost-index-heading" style="font-size:1.4rem;margin-bottom:12px;">TOLVYN AI Cost Index</h3>
-      <p style="margin-bottom:24px;">Anonymized cost benchmarks aggregated from real production AI traffic. A figure is published only when at least three organisations contribute to it, so the index shows what clears that floor &mdash; and nothing else.</p>
+      <h3 id="cost-index-heading">TOLVYN AI Cost Index</h3>
+      <p>Anonymized cost benchmarks aggregated from real production AI traffic. A figure is published only when at least three organisations contribute to it, so the index shows what clears that floor &mdash; and nothing else.</p>
       <a href="/pages/cost-index" class="btn btn-secondary">View the data →</a>
     </div>
   </div>
 </section>
 
 <!-- ── FINAL CTA ───────────────────────────────────────────────────── -->
-<section class="section" aria-labelledby="final-cta-heading">
+<section class="section home-cta" aria-labelledby="final-cta-heading">
   <div class="container">
     <div class="pricing-teaser reveal">
       <p class="section-label">Start now</p>
       <h2 id="final-cta-heading">Start free. 10,000 requests. No credit card.</h2>
       <p>Point your base URL at TOLVYN, swap in a TOLVYN key. Cryptographic proof from request one.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+      <div class="home-cta__actions">
         <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Create your account →</a>
       </div>
-      <p style="font-size:0.9rem;color:var(--text-muted);">
+      <p class="home-cta__demo">
         Or book a 15-minute demo →
-        <a href="https://cal.com/tolvyn" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
+        <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
       </p>
     </div>
   </div>
