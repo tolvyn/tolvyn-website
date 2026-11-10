@@ -6,8 +6,16 @@
     <atom:link href="https://tolvyn.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Articles from TOLVYN on AI API cost: attributing spend to customers and teams, setting budgets, and reconciling against provider invoices.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Oct 2026 00:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 +0530</lastBuildDate>
     <!-- ITEMS: newest first. Copy one <item> to the top for each new post. See BLOG.md. -->
+    <item>
+      <title>How a runaway AI agent burns a month's budget overnight, and five ways to stop it</title>
+      <link>https://tolvyn.io/blog/ai-agent-runaway-spend</link>
+      <guid isPermaLink="true">https://tolvyn.io/blog/ai-agent-runaway-spend</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0530</pubDate>
+      <dc:creator>Younus S. Mohammed</dc:creator>
+      <description>A retry loop or an agent that keeps re-planning can spend real money while nobody is watching. Here are five controls, what each one misses, and where provider spend limits help and where they don't.</description>
+    </item>
     <item>
       <title>How to find out what each customer costs you in OpenAI or Anthropic spend</title>
       <link>https://tolvyn.io/blog/ai-cost-per-customer</link>
