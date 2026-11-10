@@ -1,110 +1,47 @@
-/* TOLVYN Footer */
+/* TOLVYN footer: dense, ruled, four link columns under the brand line. */
 
 .footer {
-  border-top: 1px solid var(--border);
-  padding-block: 64px 32px;
-  background: var(--bg-secondary);
-  margin-top: 96px;
+  margin-top: var(--s-6); padding-block: var(--s-7) var(--s-6);
+  background: var(--bg-secondary); border-top: 1px solid var(--border);
 }
-
 .footer__grid {
-  display: grid;
-  grid-template-columns: 1.5fr repeat(4, 1fr);
-  gap: 48px;
-  margin-bottom: 48px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-5);
+  margin-bottom: var(--s-6);
 }
-
-.footer__brand h4 {
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-.footer__brand p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  max-width: 260px;
-  line-height: 1.6;
-}
+.footer__brand { grid-column: 1 / -1; padding-bottom: var(--s-5); border-bottom: 1px solid var(--border); }
+.footer__brand h4 { margin-bottom: var(--s-2); font: 800 1rem/1 var(--sans); letter-spacing: 0.16em; color: var(--text); }
+.footer__brand p { font-size: var(--fs-sm); color: var(--text-secondary); }
 
 .footer__col h5 {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text);
-  margin-bottom: 16px;
-}
-.footer__col ul {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.footer__col a {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  transition: color var(--transition);
-}
-.footer__col a:hover { color: var(--accent); }
-
-.footer__bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.footer__copy {
-  font-size: 0.82rem;
+  margin-bottom: var(--s-3);
+  font: 500 var(--fs-xs)/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text-muted);
 }
-.footer__social {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.footer__social a {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
+.footer__col ul { display: flex; flex-direction: column; gap: var(--s-1); }
+.footer__col a, .footer__social a, .footer__links a {
+  display: inline-flex; align-items: center; min-height: 28px;
+  font-size: var(--fs-sm); color: var(--text-secondary);
   transition: color var(--transition);
 }
-.footer__social a:hover { color: var(--accent); }
+.footer__col a:hover, .footer__social a:hover, .footer__links a:hover { color: var(--text); }
 
-/* legacy compact footer used on legal pages */
-.footer__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+.footer__bottom {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-4);
+  padding-top: var(--s-5); border-top: 1px solid var(--border);
 }
-.footer__links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.footer__links a {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  transition: color var(--transition);
-}
-.footer__links a:hover { color: var(--accent); }
+.footer__copy { font: 400 var(--fs-xs)/1.5 var(--mono); color: var(--text-muted); }
+.footer__social { display: flex; flex-wrap: wrap; gap: var(--s-5); }
 
-@media (max-width: 900px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-  .footer__brand { grid-column: span 2; }
-}
+/* legacy compact footer (legal pages) */
+.footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-5); }
+.footer__links { display: flex; flex-wrap: wrap; gap: var(--s-5); }
 
-@media (max-width: 600px) {
-  .footer__grid { grid-template-columns: 1fr; }
-  .footer__brand { grid-column: auto; }
-  .footer__bottom { flex-direction: column; align-items: flex-start; }
-  .footer__inner  { flex-direction: column; align-items: flex-start; }
+@media (pointer: coarse) {
+  .footer__col a, .footer__social a, .footer__links a { min-height: 44px; }
+  .footer__col ul { gap: 0; }
+}
+@media (min-width: 900px) {
+  .footer__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .footer__brand { display: flex; align-items: baseline; gap: var(--s-5); }
+  .footer__brand h4 { margin-bottom: 0; }
 }
