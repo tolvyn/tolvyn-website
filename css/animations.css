@@ -1,14 +1,7 @@
-/* TOLVYN motion. Content is never hidden waiting for JavaScript or a scroll position:
-   .reveal and .anim-fade-up are kept as hooks but start (and stay) visible.
-   Motion is limited to quick hover/focus transitions, the hero canvas and the terminal. */
+/* Motion: content never starts hidden; quick hover/focus transitions only. */
 
 @keyframes blink { 50% { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }

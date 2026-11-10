@@ -1,121 +1,53 @@
-/* TOLVYN components: buttons, panels, badges, tags, section labels, code. */
+/* TOLVYN components */
 
-/* ── Buttons: solid mint primary, quiet hairline secondary ─────────── */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
-  min-height: 44px; padding: 0 var(--s-5);
-  border: 1px solid transparent; border-radius: var(--radius);
-  font: 600 var(--fs-sm)/1.2 var(--sans); letter-spacing: 0.005em; text-align: center;
-  cursor: pointer;
-  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
-}
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); min-height: 44px; padding: 0 var(--s-5); border: 1px solid transparent; border-radius: var(--radius); font: 600 var(--fs-sm)/1.2 var(--sans); letter-spacing: 0.005em; text-align: center; cursor: pointer; transition: background-color var(--transition), border-color var(--transition), color var(--transition); }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-.btn-secondary, .btn-outline, .btn-ghost { background: transparent; border-color: var(--border-strong); color: var(--text); }
-.btn-secondary:hover, .btn-outline:hover, .btn-ghost:hover { background: var(--surface); border-color: var(--text-muted); }
-.btn-link { background: none; border: 0; padding: 0; min-height: 0; color: var(--accent); }
-.btn-link:hover { color: var(--accent-hover); }
+.btn-secondary, .btn-ghost { background: transparent; border-color: var(--border-strong); color: var(--text); }
+.btn-secondary:hover, .btn-ghost:hover { background: var(--surface); border-color: var(--text-muted); }
 .btn-lg { min-height: 52px; padding: 0 var(--s-6); font-size: var(--fs-base); }
 .btn-sm { min-height: 40px; padding: 0 var(--s-4); }
 .btn-block { width: 100%; }
 @media (pointer: coarse) { .btn-sm { min-height: 44px; } }
 
-/* ── Panels: flat surface, 1px hairline, small corners ─────────────── */
+/* Panels */
 .card, .diff-tile, .plan, .migration, .pricing-teaser, .diagram, .code-tabs,
-.discount-banner, .terminal-wrap {
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-}
+.discount-banner, .terminal-wrap { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .card { padding: var(--s-6); transition: border-color var(--transition); }
 .card:hover { border-color: var(--border-light); }
 .card h3 { margin-bottom: var(--s-2); font-size: var(--fs-md); }
 .card p  { font-size: var(--fs-sm); line-height: 1.65; }
-.card__icon {
-  display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: var(--s-5);
-  border: 1px solid var(--border-light); border-radius: var(--radius);
-}
-.card__icon svg { width: 20px; height: 20px; fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Pointer-following highlight: the hairline brightens near the pointer (js/main.js sets --mx/--my).
-   A border effect, not a glow: nothing is drawn outside the panel. */
-.card::after, .diff-tile::after, .plan::after, .migration::after, .pricing-teaser::after,
-.code-tabs::after, .discount-banner::after {
-  content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none;
-  padding: 1px; border-radius: inherit;
-  background: radial-gradient(180px circle at var(--mx, -400px) var(--my, -400px), rgba(230, 233, 239, 0.45), transparent 70%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity: 0; transition: opacity var(--transition);
-}
-.card:hover::after, .diff-tile:hover::after, .plan:hover::after, .migration:hover::after,
-.pricing-teaser:hover::after, .code-tabs:hover::after, .discount-banner:hover::after { opacity: 1; }
+/* pointer highlight: the hairline brightens (js/main.js) */
+:is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner)::after { content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none; padding: 1px; border-radius: inherit; background: radial-gradient(180px circle at var(--mx, -400px) var(--my, -400px), rgba(230, 233, 239, 0.45), transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity var(--transition); }
+:is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner):hover::after { opacity: 1; }
 
-/* ── Badge, tag, inline mono ──────────────────────────────────────── */
-.badge {
-  display: inline-flex; align-items: center; gap: var(--s-2);
-  padding: 3px var(--s-2);
-  border: 1px solid var(--accent-line); border-radius: 2px;
-  font: 500 var(--fs-xs)/1.4 var(--mono); letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--accent);
-}
-.tag {
-  display: inline-block; padding: 1px 6px;
-  background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px;
-  font: 400 0.82em/1.5 var(--mono); color: var(--text);
-}
-.mono {
-  padding: 1px 6px; border-radius: 3px;
-  background: var(--accent-muted);
-  font: 400 0.85em/1.5 var(--mono); color: var(--accent);
-}
+/* The mono label */
+.label, .badge, .section-label, .hero__eyebrow, .eyebrow, .plan__name, .docs-sidebar__title, .cmp-table th, .uc-table th, .legal-body th, .ci-table th, .mp-table th, .uc-flow__step, .headline-card__model, .footer__col h5, .code-tabs__tab { font: 500 var(--fs-xs)/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
 
-/* ── Section label: mono, with a ledger row number (decorative, not read aloud) ── */
-.section-label {
-  display: inline-flex; align-items: baseline; gap: var(--s-3);
-  margin-bottom: var(--s-4);
-  font: 500 var(--fs-xs)/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--text-secondary);
-}
-.section-label::before {
-  counter-increment: ledger;
-  content: counter(ledger, decimal-leading-zero);
-  content: counter(ledger, decimal-leading-zero) / "";
-  color: var(--accent);
-}
+/* Badge, tag, inline mono */
+.badge { display: inline-flex; align-items: center; gap: var(--s-2); padding: 3px var(--s-2); border: 1px solid var(--accent-line); border-radius: 2px; color: var(--accent); }
+.tag { display: inline-block; padding: 1px 6px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; font: 400 0.82em/1.5 var(--mono); color: var(--text); }
+.mono { padding: 1px 6px; border-radius: 3px; background: var(--accent-muted); font: 400 0.85em/1.5 var(--mono); color: var(--accent); }
+
+/* section label + ledger number (not read aloud) */
+.section-label { display: inline-flex; align-items: baseline; gap: var(--s-3); margin-bottom: var(--s-4); color: var(--text-secondary); }
+.section-label::before { counter-increment: ledger; content: counter(ledger, decimal-leading-zero); content: counter(ledger, decimal-leading-zero) / ""; color: var(--accent); }
 .section-header { max-width: 760px; margin-bottom: var(--s-7); }
 .section-header h2 { margin-bottom: var(--s-4); }
-.section-header p:not(.section-label) { max-width: 62ch; font-size: var(--fs-md); line-height: 1.6; }
-.section-header--center { text-align: left; }
+.section-header p:not(.section-label) { max-width: 37em; font-size: var(--fs-md); line-height: 1.6; }
 .section-header--end { margin-left: auto; }
 
-.gradient-text { color: var(--accent); }
-.divider { height: 1px; border: 0; background: var(--border); }
-
-/* ── Code ─────────────────────────────────────────────────────────── */
-.code-block, .code-tabs__panel pre {
-  margin: 0; padding: var(--s-5);
-  background: var(--bg);
-  font: 400 0.8125rem/1.7 var(--mono); color: var(--text-secondary);
-  overflow-x: auto; white-space: pre; tab-size: 2;
-}
+/* Code */
+.code-block, .code-tabs__panel pre { margin: 0; padding: var(--s-5); background: var(--bg); font: 400 0.8125rem/1.7 var(--mono); color: var(--text-secondary); overflow-x: auto; white-space: pre; tab-size: 2; }
 .code-block { border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .code-block code { font: inherit; color: inherit; }
-.code-block .tk-comment { color: var(--text-muted); font-style: italic; }
-.code-block .tk-keyword { color: var(--accent); }
-.code-block .tk-string, .code-block .tk-fn, .code-block .tk-number { color: var(--text); }
 
 .code-tabs { overflow: hidden; }
 .code-tabs__bar { display: flex; gap: var(--s-1); padding-inline: var(--s-3); border-bottom: 1px solid var(--border); }
-.code-tabs__tab {
-  min-height: 44px; padding: 0 var(--s-3);
-  background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
-  font: 500 var(--fs-xs)/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--text-muted); cursor: pointer;
-  transition: color var(--transition), border-color var(--transition);
-}
+.code-tabs__tab { min-height: 44px; padding: 0 var(--s-3); background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--text-muted); cursor: pointer; transition: color var(--transition), border-color var(--transition); }
 .code-tabs__tab:hover { color: var(--text); }
 .code-tabs__tab.active { color: var(--text); border-bottom-color: var(--accent); }
 .code-tabs__panel { display: none; }

@@ -1,39 +1,15 @@
-/* TOLVYN layout: reset, base, container, sections, grids, focus. */
+/* TOLVYN base: fonts, reset, type, container */
 
-/* Metric-matched fallbacks. Until the web fonts arrive, Arial (or its metric twin Liberation Sans, or
-   Helvetica) is scaled to Inter's and Archivo's widths and heights, so text wraps the same before and after
-   the swap and the page does not shift. Values measured from the fonts' own metrics. */
-@font-face {
-  font-family: 'Inter Fallback'; font-weight: 100 500;
-  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Helvetica');
-  size-adjust: 106.86%; ascent-override: 90.65%; descent-override: 22.57%; line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Inter Fallback'; font-weight: 600 900;
-  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Helvetica Bold');
-  size-adjust: 101.65%; ascent-override: 95.3%; descent-override: 23.73%; line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Archivo Fallback'; font-weight: 100 900;
-  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Helvetica Bold');
-  size-adjust: 98.17%; ascent-override: 89.43%; descent-override: 21.39%; line-gap-override: 0%;
-}
+/* Metric-matched fallbacks: Arial-class fonts scaled to Inter/Archivo, so the font swap does not shift the page. */
+@font-face { font-family: 'Inter Fallback'; font-weight: 100 500; src: local('Arial'), local('Liberation Sans'), local('Helvetica'); size-adjust: 106.86%; ascent-override: 90.65%; descent-override: 22.57%; line-gap-override: 0%; }
+@font-face { font-family: 'Inter Fallback'; font-weight: 600 900; src: local('Arial Bold'), local('Liberation Sans Bold'), local('Helvetica Bold'); size-adjust: 101.65%; ascent-override: 95.3%; descent-override: 23.73%; line-gap-override: 0%; }
+@font-face { font-family: 'Archivo Fallback'; font-weight: 100 900; src: local('Arial Bold'), local('Liberation Sans Bold'), local('Helvetica Bold'); size-adjust: 98.17%; ascent-override: 89.43%; descent-override: 21.39%; line-gap-override: 0%; }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + var(--s-5)); -webkit-text-size-adjust: 100%; }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: var(--fs-base);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  counter-reset: ledger;
-}
+body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: var(--fs-base); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; counter-reset: ledger; }
 
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }
@@ -41,11 +17,11 @@ ul { list-style: none; }
 code, pre, kbd, samp { font-family: var(--mono); }
 ::selection { background: var(--accent); color: var(--on-accent); }
 
-/* one focus style everywhere: a 2px mint ring, offset from the element */
+/* one focus ring everywhere */
 :focus { outline: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-/* ── Type ─────────────────────────────────────────────────────────── */
+/* Type */
 h1, h2, h3, h4 { color: var(--text); font-weight: 700; line-height: 1.2; }
 h1, h2 { font-family: var(--display); font-stretch: 112%; letter-spacing: -0.02em; }
 h1 { font-size: var(--fs-3xl); line-height: 1.04; }
@@ -54,52 +30,29 @@ h3 { font-size: var(--fs-md); font-weight: 600; letter-spacing: -0.005em; line-h
 p  { color: var(--text-secondary); }
 strong { color: var(--text); font-weight: 600; }
 
-.label {
-  display: inline-flex; align-items: center; gap: var(--s-3);
-  font: 500 var(--fs-xs)/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--text-secondary);
-}
+.label { display: inline-flex; align-items: center; gap: var(--s-3); color: var(--text-secondary); }
 .label::before { content: ""; width: 20px; height: 1px; background: var(--accent); }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: var(--s-5);
-}
+.container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: var(--s-5); }
 .container--narrow { max-width: 880px; }
-.container--wide   { max-width: 1320px; }
 
 .section    { padding-block: var(--s-9); }
 .section-sm { padding-block: var(--s-8); }
-.section-lg { padding-block: var(--s-10); }
 
-.grid-2, .grid-3, .grid-4 { display: grid; gap: var(--s-4); grid-template-columns: 1fr; }
-
-.flex-center  { display: flex; align-items: center; justify-content: center; }
-.flex-between { display: flex; align-items: center; justify-content: space-between; }
-.flex-start   { display: flex; align-items: center; gap: var(--s-3); }
-.stack    { display: flex; flex-direction: column; gap: var(--s-4); }
-.stack-sm { display: flex; flex-direction: column; gap: var(--s-2); }
-.stack-lg { display: flex; flex-direction: column; gap: var(--s-6); }
+.grid-2 { display: grid; gap: var(--s-4); grid-template-columns: 1fr; }
 
 @media (min-width: 600px) {
-  .grid-2, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 900px) {
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  .container { padding-inline: var(--s-6); }
-}
-@media (min-width: 1200px) {
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+.container { padding-inline: var(--s-6); }
 }
 @media (max-width: 899px) {
-  .section    { padding-block: var(--s-8); }
-  .section-sm { padding-block: var(--s-7); }
-  .section-lg { padding-block: var(--s-9); }
+.section    { padding-block: var(--s-8); }
+.section-sm { padding-block: var(--s-7); }
 }
 @media (max-width: 599px) {
-  .container  { padding-inline: var(--s-4); }
-  .section    { padding-block: var(--s-7); }
-  .section-sm { padding-block: var(--s-6); }
+.container  { padding-inline: var(--s-4); }
+.section    { padding-block: var(--s-7); }
+.section-sm { padding-block: var(--s-6); }
 }

@@ -1,49 +1,27 @@
-/* TOLVYN footer: compact. A brand line, four link columns (Resources flows into sub-columns),
-   a one-line legal row. 28px link rows with a mouse, 44px on touch screens. */
+/* TOLVYN footer: brand line, four link columns, legal row. */
 
-.footer {
-  margin-top: var(--s-6); padding-block: var(--s-6) var(--s-5);
-  background: var(--bg-secondary); border-top: 1px solid var(--border);
-}
-.footer__grid {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: row dense;
-  gap: var(--s-5); margin-bottom: var(--s-5);
-}
+.footer { margin-top: var(--s-6); padding-block: var(--s-6) var(--s-5); background: var(--bg-secondary); border-top: 1px solid var(--border); }
+.footer__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: row dense; gap: var(--s-5); margin-bottom: var(--s-5); }
 .footer__brand { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-4); }
 .footer__brand h4 { font: 800 0.9375rem/1.4 var(--sans); letter-spacing: 0.16em; color: var(--text); }
 .footer__brand p { font-size: var(--fs-sm); color: var(--text-secondary); }
 
-.footer__col h5 {
-  margin-bottom: var(--s-1);
-  font: 500 var(--fs-xs)/1.6 var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--text-muted);
-}
+.footer__col h5 { margin-bottom: var(--s-1); color: var(--text-muted); }
 .footer__col li { break-inside: avoid; }
 .footer__col--wide { grid-column: 1 / -1; }
 .footer__col--wide ul { columns: 2; column-gap: var(--s-5); }
-.footer__col a, .footer__social a, .footer__links a {
-  display: inline-flex; align-items: center; min-height: 28px;
-  font-size: 0.84375rem; color: var(--text-secondary);
-  transition: color var(--transition);
-}
-.footer__col a:hover, .footer__social a:hover, .footer__links a:hover { color: var(--text); }
+.footer__col a, .footer__social a { display: inline-flex; align-items: center; min-height: 28px; font-size: 0.84375rem; color: var(--text-secondary); transition: color var(--transition); }
+.footer__col a:hover, .footer__social a:hover { color: var(--text); }
 
-.footer__bottom {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-1) var(--s-5);
-  padding-top: var(--s-3); border-top: 1px solid var(--border);
-}
+.footer__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-1) var(--s-5); padding-top: var(--s-3); border-top: 1px solid var(--border); }
 .footer__copy { font: 400 var(--fs-xs)/1.5 var(--mono); color: var(--text-muted); }
 .footer__social { display: flex; flex-wrap: wrap; gap: 0 var(--s-5); }
 
-/* legacy compact footer (kept for any page that still uses it) */
-.footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-5); }
-.footer__links { display: flex; flex-wrap: wrap; gap: 0 var(--s-5); }
-
 @media (pointer: coarse) {
-  .footer__col a, .footer__social a, .footer__links a { min-height: 44px; }
+.footer__col a, .footer__social a { min-height: 44px; }
 }
 @media (min-width: 900px) {
-  .footer__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 3.2fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--s-6); }
-  .footer__col--wide { grid-column: auto; }
-  .footer__col--wide ul { columns: 3; }
+.footer__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 3.2fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--s-6); }
+.footer__col--wide { grid-column: auto; }
+.footer__col--wide ul { columns: 3; }
 }
