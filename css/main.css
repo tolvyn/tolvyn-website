@@ -348,8 +348,8 @@ th.sorted .sort-icon { opacity: 1; }
 :is(.methodology, .mp-source) h2 { margin-bottom: var(--s-4); font-size: var(--fs-xl); }
 .methodology > p { max-width: var(--measure); margin-bottom: var(--s-4); }
 :is(.methodology, .mp-source) ul { border-top: 1px solid var(--border); }
-:is(.methodology, .mp-source) li { display: flex; gap: var(--s-3); padding-block: var(--s-3); border-bottom: 1px solid var(--border); font-size: var(--fs-sm); line-height: 1.6; color: var(--text-secondary); }
-:is(.methodology, .mp-source) li::before { content: "\2014"; flex-shrink: 0; color: var(--text-muted); }
+:is(.methodology, .mp-source) li { position: relative; padding-left: var(--s-5); padding-block: var(--s-3); border-bottom: 1px solid var(--border); font-size: var(--fs-sm); line-height: 1.6; color: var(--text-secondary); }
+:is(.methodology, .mp-source) li::before { content: "\2014"; position: absolute; left: 0; color: var(--text-muted); }
 .ci-cta { padding: var(--s-8) max(var(--s-5), calc((100% - 1136px) / 2)); border-top: 1px solid var(--border); }
 .ci-cta h2 { margin-bottom: var(--s-3); }
 .ci-cta p { max-width: 36em; margin-bottom: var(--s-5); font-size: var(--fs-md); }
