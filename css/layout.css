@@ -1,5 +1,24 @@
 /* TOLVYN layout: reset, base, container, sections, grids, focus. */
 
+/* Metric-matched fallbacks. Until the web fonts arrive, Arial (or its metric twin Liberation Sans, or
+   Helvetica) is scaled to Inter's and Archivo's widths and heights, so text wraps the same before and after
+   the swap and the page does not shift. Values measured from the fonts' own metrics. */
+@font-face {
+  font-family: 'Inter Fallback'; font-weight: 100 500;
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Helvetica');
+  size-adjust: 106.86%; ascent-override: 90.65%; descent-override: 22.57%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Inter Fallback'; font-weight: 600 900;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Helvetica Bold');
+  size-adjust: 101.65%; ascent-override: 95.3%; descent-override: 23.73%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Archivo Fallback'; font-weight: 100 900;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Helvetica Bold');
+  size-adjust: 98.17%; ascent-override: 89.43%; descent-override: 21.39%; line-gap-override: 0%;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + var(--s-5)); -webkit-text-size-adjust: 100%; }

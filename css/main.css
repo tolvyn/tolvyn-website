@@ -13,18 +13,23 @@
 .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .hero h1 { margin-bottom: var(--s-5); font-size: clamp(2.25rem, 1.1rem + 3.2vw, 3.125rem); line-height: 1.04; }
 .hero h1 span { color: var(--accent); }
+/* Heights reserved for the lines the web fonts take, so the swap from the fallback cannot move the page */
+@media (max-width: 599px) { .hero h1 { min-height: 4.16em; } }
+@media (min-width: 600px) and (max-width: 899px) { .hero h1 { min-height: 3.12em; } }
+@media (min-width: 600px) and (max-width: 1199px) { .hero__sub { min-height: 8em; } }
 .hero__sub { max-width: 40em; margin-bottom: var(--s-6); font-size: var(--fs-md); line-height: 1.6; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-bottom: var(--s-5); }
 .hero__trust { font: 400 var(--fs-xs)/1.7 var(--mono); letter-spacing: 0.02em; color: var(--text-muted); }
 
 @media (min-width: 1200px) {
   .hero { padding-block: var(--s-9) var(--s-8); }
-  .hero > .container { grid-template-columns: minmax(0, 17fr) minmax(0, 23fr); column-gap: var(--s-7); align-items: center; }
+  .hero > .container { grid-template-columns: minmax(0, 17fr) minmax(0, 23fr); column-gap: var(--s-7); align-items: start; }
   .hero > .container > * { grid-column: 1; }
   .hero { padding-block: var(--s-8); }
-  .hero h1 { font-size: 2.75rem; }
+  .hero h1 { font-size: 2.75rem; min-height: 4.16em; }   /* four lines reserved: a font swap cannot move what follows */
   .hero__sub { font-size: 1.0625rem; }
-  .hero__ctas .btn-lg { padding: 0 20px; }
+  .hero__ctas { flex-wrap: nowrap; }
+  .hero__ctas .btn-lg { padding: 0 20px; white-space: nowrap; }
   .hero > .container > .hero-gate { grid-column: 2; grid-row: 1 / span 5; height: 560px; margin: 0 calc(-1 * var(--s-6)) 0 0; }
 }
 
