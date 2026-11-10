@@ -74,13 +74,22 @@
     }
   }
 
+  // Reduced motion: show every line at once and stop there.
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    LINES.forEach(appendLine);
+    return;
+  }
+
+  // Types while on screen; pauses (and resumes where it was) when scrolled away.
   const wrap = document.getElementById('terminal-screen');
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          observer.unobserve(entry.target);
-          step();
+          if (!timer) step();
+        } else if (timer) {
+          clearTimeout(timer);
+          timer = null;
         }
       });
     },

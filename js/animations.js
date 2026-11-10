@@ -1,34 +1,10 @@
 /* TOLVYN — animations.js
-   Scroll-triggered reveals, counters, stagger.
-   Respects prefers-reduced-motion.
+   Counters and the sidebar highlight. Nothing is hidden waiting for a scroll position
+   (.reveal is a plain hook now). Respects prefers-reduced-motion.
 */
 'use strict';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-(function initReveal() {
-  const targets = document.querySelectorAll('.reveal');
-  if (!targets.length) return;
-
-  if (reduced) {
-    targets.forEach(el => el.classList.add('visible'));
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  targets.forEach(el => observer.observe(el));
-})();
 
 (function initCounters() {
   const counters = document.querySelectorAll('[data-counter]');
