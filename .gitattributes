@@ -1,2 +1,4 @@
 BLOG.md export-ignore
 .gitattributes export-ignore
+tools/ export-ignore
+docs/ export-ignore
