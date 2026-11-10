@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""supply-check: what the upload loads, and from where. Fails (exit 1) on any of:
+
+  1. an external origin (http:, https: or //) in the src/href of a script, stylesheet, font, preload or preconnect,
+     or in a CSS url() or @import
+  2. a file under js/vendor/ or assets/fonts/ that is not in tools/vendor.json, or whose SHA-256 differs from it;
+     a file listed there that is missing from the upload
+  3. innerHTML, outerHTML, insertAdjacentHTML, document.write, eval(, new Function, a string passed to
+     setTimeout/setInterval, createContextualFragment, setHTMLUnsafe or setAttribute('style' in any file under js/
+  4. an inline <script> other than JSON-LD (type="application/ld+json"), an on* event-handler attribute,
+     or a javascript: URL
+  5. a style attribute, or a <style> element
+
+    python3 tools/supply-check <site>
+
+<site> is a checkout of this repository or a `git archive` of it; docs/, tools/, .git and *.md are skipped, as the
+upload leaves them out. Standard library only. Never uploaded: tools/ is export-ignored (.gitattributes).
+"""
+import hashlib
+import json
+import os
+import re
+import sys
+from html.parser import HTMLParser
+
+SKIP_DIRS = {'.git', 'docs', 'tools', '.wrangler', 'node_modules'}
+VENDOR_DIRS = ('js/vendor/', 'assets/fonts/')
+MANIFEST = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vendor.json')
+EXTERNAL = re.compile(r'^\s*(?:[a-z][a-z0-9+.-]*:|//)', re.I)          # any scheme, or protocol-relative
+LOAD_RELS = {'stylesheet', 'preload', 'modulepreload', 'prefetch', 'preconnect', 'dns-prefetch'}
+JS_SINKS = [
+    (re.compile(r'\binnerHTML\b'), 'innerHTML'),
+    (re.compile(r'\bouterHTML\b'), 'outerHTML'),
+    (re.compile(r'\binsertAdjacentHTML\b'), 'insertAdjacentHTML'),
+    (re.compile(r'\bdocument\s*\.\s*write(?:ln)?\b'), 'document.write'),
+    (re.compile(r'(?<![\w$.])eval\s*\('), 'eval('),
+    (re.compile(r'\bnew\s+Function\b'), 'new Function'),
+    (re.compile(r'\bset(?:Timeout|Interval)\s*\(\s*[\'"`]'), 'string passed to setTimeout/setInterval'),
+    (re.compile(r'\bcreateContextualFragment\b'), 'createContextualFragment'),
+    (re.compile(r'\b(?:set|parse)HTMLUnsafe\b'), 'setHTMLUnsafe/parseHTMLUnsafe'),
+    (re.compile(r'setAttribute\s*\(\s*[\'"]style[\'"]'), "setAttribute('style'"),
+]
+
+
+def walk(site):
+    for root, dirs, files in os.walk(site):
+        dirs[:] = sorted(d for d in dirs if d not in SKIP_DIRS)
+        for f in sorted(files):
+            rel = os.path.relpath(os.path.join(root, f), site).replace(os.sep, '/')
+            if not rel.endswith('.md'):
+                yield rel
+
+
+class Page(HTMLParser):
+    def __init__(self, rel, fail):
+        super().__init__(convert_charrefs=True)
+        self.rel, self.fail, self.inline = rel, fail, None
+
+    def at(self):
+        return '%s:%d' % (self.rel, self.getpos()[0])
+
+    def handle_starttag(self, tag, attrs):
+        a = {k.lower(): (v or '') for k, v in attrs}
+        for k, v in a.items():
+            if k == 'style':
+                self.fail(5, self.at(), '<%s style="%s">' % (tag, v[:60]))
+            if k.startswith('on'):
+                self.fail(4, self.at(), '<%s %s="..."> event handler' % (tag, k))
+            if k in ('href', 'src', 'action', 'formaction') and v.strip().lower().startswith('javascript:'):
+                self.fail(4, self.at(), '%s="javascript:..."' % k)
+        if tag == 'style':
+            self.fail(5, self.at(), '<style> element')
+        if tag == 'script':
+            if 'src' in a:
+                if EXTERNAL.match(a['src']):
+                    self.fail(1, self.at(), 'script src=%s' % a['src'])
+            elif a.get('type', '').strip().lower() != 'application/ld+json':
+                self.inline = self.at()
+        if tag == 'link':
+            rels = set(a.get('rel', '').lower().split())
+            if (rels & LOAD_RELS or a.get('as')) and EXTERNAL.match(a.get('href', '')):
+                self.fail(1, self.at(), 'link rel=%s href=%s' % (a.get('rel'), a['href']))
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+
+    def handle_data(self, data):
+        if self.inline and data.strip():
+            self.fail(4, self.inline, 'inline <script> (%s...)' % data.strip()[:40])
+            self.inline = None
+
+    def handle_endtag(self, tag):
+        if tag == 'script':
+            self.inline = None
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    site = sys.argv[1]
+    failures = []
+
+    def fail(rule, where, what):
+        failures.append((rule, where, what))
+
+    files = list(walk(site))
+    for rel in files:
+        path = os.path.join(site, rel)
+        if rel.endswith('.html'):
+            Page(rel, fail).feed(open(path, encoding='utf8').read())
+        elif rel.endswith('.css'):
+            css = re.sub(r'/\*.*?\*/', '', open(path, encoding='utf8').read(), flags=re.S)
+            for m in re.finditer(r'url\(\s*([\'"]?)([^)\'"]*)\1\s*\)|@import\s+([\'"])([^\'"]+)\3', css):
+                ref = m.group(2) if m.group(2) is not None else m.group(4)
+                if EXTERNAL.match(ref) and not ref.lower().startswith('data:'):
+                    fail(1, '%s:%d' % (rel, css.count('\n', 0, m.start()) + 1), 'css %s' % ref)
+        if rel.startswith('js/') and rel.endswith(('.js', '.mjs')):
+            js = open(path, encoding='utf8').read()
+            for rx, name in JS_SINKS:
+                for m in rx.finditer(js):
+                    fail(3, '%s:%d' % (rel, js.count('\n', 0, m.start()) + 1), name)
+
+    manifest = {f['path']: f for f in json.load(open(MANIFEST, encoding='utf8'))['files']}
+    for rel in files:
+        if rel.startswith(VENDOR_DIRS):
+            entry = manifest.get(rel)
+            if entry is None:
+                fail(2, rel, 'not in tools/vendor.json')
+                continue
+            digest = hashlib.sha256(open(os.path.join(site, rel), 'rb').read()).hexdigest()
+            if digest != entry['sha256']:
+                fail(2, rel, 'sha256 %s, manifest says %s' % (digest, entry['sha256']))
+    for rel in manifest:
+        if rel not in files:
+            fail(2, rel, 'listed in tools/vendor.json but not in the upload')
+
+    names = {1: 'external origin', 2: 'vendor manifest', 3: 'unsafe sink in js/', 4: 'inline script', 5: 'inline style'}
+    for rule, where, what in sorted(failures):
+        print('FAIL %d %-18s %s  %s' % (rule, names[rule], where, what))
+    vendored = sum(1 for r in files if r.startswith(VENDOR_DIRS))
+    print('%s: %d files checked, %d vendored files pinned, %d failures'
+          % ('FAIL' if failures else 'PASS', len(files), vendored, len(failures)))
+    sys.exit(1 if failures else 0)
+
+
+if __name__ == '__main__':
+    main()
