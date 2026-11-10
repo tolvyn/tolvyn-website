@@ -10,7 +10,7 @@
 /* fallbacks scaled to Inter/Archivo metrics: the font swap does not shift the page */
 @font-face {font-family:'Inter Fallback'; font-weight:100 500; src:local('Arial'), local('Liberation Sans'), local('Helvetica'); size-adjust:106.86%; ascent-override:90.65%; descent-override:22.57%; line-gap-override:0%;}
 @font-face {font-family:'Inter Fallback'; font-weight:600 900; src:local('Arial Bold'), local('Liberation Sans Bold'), local('Helvetica Bold'); size-adjust:101.65%; ascent-override:95.3%; descent-override:23.73%; line-gap-override:0%;}
-@font-face {font-family:'Archivo Fallback'; font-weight:100 900; src:local('Arial Bold'), local('Liberation Sans Bold'), local('Helvetica Bold'); size-adjust:98.17%; ascent-override:89.43%; descent-override:21.39%; line-gap-override:0%;}
+@font-face {font-family:'Archivo Fallback'; font-weight:100 900; src:local('Arial Bold'), local('Liberation Sans Bold'), local('Helvetica Bold'); size-adjust:111.5%; ascent-override:78.74%; descent-override:18.83%; line-gap-override:0%;}
 
 *, *::before, *::after {box-sizing:border-box; margin:0; padding:0;}
 
