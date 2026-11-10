@@ -42,17 +42,6 @@
   <link rel="stylesheet" href="/css/animations.css">
 
   <!-- Scoped styles for the post list only — existing design tokens, no global CSS edits. -->
-  <style>
-    .blog-intro { color: var(--text-secondary); font-size: 1.1rem; max-width: 680px; }
-    .post-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
-    .post-card { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-lg); padding: 28px; transition: border-color var(--transition); }
-    .post-card:hover { border-color: var(--accent-muted); }
-    .post-card__meta { color: var(--text-muted); font-size: 0.9rem; }
-    .post-card h2 { font-size: 1.4rem; margin: 8px 0 10px; line-height: 1.35; }
-    .post-card h2 a:hover { color: var(--accent); }
-    .post-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
-    .post-card__more { color: var(--accent); font-weight: 600; }
-  </style>
 
   <script type="application/ld+json">
 {
@@ -139,7 +128,7 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
@@ -150,7 +139,7 @@
   </div>
 </section>
 
-<div class="container container--narrow" style="padding-bottom:96px;">
+<div class="container container--narrow page-body">
   <!-- POSTS: newest first. To add a post, copy one <li class="post-list__item"> block to the TOP of this list
        and change the five marked values. See BLOG.md. -->
   <ul class="post-list" role="list">

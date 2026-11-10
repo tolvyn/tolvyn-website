@@ -70,21 +70,21 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
 <!-- ── PAGE HERO ───────────────────────────────────────────────────── -->
 <section class="page-hero">
-  <div class="container" style="text-align:center;">
+  <div class="container">
     <p class="label anim-fade-up">Pricing</p>
     <h1 class="anim-fade-up">Flat fee. No percentage of your AI spend.</h1>
-    <p class="anim-fade-up" style="margin-top:16px;margin-inline:auto;">
+    <p class="anim-fade-up">
       Start free with 10,000 requests/month. Upgrade only when you need more.
       We never take a cut of what you pay your providers.
     </p>
 
-    <p class="anim-fade-up" style="margin-top:24px;">
+    <p class="anim-fade-up">
       Every price below is per month. <strong>Annual billing is available by arrangement</strong> &mdash;
       email <a href="mailto:founder@tolvyn.io">founder@tolvyn.io</a> and we will invoice you annually.
     </p>
@@ -94,7 +94,7 @@
 <!-- ── PLANS ───────────────────────────────────────────────────────── -->
 <section aria-labelledby="plans-heading">
   <div class="container">
-    <h2 id="plans-heading" class="reveal" style="text-align:center;margin-bottom:48px;">Choose your plan</h2>
+    <h2 id="plans-heading" class="reveal pricing-title">Choose your plan</h2>
 
     <div class="pricing-grid">
 
@@ -106,7 +106,7 @@
             <span class="plan__amount">₹0</span>
             <span class="plan__period">/ month</span>
           </div>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">No credit card</p>
+          <p class="plan__note">No credit card</p>
         </div>
         <ul class="plan__features" aria-label="Free plan features">
           <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 10,000 requests / month (hard block)</li>
@@ -129,7 +129,7 @@
             <span class="plan__period">/ month</span>
           </div>
           <p class="plan__approx">approx. $49 USD</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Billed monthly · Hard block at quota</p>
+          <p class="plan__note">Billed monthly · Hard block at quota</p>
         </div>
         <ul class="plan__features" aria-label="Starter plan features">
           <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 250,000 requests / month (hard block)</li>
@@ -154,7 +154,7 @@
             <span class="plan__period">/ month</span>
           </div>
           <p class="plan__approx">approx. $199 USD</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Billed monthly · $0.50 per 1K overage</p>
+          <p class="plan__note">Billed monthly · $0.50 per 1K overage</p>
         </div>
         <ul class="plan__features" aria-label="Growth plan features">
           <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 2,000,000 requests / month</li>
@@ -179,7 +179,7 @@
             <span class="plan__period">/ month</span>
           </div>
           <p class="plan__approx">approx. $599 USD</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Billed monthly · $0.25 per 1K overage</p>
+          <p class="plan__note">Billed monthly · $0.25 per 1K overage</p>
         </div>
         <ul class="plan__features" aria-label="Scale plan features">
           <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 10,000,000 requests / month</li>
@@ -200,7 +200,7 @@
           <div class="plan__price">
             <span class="plan__amount">Custom</span>
           </div>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Talk to the founder</p>
+          <p class="plan__note">Talk to the founder</p>
         </div>
         <ul class="plan__features" aria-label="Enterprise plan features">
           <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Custom request volume</li>
@@ -216,20 +216,20 @@
     <!-- Rate basis. Stated ONCE, as a line rather than a disclaimer block: the
          INR figure is the price and the only amount ever charged; the USD
          figure is indicative and moves with the exchange rate. -->
-    <p class="reveal" style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin-top:28px;">
+    <p class="reveal fine-print">
       All plans are charged in INR. USD amounts are indicative only and vary with the exchange rate.
     </p>
   </div>
 </section>
 
 <!-- ── DISCOUNT BANNERS ────────────────────────────────────────────── -->
-<section style="padding-top:64px;">
+<section class="section-sm">
   <div class="container container--narrow">
 
     <div class="discount-banner discount-banner--founders reveal">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+      <div class="badge-row">
         <span class="label">Founding Partner</span>
-        <span style="background:var(--accent);color:#001a13;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;">50% off · forever</span>
+        <span class="badge badge--solid">50% off · forever</span>
       </div>
       <h3>First 5 customers — direct line to the founder</h3>
       <p>
@@ -241,9 +241,9 @@
     </div>
 
     <div class="discount-banner discount-banner--early reveal">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+      <div class="badge-row">
         <span class="label">Early Adopter</span>
-        <span style="background:var(--surface-2);color:var(--text);border:1px solid var(--border-light);font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;">25% off · 6 months</span>
+        <span class="badge badge--quiet">25% off · 6 months</span>
       </div>
       <h3>Next 10 customers — 25% off for 6 months</h3>
       <p>The ten teams who follow the founding five receive <strong>25% off any paid plan for six months</strong>, applied from their first paid invoice. Our way of rewarding teams who help shape the product. <strong>Email founder@tolvyn.io to apply.</strong></p>
@@ -260,7 +260,7 @@
       <h2 id="faq-heading">Common questions</h2>
     </div>
 
-    <div class="grid-2" style="max-width:960px;margin-inline:auto;">
+    <div class="grid-2">
       <div class="card reveal" data-delay="1">
         <h3>What happens when I hit my request limit?</h3>
         <p>On Free and Starter, new requests are blocked at the included quota — upgrade for higher limits. On Growth and Scale, overage requests are charged ($0.50 / $0.25 per 1,000 requests respectively) so your service keeps running.</p>
@@ -290,13 +290,13 @@
 </section>
 
 <!-- ── CONTACT CTA ─────────────────────────────────────────────────── -->
-<section id="contact" class="section-sm" style="text-align:center;">
+<section id="contact" class="section-sm contact-strip">
   <div class="container">
-    <p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;">
+    <p>
       Questions? Email
-      <a href="mailto:founder@tolvyn.io" style="color:var(--accent);font-weight:600;">founder@tolvyn.io</a>
+      <a href="mailto:founder@tolvyn.io">founder@tolvyn.io</a>
       or book a call at
-      <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;">cal.com/tolvyn</a>
+      <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
     </p>
   </div>
 </section>

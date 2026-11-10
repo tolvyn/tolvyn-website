@@ -41,37 +41,6 @@
   <link rel="stylesheet" href="../css/animations.css">
 
   <!-- Scoped styles for the comparison table only — uses existing design tokens, no global CSS edits. -->
-  <style>
-    .cmp-wrap { overflow-x: auto; }
-    .cmp-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-      font-size: 0.9rem;
-    }
-    .cmp-table th {
-      background: var(--surface);
-      color: var(--text);
-      font-weight: 600;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      text-align: left;
-    }
-    .cmp-table th.cmp-col-tolvyn { color: var(--accent); }
-    .cmp-table td {
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      vertical-align: top;
-    }
-    .cmp-table td:first-child { color: var(--text); font-weight: 500; }
-    .cmp-yes { color: var(--green); font-weight: 600; }
-    .cmp-no  { color: var(--text-muted); }
-    @media (max-width: 768px) {
-      .cmp-table { font-size: 0.8rem; }
-      .cmp-table th, .cmp-table td { padding: 8px 10px; }
-    }
-  </style>
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
 </head>
@@ -102,7 +71,7 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
@@ -113,7 +82,7 @@
   </div>
 </section>
 
-<div class="container container--narrow" style="padding-bottom:96px;">
+<div class="container container--narrow page-body">
   <div class="docs-main">
 
     <section>

@@ -41,26 +41,6 @@
   <link rel="stylesheet" href="../css/animations.css">
 
   <!-- Scoped styles for the step flow only — existing design tokens, no global CSS edits. -->
-  <style>
-    .uc-flow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin: 8px 0 20px;
-    }
-    .uc-flow__step {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 8px 14px;
-      font-size: 0.86rem;
-      color: var(--text);
-      font-weight: 500;
-    }
-    .uc-flow__arrow { color: var(--text-muted); font-size: 0.9rem; }
-    .uc-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-  </style>
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
 </head>
@@ -91,7 +71,7 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
@@ -102,7 +82,7 @@
   </div>
 </section>
 
-<div class="container container--narrow" style="padding-bottom:96px;">
+<div class="container container--narrow page-body">
   <div class="docs-main">
 
     <section>
@@ -140,8 +120,8 @@
       </p>
     </section>
 
-    <section>
-      <h2 style="color:var(--accent);">Important: TOLVYN meters, it does not bill</h2>
+    <section class="callout">
+      <h2>Important: TOLVYN meters, it does not bill</h2>
       <p>
         TOLVYN is a <strong>metering and attribution layer — not a billing system.</strong> It
         produces accurate per-customer usage and cost data. It does <strong>not</strong> issue

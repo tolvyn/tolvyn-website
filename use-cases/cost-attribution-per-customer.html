@@ -41,52 +41,6 @@
   <link rel="stylesheet" href="../css/animations.css">
 
   <!-- Scoped styles for the attribution table + step flow only — existing design tokens, no global CSS edits. -->
-  <style>
-    .uc-wrap { overflow-x: auto; }
-    .uc-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-      font-size: 0.9rem;
-    }
-    .uc-table th {
-      background: var(--surface);
-      color: var(--text);
-      font-weight: 600;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      text-align: left;
-    }
-    .uc-table td {
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      vertical-align: top;
-    }
-    .uc-table td:first-child { color: var(--text); font-weight: 500; }
-    .uc-flow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin: 8px 0 20px;
-    }
-    .uc-flow__step {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 8px 14px;
-      font-size: 0.86rem;
-      color: var(--text);
-      font-weight: 500;
-    }
-    .uc-flow__arrow { color: var(--text-muted); font-size: 0.9rem; }
-    .uc-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-    @media (max-width: 768px) {
-      .uc-table { font-size: 0.8rem; }
-      .uc-table th, .uc-table td { padding: 8px 10px; }
-    }
-  </style>
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
 </head>
@@ -117,7 +71,7 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
@@ -128,7 +82,7 @@
   </div>
 </section>
 
-<div class="container container--narrow" style="padding-bottom:96px;">
+<div class="container container--narrow page-body">
   <div class="docs-main">
 
     <section>
@@ -254,7 +208,7 @@
         <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Start free — 10,000 requests</a>
         <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">Book a call</a>
       </div>
-      <p style="margin-top:24px;">Further reading: <a href="/blog/ai-cost-per-customer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">How to find out what each customer costs you in OpenAI or Anthropic spend</a></p>
+      <p class="post-related">Further reading: <a href="/blog/ai-cost-per-customer">How to find out what each customer costs you in OpenAI or Anthropic spend</a></p>
     </section>
 
   </div>

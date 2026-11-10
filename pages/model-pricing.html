@@ -61,83 +61,6 @@
     "isBasedOn": "https://github.com/tolvyn/tolvyn-models"
   }
   </script>
-  <style>
-    /* ── Model pricing page ─────────────────────────────────────── */
-    .mp-hero { padding: 96px 0 56px; border-bottom: 1px solid var(--border); }
-    .mp-hero .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
-    }
-    .mp-hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 18px;
-    }
-    .mp-hero .mp-intro { font-size: 1.1rem; max-width: 640px; line-height: 1.7; color: var(--text-secondary); }
-    .mp-asof {
-      margin-top: 22px; font-size: 0.85rem; color: var(--text-secondary); font-family: var(--mono);
-    }
-    .mp-asof strong { color: var(--accent); font-weight: 600; }
-    .mp-disclaimer {
-      margin-top: 14px; font-size: 0.84rem; line-height: 1.6; color: var(--text-muted);
-      max-width: 640px;
-    }
-
-    /* ── Section spacing ────────────────────────────────────────── */
-    .mp-section { padding-block: 56px; }
-
-    /* ── Table ─────────────────────────────────────────────────── */
-    .mp-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
-    table.mp-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    .mp-table th {
-      padding: 12px 16px; text-align: left; font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-secondary);
-      background: var(--surface); border-bottom: 1px solid var(--border);
-      white-space: nowrap; cursor: pointer; user-select: none;
-    }
-    .mp-table th:hover { color: var(--text); }
-    .mp-table th.sorted { color: var(--accent); }
-    .mp-table th .sort-icon { margin-left: 4px; opacity: 0.4; }
-    .mp-table th.sorted .sort-icon { opacity: 1; }
-    .mp-table th.num, .mp-table td.num { text-align: right; }
-    .mp-table td {
-      padding: 12px 16px; border-bottom: 1px solid var(--border);
-      color: var(--text); white-space: nowrap;
-    }
-    .mp-table tr:last-child td { border-bottom: none; }
-    .mp-table tr:hover td { background: rgba(255,255,255,0.015); }
-    .mp-table .mono { font-family: var(--mono); font-size: 0.82rem; }
-    .mp-model { font-weight: 500; }
-    .mp-model small { display: block; font-weight: 400; color: var(--text-muted); font-size: 0.72rem; margin-top: 2px; }
-
-    /* ── Provider badges (brand-identifier colors — data-viz exempt) ── */
-    .provider-badge {
-      display: inline-block; padding: 2px 8px; border-radius: 4px;
-      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-    }
-    .provider-openai    { background: rgba(16,163,127,0.12); color: #10a37f; }
-    .provider-anthropic { background: rgba(209,154,102,0.12); color: #d19a66; }
-    .provider-google    { background: rgba(66,133,244,0.12);  color: #4285f4; }
-    .provider-deepseek  { background: rgba(139,124,246,0.12); color: #8b7cf6; }
-    .provider-other     { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
-
-    /* ── Loading / empty states ─────────────────────────────────── */
-    .mp-loading, .mp-empty { text-align: center; padding: 48px 24px; color: var(--text-secondary); font-size: 0.9rem; }
-    .mp-empty strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 8px; }
-
-    /* ── Source / attribution ───────────────────────────────────── */
-    .mp-source {
-      background: var(--surface); border: 1px solid var(--border);
-      border-left: 3px solid var(--accent); border-radius: var(--radius-lg);
-      padding: 32px 36px;
-    }
-    .mp-source h2 { font-size: 1.3rem; color: var(--text); margin-bottom: 20px; }
-    .mp-source ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .mp-source li { display: flex; gap: 12px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
-    .mp-source li::before { content: '—'; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
-    .mp-source li strong { color: var(--text); }
-    .mp-source a { color: var(--accent); }
-  </style>
 </head>
 <body>
 
@@ -171,7 +94,7 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
@@ -179,7 +102,7 @@
 <section class="mp-hero" aria-labelledby="mp-hero-heading">
   <div class="container">
     <div class="eyebrow anim-fade-up">
-      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;" aria-hidden="true"></span>
+      <span class="live-dot" aria-hidden="true"></span>
       Model pricing
     </div>
     <h1 id="mp-hero-heading" class="anim-fade-up">AI model pricing reference</h1>
@@ -197,7 +120,7 @@
 <!-- ── Pricing table ────────────────────────────────────────────────── -->
 <section class="mp-section" aria-labelledby="mp-table-heading">
   <div class="container">
-    <div class="section-header reveal" style="margin-bottom:24px;">
+    <div class="section-header section-header--tight reveal">
       <p class="label">Per-model list prices</p>
       <h2 id="mp-table-heading">Current pricing by model</h2>
       <p>USD per million tokens (MTok). Click any column header to sort. Click again to reverse.</p>
@@ -209,7 +132,7 @@
 </section>
 
 <!-- ── Source / attribution ─────────────────────────────────────────── -->
-<section class="mp-section" style="padding-top:0;" aria-labelledby="mp-source-heading">
+<section class="mp-section" aria-labelledby="mp-source-heading">
   <div class="container">
     <div class="mp-source reveal">
       <h2 id="mp-source-heading">Source &amp; method</h2>

@@ -67,235 +67,6 @@
     }
   }
   </script>
-  <style>
-    /* ── Cost Index page styles ───────────────────────────────── */
-    .ci-hero {
-      padding: 96px 0 64px;
-      border-bottom: 1px solid var(--border);
-    }
-    .ci-hero .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-    .ci-hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .ci-hero p {
-      font-size: 1.1rem;
-      max-width: 620px;
-      line-height: 1.7;
-      color: var(--text-secondary);
-    }
-    .ci-hero .hero-meta {
-      margin-top: 24px;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      font-family: var(--mono);
-    }
-    .ci-hero .hero-meta span { color: var(--accent); }
-
-    /* ── Headline numbers ──────────────────────────────────────── */
-    .headline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 0;
-    }
-    .headline-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px 24px;
-      transition: border-color var(--transition);
-    }
-    .headline-card:hover { border-color: #2d3140; }
-    .headline-card__model {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-    }
-    .headline-card__cost {
-      font-size: 1.75rem;
-      font-weight: 700;
-      font-family: var(--mono);
-      color: var(--text);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .headline-card__meta {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-    }
-    .trend-up   { color: #ef4444; }
-    .trend-down { color: #22c55e; }
-    .trend-flat { color: var(--text-secondary); }
-
-    /* ── Table ─────────────────────────────────────────────────── */
-    .ci-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-    }
-    table.ci-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.875rem;
-    }
-    .ci-table th {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-      cursor: pointer;
-      user-select: none;
-    }
-    .ci-table th:hover { color: var(--text); }
-    .ci-table th.sorted { color: var(--accent); }
-    .ci-table th .sort-icon { margin-left: 4px; opacity: 0.4; }
-    .ci-table th.sorted .sort-icon { opacity: 1; }
-    .ci-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-      white-space: nowrap;
-    }
-    .ci-table tr:last-child td { border-bottom: none; }
-    .ci-table tr:hover td { background: rgba(255,255,255,0.015); }
-    .ci-table .mono { font-family: var(--mono); font-size: 0.82rem; }
-    .provider-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .provider-openai    { background: rgba(16,163,127,0.12); color: #10a37f; }
-    .provider-anthropic { background: rgba(209,154,102,0.12); color: #d19a66; }
-    .provider-google    { background: rgba(66,133,244,0.12);  color: #4285f4; }
-    .provider-other     { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
-
-    /* ── P95 tooltip ────────────────────────────────────────────── */
-    .tooltip-wrap { position: relative; display: inline-block; cursor: help; }
-    .tooltip-wrap .tooltip-text {
-      visibility: hidden;
-      opacity: 0;
-      background: #1e2128;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.75rem;
-      border-radius: 6px;
-      padding: 6px 10px;
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
-      white-space: normal;
-      z-index: 10;
-      transition: opacity 0.15s;
-      pointer-events: none;
-    }
-    .tooltip-wrap:hover .tooltip-text { visibility: visible; opacity: 1; }
-
-    /* ── Chart ─────────────────────────────────────────────────── */
-    .ci-chart-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-    }
-    .ci-chart-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    /* ── Methodology ────────────────────────────────────────────── */
-    .methodology {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: var(--radius-lg);
-      padding: 32px 36px;
-    }
-    .methodology h2 {
-      font-size: 1.3rem;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .methodology ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .methodology li {
-      display: flex;
-      gap: 12px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .methodology li::before {
-      content: '—';
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .methodology li strong { color: var(--text); }
-
-    /* ── CTA ────────────────────────────────────────────────────── */
-    .ci-cta {
-      text-align: center;
-      padding: 72px 24px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-    .ci-cta h2 { color: var(--text); margin-bottom: 12px; font-size: 1.6rem; }
-    .ci-cta p  { margin-bottom: 28px; font-size: 1rem; max-width: 520px; margin-inline: auto; }
-    .ci-cta .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Loading / empty states ─────────────────────────────────── */
-    .ci-loading {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .ci-empty {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .ci-empty strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 8px; }
-
-    /* ── Section spacing ────────────────────────────────────────── */
-    .ci-section { padding-block: 64px; }
-  </style>
 </head>
 <body>
 
@@ -329,7 +100,7 @@
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
   </div>
 </nav>
 
@@ -337,7 +108,7 @@
 <section class="ci-hero" aria-labelledby="ci-hero-heading">
   <div class="container">
     <div class="eyebrow anim-fade-up">
-      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;" aria-hidden="true"></span>
+      <span class="live-dot" aria-hidden="true"></span>
       Recomputed nightly &middot; published only above the privacy floor
     </div>
     <h1 id="ci-hero-heading" class="anim-fade-up">TOLVYN AI Cost Index</h1>
@@ -367,9 +138,9 @@
 </section>
 
 <!-- ── Model Comparison Table ───────────────────────────────────────── -->
-<section class="ci-section" style="padding-top:0;" aria-labelledby="table-heading">
+<section class="ci-section" aria-labelledby="table-heading">
   <div class="container">
-    <div class="section-header reveal" style="margin-bottom:24px;">
+    <div class="section-header section-header--tight reveal">
       <p class="label">Last 90 days</p>
       <h2 id="table-heading">Model comparison</h2>
       <p>Click any column header to sort. Click again to reverse.</p>
@@ -381,9 +152,9 @@
 </section>
 
 <!-- ── 30-day Trend Chart ────────────────────────────────────────────── -->
-<section class="ci-section" style="padding-top:0;" aria-labelledby="chart-heading">
+<section class="ci-section" aria-labelledby="chart-heading">
   <div class="container">
-    <div class="section-header reveal" style="margin-bottom:24px;">
+    <div class="section-header section-header--tight reveal">
       <p class="label">30-day trend</p>
       <h2 id="chart-heading">Avg cost per request over time</h2>
       <p>Top 5 models by request volume. Costs in USD per request.</p>
@@ -401,7 +172,7 @@
     <div class="methodology reveal">
       <h2 id="methodology-heading">Methodology</h2>
 
-      <p style="margin-bottom:18px">
+      <p>
         <strong>The privacy floor, first, because it governs everything else.</strong>
         A figure is published only when at least <strong>three separate organisations</strong>
         contributed traffic to that exact bucket — same provider, same model, same period.
@@ -543,7 +314,7 @@
   const API = 'https://api.tolvyn.io/v1/public/cost-index';
 
   // ── Chart palette ────────────────────────────────────────────
-  const PALETTE = ['#00D9A3','#3b82f6','#a78bfa','#22c55e','#64748b'];
+  const PALETTE = ['#00D9A3','#E6E9EF','#A6ADBB','#5FB8A0','#828A9B'];
 
   // ── Provider badge ───────────────────────────────────────────
   function providerBadge(p) {
@@ -829,7 +600,7 @@
           plugins: {
             legend: {
               labels: {
-                color: '#94a3b8',
+                color: '#A6ADBB',
                 font: { family: "'Inter', sans-serif", size: 12 },
               },
             },
@@ -841,12 +612,12 @@
           },
           scales: {
             x: {
-              ticks: { color: '#64748b', font: { size: 11 } },
+              ticks: { color: '#828A9B', font: { size: 11 } },
               grid:  { color: 'rgba(255,255,255,0.04)' },
             },
             y: {
               ticks: {
-                color: '#64748b',
+                color: '#828A9B',
                 font: { size: 11 },
                 callback: v => '$' + v.toFixed(5),
               },
