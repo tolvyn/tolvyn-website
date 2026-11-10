@@ -1,0 +1,275 @@
+#!/usr/bin/env python3
+"""content-check: every page's content as plain lines, for a before/after diff, and the checks a copy pass must pass.
+
+    python3 tools/content-check extract <site>             > content.txt   # one line per item, per page
+    python3 tools/content-check check <site>                               # assertions on one tree
+    python3 tools/content-check compare <before> <after>                   # same URLs, same credits
+
+<site> is a checkout of this repository or a `git archive` of it. Standard library only; nothing is installed.
+Never uploaded: tools/ is export-ignored (.gitattributes), so `git archive` leaves it out of the upload folder.
+
+What `extract` records for each page, in this order:
+  title; meta description; Open Graph, article and Twitter tags; JSON-LD (keys sorted); headings in order;
+  visible text, one line per block (paragraph, list item, cell, heading); every href; every aria-label.
+"""
+import html
+import json
+import os
+import re
+import sys
+from html.parser import HTMLParser
+
+SITE_HOST = 'tolvyn.io'
+SKIP_DIRS = {'.git', 'docs', 'tools', '.wrangler', 'node_modules'}
+# The phrases no uploaded file may contain after the Nov 2026 copy pass. Built from parts, so this file never matches.
+RETIRED = ['financial ' + 'control plane', 'immut' + 'able']
+BLOCK = {'p', 'div', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'td', 'th', 'tr', 'section', 'article', 'header',
+         'footer', 'nav', 'ul', 'ol', 'table', 'blockquote', 'pre', 'figure', 'figcaption', 'aside', 'main', 'dt',
+         'dd', 'summary', 'details', 'form', 'button', 'option', 'title', 'text', 'tspan'}
+INVISIBLE = {'script', 'style', 'noscript', 'template', 'head'}
+
+
+def norm(s):
+    return re.sub(r'\s+', ' ', s).strip()
+
+
+class Page(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.title, self.meta, self.jsonld, self.headings, self.text, self.hrefs, self.arias, self.ids = \
+            '', [], [], [], [], [], [], set()
+        self.skip = []          # open invisible elements
+        self.buf = []
+        self.head = None        # [tag, parts] while inside a heading
+        self.in_title = False
+        self.in_ld = False
+        self.ld = []
+
+    def flush(self):
+        t = norm(''.join(self.buf))
+        if t and not self.skip:
+            self.text.append(t)
+        self.buf = []
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if 'id' in a:
+            self.ids.add(a['id'])
+        if 'name' in a and tag == 'a':
+            self.ids.add(a['name'])
+        if a.get('aria-label'):
+            self.arias.append(norm(a['aria-label']))
+        if tag == 'a' and 'href' in a:
+            self.hrefs.append(a['href'])
+        if tag == 'meta':
+            key = a.get('name') or a.get('property') or ''
+            if key == 'description' or key.startswith(('og:', 'twitter:', 'article:')):
+                self.meta.append((key, norm(a.get('content', ''))))
+        if tag == 'title':
+            self.in_title = True
+        if tag == 'script' and a.get('type') == 'application/ld+json':
+            self.in_ld, self.ld = True, []
+        if tag in BLOCK or tag == 'br':
+            self.flush()
+        if tag == 'br' and self.head is not None:
+            self.head[1].append(' / ')
+        if re.fullmatch(r'h[1-6]', tag):
+            self.head = [tag, []]
+        if tag in INVISIBLE:
+            self.skip.append(tag)
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+
+    def handle_endtag(self, tag):
+        if tag in INVISIBLE and self.skip and self.skip[-1] == tag:
+            self.skip.pop()
+        if tag == 'title':
+            self.in_title = False
+        if tag == 'script' and self.in_ld:
+            self.in_ld = False
+            try:
+                self.jsonld.append(json.dumps(json.loads(''.join(self.ld)), sort_keys=True, ensure_ascii=False))
+            except ValueError as e:
+                self.jsonld.append('UNPARSEABLE: %s' % e)
+        if self.head is not None and tag == self.head[0]:
+            self.headings.append((tag, norm(''.join(self.head[1]))))
+            self.head = None
+        if tag in BLOCK:
+            self.flush()
+
+    def handle_data(self, data):
+        if self.in_title:
+            self.title += data
+        if self.in_ld:
+            self.ld.append(data)
+        if self.head is not None:
+            self.head[1].append(data)
+        if not self.skip:
+            self.buf.append(data)
+
+
+def pages(site):
+    out = []
+    for root, dirs, files in os.walk(site):
+        dirs[:] = sorted(d for d in dirs if d not in SKIP_DIRS)
+        for f in sorted(files):
+            if f.endswith('.html'):
+                out.append(os.path.relpath(os.path.join(root, f), site))
+    return sorted(out)
+
+
+def url_of(rel):
+    rel = rel.replace(os.sep, '/')
+    if rel == 'index.html':
+        return '/'
+    if rel.endswith('/index.html'):
+        return '/' + rel[:-len('index.html')]
+    return '/' + rel[:-len('.html')]
+
+
+def parse(site, rel):
+    p = Page()
+    p.feed(open(os.path.join(site, rel), encoding='utf8').read())
+    p.close()
+    p.flush()
+    return p
+
+
+def extract(site):
+    for rel in pages(site):
+        u, p = url_of(rel), parse(site, rel)
+        print('%s | title | %s' % (u, norm(p.title)))
+        for k, v in p.meta:
+            print('%s | meta %s | %s' % (u, k, v))
+        for j in p.jsonld:
+            print('%s | json-ld | %s' % (u, j))
+        for tag, t in p.headings:
+            print('%s | %s | %s' % (u, tag, t))
+        for t in p.text:
+            print('%s | text | %s' % (u, t))
+        for h in p.hrefs:
+            print('%s | href | %s' % (u, h))
+        for a in p.arias:
+            print('%s | aria-label | %s' % (u, a))
+
+
+def credits(site):
+    """The researchers credited on pages/security.html: (name, link, month) in page order."""
+    t = open(os.path.join(site, 'pages', 'security.html'), encoding='utf8').read()
+    part = t[t.index('Security acknowledgments'):]
+    part = part[:part.index('</ul>')]
+    return [(norm(html.unescape(n)), href, norm(m)) for href, n, m in
+            re.findall(r'<li>\s*<a href="([^"]+)"[^>]*>([^<]+)</a>\s*—\s*([^<]+?)\s*</li>', part)]
+
+
+def rewrites(site):
+    out = {}
+    path = os.path.join(site, '_redirects')
+    if os.path.exists(path):
+        for line in open(path, encoding='utf8'):
+            f = line.split()
+            if len(f) >= 3 and not line.lstrip().startswith('#'):
+                out[f[0]] = f[1]
+    return out
+
+
+def resolves(site, page_url, href, rw, cache):
+    """Does an internal link reach an existing file (and, with a fragment, an existing id)?"""
+    if re.match(r'^(mailto|tel|data|javascript):', href):
+        return True
+    m = re.match(r'^https?://([^/]+)(/[^?#]*)?(\?[^#]*)?(#.*)?$', href)
+    if m:
+        if m.group(1) != SITE_HOST:
+            return True          # external: not this check's business
+        path, frag = m.group(2) or '/', (m.group(4) or '')[1:]
+    else:
+        path, _, frag = href.partition('#')
+        path = path.split('?')[0]
+        if not path:
+            path = page_url
+        elif not path.startswith('/'):
+            base = page_url if page_url.endswith('/') else page_url.rsplit('/', 1)[0] + '/'
+            parts = []
+            for seg in (base + path).split('/'):
+                if seg == '..':
+                    parts and parts.pop()
+                elif seg not in ('', '.'):
+                    parts.append(seg)
+            path = '/' + '/'.join(parts) + ('/' if path.endswith('/') else '')
+    if path in rw:
+        dest = rw[path]
+        if dest.startswith('http'):
+            return True
+        path = '/' + dest.lstrip('/')
+    cands = [path + 'index.html'] if path.endswith('/') else [path, path + '.html', path + '/index.html']
+    for c in cands:
+        fp = os.path.join(site, c.lstrip('/'))
+        if os.path.isfile(fp):
+            if frag and fp.endswith('.html'):
+                if fp not in cache:
+                    cache[fp] = parse(site, os.path.relpath(fp, site)).ids
+                return frag in cache[fp]
+            return True
+    return False
+
+
+def check(site):
+    ok = True
+
+    def say(cond, msg):
+        nonlocal ok
+        print(('ok    ' if cond else 'FAIL  ') + msg)
+        ok = ok and cond
+
+    ps = pages(site)
+    say(len(ps) == 21, 'pages: %d (want 21)' % len(ps))
+    h1 = {url_of(r): sum(1 for t, _ in parse(site, r).headings if t == 'h1') for r in ps}
+    bad = {u: n for u, n in h1.items() if n != 1}
+    say(not bad, 'one H1 per page' + ('' if not bad else ': %s' % bad))
+    cr = credits(site)
+    say(len(cr) == 14, 'researchers credited on /pages/security: %d (want 14)' % len(cr))
+    rw, cache, broken = rewrites(site), {}, []
+    for r in ps:
+        p = parse(site, r)
+        for h in p.hrefs:
+            if not resolves(site, url_of(r), h, rw, cache):
+                broken.append('%s -> %s' % (url_of(r), h))
+    say(not broken, 'internal links resolve' + ('' if not broken else ': ' + '; '.join(broken)))
+    hits = []
+    for root, dirs, files in os.walk(site):
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        for f in files:
+            fp = os.path.join(root, f)
+            data = open(fp, 'rb').read().decode('utf8', 'replace').lower()
+            for w in RETIRED:
+                if w in data:
+                    hits.append('%s: %s x%d' % (os.path.relpath(fp, site), w, data.count(w)))
+    say(not hits, 'no retired phrase outside docs/ and tools/' + ('' if not hits else ': ' + '; '.join(hits)))
+    idx = open(os.path.join(site, 'index.html'), encoding='utf8').read()
+    say('$47' not in idx, '"$47" not in index.html')
+    return ok
+
+
+def compare(a, b):
+    ua, ub = {url_of(r) for r in pages(a)}, {url_of(r) for r in pages(b)}
+    print(('ok    ' if ua == ub else 'FAIL  ') + 'same URLs: %d and %d%s' % (
+        len(ua), len(ub), '' if ua == ub else ' (only before: %s; only after: %s)' % (sorted(ua - ub), sorted(ub - ua))))
+    ca, cb = credits(a), credits(b)
+    print(('ok    ' if ca == cb else 'FAIL  ') + 'security credits unchanged: %d before, %d after' % (len(ca), len(cb)))
+    for n, l, m in cb:
+        print('      %s | %s | %s' % (n, l, m))
+    return ua == ub and ca == cb
+
+
+if __name__ == '__main__':
+    cmd = sys.argv[1] if len(sys.argv) > 1 else ''
+    if cmd == 'extract' and len(sys.argv) == 3:
+        extract(sys.argv[2])
+    elif cmd == 'check' and len(sys.argv) == 3:
+        sys.exit(0 if check(sys.argv[2]) else 1)
+    elif cmd == 'compare' and len(sys.argv) == 4:
+        sys.exit(0 if compare(sys.argv[2], sys.argv[3]) else 1)
+    else:
+        print(__doc__)
+        sys.exit(2)

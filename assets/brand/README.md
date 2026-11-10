@@ -10,7 +10,7 @@
 | `favicon.svg` | Browser tab, bookmarks (scales 16→512px) |
 | `favicon-dark.svg` | Alternate favicon for dark-only contexts |
 | `app-icon.svg` | Source for iOS/Android home screen icons (no corner radius) |
-| `og-image.svg` | Social card for Twitter/X, LinkedIn, Slack previews |
+| `og-image.svg` | Source of `og-image.png`, the social card for Twitter/X, LinkedIn, Slack previews. After changing it, run `python3 tools/render-og-image` and commit both |
 
 ## Colors
 

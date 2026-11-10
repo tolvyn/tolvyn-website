@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""render-og-image: draw assets/brand/og-image.png from assets/brand/og-image.svg.
+
+    python3 tools/render-og-image [svg] [png]      # defaults: assets/brand/og-image.svg -> assets/brand/og-image.png
+
+og-image.svg is the source; og-image.png is what every page names as its og:image and twitter:image. Change the SVG,
+run this, commit both.
+
+How: the Inter font file is fetched once from Google Fonts (the same font the site loads) and embedded in a page that
+holds the SVG, so the browser renders from a local copy. That page is screenshotted at 1200x630 by the headless
+Chromium that Playwright keeps in ~/.cache/ms-playwright (or the binary named by $CHROME). Before the screenshot, the
+same page is loaded once to confirm Inter was used at every weight the SVG names; if it was not, nothing is written.
+Standard library only. Never uploaded: tools/ is export-ignored.
+"""
+import base64
+import glob
+import os
+import re
+import subprocess
+import sys
+import tempfile
+import urllib.request
+
+FONTS_CSS = 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=block'
+# Google serves woff2 only to a browser it recognises; this is a generic Chrome string, nothing identifying.
+UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+W, H = 1200, 630
+
+
+def chrome():
+    if os.environ.get('CHROME'):
+        return os.environ['CHROME']
+    home = os.path.expanduser('~/.cache/ms-playwright')
+    found = sorted(glob.glob(home + '/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell')) \
+        or sorted(glob.glob(home + '/chromium-*/chrome-linux64/chrome'))
+    if not found:
+        sys.exit('render-og-image: no headless Chromium found; set $CHROME to one')
+    return found[-1]
+
+
+def get(url):
+    return urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=30).read()
+
+
+def inter_face():
+    """One @font-face for Inter (latin), weights 100-900, with the font file embedded."""
+    css = get(FONTS_CSS).decode()
+    m = re.search(r'/\* latin \*/\s*@font-face \{(.*?)\}', css, re.S)
+    if not m:
+        sys.exit('render-og-image: Google Fonts sent no latin face for Inter')
+    url = re.search(r'url\((https://[^)]+\.woff2)\)', m.group(1)).group(1)
+    data = base64.b64encode(get(url)).decode()
+    rng = re.search(r'unicode-range: ([^;]+);', m.group(1)).group(1)
+    return ("@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: block; "
+            "src: url(data:font/woff2;base64,%s) format('woff2'); unicode-range: %s; }" % (data, rng))
+
+
+def page(svg, weights):
+    probes = ', '.join("document.fonts.load('%s 40px Inter')" % w for w in weights)
+    return ('<!doctype html><html><head><meta charset="utf-8"><style>%s\n'
+            'html, body { margin: 0; padding: 0; background: #0B0F1A; } svg { display: block; }</style></head>'
+            '<body>%s<script>Promise.all([%s]).then(function (r) { document.body.setAttribute("data-inter", '
+            'r.every(function (f) { return f.length > 0; }) && document.fonts.check("40px Inter") ? "ok" : "missing"); '
+            '});</script></body></html>') % (inter_face(), svg, probes)
+
+
+def main():
+    svg_path = sys.argv[1] if len(sys.argv) > 1 else 'assets/brand/og-image.svg'
+    png_path = sys.argv[2] if len(sys.argv) > 2 else 'assets/brand/og-image.png'
+    svg = open(svg_path, encoding='utf8').read()
+    svg = re.sub(r'<\?xml[^>]*\?>', '', svg)
+    if 'width="%d" height="%d"' % (W, H) not in svg:
+        sys.exit('render-og-image: %s is not %dx%d' % (svg_path, W, H))
+    weights = sorted(set(re.findall(r'font-weight="(\d+)"', svg))) or ['400']
+    bin_ = chrome()
+    flags = ['--headless', '--no-sandbox', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1',
+             '--font-render-hinting=none', '--virtual-time-budget=10000']
+    with tempfile.TemporaryDirectory() as d:
+        html = os.path.join(d, 'og.html')
+        open(html, 'w', encoding='utf8').write(page(svg, weights))
+        dom = subprocess.run([bin_] + flags + ['--dump-dom', 'file://' + html],
+                             capture_output=True, text=True, timeout=120).stdout
+        if 'data-inter="ok"' not in dom:
+            sys.exit('render-og-image: Inter did not load in Chromium; %s not written' % png_path)
+        shot = os.path.join(d, 'og.png')
+        subprocess.run([bin_] + flags + ['--window-size=%d,%d' % (W, H), '--screenshot=' + shot, 'file://' + html],
+                       capture_output=True, timeout=120)
+        if not os.path.isfile(shot):
+            sys.exit('render-og-image: Chromium wrote no screenshot; %s not written' % png_path)
+        with open(shot, 'rb') as src, open(png_path, 'wb') as dst:
+            dst.write(src.read())
+    print('render-og-image: %s -> %s (Inter %s, %s)' % (svg_path, png_path, ', '.join(weights), os.path.basename(bin_)))
+
+
+if __name__ == '__main__':
+    main()

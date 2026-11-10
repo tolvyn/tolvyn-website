@@ -167,7 +167,7 @@
       </ol>
     </nav>
     <h1 class="anim-fade-up">How a runaway AI agent burns a month's budget overnight, and five ways to stop it</h1>
-    <p class="post-meta anim-fade-up"><time datetime="2026-11-10">10 Nov 2026</time> · 5 min read · Younus S. Mohammed</p>
+    <p class="post-meta anim-fade-up"><time datetime="2026-11-10">10 Nov 2026</time> · 6 min read · Younus S. Mohammed</p>
   </div>
 </section>
 
@@ -176,7 +176,18 @@
 
     <section>
       <p>A traditional bug usually fails loudly. A runaway AI agent fails quietly, and it fails expensively. It keeps calling the model, every call succeeds, nothing crashes, and the bill grows until someone looks at it.</p>
-      <p>OWASP lists this as <strong>LLM10:2025 Unbounded Consumption</strong>. It names the financial version "Denial of Wallet": attackers, or simply bugs, trigger a high volume of operations and exploit the cost-per-use model of cloud AI services. You don't need an attacker for this. A loop in your own code is enough. Attackers exist too: METR disclosed that a stolen API key was used for three weeks to consume about $600,000 worth of model credits (credits a provider had granted it), and said it had no way to cap spending on that key at the time (<a href="https://metr.org/blog/2026-08-31-security-update/" target="_blank" rel="noopener noreferrer">METR, 31 Aug 2026</a>; <a href="https://infosecurity-magazine.com/news/attackers-steal-metr-api-key" target="_blank" rel="noopener noreferrer">Infosecurity Magazine</a>).</p>
+      <p>OWASP lists this as <strong>LLM10:2025 Unbounded Consumption</strong>. It names the financial version "Denial of Wallet": attackers, or simply bugs, trigger a high volume of operations and exploit the cost-per-use model of cloud AI services. You don't need an attacker for this. A loop in your own code is enough.</p>
+    </section>
+
+    <section>
+      <h2>It isn't only loops: three incidents from 2026</h2>
+      <p>All three were reported publicly. None was an agent loop. Each was a key with no ceiling of its own.</p>
+      <ul>
+        <li><strong>About $600,000 of model credits in three weeks.</strong> METR, the AI evaluation lab, had an API key taken from an exposed cloud instance. It said it had no way to cap spending on that key at the time (<a href="https://metr.org/blog/2026-08-31-security-update/" target="_blank" rel="noopener noreferrer">METR, 31 Aug 2026</a>; <a href="https://infosecurity-magazine.com/news/attackers-steal-metr-api-key" target="_blank" rel="noopener noreferrer">Infosecurity Magazine</a>).</li>
+        <li><strong>$82,314 in about 48 hours.</strong> A three-developer company in Mexico had a Google API key compromised. Its normal bill was about $180 a month (<a href="https://www.theregister.com/2026/03/03/gemini_api_key_82314_dollar_charge/" target="_blank" rel="noopener noreferrer">The Register, 3 Mar 2026</a>).</li>
+        <li><strong>$14,000 in one day.</strong> A three-person agency had static access keys extracted and used to run Claude on Amazon Bedrock. The same report notes that cloud billing lags about a day behind this kind of spend (<a href="https://infoq.com/news/2026/07/ai-agents-billing-guardrails/" target="_blank" rel="noopener noreferrer">InfoQ, 16 Jul 2026</a>).</li>
+      </ul>
+      <p>The controls below apply to both cases: the loop you wrote yourself, and the key somebody else is using.</p>
       <p>This post walks through what a runaway looks like in numbers, five controls you can put in place, and what each one misses.</p>
     </section>
 
@@ -253,7 +264,7 @@
       <p>And whichever you choose, test it. Make a deliberately bad loop in a sandbox and see which control stops it, and how much it costs before it does. The point of the exercise is to learn the number before your first real incident.</p>
       <p>If you want to see per-agent cost on your own calls, TOLVYN is free up to 10,000 requests a month, no card needed: <a href="https://tolvyn.io/">tolvyn.io</a>.</p>
       <hr>
-      <p class="post-sources"><em>Sources: <a href="https://metr.org/blog/2026-08-31-security-update/" target="_blank" rel="noopener noreferrer">METR security update, 31 Aug 2026</a> · <a href="https://genai.owasp.org/llmrisk/LLM10/" target="_blank" rel="noopener noreferrer">OWASP LLM10:2025 Unbounded Consumption</a> · <a href="https://developers.openai.com/api/docs/guides/spend-limits" target="_blank" rel="noopener noreferrer">OpenAI: Spend limits</a> · <a href="https://blog.google/innovation-and-ai/technology/developers-tools/more-control-over-gemini-api-costs/" target="_blank" rel="noopener noreferrer">Google: More control over Gemini API costs (16 Mar 2026)</a> · <a href="https://platform.claude.com/docs/en/api/go/beta/organization/spend_limits/set" target="_blank" rel="noopener noreferrer">Anthropic: Set Spend Limit API reference</a></em></p>
+      <p class="post-sources"><em>Sources: <a href="https://metr.org/blog/2026-08-31-security-update/" target="_blank" rel="noopener noreferrer">METR security update, 31 Aug 2026</a> · <a href="https://www.theregister.com/2026/03/03/gemini_api_key_82314_dollar_charge/" target="_blank" rel="noopener noreferrer">The Register, 3 Mar 2026</a> · <a href="https://infoq.com/news/2026/07/ai-agents-billing-guardrails/" target="_blank" rel="noopener noreferrer">InfoQ, 16 Jul 2026</a> · <a href="https://genai.owasp.org/llmrisk/LLM10/" target="_blank" rel="noopener noreferrer">OWASP LLM10:2025 Unbounded Consumption</a> · <a href="https://developers.openai.com/api/docs/guides/spend-limits" target="_blank" rel="noopener noreferrer">OpenAI: Spend limits</a> · <a href="https://blog.google/innovation-and-ai/technology/developers-tools/more-control-over-gemini-api-costs/" target="_blank" rel="noopener noreferrer">Google: More control over Gemini API costs (16 Mar 2026)</a> · <a href="https://platform.claude.com/docs/en/api/go/beta/organization/spend_limits/set" target="_blank" rel="noopener noreferrer">Anthropic: Set Spend Limit API reference</a></em></p>
     </section>
 
   </article>
@@ -270,7 +281,7 @@
     <div class="footer__grid">
       <div class="footer__brand">
         <h4>TOLVYN</h4>
-        <p>The financial control plane for AI infrastructure. Built in Hyderabad, India.</p>
+        <p>The control and evidence layer for AI spend. Built in India.</p>
       </div>
       <div class="footer__col">
         <h5>Product</h5>
