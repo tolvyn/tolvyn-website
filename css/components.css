@@ -17,9 +17,6 @@
 .card h3 {margin-bottom:var(--s-2); font-size:var(--fs-md);}
 .card p {font-size:var(--fs-sm); line-height:1.65;}
 
-/* pointer highlight: the hairline brightens (js/main.js) */
-:is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner)::after {content:""; position:absolute; inset:-1px; z-index:2; pointer-events:none; padding:1px; border-radius:inherit; background:radial-gradient(180px circle at var(--mx, -400px) var(--my, -400px), rgba(230, 233, 239, 0.45), transparent 70%); mask-composite:exclude; opacity:0; transition:opacity var(--transition);}
-:is(.card, .diff-tile, .plan, .migration, .pricing-teaser, .code-tabs, .discount-banner):hover::after {opacity:1;}
 
 .label, .badge, .section-label, .hero__eyebrow, .eyebrow, .plan__name, .docs-sidebar__title, .cmp-table th, .uc-table th, .legal-body th, .ci-table th, .mp-table th, .uc-flow__step, .headline-card__model, .footer__col h5, .code-tabs__tab {font:500 var(--fs-xs)/1.4 var(--mono); letter-spacing:0.06em; text-transform:uppercase;}
 

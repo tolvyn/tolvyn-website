@@ -16,7 +16,7 @@
 
   var wide = matchMedia('(min-width: 768px)');
   var calm = matchMedia('(prefers-reduced-motion: reduce)');
-  var MAX = 5, KILL = 'agent/sdr', GRID = 22, REACH = 130;
+  var MAX = 5, KILL = 'agent/sdr', GRID = 22;
   var PROVIDERS = ['OpenAI', 'Anthropic', 'Google', 'DeepSeek'];
   var SCOPES = ['support-bot', 'search-svc', KILL, 'agent/coder', 'billing-etl', 'chat-api', KILL];
   var MONO = '"JetBrains Mono", ui-monospace, monospace';
@@ -212,20 +212,15 @@
     if (rowIn <= 0 && queue.length) { write(queue.shift()); rowIn = 0.42; }
     for (i = 0; i < 4; i++) flash[i] = Math.max(0, flash[i] - dt * 2.5);
 
-    // the dot grid: a soft spring away from the pointer
-    var px = ptr ? ptr.x : -1e5, py = ptr ? ptr.y : -1e5, R2 = REACH * REACH;
+    // the dot grid settles after a refusal shakes it; the pointer does not move or light it
     for (i = 0; i < dots.length; i++) {
-      var d = dots[i], ex = d.x - px, ey = d.y - py, tx = 0, ty = 0, tb = 0;
-      if (ex > -REACH && ex < REACH && ey > -REACH && ey < REACH) {
-        var dd = ex * ex + ey * ey;
-        if (dd < R2) { var r = Math.sqrt(dd) || 1, f = 1 - r / REACH; tx = ex / r * f * f * 26; ty = ey / r * f * f * 26; tb = f; }
-      }
-      if (!tb && d.b < 0.002 && Math.abs(d.ox) + Math.abs(d.oy) + Math.abs(d.vx) + Math.abs(d.vy) < 0.03) {
+      var d = dots[i];
+      if (d.b < 0.002 && Math.abs(d.ox) + Math.abs(d.oy) + Math.abs(d.vx) + Math.abs(d.vy) < 0.03) {
         d.ox = d.oy = d.vx = d.vy = d.b = 0; continue;
       }
-      d.vx += (150 * (tx - d.ox) - 13 * d.vx) * dt; d.ox += d.vx * dt;
-      d.vy += (150 * (ty - d.oy) - 13 * d.vy) * dt; d.oy += d.vy * dt;
-      d.b += (tb - d.b) * Math.min(1, dt * (tb > d.b ? 18 : 3));
+      d.vx += (-150 * d.ox - 13 * d.vx) * dt; d.ox += d.vx * dt;
+      d.vy += (-150 * d.oy - 13 * d.vy) * dt; d.oy += d.vy * dt;
+      d.b -= d.b * Math.min(1, dt * 3);
     }
   }
 
