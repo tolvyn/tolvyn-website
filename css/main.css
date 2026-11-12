@@ -278,7 +278,7 @@ td:is(.cmp-no, .t-no) {color:var(--text-muted);}
 .uc-cta {margin-top:var(--s-5);}
 
 :not(.grid-2) > .card + .card {margin-top:var(--s-4);}
-:is(.card:not(.home-index), 
+.card:not(.home-index) .btn {margin-top:var(--s-4);}
 .ci-section, .mp-section {padding-block:var(--s-8);}
 .ci-section + .ci-section, .mp-section + .mp-section {padding-top:0;}
 .section-header--tight {margin-bottom:var(--s-5);}
