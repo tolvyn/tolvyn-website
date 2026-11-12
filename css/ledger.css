@@ -39,7 +39,7 @@ body {margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.6 var
 h1, h2, h3, h4, h5, p, ul, ol, figure, dl, dd, pre {margin:0; padding:0;}
 ul, ol {list-style:none;}
 h1, h2, h3 {font-family:var(--serif); font-weight:600; color:var(--ink); letter-spacing:-0.005em;}
-h1 {font-size:52px; line-height:1.1;}
+h1 {font-size:52px; line-height:1.1; text-wrap:balance;}
 h2 {font-size:34px; line-height:1.2;}
 h3 {font-size:20px; line-height:1.3;}
 p + p {margin-top:12px;}
@@ -173,6 +173,31 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .tbl--plans .no {color:var(--ink-2);}
 .tbl--plans tfoot th, .tbl--plans tfoot td {border-top:1px solid var(--ink); border-bottom:3px double var(--ink); padding-block:16px;}
 .fine-print {margin-top:16px; font-size:14px; color:var(--ink-2);}
+.plans-m {display:none;}
+@media (max-width:1023px) {
+.tbl--plans th, .tbl--plans td {padding-inline:8px;}
+.tbl--plans .plan-name {font-size:18px;}
+.tbl--plans .price td {font-size:17px;}
+.tbl--plans td, .tbl--plans tbody th {font-size:14px;}
+.tbl--plans .btn {white-space:normal; padding-inline:12px;}
+}
+@media (max-width:767px) {
+.tbl--plans {display:none;}
+.plans-m {display:block; border-top:1px solid var(--ink);}
+.plan-m {padding:28px 0 24px; border-bottom:3px double var(--ink);}
+.plan-m h3 {padding-bottom:10px; border-bottom:1px solid var(--ink); font-size:22px;}
+.plan-m h3 .plan-tag {display:block; font:500 15px/1.4 var(--sans); font-variant-caps:all-small-caps; letter-spacing:0.08em; color:var(--green);}
+.plan-m h3 .plan-name {display:block;}
+.plan-m dl div {display:grid; grid-template-columns:minmax(0, 148px) minmax(0, 1fr); gap:12px; padding:10px 0; border-bottom:1px solid var(--rule);}
+.plan-m dt {font-size:14px; color:var(--ink-2);}
+.plan-m dd {margin:0; font-size:15px;}
+.plan-m dd.no {color:var(--ink-2);}
+.plan-m__key div:first-child dd {font:500 22px/1.3 var(--mono);}
+.plan-m__key div:first-child small {display:block; font-size:14px; font-weight:400; color:var(--ink-2);}
+.plan-m__more summary {min-height:44px; display:flex; align-items:center; gap:8px; cursor:pointer; color:var(--green); font-weight:500; border-bottom:1px solid var(--rule);}
+.plan-m__more summary::marker {color:var(--green);}
+.plan-m__act {margin-top:16px;}
+}
 
 /* ── Footer ───────────────────────────────────────────────────────── */
 .footer {margin-top:0; padding-block:40px 28px; border-top:1px solid var(--ink); font-size:14px;}
@@ -203,18 +228,6 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .facts li:nth-child(n+3) {border-top:1px solid var(--rule);}
 .footer__grid {grid-template-columns:repeat(2, minmax(0, 1fr)); row-gap:24px;}
 .footer__col:nth-child(3) {padding-left:0; border-left:0;}
-/* Plans: one ruled list per plan (each cell labelled), in plan order; one markup, no copy repeated. */
-.tbl--plans {display:grid; grid-template-columns:minmax(0, 1fr);}
-.tbl--plans thead, .tbl--plans tbody, .tbl--plans tfoot, .tbl--plans tr {display:contents;}
-.tbl--plans colgroup, .tbl--plans thead th.corner, .tbl--plans tbody th, .tbl--plans tfoot th {display:none;}
-.tbl--plans td {display:grid; grid-template-columns:minmax(0, 148px) minmax(0, 1fr); gap:12px; padding:10px 0; background:none; border-top:0;}
-.tbl--plans td::before {content:attr(data-label); color:var(--ink-2); font-size:14px; font-family:var(--sans); font-weight:400;}
-.tbl--plans thead th {display:block; padding:36px 0 10px; border-top:0; border-bottom:1px solid var(--ink); background:none;}
-.tbl--plans thead th[data-plan="1"] {padding-top:8px;}
-.tbl--plans tfoot td {border-top:0; border-bottom:3px double var(--ink);}
-.tbl--plans tfoot td::before {content:none;}
-.tbl--plans [data-plan="1"] {order:1;} .tbl--plans [data-plan="2"] {order:2;} .tbl--plans [data-plan="3"] {order:3;}
-.tbl--plans [data-plan="4"] {order:4;} .tbl--plans [data-plan="5"] {order:5;}
 }
 @media (max-width:599px) {
 :root {--gutter:16px;}
