@@ -12,272 +12,270 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="TOLVYN — The control and evidence layer for AI spend">
   <meta property="og:description" content="TOLVYN is the control and evidence layer for AI spend: it stops AI calls before they are charged, per team, service, agent and key, and keeps a signed record of every call that your auditor can verify.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
 
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="TOLVYN — The control and evidence layer for AI spend">
   <meta name="twitter:description" content="TOLVYN is the control and evidence layer for AI spend: it stops AI calls before they are charged, per team, service, agent and key, and keeps a signed record of every call that your auditor can verify.">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://tolvyn.io/">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
-  <meta name="theme-color" content="#00D9A3">
-
-  <!-- Security -->
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; img-src 'self' data:;">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-ledger.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-ledger-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-ledger.png">
+  <meta name="theme-color" content="#FAF8F3">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/ledger.css">
 
   <!-- Umami Analytics (privacy-friendly) -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+  <script defer src="js/vendor/umami.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21" data-domains="tolvyn.io,www.tolvyn.io" data-do-not-track="true"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <!-- ── NAV ─────────────────────────────────────────────────────────── -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
-
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
       <li><a href="/pages/pricing">Pricing</a></li>
-      <li><a href="/pages/cost-index">Cost Index</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
     </ul>
-
     <div class="nav__actions">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn--sm" target="_blank" rel="noopener noreferrer">Start free</a>
     </div>
-
-    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">Menu</button>
   </div>
-
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
     <a href="/pages/pricing" role="menuitem">Pricing</a>
-    <a href="/pages/cost-index" role="menuitem">Cost Index</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
-    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start free</a>
   </div>
 </nav>
 
+<main id="main">
 <!-- ── HERO ────────────────────────────────────────────────────────── -->
 <section class="hero" aria-labelledby="hero-headline">
-  <div class="container">
-    <h1 id="hero-headline" class="anim-fade-up">
-      Stop AI spend before it's charged.<br>
-      Prove every call <span>after</span>.
-    </h1>
-
-    <p class="hero__sub anim-fade-up">
-      TOLVYN sits in front of OpenAI, Anthropic, Google and DeepSeek as one control plane for every AI call.
-      It caps every team, service, agent and key before the provider is called, attributes every rupee or dollar
-      to who spent it, and keeps a signed record you can verify. Hosted in India. Nothing to run. Prompts never stored.
-    </p>
-
-    <div class="hero__ctas anim-fade-up">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-        Start free — 10,000 requests
-      </a>
-      <a href="https://docs.tolvyn.io" class="btn btn-ghost btn-lg" target="_blank" rel="noopener noreferrer">
-        Read the docs →
-      </a>
-    </div>
-
-    <p class="hero__trust anim-fade-up">
-      Open-source pricing database · MIT and Apache-2.0 SDKs
-    </p>
-
-    <!-- Live terminal -->
-    <div class="terminal-wrap reveal">
-      <div class="terminal-bar" aria-hidden="true">
-        <span class="terminal-dot terminal-dot--red"></span>
-        <span class="terminal-dot terminal-dot--yellow"></span>
-        <span class="terminal-dot terminal-dot--green"></span>
-        <span class="terminal-title">tolvyn — bash</span>
+  <div class="container hero__grid">
+    <div>
+      <h1 id="hero-headline">Stop AI spend before it's charged.<br> Prove every call&nbsp;after.</h1>
+      <p class="hero__sub">
+        TOLVYN sits in front of OpenAI, Anthropic, Google and DeepSeek as one control plane for every AI call.
+        It caps every team, service, agent and key before the provider is called, attributes every rupee or dollar
+        to who spent it, and keeps a signed record you can verify. Hosted in India. Nothing to run. Prompts never stored.
+      </p>
+      <div class="actions">
+        <a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Start free — 10,000 requests</a>
+        <a href="https://docs.tolvyn.io" class="arrow" target="_blank" rel="noopener noreferrer">Read the docs&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
       </div>
-      <div class="terminal-screen" id="terminal-screen" aria-live="polite" aria-label="Live terminal output">
-        <div class="terminal-lines" id="terminal-lines"></div>
-        <span class="terminal-cursor" aria-hidden="true"></span>
-      </div>
+      <p class="hero__trust">Open-source pricing database · MIT and Apache-2.0 SDKs</p>
     </div>
+    <figure class="frame">
+      <picture><source type="image/webp" srcset="/assets/screens/overview.webp"><img src="/assets/screens/overview.png" width="1440" height="900" alt="TOLVYN dashboard Overview with sample data: $127.10 spent over 30 days across 13,914 requests, a daily spend chart, top models, and spend per team with a kill switch on each team." fetchpriority="high" decoding="async"></picture>
+    </figure>
   </div>
 </section>
 
+<!-- ── NUMBERS ─────────────────────────────────────────────────────── -->
+<section aria-label="TOLVYN in numbers">
+  <div class="container">
+    <ul class="facts">
+      <li><b>4</b> providers through one proxy: OpenAI, Anthropic, Google and DeepSeek</li>
+      <li><b>about 5 ms</b> added at the median, in our own benchmark</li>
+      <li><b>14</b> <a href="/pages/security#acknowledgments">security researchers credited</a></li>
+      <li><b>10,000</b> <a href="/pages/pricing">requests free, no credit card</a></li>
+    </ul>
+  </div>
+</section>
 
 <!-- ── THE PROBLEM ─────────────────────────────────────────────────── -->
 <section class="section" aria-labelledby="problem-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="section-label">The problem</p>
+    <div class="section__head">
+      <p class="label">The problem</p>
       <h2 id="problem-heading">Your AI bill doubled last month. You don't know why.</h2>
     </div>
-
-    <div class="grid-3">
-      <div class="problem-card reveal" data-delay="1">
-        <h3>Cost attribution is broken</h3>
-        <p>The bill arrives as one number. Which team? Which feature? Which customer? Nobody can answer the CFO's question.</p>
-      </div>
-      <div class="problem-card reveal" data-delay="2">
-        <h3>AI agents have no governance</h3>
-        <p>Your AI SDR, support bot, and coding agent each generate thousands of requests daily. None of them appear on one ledger.</p>
-      </div>
-      <div class="problem-card reveal" data-delay="3">
-        <h3>There's no proof of what happened</h3>
-        <p>When auditors ask for AI usage records, you have provider invoices and Slack screenshots. That's not a financial record.</p>
-      </div>
-    </div>
+    <ul class="entries">
+      <li class="entry entry--plain"><h3>Cost attribution is broken</h3><p>The bill arrives as one number. Which team? Which feature? Which customer? Nobody can answer the CFO's question.</p></li>
+      <li class="entry entry--plain"><h3>AI agents have no governance</h3><p>Your AI SDR, support bot, and coding agent each generate thousands of requests daily. None of them appear on one ledger.</p></li>
+      <li class="entry entry--plain"><h3>There's no proof of what happened</h3><p>When auditors ask for AI usage records, you have provider invoices and Slack screenshots. That's not a financial record.</p></li>
+    </ul>
   </div>
 </section>
 
-<!-- ── HOW IT WORKS (architecture diagram) ─────────────────────────── -->
-<section class="section" style="padding-top:0;" aria-labelledby="how-heading">
+<!-- ── HOW IT WORKS ────────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="how-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="section-label">How it works</p>
+    <div class="section__head">
+      <p class="label">How it works</p>
       <h2 id="how-heading">A proxy that turns every call it meters into a financial record</h2>
       <p>Register your provider key with TOLVYN once, point your SDK's base URL at the proxy, and swap your provider key for a TOLVYN key. No SDK refactor.</p>
     </div>
-
-    <div class="diagram reveal">
-      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, Google, and DeepSeek while writing to four outputs: tamper-evident ledger, attribution, budget enforcement, and reconciliation.">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#00D9A3"/>
-          </marker>
-          <marker id="arr-dim" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#5a6070"/>
-          </marker>
-        </defs>
-
-        <!-- App -->
-        <rect x="20" y="150" width="140" height="80" rx="10" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="90" y="186" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#e8eaf0">Your App</text>
-        <text x="90" y="206" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#9aa0b0">SDK / HTTP</text>
-
-        <!-- App → Proxy -->
-        <line x1="162" y1="190" x2="328" y2="190" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arr)"/>
-        <text x="245" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#00D9A3">request</text>
-
-        <!-- Proxy -->
-        <rect x="330" y="120" width="180" height="140" rx="12" fill="#0d0f14" stroke="#00D9A3" stroke-width="2"/>
-        <text x="420" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="16" font-weight="800" fill="#00D9A3" letter-spacing="2">TOLVYN</text>
-        <text x="420" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#e8eaf0">Proxy</text>
-        <line x1="360" y1="194" x2="480" y2="194" stroke="#252830" stroke-width="1"/>
-        <text x="420" y="214" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">meter · hash · route</text>
-        <text x="420" y="230" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">attribute · govern</text>
-
-        <!-- Proxy → Providers (stacked) -->
-        <line x1="512" y1="150" x2="660" y2="100" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arr)"/>
-        <line x1="512" y1="190" x2="660" y2="190" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arr)"/>
-        <line x1="512" y1="230" x2="660" y2="280" stroke="#00D9A3" stroke-width="1.5" marker-end="url(#arr)"/>
-
-        <rect x="662" y="70" width="130" height="60" rx="8" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="727" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#e8eaf0">OpenAI</text>
-        <text x="727" y="116" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">api.openai.com</text>
-
-        <rect x="662" y="160" width="130" height="60" rx="8" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="727" y="190" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#e8eaf0">Anthropic</text>
-        <text x="727" y="206" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">api.anthropic.com</text>
-
-        <rect x="662" y="250" width="130" height="60" rx="8" fill="#111318" stroke="#252830" stroke-width="1.5"/>
-        <text x="727" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="600" fill="#e8eaf0">Google</text>
-        <text x="727" y="296" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">generativelanguage</text>
-
-        <!-- Output labels around the proxy -->
-        <text x="420" y="50"  text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#00D9A3">Tamper-evident ledger</text>
-        <text x="420" y="66"  text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">SHA-256 hash chain</text>
-        <line x1="420" y1="78" x2="420" y2="118" stroke="#5a6070" stroke-width="1" stroke-dasharray="3,3"/>
-
-        <text x="180" y="60"  text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#00D9A3">Attribution</text>
-        <text x="180" y="76"  text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">team / customer / agent</text>
-        <line x1="220" y1="86" x2="338" y2="148" stroke="#5a6070" stroke-width="1" stroke-dasharray="3,3"/>
-
-        <text x="180" y="310" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#00D9A3">Budget enforcement</text>
-        <text x="180" y="326" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">hard block at limit</text>
-        <line x1="220" y1="298" x2="338" y2="234" stroke="#5a6070" stroke-width="1" stroke-dasharray="3,3"/>
-
-        <text x="420" y="320" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#00D9A3">Reconciliation</text>
-        <text x="420" y="336" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9aa0b0">vs provider invoices</text>
-        <line x1="420" y1="264" x2="420" y2="306" stroke="#5a6070" stroke-width="1" stroke-dasharray="3,3"/>
+    <div class="diagram">
+      <div class="diagram__wide">
+      <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, Google, and DeepSeek while writing to four outputs: tamper-evident ledger, attribution, budget enforcement, and reconciliation.">
+        <defs><marker id="hwa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1F5C45"/></marker><marker id="hwb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#5C5A55"/></marker></defs>
+        <rect x="20" y="160" width="140" height="80" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="90" y="196" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Your App</text>
+        <text x="90" y="216" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#5C5A55">SDK / HTTP</text>
+        <line x1="162" y1="200" x2="328" y2="200" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hwa)"/>
+        <text x="245" y="190" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#1F5C45">request</text>
+        <rect x="330" y="130" width="180" height="140" rx="2" fill="#FAF8F3" stroke="#1F5C45" stroke-width="2"/>
+        <text x="420" y="168" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="16" font-weight="600" fill="#1F5C45" letter-spacing="2">TOLVYN</text>
+        <text x="420" y="190" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#1A1A1A">Proxy</text>
+        <line x1="360" y1="204" x2="480" y2="204" stroke="#8A867D" stroke-width="1"/>
+        <text x="420" y="224" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">meter · hash · route</text>
+        <text x="420" y="240" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">attribute · govern</text>
+        <line x1="512" y1="170" x2="660" y2="70" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hwa)"/>
+        <rect x="662" y="42" width="160" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="742" y="66" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">OpenAI</text>
+        <text x="742" y="83" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">api.openai.com</text>
+        <line x1="512" y1="190" x2="660" y2="156" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hwa)"/>
+        <rect x="662" y="128" width="160" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="742" y="152" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">Anthropic</text>
+        <text x="742" y="169" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">api.anthropic.com</text>
+        <line x1="512" y1="210" x2="660" y2="242" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hwa)"/>
+        <rect x="662" y="214" width="160" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="742" y="238" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">Google</text>
+        <text x="742" y="255" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">generativelanguage</text>
+        <line x1="512" y1="230" x2="660" y2="328" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hwa)"/>
+        <rect x="662" y="300" width="160" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="742" y="324" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="12" font-weight="600" fill="#1A1A1A">DeepSeek</text>
+        <text x="742" y="341" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">api.deepseek.com</text>
+        <text x="420" y="50" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#1F5C45">Tamper-evident ledger</text>
+        <text x="420" y="66" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">SHA-256 hash chain</text>
+        <line x1="420" y1="78" x2="420" y2="128" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="180" y="80" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#1F5C45">Attribution</text>
+        <text x="180" y="96" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">team / customer / agent</text>
+        <line x1="220" y1="106" x2="338" y2="158" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="180" y="330" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#1F5C45">Budget enforcement</text>
+        <text x="180" y="346" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">hard block at limit</text>
+        <line x1="220" y1="318" x2="338" y2="244" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="420" y="340" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#1F5C45">Reconciliation</text>
+        <text x="420" y="356" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">vs provider invoices</text>
+        <line x1="420" y1="272" x2="420" y2="326" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
       </svg>
+      </div>
+      <div class="diagram__tall">
+      <svg viewBox="0 0 340 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TOLVYN architecture: your app routes through the TOLVYN proxy, which forwards to OpenAI, Anthropic, Google, and DeepSeek while writing to four outputs: tamper-evident ledger, attribution, budget enforcement, and reconciliation.">
+        <defs><marker id="hta" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1F5C45"/></marker><marker id="htb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#5C5A55"/></marker></defs>
+        <rect x="80" y="8" width="180" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="170" y="32" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Your App</text>
+        <text x="170" y="52" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">SDK / HTTP</text>
+        <line x1="170" y1="66" x2="170" y2="104" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hta)"/>
+        <text x="180" y="90" text-anchor="start" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#1F5C45">request</text>
+        <rect x="40" y="108" width="260" height="112" rx="2" fill="#FAF8F3" stroke="#1F5C45" stroke-width="2"/>
+        <text x="170" y="134" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="16" font-weight="600" fill="#1F5C45" letter-spacing="2">TOLVYN</text>
+        <text x="170" y="154" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#1A1A1A">Proxy</text>
+        <line x1="70" y1="166" x2="270" y2="166" stroke="#8A867D" stroke-width="1"/>
+        <text x="170" y="186" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">meter · hash · route</text>
+        <text x="170" y="206" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">attribute · govern</text>
+        <line x1="170" y1="222" x2="170" y2="258" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#hta)"/>
+        <text x="180" y="246" text-anchor="start" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#1F5C45">forward</text>
+        <rect x="1" y="262" width="162" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="82" y="286" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">OpenAI</text>
+        <text x="82" y="305" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">api.openai.com</text>
+        <rect x="177" y="262" width="162" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="258" y="286" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Anthropic</text>
+        <text x="258" y="305" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">api.anthropic.com</text>
+        <rect x="1" y="328" width="162" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="82" y="352" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Google</text>
+        <text x="82" y="371" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">generativelanguage</text>
+        <rect x="177" y="328" width="162" height="56" rx="2" fill="#FAF8F3" stroke="#8A867D" stroke-width="1.5"/>
+        <text x="258" y="352" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">DeepSeek</text>
+        <text x="258" y="371" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#5C5A55">api.deepseek.com</text>
+        <text x="0" y="424" text-anchor="start" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#5C5A55">Every metered call is also written to:</text>
+        <rect x="1" y="436" width="162" height="56" rx="2" fill="none" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="82" y="460" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1F5C45">Tamper-evident ledger</text>
+        <text x="82" y="479" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#5C5A55">SHA-256 hash chain</text>
+        <rect x="177" y="436" width="162" height="56" rx="2" fill="none" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="258" y="460" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1F5C45">Attribution</text>
+        <text x="258" y="479" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#5C5A55">team / customer / agent</text>
+        <rect x="1" y="502" width="162" height="56" rx="2" fill="none" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="82" y="526" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1F5C45">Budget enforcement</text>
+        <text x="82" y="545" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#5C5A55">hard block at limit</text>
+        <rect x="177" y="502" width="162" height="56" rx="2" fill="none" stroke="#8A867D" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="258" y="526" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1F5C45">Reconciliation</text>
+        <text x="258" y="545" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#5C5A55">vs provider invoices</text>
+      </svg>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── DIFFERENTIATORS ─────────────────────────────────────────────── -->
+<!-- ── WHAT MAKES TOLVYN DIFFERENT ─────────────────────────────────── -->
 <section class="section" aria-labelledby="diff-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="section-label">What makes TOLVYN different</p>
+    <div class="section__head">
+      <p class="label">What makes TOLVYN different</p>
       <h2 id="diff-heading">Control, and the evidence for it</h2>
     </div>
-
-    <div class="diff-grid">
-      <div class="diff-tile reveal" data-delay="1">
-        <h3>Tamper-Evident Ledger</h3>
-        <p>Every AI request TOLVYN meters is hash-chained and HMAC-signed. Cryptographic proof, not logs. Your CFO or auditor can re-verify the hash chain themselves with the script shipped in every evidence package &mdash; the HMAC is keyed on a secret TOLVYN holds, so it detects tampering by anyone without that key.</p>
-      </div>
-      <div class="diff-tile reveal" data-delay="2">
-        <h3>Per-End-Customer Attribution</h3>
-        <p>Track AI cost per <em>your</em> customer. Know your AI COGS per customer. The unit economics SaaS founders are missing.</p>
-      </div>
-      <div class="diff-tile reveal" data-delay="3">
-        <h3>Invoice Reconciliation</h3>
-        <p>Upload your OpenAI / Anthropic / Google usage export. TOLVYN shows the gap: spend on your provider bill that did not go through TOLVYN.</p>
-      </div>
-      <div class="diff-tile reveal" data-delay="4">
-        <h3>Agent Governance</h3>
-        <p>Per-agent budgets. Cost anomaly alerts — one call over 10× the recent average. Kill switch. Every AI agent on one ledger.</p>
-      </div>
-      <div class="diff-tile reveal" data-delay="5">
-        <h3>Savings Analyzer</h3>
-        <p>Nightly analysis identifies migration opportunities. Switch to a cheaper model where your actual usage patterns fit.</p>
-      </div>
-      <div class="diff-tile reveal" data-delay="6">
-        <h3>Pricing Change Alerts</h3>
-        <p>When OpenAI changes prices, customers using affected models get an alert projecting the monthly impact from their last 30 days of usage.</p>
-      </div>
+    <div class="shots">
+      <figure class="frame">
+        <picture><source type="image/webp" srcset="/assets/screens/agents.webp"><img src="/assets/screens/agents.png" width="1240" height="331" alt="Agents page with sample data: requests, share and cost for four agents over 30 days, a Kill button on each row, and Lift on the agent whose kill switch is on." loading="lazy" decoding="async"></picture>
+        <figcaption>Every agent&rsquo;s cost over the last 30 days, with a kill switch on each row.</figcaption>
+      </figure>
+      <figure class="frame">
+        <picture><source type="image/webp" srcset="/assets/screens/budgets.webp"><img src="/assets/screens/budgets.png" width="940" height="355" alt="Budgets page with sample data: the Support team's hard budget at $150 of $150 (100%), and Engineering's soft budget at $328 of $400 (82%)." loading="lazy" decoding="async"></picture>
+        <figcaption>A hard budget at its limit: the next call is refused before the provider is called.</figcaption>
+      </figure>
+      <figure class="frame">
+        <picture><source type="image/webp" srcset="/assets/screens/ledger-verify.webp"><img src="/assets/screens/ledger-verify.png" width="760" height="407" alt="Ledger Verify with sample data: 13,914 ledger records checked, chain intact." loading="lazy" decoding="async"></picture>
+        <figcaption>The ledger&rsquo;s chain, checked for the month.</figcaption>
+      </figure>
     </div>
+    <ol class="entries">
+      <li class="entry"><span class="entry__no">01</span><h3>Tamper-Evident Ledger</h3><p>Every AI request TOLVYN meters is hash-chained and HMAC-signed. Cryptographic proof, not logs. Your CFO or auditor can re-verify the hash chain themselves with the script shipped in every evidence package &mdash; the HMAC is keyed on a secret TOLVYN holds, so it detects tampering by anyone without that key.</p></li>
+      <li class="entry"><span class="entry__no">02</span><h3>Per-End-Customer Attribution</h3><p>Track AI cost per <em>your</em> customer. Know your AI COGS per customer. The unit economics SaaS founders are missing.</p></li>
+      <li class="entry"><span class="entry__no">03</span><h3>Invoice Reconciliation</h3><p>Upload your OpenAI / Anthropic / Google usage export. TOLVYN shows the gap: spend on your provider bill that did not go through TOLVYN.</p></li>
+      <li class="entry"><span class="entry__no">04</span><h3>Agent Governance</h3><p>Per-agent budgets. Cost anomaly alerts — one call over 10× the recent average. Kill switch. Every AI agent on one ledger.</p></li>
+      <li class="entry"><span class="entry__no">05</span><h3>Savings Analyzer</h3><p>Nightly analysis identifies migration opportunities. Switch to a cheaper model where your actual usage patterns fit.</p></li>
+      <li class="entry"><span class="entry__no">06</span><h3>Pricing Change Alerts</h3><p>When OpenAI changes prices, customers using affected models get an alert projecting the monthly impact from their last 30 days of usage.</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- ── INTEGRATION (5-min proof) ───────────────────────────────────── -->
-<section class="section" style="padding-top:0;" aria-labelledby="integration-heading">
+<!-- ── LIMITS ──────────────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="limits-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="section-label">A base-URL change, or one import</p>
+    <div class="section__head">
+      <p class="label">Honest limits</p>
+      <h2 id="limits-heading">What TOLVYN doesn&rsquo;t do yet</h2>
+    </div>
+    <ul class="limits entries">
+      <li><strong>Budgets per end customer.</strong> End customers are attributed and reported, but a budget can only be set on the organization, a team, a service, an agent or an API key.</li>
+      <li><strong>Limits per agent run or task.</strong> Budgets and quotas are per period; there is no per-run limit yet.</li>
+      <li><strong>Amazon Bedrock, Azure OpenAI and Vertex AI.</strong> The providers TOLVYN proxies natively are OpenAI, Anthropic, Google's Gemini API and DeepSeek.</li>
+      <li><strong>Single sign-on.</strong> There is no SAML or OIDC sign-in yet; you sign in with email and password.</li>
+      <li><strong>A SOC 2 report.</strong> There is none yet. What an auditor gets today is the evidence package and the ledger it verifies.</li>
+      <li><strong>Gemini's Files API upload and Gemini's OpenAI-compatible endpoint.</strong> Both are answered with a named 501. Upload files to Google directly and pass the file reference through TOLVYN.</li>
+      <li><strong>A fallback in proxy mode.</strong> If TOLVYN is unreachable, a base-URL integration fails. Fail-open lives in the SDKs and needs your own provider key.</li>
+      <li><strong>More than one region.</strong> TOLVYN is hosted in India only.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── INTEGRATION ─────────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="integration-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="label">A base-URL change, or one import</p>
       <h2 id="integration-heading">Change how you connect. Everything else identical.</h2>
     </div>
 
-    <div class="code-tabs reveal">
+    <div class="code-tabs">
       <div class="code-tabs__bar" role="tablist">
         <button class="code-tabs__tab active" data-tab="python" role="tab">Python</button>
         <button class="code-tabs__tab" data-tab="node" role="tab">Node.js</button>
@@ -319,136 +317,125 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
   -H "X-Tolvyn-Service: chatbot-api"</code></pre></div>
     </div>
 
-    <p style="text-align:center;margin-top:20px;color:var(--text-muted);font-family:var(--mono);font-size:0.85rem;">
-      pip install tolvyn &nbsp;·&nbsp; npm install tolvyn &nbsp;·&nbsp; go get github.com/tolvyn/tolvyn-go
-    </p>
-    <p style="text-align:center;margin-top:8px;color:var(--text-muted);font-size:0.9rem;max-width:640px;margin-inline:auto;">
-      Works with OpenAI, Anthropic, Google, and DeepSeek. If TOLVYN is unreachable, SDK mode automatically retries against the provider directly.
-    </p>
+    <figure class="ledger" aria-labelledby="ledger-title">
+      <figcaption>
+        <h3 id="ledger-title">Sample ledger</h3>
+        <span class="ledger__note">Sample rows, not customer data.</span>
+      </figcaption>
+      <table class="tbl tbl--ledger">
+        <thead>
+          <tr><th scope="col">Time</th><th scope="col" class="c-svc">Service</th><th scope="col">Model</th><th scope="col" class="num">Tokens</th><th scope="col" class="num">Cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">14:23:01</th><td class="c-svc">eng/chatbot-api</td><td>gpt-4o</td><td class="num">1,247</td><td class="num">$0.0089</td></tr>
+          <tr><th scope="row">14:23:02</th><td class="c-svc">eng/search-svc</td><td>claude-opus-4-6</td><td class="num">2,104</td><td class="num">$0.0252</td></tr>
+          <tr><th scope="row">14:23:03</th><td class="c-svc">support/bot</td><td>gpt-4o-mini</td><td class="num">456</td><td class="num">$0.0003</td></tr>
+          <tr><th scope="row">14:23:05</th><td class="c-svc">mktg/content</td><td>gpt-4o</td><td class="num">3,847</td><td class="num">$0.0312</td></tr>
+          <tr><th scope="row">14:23:07</th><td class="c-svc">eng/chatbot-api</td><td>gpt-4o</td><td class="num">892</td><td class="num">$0.0071</td></tr>
+          <tr><th scope="row">14:23:09</th><td class="c-svc">data/pipeline</td><td>claude-haiku-4-5</td><td class="num">12,450</td><td class="num">$0.0094</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th scope="row">Total</th><td class="c-svc"></td><td>6 calls</td><td class="num">20,996</td><td class="num">$0.0821</td></tr>
+        </tfoot>
+      </table>
+    </figure>
+
+    <p class="install">pip install tolvyn &nbsp;·&nbsp; npm install tolvyn &nbsp;·&nbsp; go get github.com/tolvyn/tolvyn-go</p>
+    <p>Works with OpenAI, Anthropic, Google, and DeepSeek. If TOLVYN is unreachable, SDK mode automatically retries against the provider directly.</p>
   </div>
 </section>
 
-<!-- ── MIGRATION STRIP ─────────────────────────────────────────────── -->
-<section class="section-sm" aria-labelledby="migration-heading">
-  <div class="container">
-    <div class="migration reveal">
+<!-- ── MIGRATION, COST INDEX, WORK WITH US ─────────────────────────── -->
+<section class="section section--tight" aria-label="More">
+  <div class="container"><div class="blocks">
+    <div class="block">
       <h3 id="migration-heading">Already using another tool? Migration takes minutes.</h3>
-      <div class="migration__list">
-        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-helicone"      class="migration__item" target="_blank" rel="noopener noreferrer">From Helicone →</a>
-        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-portkey"       class="migration__item" target="_blank" rel="noopener noreferrer">From Portkey →</a>
-        <a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-openai-direct" class="migration__item" target="_blank" rel="noopener noreferrer">From OpenAI Direct →</a>
-      </div>
-      <p class="migration__note">Header-compatible. We read your existing <code class="tag">helicone-property-*</code> headers automatically.</p>
+      <ul>
+        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-helicone" class="arrow" target="_blank" rel="noopener noreferrer">From Helicone&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-portkey" class="arrow" target="_blank" rel="noopener noreferrer">From Portkey&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-openai-direct" class="arrow" target="_blank" rel="noopener noreferrer">From OpenAI Direct&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+      </ul>
+      <p class="muted">Header-compatible. We read your existing <code>helicone-property-*</code> headers automatically.</p>
     </div>
-  </div>
-</section>
-
-<!-- ── COST INDEX TEASER ───────────────────────────────────────────── -->
-<section class="section-sm" aria-labelledby="cost-index-heading">
-  <div class="container">
-    <div class="card reveal" style="max-width:720px;margin-inline:auto;padding:36px;text-align:center;">
-      <span class="badge" style="margin-bottom:16px;">
-        Privacy floor: three organisations minimum
-      </span>
-      <h3 id="cost-index-heading" style="font-size:1.4rem;margin-bottom:12px;">TOLVYN AI Cost Index</h3>
-      <p style="margin-bottom:24px;">Anonymized cost benchmarks aggregated from real production AI traffic. A figure is published only when at least three organisations contribute to it, so the index shows what clears that floor &mdash; and nothing else.</p>
-      <a href="/pages/cost-index" class="btn btn-secondary">View the data →</a>
+    <div class="block">
+      <p class="label">Privacy floor: three organisations minimum</p>
+      <h3 id="cost-index-heading">TOLVYN AI Cost Index</h3>
+      <p>Anonymized cost benchmarks aggregated from real production AI traffic. A figure is published only when at least three organisations contribute to it, so the index shows what clears that floor &mdash; and nothing else.</p>
+      <p><a href="/pages/cost-index" class="arrow">View the data&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
     </div>
-  </div>
+    <div class="block">
+      <h3 id="partners-heading">Work with us</h3>
+      <p>We work closely with a few early teams. Write to <a href="mailto:younus@tolvyn.io?subject=Design%20partner">younus@tolvyn.io</a>.</p>
+    </div>
+  </div></div>
 </section>
 
 <!-- ── FINAL CTA ───────────────────────────────────────────────────── -->
-<section class="section" aria-labelledby="final-cta-heading">
+<section class="section cta" aria-labelledby="final-cta-heading">
   <div class="container">
-    <div class="pricing-teaser reveal">
-      <p class="section-label">Start now</p>
-      <h2 id="final-cta-heading">Start free. 10,000 requests. No credit card.</h2>
-      <p>Point your base URL at TOLVYN, swap in a TOLVYN key. Cryptographic proof from request one.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
-        <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Create your account →</a>
-      </div>
-      <p style="font-size:0.9rem;color:var(--text-muted);">
-        Or book a 15-minute demo →
-        <a href="https://cal.com/tolvyn" style="color:var(--accent);" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
-      </p>
+    <p class="label">Start now</p>
+    <h2 id="final-cta-heading">Start free. 10,000 requests. No credit card.</h2>
+    <p>Point your base URL at TOLVYN, swap in a TOLVYN key. Cryptographic proof from request one.</p>
+    <div class="actions">
+      <a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Create your account&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
+    <p class="muted">
+      Or book a 15-minute demo&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
+    </p>
   </div>
 </section>
+</main>
 
 <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__grid">
-      <div class="footer__brand">
-        <h4>TOLVYN</h4>
-        <p>The control and evidence layer for AI spend. Built in India.</p>
-      </div>
       <div class="footer__col">
         <h5>Product</h5>
         <ul>
-          <li><a href="/pages/how-it-works">How It Works</a></li>
-          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
-          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
-          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
-          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+          <li><a href="/pages/how-it-works">How it works</a></li>
+          <li><a href="/pages/pricing">Pricing</a></li>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/python" target="_blank" rel="noopener noreferrer">SDKs</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
         </ul>
       </div>
       <div class="footer__col">
-        <h5>Resources</h5>
+        <h5>Compare</h5>
         <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
-          <li><a href="/pages/cost-index">Cost Index</a></li>
-          <li><a href="/pages/model-pricing">AI Model Pricing</a></li>
           <li><a href="/compare/helicone">TOLVYN vs Helicone</a></li>
           <li><a href="/compare/portkey">TOLVYN vs Portkey</a></li>
           <li><a href="/compare/langfuse">TOLVYN vs Langfuse</a></li>
-          <li><a href="/use-cases/cost-attribution-per-customer">Cost Attribution</a></li>
-          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit Trail</a></li>
-          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-Based Metering</a></li>
-          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
-          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <ul>
+          <li><a href="/use-cases/cost-attribution-per-customer">Cost attribution</a></li>
+          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit trail</a></li>
+          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-based metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration guides</a></li>
+          <li><a href="/pages/model-pricing">AI model pricing</a></li>
+          <li><a href="/pages/cost-index">Cost Index</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h5>Company</h5>
         <ul>
           <li><a href="/pages/company">About</a></li>
-          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="/pages/customers">Customers</a></li>
-          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="/pages/privacy">Privacy Policy</a></li>
-          <li><a href="/pages/terms">Terms of Service</a></li>
           <li><a href="/pages/security">Security</a></li>
-          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+          <li><a href="mailto:sales@tolvyn.io">Contact</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
-      <div class="footer__social">
-        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
-        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
+    <p class="footer__bottom">© 2026 TOLVYN <span aria-hidden="true">·</span> <a href="/pages/privacy">Privacy</a> <span aria-hidden="true">·</span> <a href="/pages/terms">Terms</a> <span aria-hidden="true">·</span> <a href="mailto:privacy@tolvyn.io">DPA</a> <span aria-hidden="true">·</span> Built&nbsp;in&nbsp;India</p>
   </div>
 </footer>
 
 <!-- Scripts -->
 <script src="js/nav.js" defer></script>
-<script src="js/animations.js" defer></script>
-<script src="js/terminal.js" defer></script>
 <script src="js/pricing.js" defer></script>
-<script src="js/main.js" defer></script>
 </body>
 </html>

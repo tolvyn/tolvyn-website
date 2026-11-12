@@ -4,7 +4,7 @@
 /product        /pages/product.html       200
 /security       /pages/security.html      200
 /company        /pages/company.html       200
-/customers      /pages/customers.html     200
+/customers      /     301
 /how-it-works   /pages/how-it-works.html  200
 /privacy        /pages/privacy.html       200
 /terms          /pages/terms.html         200

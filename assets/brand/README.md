@@ -10,6 +10,8 @@
 | `favicon.svg` | Browser tab, bookmarks (scales 16→512px) |
 | `favicon-dark.svg` | Alternate favicon for dark-only contexts |
 | `app-icon.svg` | Source for iOS/Android home screen icons (no corner radius) |
+| `favicon-ledger.svg`, `favicon-ledger-32.png`, `apple-touch-icon-ledger.png` | Ledger design (Nov 2026): the favicon every page names; Source Serif 4 "T" as an outline, ink on paper #FAF8F3, one deep-green rule. PNGs rendered by `node tools/brand/render.js` |
+| `og-ledger.png` | Ledger design (Nov 2026): the link-preview image every page names (1200x630). Source `tools/brand/og-ledger.html`, rendered by `node tools/brand/render.js` |
 | `og-image.svg` | Source of `og-image.png`, the social card for Twitter/X, LinkedIn, Slack previews. After changing it, run `python3 tools/render-og-image` and commit both |
 
 ## Colors

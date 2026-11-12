@@ -14,37 +14,24 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="AI API Cost Index — Real Production Benchmarks | TOLVYN">
   <meta property="og:description" content="Real-world GPT-4o, Claude Sonnet, and Gemini costs from production workloads. Monthly benchmarks from anonymized aggregate data.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="AI API Cost Index — Real Production Benchmarks | TOLVYN">
   <meta name="twitter:description" content="Real-world GPT-4o, Claude Sonnet, and Gemini costs from production workloads. Monthly benchmarks from anonymized aggregate data.">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
-  <meta name="theme-color" content="#00D9A3">
-  <!-- Security — extended script-src for Chart.js CDN -->
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is https://cdn.jsdelivr.net; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-ledger.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-ledger-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-ledger.png">
+  <meta name="theme-color" content="#FAF8F3">
   <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/nav.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/ledger.css">
   <!-- Chart.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script defer src="../js/vendor/chart.umd.js"></script>
   <!-- Umami Analytics -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+  <script defer src="../js/vendor/umami.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21" data-domains="tolvyn.io,www.tolvyn.io" data-do-not-track="true"></script>
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -67,235 +54,6 @@
     }
   }
   </script>
-  <style>
-    /* ── Cost Index page styles ───────────────────────────────── */
-    .ci-hero {
-      padding: 96px 0 64px;
-      border-bottom: 1px solid var(--border);
-    }
-    .ci-hero .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-    .ci-hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .ci-hero p {
-      font-size: 1.1rem;
-      max-width: 620px;
-      line-height: 1.7;
-      color: var(--text-secondary);
-    }
-    .ci-hero .hero-meta {
-      margin-top: 24px;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      font-family: var(--mono);
-    }
-    .ci-hero .hero-meta span { color: var(--accent); }
-
-    /* ── Headline numbers ──────────────────────────────────────── */
-    .headline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 0;
-    }
-    .headline-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px 24px;
-      transition: border-color var(--transition);
-    }
-    .headline-card:hover { border-color: #2d3140; }
-    .headline-card__model {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-    }
-    .headline-card__cost {
-      font-size: 1.75rem;
-      font-weight: 700;
-      font-family: var(--mono);
-      color: var(--text);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .headline-card__meta {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-    }
-    .trend-up   { color: #ef4444; }
-    .trend-down { color: #22c55e; }
-    .trend-flat { color: var(--text-secondary); }
-
-    /* ── Table ─────────────────────────────────────────────────── */
-    .ci-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-    }
-    table.ci-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.875rem;
-    }
-    .ci-table th {
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-      cursor: pointer;
-      user-select: none;
-    }
-    .ci-table th:hover { color: var(--text); }
-    .ci-table th.sorted { color: var(--accent); }
-    .ci-table th .sort-icon { margin-left: 4px; opacity: 0.4; }
-    .ci-table th.sorted .sort-icon { opacity: 1; }
-    .ci-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-      white-space: nowrap;
-    }
-    .ci-table tr:last-child td { border-bottom: none; }
-    .ci-table tr:hover td { background: rgba(255,255,255,0.015); }
-    .ci-table .mono { font-family: var(--mono); font-size: 0.82rem; }
-    .provider-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .provider-openai    { background: rgba(16,163,127,0.12); color: #10a37f; }
-    .provider-anthropic { background: rgba(209,154,102,0.12); color: #d19a66; }
-    .provider-google    { background: rgba(66,133,244,0.12);  color: #4285f4; }
-    .provider-other     { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
-
-    /* ── P95 tooltip ────────────────────────────────────────────── */
-    .tooltip-wrap { position: relative; display: inline-block; cursor: help; }
-    .tooltip-wrap .tooltip-text {
-      visibility: hidden;
-      opacity: 0;
-      background: #1e2128;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.75rem;
-      border-radius: 6px;
-      padding: 6px 10px;
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
-      white-space: normal;
-      z-index: 10;
-      transition: opacity 0.15s;
-      pointer-events: none;
-    }
-    .tooltip-wrap:hover .tooltip-text { visibility: visible; opacity: 1; }
-
-    /* ── Chart ─────────────────────────────────────────────────── */
-    .ci-chart-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-    }
-    .ci-chart-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    /* ── Methodology ────────────────────────────────────────────── */
-    .methodology {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: var(--radius-lg);
-      padding: 32px 36px;
-    }
-    .methodology h2 {
-      font-size: 1.3rem;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .methodology ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .methodology li {
-      display: flex;
-      gap: 12px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .methodology li::before {
-      content: '—';
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .methodology li strong { color: var(--text); }
-
-    /* ── CTA ────────────────────────────────────────────────────── */
-    .ci-cta {
-      text-align: center;
-      padding: 72px 24px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-    .ci-cta h2 { color: var(--text); margin-bottom: 12px; font-size: 1.6rem; }
-    .ci-cta p  { margin-bottom: 28px; font-size: 1rem; max-width: 520px; margin-inline: auto; }
-    .ci-cta .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    /* ── Loading / empty states ─────────────────────────────────── */
-    .ci-loading {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .ci-empty {
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .ci-empty strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 8px; }
-
-    /* ── Section spacing ────────────────────────────────────────── */
-    .ci-section { padding-block: 64px; }
-  </style>
 </head>
 <body>
 
@@ -303,94 +61,86 @@
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
-
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
       <li><a href="/pages/pricing">Pricing</a></li>
-      <li><a href="/pages/cost-index" class="active">Cost Index</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
     </ul>
-
     <div class="nav__actions">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn--sm" target="_blank" rel="noopener noreferrer">Start free</a>
     </div>
-
-    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">Menu</button>
   </div>
-
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
     <a href="/pages/pricing" role="menuitem">Pricing</a>
-    <a href="/pages/cost-index" role="menuitem">Cost Index</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
-    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start free</a>
   </div>
 </nav>
 
 <!-- ── Hero ─────────────────────────────────────────────────────────── -->
 <section class="ci-hero" aria-labelledby="ci-hero-heading">
   <div class="container">
-    <div class="eyebrow anim-fade-up">
-      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;" aria-hidden="true"></span>
+    <div class="eyebrow">
+      <span class="live-dot" aria-hidden="true"></span>
       Recomputed nightly &middot; published only above the privacy floor
     </div>
-    <h1 id="ci-hero-heading" class="anim-fade-up">TOLVYN AI Cost Index</h1>
-    <p class="anim-fade-up">
+    <h1 id="ci-hero-heading">TOLVYN AI Cost Index</h1>
+    <p>
       Real AI API costs, aggregated from production traffic that actually passed through the
       TOLVYN proxy. No sponsored content, no vendor-submitted figures, no estimates.
       <strong>No figure is published unless at least three organisations contribute to it</strong> —
       a privacy floor applied before any number reaches this page, and the reason the index
       below may show nothing.
     </p>
-    <p class="hero-meta anim-fade-up" id="ci-generated-at">Loading data…</p>
+    <p class="hero-meta" id="ci-generated-at">Loading data…</p>
   </div>
 </section>
 
 <!-- ── Headline Numbers ──────────────────────────────────────────────── -->
 <section class="ci-section" aria-labelledby="headline-heading">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header">
       <p class="label">Top models by volume</p>
       <h2 id="headline-heading">Production cost benchmarks</h2>
       <p>Average cost per API request, based on the last 30 days of production traffic.</p>
     </div>
-    <div class="headline-grid reveal" id="ci-headline-grid">
+    <div class="headline-grid" id="ci-headline-grid">
       <div class="ci-loading">Loading benchmarks…</div>
     </div>
   </div>
 </section>
 
 <!-- ── Model Comparison Table ───────────────────────────────────────── -->
-<section class="ci-section" style="padding-top:0;" aria-labelledby="table-heading">
+<section class="ci-section" aria-labelledby="table-heading">
   <div class="container">
-    <div class="section-header reveal" style="margin-bottom:24px;">
+    <div class="section-header section-header--tight">
       <p class="label">Last 90 days</p>
       <h2 id="table-heading">Model comparison</h2>
       <p>Click any column header to sort. Click again to reverse.</p>
     </div>
-    <div class="ci-table-wrap reveal" id="ci-table-wrap">
+    <div class="ci-table-wrap" id="ci-table-wrap">
       <div class="ci-loading">Loading data…</div>
     </div>
   </div>
 </section>
 
 <!-- ── 30-day Trend Chart ────────────────────────────────────────────── -->
-<section class="ci-section" style="padding-top:0;" aria-labelledby="chart-heading">
+<section class="ci-section" aria-labelledby="chart-heading">
   <div class="container">
-    <div class="section-header reveal" style="margin-bottom:24px;">
+    <div class="section-header section-header--tight">
       <p class="label">30-day trend</p>
       <h2 id="chart-heading">Avg cost per request over time</h2>
       <p>Top 5 models by request volume. Costs in USD per request.</p>
     </div>
-    <div class="ci-chart-wrap reveal">
+    <div class="ci-chart-wrap">
       <div class="ci-loading" id="ci-chart-loading">Loading chart…</div>
-      <canvas id="ci-chart" style="display:none;max-height:360px;" aria-label="Cost trend chart"></canvas>
+      <canvas id="ci-chart" class="ci-chart" hidden aria-label="Cost trend chart"></canvas>
     </div>
   </div>
 </section>
@@ -398,10 +148,10 @@
 <!-- ── Methodology ──────────────────────────────────────────────────── -->
 <section class="ci-section" aria-labelledby="methodology-heading">
   <div class="container">
-    <div class="methodology reveal">
+    <div class="methodology">
       <h2 id="methodology-heading">Methodology</h2>
 
-      <p style="margin-bottom:18px">
+      <p>
         <strong>The privacy floor, first, because it governs everything else.</strong>
         A figure is published only when at least <strong>three separate organisations</strong>
         contributed traffic to that exact bucket — same provider, same model, same period.
@@ -469,398 +219,50 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__grid">
-      <div class="footer__brand">
-        <h4>TOLVYN</h4>
-        <p>The control and evidence layer for AI spend. Built in India.</p>
-      </div>
       <div class="footer__col">
         <h5>Product</h5>
         <ul>
-          <li><a href="/pages/how-it-works">How It Works</a></li>
-          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
-          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
-          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
-          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+          <li><a href="/pages/how-it-works">How it works</a></li>
+          <li><a href="/pages/pricing">Pricing</a></li>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/python" target="_blank" rel="noopener noreferrer">SDKs</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
         </ul>
       </div>
       <div class="footer__col">
-        <h5>Resources</h5>
+        <h5>Compare</h5>
         <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
-          <li><a href="/pages/cost-index">Cost Index</a></li>
-          <li><a href="/pages/model-pricing">AI Model Pricing</a></li>
           <li><a href="/compare/helicone">TOLVYN vs Helicone</a></li>
           <li><a href="/compare/portkey">TOLVYN vs Portkey</a></li>
           <li><a href="/compare/langfuse">TOLVYN vs Langfuse</a></li>
-          <li><a href="/use-cases/cost-attribution-per-customer">Cost Attribution</a></li>
-          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit Trail</a></li>
-          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-Based Metering</a></li>
-          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
-          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <ul>
+          <li><a href="/use-cases/cost-attribution-per-customer">Cost attribution</a></li>
+          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit trail</a></li>
+          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-based metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration guides</a></li>
+          <li><a href="/pages/model-pricing">AI model pricing</a></li>
+          <li><a href="/pages/cost-index">Cost Index</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h5>Company</h5>
         <ul>
           <li><a href="/pages/company">About</a></li>
-          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="/pages/customers">Customers</a></li>
-          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="/pages/privacy">Privacy Policy</a></li>
-          <li><a href="/pages/terms">Terms of Service</a></li>
           <li><a href="/pages/security">Security</a></li>
-          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+          <li><a href="mailto:sales@tolvyn.io">Contact</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
-      <div class="footer__social">
-        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
-        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
+    <p class="footer__bottom">© 2026 TOLVYN <span aria-hidden="true">·</span> <a href="/pages/privacy">Privacy</a> <span aria-hidden="true">·</span> <a href="/pages/terms">Terms</a> <span aria-hidden="true">·</span> <a href="mailto:privacy@tolvyn.io">DPA</a> <span aria-hidden="true">·</span> Built&nbsp;in&nbsp;India</p>
   </div>
 </footer>
 
 <script src="../js/nav.js" defer></script>
-<script src="../js/animations.js" defer></script>
-<script src="../js/main.js" defer></script>
-<script>
-(function () {
-  'use strict';
-
-  const API = 'https://api.tolvyn.io/v1/public/cost-index';
-
-  // ── Chart palette ────────────────────────────────────────────
-  const PALETTE = ['#00D9A3','#3b82f6','#a78bfa','#22c55e','#64748b'];
-
-  // ── Provider badge ───────────────────────────────────────────
-  function providerBadge(p) {
-    const cls = {openai:'provider-openai',anthropic:'provider-anthropic',google:'provider-google'}[p] || 'provider-other';
-    return `<span class="provider-badge ${cls}">${p}</span>`;
-  }
-
-  // ── Format helpers ───────────────────────────────────────────
-  function fmtCost(v) {
-    const n = parseFloat(v);
-    if (isNaN(n)) return '—';
-    if (n < 0.001) return '$' + n.toFixed(6);
-    if (n < 0.01)  return '$' + n.toFixed(5);
-    return '$' + n.toFixed(4);
-  }
-
-  function fmtReqs(n) {
-    if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
-    if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K';
-    return String(n);
-  }
-
-  function trendHtml(pct) {
-    if (pct === null || pct === undefined) return '<span class="trend-flat">—</span>';
-    const sign = pct > 0 ? '+' : '';
-    const cls  = pct > 0 ? 'trend-up' : pct < 0 ? 'trend-down' : 'trend-flat';
-    const arrow = pct > 0 ? '↑' : pct < 0 ? '↓' : '→';
-    return `<span class="${cls}">${arrow}${sign}${pct.toFixed(1)}%</span>`;
-  }
-
-  // ── Load and render ──────────────────────────────────────────
-  async function init() {
-    let resp;
-    try {
-      const r = await fetch(`${API}?days=90`);
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      resp = await r.json();
-    } catch (e) {
-      // A genuine fetch failure, distinct from a successful empty response.
-      document.getElementById('ci-generated-at').textContent = 'The index could not be loaded right now.';
-      setError('ci-headline-grid', 'The cost index could not be loaded. This is a problem on our side, not an empty index.');
-      setError('ci-table-wrap',    'The cost index could not be loaded.');
-      document.getElementById('ci-chart-loading').textContent = 'The cost index could not be loaded.';
-      return;
-    }
-
-    const { generated_at, data, summary } = resp;
-
-    // Generated-at banner
-    // "Last updated" over an empty index reads as "fresh figures were published
-    // today", when what happened is that a collection ran and published nothing.
-    // Only claim an update when there is something that was updated.
-    const genEl = document.getElementById('ci-generated-at');
-    const hasData = Array.isArray(summary) && summary.length > 0;
-    if (generated_at && hasData) {
-      const d = new Date(generated_at);
-      genEl.innerHTML = `Last updated: <span>${d.toUTCString()}</span>`;
-    } else if (generated_at) {
-      const d = new Date(generated_at);
-      genEl.innerHTML = `Last checked: <span>${d.toUTCString()}</span> — no bucket reached three contributing organisations.`;
-    } else {
-      genEl.style.display = 'none';
-    }
-
-    renderHeadline(summary);
-    renderTable(data);
-    renderChart(data, summary);
-  }
-
-  // Two different states, and conflating them was the defect. An EMPTY index is
-  // the privacy floor working as designed; a FAILED fetch is our problem. The old
-  // page said "Data collection in progress" for both, which was false in the first
-  // case — collection is not in progress, it has run nightly for months and
-  // correctly published nothing.
-  function setEmpty(id, msg) {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = `<div class="ci-empty"><strong>Nothing published yet — by design</strong>${msg}</div>`;
-  }
-
-  function setError(id, msg) {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = `<div class="ci-empty"><strong>Could not load the index</strong>${msg}</div>`;
-  }
-
-  // ── Headline cards ───────────────────────────────────────────
-  function renderHeadline(summary) {
-    const grid = document.getElementById('ci-headline-grid');
-    const top5 = (summary || []).slice(0, 5);
-
-    if (!top5.length) {
-      grid.innerHTML = '<div class="ci-empty"><strong>Nothing published yet — by design</strong>'
-        + 'No model has yet been used by three or more organisations in a way that clears the '
-        + 'privacy floor, so publishing anything would mean narrowing the figures toward '
-        + 'individual customers. The collection runs nightly and publishes only what clears it.</div>';
-      return;
-    }
-
-    grid.innerHTML = top5.map(s => {
-      const label = s.model_id.replace(/-/g, '‑'); // non-breaking hyphen for display
-      return `
-        <div class="headline-card">
-          <div class="headline-card__model">${label}</div>
-          <div class="headline-card__cost">${fmtCost(s.avg_30d_cost_usd)}<span style="font-size:0.9rem;font-weight:400;color:var(--text-secondary);font-family:var(--sans);margin-left:4px;">/req</span></div>
-          <div class="headline-card__meta">
-            ${trendHtml(s.mom_change_pct)} vs last month
-            &nbsp;·&nbsp; Based on ${fmtReqs(s.total_requests_30d)} requests
-          </div>
-        </div>`;
-    }).join('');
-  }
-
-  // ── Sortable table ───────────────────────────────────────────
-  let tableData = [];
-  let sortCol   = 'avg_cost_usd';
-  let sortAsc   = true;
-
-  const COLS = [
-    { key: 'model_id',      label: 'Model',          render: r => `<span style="font-weight:500">${r.model_id}</span>` },
-    { key: 'provider',      label: 'Provider',       render: r => providerBadge(r.provider) },
-    { key: 'avg_cost_usd',  label: 'Avg Cost/Req',   render: r => `<span class="mono">${fmtCost(r.avg_cost_usd)}</span>` },
-    { key: 'p50_cost_usd',  label: 'P50 Cost',       render: r => `<span class="mono">${fmtCost(r.p50_cost_usd)}</span>` },
-    {
-      key: 'p95_cost_usd',
-      label: `<span class="tooltip-wrap">P95 Cost<span class="tooltip-text">95% of requests cost less than this amount</span></span>`,
-      sortKey: 'p95_cost_usd',
-      render: r => `<span class="mono">${fmtCost(r.p95_cost_usd)}</span>`
-    },
-    { key: 'trend',         label: '30d Trend',      render: r => trendHtml(r._mom) },
-    { key: 'total_requests',label: 'Requests (30d)', render: r => fmtReqs(r.total_requests) },
-  ];
-
-  function renderTable(data) {
-    const wrap = document.getElementById('ci-table-wrap');
-
-    // Aggregate per model (take last 30 days, average per model_id)
-    const byModel = {};
-    const now = new Date();
-    const cutoff = new Date(now - 30 * 864e5);
-
-    data.forEach(row => {
-      const d = new Date(row.date);
-      const key = row.provider + '|' + row.model_id;
-      if (!byModel[key]) {
-        byModel[key] = {
-          model_id: row.model_id,
-          provider: row.provider,
-          model_family: row.model_family,
-          avg_cost_usd: 0,
-          p50_cost_usd: null,
-          p95_cost_usd: null,
-          total_requests: 0,
-          _count: 0,
-          _mom: null,
-        };
-      }
-      const m = byModel[key];
-      if (d >= cutoff) {
-        m.avg_cost_usd  += parseFloat(row.avg_cost_usd || 0);
-        if (row.p50_cost_usd) m.p50_cost_usd = (m.p50_cost_usd || 0) + parseFloat(row.p50_cost_usd);
-        if (row.p95_cost_usd) m.p95_cost_usd = (m.p95_cost_usd || 0) + parseFloat(row.p95_cost_usd);
-        m.total_requests += row.total_requests;
-        m._count++;
-      }
-    });
-
-    tableData = Object.values(byModel).map(m => {
-      if (m._count > 0) {
-        m.avg_cost_usd = m.avg_cost_usd / m._count;
-        if (m.p50_cost_usd !== null) m.p50_cost_usd /= m._count;
-        if (m.p95_cost_usd !== null) m.p95_cost_usd /= m._count;
-      }
-      return m;
-    });
-
-    if (!tableData.length) {
-      wrap.innerHTML = '<div class="ci-empty"><strong>Nothing published yet — by design</strong>'
-        + 'A per-model breakdown needs at least three contributing organisations per row. '
-        + 'None currently qualifies.</div>';
-      return;
-    }
-
-    renderTableRows();
-
-    wrap.addEventListener('click', e => {
-      const th = e.target.closest('th[data-col]');
-      if (!th) return;
-      const col = th.dataset.col;
-      if (sortCol === col) sortAsc = !sortAsc;
-      else { sortCol = col; sortAsc = true; }
-      renderTableRows();
-    });
-  }
-
-  function renderTableRows() {
-    const wrap = document.getElementById('ci-table-wrap');
-    const sorted = [...tableData].sort((a, b) => {
-      let va = a[sortCol], vb = b[sortCol];
-      if (typeof va === 'string') va = va.toLowerCase();
-      if (typeof vb === 'string') vb = vb.toLowerCase();
-      if (va === null) va = sortAsc ? Infinity : -Infinity;
-      if (vb === null) vb = sortAsc ? Infinity : -Infinity;
-      return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
-    });
-
-    const thead = COLS.map(c => {
-      const key = c.sortKey || c.key;
-      const active = sortCol === key ? 'sorted' : '';
-      const arrow = sortCol === key ? (sortAsc ? '↑' : '↓') : '↕';
-      return `<th data-col="${key}" class="${active}">${c.label} <span class="sort-icon">${arrow}</span></th>`;
-    }).join('');
-
-    const tbody = sorted.map(row =>
-      `<tr>${COLS.map(c => `<td>${c.render(row)}</td>`).join('')}</tr>`
-    ).join('');
-
-    wrap.innerHTML = `
-      <table class="ci-table" role="grid" aria-label="AI model cost comparison">
-        <thead><tr>${thead}</tr></thead>
-        <tbody>${tbody}</tbody>
-      </table>`;
-  }
-
-  // ── Chart ────────────────────────────────────────────────────
-  function renderChart(data, summary) {
-    const loading = document.getElementById('ci-chart-loading');
-    const canvas  = document.getElementById('ci-chart');
-
-    const top5ids = (summary || []).slice(0, 5).map(s => s.provider + '|' + s.model_id);
-    if (!top5ids.length || !data.length) {
-      loading.textContent = 'No trend published: no model clears the three-organisation floor.';
-      return;
-    }
-
-    // Group data by model, last 30 days
-    const now = new Date();
-    const cutoff = new Date(now - 30 * 864e5);
-    const byModel = {};
-
-    data.forEach(row => {
-      const key = row.provider + '|' + row.model_id;
-      if (!top5ids.includes(key)) return;
-      const d = new Date(row.date);
-      if (d < cutoff) return;
-      if (!byModel[key]) byModel[key] = {};
-      byModel[key][row.date] = parseFloat(row.avg_cost_usd || 0);
-    });
-
-    // Collect all dates, sorted
-    const allDates = [...new Set(data.filter(r => new Date(r.date) >= cutoff).map(r => r.date))].sort();
-
-    if (!allDates.length) {
-      loading.textContent = 'No trend published: no model clears the three-organisation floor.';
-      return;
-    }
-
-    const datasets = top5ids.map((key, i) => {
-      const mid = key.split('|')[1];
-      return {
-        label: mid,
-        data: allDates.map(d => byModel[key]?.[d] ?? null),
-        borderColor: PALETTE[i],
-        backgroundColor: PALETTE[i] + '18',
-        borderWidth: 2,
-        pointRadius: 2,
-        pointHoverRadius: 4,
-        tension: 0.3,
-        spanGaps: true,
-      };
-    });
-
-    loading.style.display = 'none';
-    canvas.style.display  = 'block';
-
-    // Wait for Chart.js to load (it's deferred)
-    function tryRender() {
-      if (typeof Chart === 'undefined') { setTimeout(tryRender, 100); return; }
-      new Chart(canvas, {
-        type: 'line',
-        data: { labels: allDates, datasets },
-        options: {
-          responsive: true,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: {
-              labels: {
-                color: '#94a3b8',
-                font: { family: "'Inter', sans-serif", size: 12 },
-              },
-            },
-            tooltip: {
-              callbacks: {
-                label: ctx => ` ${ctx.dataset.label}: $${ctx.parsed.y?.toFixed(6) ?? '—'}`,
-              },
-            },
-          },
-          scales: {
-            x: {
-              ticks: { color: '#64748b', font: { size: 11 } },
-              grid:  { color: 'rgba(255,255,255,0.04)' },
-            },
-            y: {
-              ticks: {
-                color: '#64748b',
-                font: { size: 11 },
-                callback: v => '$' + v.toFixed(5),
-              },
-              grid: { color: 'rgba(255,255,255,0.04)' },
-            },
-          },
-        },
-      });
-    }
-    tryRender();
-  }
-
-  init();
-})();
-</script>
+<script src="../js/cost-index.js" defer></script>
 </body>
 </html>

@@ -11,38 +11,25 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="Pricing — TOLVYN">
   <meta property="og:description" content="Free plan with 10,000 requests. Paid plans from ₹4,499/mo (approx. $49 USD). Flat fee, no percentage of AI spend.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="Pricing — TOLVYN">
   <meta name="twitter:description" content="Free plan with 10,000 requests. Paid plans from ₹4,499/mo (approx. $49 USD).">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <link rel="canonical" href="https://tolvyn.io/pages/pricing">
 
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
-  <meta name="theme-color" content="#00D9A3">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-ledger.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-ledger-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-ledger.png">
+  <meta name="theme-color" content="#FAF8F3">
 
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cloud.umami.is; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; img-src 'self' data:;">
+  <link rel="stylesheet" href="../css/ledger.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/nav.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/animations.css">
-
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21"></script>
+  <script defer src="../js/vendor/umami.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21" data-domains="tolvyn.io,www.tolvyn.io" data-do-not-track="true"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <!-- ── NAV ─────────────────────────────────────────────────────────── -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -50,298 +37,193 @@
     <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
-      <li><a href="/pages/pricing" class="active">Pricing</a></li>
-      <li><a href="/pages/cost-index">Cost Index</a></li>
+      <li><a href="/pages/pricing" aria-current="page">Pricing</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
     </ul>
     <div class="nav__actions">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn--sm" target="_blank" rel="noopener noreferrer">Start free</a>
     </div>
-    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">Menu</button>
   </div>
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
-    <a href="/pages/pricing" role="menuitem">Pricing</a>
-    <a href="/pages/cost-index" role="menuitem">Cost Index</a>
+    <a href="/pages/pricing" role="menuitem" aria-current="page">Pricing</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
-    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" style="color:var(--accent);font-weight:700;">Start Free →</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start free</a>
   </div>
 </nav>
 
-<!-- ── PAGE HERO ───────────────────────────────────────────────────── -->
-<section class="page-hero">
-  <div class="container" style="text-align:center;">
-    <p class="label anim-fade-up">Pricing</p>
-    <h1 class="anim-fade-up">Flat fee. No percentage of your AI spend.</h1>
-    <p class="anim-fade-up" style="margin-top:16px;margin-inline:auto;">
+<main id="main">
+<!-- ── PAGE HEAD ───────────────────────────────────────────────────── -->
+<section class="page-head">
+  <div class="container">
+    <p class="label">Pricing</p>
+    <h1>Flat fee. No percentage of your AI spend.</h1>
+    <p>
       Start free with 10,000 requests/month. Upgrade only when you need more.
       We never take a cut of what you pay your providers.
     </p>
-
-    <p class="anim-fade-up" style="margin-top:24px;">
+    <p>
       Every price below is per month. <strong>Annual billing is available by arrangement</strong> &mdash;
-      email <a href="mailto:founder@tolvyn.io">founder@tolvyn.io</a> and we will invoice you annually.
+      email <a href="mailto:sales@tolvyn.io">sales@tolvyn.io</a> and we will invoice you annually.
     </p>
   </div>
 </section>
 
 <!-- ── PLANS ───────────────────────────────────────────────────────── -->
-<section aria-labelledby="plans-heading">
+<section class="section" aria-labelledby="plans-heading">
   <div class="container">
-    <h2 id="plans-heading" class="reveal" style="text-align:center;margin-bottom:48px;">Choose your plan</h2>
-
-    <div class="pricing-grid">
-
-      <!-- Free -->
-      <div class="plan reveal" data-delay="1">
-        <div>
-          <p class="plan__name">Free</p>
-          <div class="plan__price">
-            <span class="plan__amount">₹0</span>
-            <span class="plan__period">/ month</span>
-          </div>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">No credit card</p>
-        </div>
-        <ul class="plan__features" aria-label="Free plan features">
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 10,000 requests / month (hard block)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 1 team, 3 agent IDs</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 7-day data retention</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Budget alerts &amp; pricing change alerts</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Basic reconciliation (OpenAI invoices)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Tamper-evident ledger &mdash; append-only, hash-chained, verifiable for the full 7 days</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Email support</li>
-        </ul>
-        <a href="https://app.tolvyn.io/signup" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Start free</a>
-      </div>
-
-      <!-- Starter -->
-      <div class="plan reveal" data-delay="2">
-        <div>
-          <p class="plan__name">Starter</p>
-          <div class="plan__price">
-            <span class="plan__amount">₹4,499</span>
-            <span class="plan__period">/ month</span>
-          </div>
-          <p class="plan__approx">approx. $49 USD</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Billed monthly · Hard block at quota</p>
-        </div>
-        <ul class="plan__features" aria-label="Starter plan features">
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 250,000 requests / month (hard block)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 3 teams, 10 agent IDs</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 30-day data retention</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Hard budget enforcement</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Usage and ledger CSV export</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Tamper-evident ledger &mdash; append-only, hash-chained, verifiable for the full 30 days</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Basic reconciliation (OpenAI invoices)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Email support</li>
-        </ul>
-        <a href="https://app.tolvyn.io/signup" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Get started</a>
-      </div>
-
-      <!-- Growth (featured) -->
-      <div class="plan plan--featured reveal" data-delay="3">
-        <span class="plan__badge">Most Popular</span>
-        <div>
-          <p class="plan__name">Growth</p>
-          <div class="plan__price">
-            <span class="plan__amount">₹17,999</span>
-            <span class="plan__period">/ month</span>
-          </div>
-          <p class="plan__approx">approx. $199 USD</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Billed monthly · $0.50 per 1K overage</p>
-        </div>
-        <ul class="plan__features" aria-label="Growth plan features">
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 2,000,000 requests / month</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 10 teams; no fixed limit on agent IDs (fair use)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 90-day data retention</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 5 webhook endpoints</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Full reconciliation (OpenAI + Anthropic + Google)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Hard budget enforcement &amp; cost anomaly alerts</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Savings analyzer</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Tamper-evident ledger &mdash; append-only, hash-chained, verifiable for the full 90 days</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Email support</li>
-        </ul>
-        <a href="https://app.tolvyn.io/signup" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get started</a>
-      </div>
-
-      <!-- Scale -->
-      <div class="plan reveal" data-delay="4">
-        <div>
-          <p class="plan__name">Scale</p>
-          <div class="plan__price">
-            <span class="plan__amount">₹54,999</span>
-            <span class="plan__period">/ month</span>
-          </div>
-          <p class="plan__approx">approx. $599 USD</p>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Billed monthly · $0.25 per 1K overage</p>
-        </div>
-        <ul class="plan__features" aria-label="Scale plan features">
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 10,000,000 requests / month</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> No fixed limit on teams or agent IDs (fair use)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> 1-year data retention; custom retention on request</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> No fixed limit on webhooks (fair use)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Evidence packages (auditor-ready)</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Everything in Growth</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Email support</li>
-        </ul>
-        <a href="https://app.tolvyn.io/signup" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Get started</a>
-      </div>
-
-      <!-- Enterprise -->
-      <div class="plan reveal" data-delay="5">
-        <div>
-          <p class="plan__name">Enterprise</p>
-          <div class="plan__price">
-            <span class="plan__amount">Custom</span>
-          </div>
-          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Talk to the founder</p>
-        </div>
-        <ul class="plan__features" aria-label="Enterprise plan features">
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Custom request volume</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Custom contract terms</li>
-          <li class="plan__feature"><svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg> Email support</li>
-        </ul>
-        <a href="mailto:founder@tolvyn.io" class="btn btn-ghost">Email founder@tolvyn.io</a>
-      </div>
-
+    <h2 id="plans-heading" class="section__head">Choose your plan</h2>
+    <table class="tbl tbl--plans">
+      <caption class="skip">Plans compared: price, limits and what each plan includes</caption>
+      <colgroup><col class="c-row"><col><col><col><col><col></colgroup>
+      <thead>
+          <tr><th class="corner" scope="col"><span class="skip">Plan</span></th><th scope="col" data-plan="1" class=""><span class="plan-name">Free</span></th><th scope="col" data-plan="2" class=""><span class="plan-name">Starter</span></th><th scope="col" data-plan="3" class="featured"><span class="plan-tag">Recommended</span> <span class="plan-name">Growth</span></th><th scope="col" data-plan="4" class=""><span class="plan-name">Scale</span></th><th scope="col" data-plan="5" class=""><span class="plan-name">Enterprise</span></th></tr>
+      </thead>
+      <tbody>
+          <tr class="price"><th scope="row">Price</th><td data-plan="1" data-label="Price"><span>₹0 <small>/ month</small></span></td><td data-plan="2" data-label="Price"><span>₹4,499 <small>/ month</small> <small>approx. $49 USD</small></span></td><td data-plan="3" data-label="Price" class="featured"><span>₹17,999 <small>/ month</small> <small>approx. $199 USD</small></span></td><td data-plan="4" data-label="Price"><span>₹54,999 <small>/ month</small> <small>approx. $599 USD</small></span></td><td data-plan="5" data-label="Price"><span>Custom</span></td></tr>
+          <tr><th scope="row">Billing</th><td data-plan="1" data-label="Billing">No credit card</td><td data-plan="2" data-label="Billing">Billed monthly · Hard block at quota</td><td data-plan="3" data-label="Billing" class="featured">Billed monthly · $0.50 per 1K overage</td><td data-plan="4" data-label="Billing">Billed monthly · $0.25 per 1K overage</td><td data-plan="5" data-label="Billing">Contact us</td></tr>
+          <tr><th scope="row">Requests</th><td data-plan="1" data-label="Requests">10,000 requests / month (hard block)</td><td data-plan="2" data-label="Requests">250,000 requests / month (hard block)</td><td data-plan="3" data-label="Requests" class="featured">2,000,000 requests / month</td><td data-plan="4" data-label="Requests">10,000,000 requests / month</td><td data-plan="5" data-label="Requests">Custom request volume</td></tr>
+          <tr><th scope="row">Provider connections</th><td data-plan="1" data-label="Provider connections">3 per provider</td><td data-plan="2" data-label="Provider connections">10 per provider</td><td data-plan="3" data-label="Provider connections" class="featured">25 per provider</td><td data-plan="4" data-label="Provider connections">50 per provider</td><td data-plan="5" data-label="Provider connections">50 per provider, raised on request</td></tr>
+          <tr><th scope="row">Teams and agent IDs</th><td data-plan="1" data-label="Teams and agent IDs">1 team, 3 agent IDs</td><td data-plan="2" data-label="Teams and agent IDs">3 teams, 10 agent IDs</td><td data-plan="3" data-label="Teams and agent IDs" class="featured">10 teams; no fixed limit on agent IDs (fair use)</td><td data-plan="4" data-label="Teams and agent IDs">No fixed limit on teams or agent IDs (fair use)</td><td data-plan="5" data-label="Teams and agent IDs">No fixed limit on teams or agent IDs (fair use)</td></tr>
+          <tr><th scope="row">Members</th><td data-plan="1" data-label="Members">No plan limit</td><td data-plan="2" data-label="Members">No plan limit</td><td data-plan="3" data-label="Members" class="featured">No plan limit</td><td data-plan="4" data-label="Members">No plan limit</td><td data-plan="5" data-label="Members">No plan limit</td></tr>
+          <tr><th scope="row">Data retention</th><td data-plan="1" data-label="Data retention">7-day data retention</td><td data-plan="2" data-label="Data retention">30-day data retention</td><td data-plan="3" data-label="Data retention" class="featured">90-day data retention</td><td data-plan="4" data-label="Data retention">1-year data retention; custom retention on request</td><td data-plan="5" data-label="Data retention">Custom retention</td></tr>
+          <tr><th scope="row">Webhooks</th><td data-plan="1" data-label="Webhooks">None</td><td data-plan="2" data-label="Webhooks">None</td><td data-plan="3" data-label="Webhooks" class="featured">5 webhook endpoints</td><td data-plan="4" data-label="Webhooks">No fixed limit on webhooks (fair use)</td><td data-plan="5" data-label="Webhooks">No fixed limit on webhooks (fair use)</td></tr>
+          <tr><th scope="row">Budget alerts</th><td data-plan="1" data-label="Budget alerts">Yes</td><td data-plan="2" data-label="Budget alerts">Yes</td><td data-plan="3" data-label="Budget alerts" class="featured">Yes</td><td data-plan="4" data-label="Budget alerts">Yes</td><td data-plan="5" data-label="Budget alerts">Yes</td></tr>
+          <tr><th scope="row">Pricing change alerts</th><td data-plan="1" data-label="Pricing change alerts">Yes</td><td data-plan="2" data-label="Pricing change alerts">Yes</td><td data-plan="3" data-label="Pricing change alerts" class="featured">Yes</td><td data-plan="4" data-label="Pricing change alerts">Yes</td><td data-plan="5" data-label="Pricing change alerts">Yes</td></tr>
+          <tr><th scope="row">Hard budget enforcement</th><td data-plan="1" data-label="Hard budget enforcement" class="no">No</td><td data-plan="2" data-label="Hard budget enforcement">Yes</td><td data-plan="3" data-label="Hard budget enforcement" class="featured">Yes</td><td data-plan="4" data-label="Hard budget enforcement">Yes</td><td data-plan="5" data-label="Hard budget enforcement">Yes</td></tr>
+          <tr><th scope="row">Cost anomaly alerts</th><td data-plan="1" data-label="Cost anomaly alerts" class="no">No</td><td data-plan="2" data-label="Cost anomaly alerts" class="no">No</td><td data-plan="3" data-label="Cost anomaly alerts" class="featured">Yes</td><td data-plan="4" data-label="Cost anomaly alerts">Yes</td><td data-plan="5" data-label="Cost anomaly alerts">Yes</td></tr>
+          <tr><th scope="row">Reconciliation</th><td data-plan="1" data-label="Reconciliation">Basic reconciliation (OpenAI invoices)</td><td data-plan="2" data-label="Reconciliation">Basic reconciliation (OpenAI invoices)</td><td data-plan="3" data-label="Reconciliation" class="featured">Full reconciliation (OpenAI + Anthropic + Google)</td><td data-plan="4" data-label="Reconciliation">Full reconciliation (OpenAI + Anthropic + Google)</td><td data-plan="5" data-label="Reconciliation">Full reconciliation (OpenAI + Anthropic + Google)</td></tr>
+          <tr><th scope="row">Usage and ledger CSV export</th><td data-plan="1" data-label="Usage and ledger CSV export" class="no">No</td><td data-plan="2" data-label="Usage and ledger CSV export">Yes</td><td data-plan="3" data-label="Usage and ledger CSV export" class="featured">Yes</td><td data-plan="4" data-label="Usage and ledger CSV export">Yes</td><td data-plan="5" data-label="Usage and ledger CSV export">Yes</td></tr>
+          <tr><th scope="row">Savings analyzer</th><td data-plan="1" data-label="Savings analyzer" class="no">No</td><td data-plan="2" data-label="Savings analyzer" class="no">No</td><td data-plan="3" data-label="Savings analyzer" class="featured">Yes</td><td data-plan="4" data-label="Savings analyzer">Yes</td><td data-plan="5" data-label="Savings analyzer">Yes</td></tr>
+          <tr><th scope="row">Tamper-evident ledger (append-only, hash-chained)</th><td data-plan="1" data-label="Tamper-evident ledger (append-only, hash-chained)">Yes</td><td data-plan="2" data-label="Tamper-evident ledger (append-only, hash-chained)">Yes</td><td data-plan="3" data-label="Tamper-evident ledger (append-only, hash-chained)" class="featured">Yes</td><td data-plan="4" data-label="Tamper-evident ledger (append-only, hash-chained)">Yes</td><td data-plan="5" data-label="Tamper-evident ledger (append-only, hash-chained)">Yes</td></tr>
+          <tr><th scope="row">Evidence packages (auditor-ready)</th><td data-plan="1" data-label="Evidence packages (auditor-ready)" class="no">No</td><td data-plan="2" data-label="Evidence packages (auditor-ready)" class="no">No</td><td data-plan="3" data-label="Evidence packages (auditor-ready)" class="no featured">No</td><td data-plan="4" data-label="Evidence packages (auditor-ready)">Yes</td><td data-plan="5" data-label="Evidence packages (auditor-ready)">Yes</td></tr>
+          <tr><th scope="row">API access</th><td data-plan="1" data-label="API access">Yes</td><td data-plan="2" data-label="API access">Yes</td><td data-plan="3" data-label="API access" class="featured">Yes</td><td data-plan="4" data-label="API access">Yes</td><td data-plan="5" data-label="API access">Yes</td></tr>
+          <tr><th scope="row">Custom contract terms</th><td data-plan="1" data-label="Custom contract terms" class="no">No</td><td data-plan="2" data-label="Custom contract terms" class="no">No</td><td data-plan="3" data-label="Custom contract terms" class="no featured">No</td><td data-plan="4" data-label="Custom contract terms" class="no">No</td><td data-plan="5" data-label="Custom contract terms">Yes</td></tr>
+          <tr><th scope="row">Support</th><td data-plan="1" data-label="Support">Email support</td><td data-plan="2" data-label="Support">Email support</td><td data-plan="3" data-label="Support" class="featured">Email support</td><td data-plan="4" data-label="Support">Email support</td><td data-plan="5" data-label="Support">Email support</td></tr>
+      </tbody>
+      <tfoot>
+          <tr><th scope="row"><span class="skip">Sign up</span></th><td data-plan="1" class=""><a href="https://app.tolvyn.io/signup" class="arrow" target="_blank" rel="noopener noreferrer">Start free&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></td><td data-plan="2" class=""><a href="https://app.tolvyn.io/signup" class="arrow" target="_blank" rel="noopener noreferrer">Get started&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></td><td data-plan="3" class="featured"><a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Get started</a></td><td data-plan="4" class=""><a href="https://app.tolvyn.io/signup" class="arrow" target="_blank" rel="noopener noreferrer">Get started&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></td><td data-plan="5" class=""><a href="mailto:sales@tolvyn.io" class="arrow">Contact us</a></td></tr>
+      </tfoot>
+    </table>
+    <div class="plans-m">
+      <section class="plan-m" aria-label="Free plan">
+        <h3><span class="plan-name">Free</span></h3>
+        <dl class="plan-m__key"><div><dt>Price</dt><dd><span>₹0 <small>/ month</small></span></dd></div><div><dt>Billing</dt><dd>No credit card</dd></div><div><dt>Requests</dt><dd>10,000 requests / month (hard block)</dd></div><div><dt>Provider connections</dt><dd>3 per provider</dd></div><div><dt>Data retention</dt><dd>7-day data retention</dd></div><div><dt>Hard budget enforcement</dt><dd class="no">No</dd></div><div><dt>Support</dt><dd>Email support</dd></div></dl>
+        <details class="plan-m__more"><summary>All features</summary><dl><div><dt>Teams and agent IDs</dt><dd>1 team, 3 agent IDs</dd></div><div><dt>Members</dt><dd>No plan limit</dd></div><div><dt>Webhooks</dt><dd>None</dd></div><div><dt>Budget alerts</dt><dd>Yes</dd></div><div><dt>Pricing change alerts</dt><dd>Yes</dd></div><div><dt>Cost anomaly alerts</dt><dd class="no">No</dd></div><div><dt>Reconciliation</dt><dd>Basic reconciliation (OpenAI invoices)</dd></div><div><dt>Usage and ledger CSV export</dt><dd class="no">No</dd></div><div><dt>Savings analyzer</dt><dd class="no">No</dd></div><div><dt>Tamper-evident ledger (append-only, hash-chained)</dt><dd>Yes</dd></div><div><dt>Evidence packages (auditor-ready)</dt><dd class="no">No</dd></div><div><dt>API access</dt><dd>Yes</dd></div><div><dt>Custom contract terms</dt><dd class="no">No</dd></div></dl></details>
+        <p class="plan-m__act"><a href="https://app.tolvyn.io/signup" class="arrow" target="_blank" rel="noopener noreferrer">Start free&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
+      </section>
+      <section class="plan-m" aria-label="Starter plan">
+        <h3><span class="plan-name">Starter</span></h3>
+        <dl class="plan-m__key"><div><dt>Price</dt><dd><span>₹4,499 <small>/ month</small> <small>approx. $49 USD</small></span></dd></div><div><dt>Billing</dt><dd>Billed monthly · Hard block at quota</dd></div><div><dt>Requests</dt><dd>250,000 requests / month (hard block)</dd></div><div><dt>Provider connections</dt><dd>10 per provider</dd></div><div><dt>Data retention</dt><dd>30-day data retention</dd></div><div><dt>Hard budget enforcement</dt><dd>Yes</dd></div><div><dt>Support</dt><dd>Email support</dd></div></dl>
+        <details class="plan-m__more"><summary>All features</summary><dl><div><dt>Teams and agent IDs</dt><dd>3 teams, 10 agent IDs</dd></div><div><dt>Members</dt><dd>No plan limit</dd></div><div><dt>Webhooks</dt><dd>None</dd></div><div><dt>Budget alerts</dt><dd>Yes</dd></div><div><dt>Pricing change alerts</dt><dd>Yes</dd></div><div><dt>Cost anomaly alerts</dt><dd class="no">No</dd></div><div><dt>Reconciliation</dt><dd>Basic reconciliation (OpenAI invoices)</dd></div><div><dt>Usage and ledger CSV export</dt><dd>Yes</dd></div><div><dt>Savings analyzer</dt><dd class="no">No</dd></div><div><dt>Tamper-evident ledger (append-only, hash-chained)</dt><dd>Yes</dd></div><div><dt>Evidence packages (auditor-ready)</dt><dd class="no">No</dd></div><div><dt>API access</dt><dd>Yes</dd></div><div><dt>Custom contract terms</dt><dd class="no">No</dd></div></dl></details>
+        <p class="plan-m__act"><a href="https://app.tolvyn.io/signup" class="arrow" target="_blank" rel="noopener noreferrer">Get started&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
+      </section>
+      <section class="plan-m featured" aria-label="Growth plan">
+        <h3><span class="plan-tag">Recommended</span> <span class="plan-name">Growth</span></h3>
+        <dl class="plan-m__key"><div><dt>Price</dt><dd><span>₹17,999 <small>/ month</small> <small>approx. $199 USD</small></span></dd></div><div><dt>Billing</dt><dd>Billed monthly · $0.50 per 1K overage</dd></div><div><dt>Requests</dt><dd>2,000,000 requests / month</dd></div><div><dt>Provider connections</dt><dd>25 per provider</dd></div><div><dt>Data retention</dt><dd>90-day data retention</dd></div><div><dt>Hard budget enforcement</dt><dd>Yes</dd></div><div><dt>Support</dt><dd>Email support</dd></div></dl>
+        <details class="plan-m__more"><summary>All features</summary><dl><div><dt>Teams and agent IDs</dt><dd>10 teams; no fixed limit on agent IDs (fair use)</dd></div><div><dt>Members</dt><dd>No plan limit</dd></div><div><dt>Webhooks</dt><dd>5 webhook endpoints</dd></div><div><dt>Budget alerts</dt><dd>Yes</dd></div><div><dt>Pricing change alerts</dt><dd>Yes</dd></div><div><dt>Cost anomaly alerts</dt><dd>Yes</dd></div><div><dt>Reconciliation</dt><dd>Full reconciliation (OpenAI + Anthropic + Google)</dd></div><div><dt>Usage and ledger CSV export</dt><dd>Yes</dd></div><div><dt>Savings analyzer</dt><dd>Yes</dd></div><div><dt>Tamper-evident ledger (append-only, hash-chained)</dt><dd>Yes</dd></div><div><dt>Evidence packages (auditor-ready)</dt><dd class="no">No</dd></div><div><dt>API access</dt><dd>Yes</dd></div><div><dt>Custom contract terms</dt><dd class="no">No</dd></div></dl></details>
+        <p class="plan-m__act"><a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Get started</a></p>
+      </section>
+      <section class="plan-m" aria-label="Scale plan">
+        <h3><span class="plan-name">Scale</span></h3>
+        <dl class="plan-m__key"><div><dt>Price</dt><dd><span>₹54,999 <small>/ month</small> <small>approx. $599 USD</small></span></dd></div><div><dt>Billing</dt><dd>Billed monthly · $0.25 per 1K overage</dd></div><div><dt>Requests</dt><dd>10,000,000 requests / month</dd></div><div><dt>Provider connections</dt><dd>50 per provider</dd></div><div><dt>Data retention</dt><dd>1-year data retention; custom retention on request</dd></div><div><dt>Hard budget enforcement</dt><dd>Yes</dd></div><div><dt>Support</dt><dd>Email support</dd></div></dl>
+        <details class="plan-m__more"><summary>All features</summary><dl><div><dt>Teams and agent IDs</dt><dd>No fixed limit on teams or agent IDs (fair use)</dd></div><div><dt>Members</dt><dd>No plan limit</dd></div><div><dt>Webhooks</dt><dd>No fixed limit on webhooks (fair use)</dd></div><div><dt>Budget alerts</dt><dd>Yes</dd></div><div><dt>Pricing change alerts</dt><dd>Yes</dd></div><div><dt>Cost anomaly alerts</dt><dd>Yes</dd></div><div><dt>Reconciliation</dt><dd>Full reconciliation (OpenAI + Anthropic + Google)</dd></div><div><dt>Usage and ledger CSV export</dt><dd>Yes</dd></div><div><dt>Savings analyzer</dt><dd>Yes</dd></div><div><dt>Tamper-evident ledger (append-only, hash-chained)</dt><dd>Yes</dd></div><div><dt>Evidence packages (auditor-ready)</dt><dd>Yes</dd></div><div><dt>API access</dt><dd>Yes</dd></div><div><dt>Custom contract terms</dt><dd class="no">No</dd></div></dl></details>
+        <p class="plan-m__act"><a href="https://app.tolvyn.io/signup" class="arrow" target="_blank" rel="noopener noreferrer">Get started&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
+      </section>
+      <section class="plan-m" aria-label="Enterprise plan">
+        <h3><span class="plan-name">Enterprise</span></h3>
+        <dl class="plan-m__key"><div><dt>Price</dt><dd><span>Custom</span></dd></div><div><dt>Billing</dt><dd>Contact us</dd></div><div><dt>Requests</dt><dd>Custom request volume</dd></div><div><dt>Provider connections</dt><dd>50 per provider, raised on request</dd></div><div><dt>Data retention</dt><dd>Custom retention</dd></div><div><dt>Hard budget enforcement</dt><dd>Yes</dd></div><div><dt>Support</dt><dd>Email support</dd></div></dl>
+        <details class="plan-m__more"><summary>All features</summary><dl><div><dt>Teams and agent IDs</dt><dd>No fixed limit on teams or agent IDs (fair use)</dd></div><div><dt>Members</dt><dd>No plan limit</dd></div><div><dt>Webhooks</dt><dd>No fixed limit on webhooks (fair use)</dd></div><div><dt>Budget alerts</dt><dd>Yes</dd></div><div><dt>Pricing change alerts</dt><dd>Yes</dd></div><div><dt>Cost anomaly alerts</dt><dd>Yes</dd></div><div><dt>Reconciliation</dt><dd>Full reconciliation (OpenAI + Anthropic + Google)</dd></div><div><dt>Usage and ledger CSV export</dt><dd>Yes</dd></div><div><dt>Savings analyzer</dt><dd>Yes</dd></div><div><dt>Tamper-evident ledger (append-only, hash-chained)</dt><dd>Yes</dd></div><div><dt>Evidence packages (auditor-ready)</dt><dd>Yes</dd></div><div><dt>API access</dt><dd>Yes</dd></div><div><dt>Custom contract terms</dt><dd>Yes</dd></div></dl></details>
+        <p class="plan-m__act"><a href="mailto:sales@tolvyn.io" class="arrow">Contact us</a></p>
+      </section>
     </div>
-
-    <!-- Rate basis. Stated ONCE, as a line rather than a disclaimer block: the
-         INR figure is the price and the only amount ever charged; the USD
-         figure is indicative and moves with the exchange rate. -->
-    <p class="reveal" style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin-top:28px;">
-      All plans are charged in INR. USD amounts are indicative only and vary with the exchange rate.
-    </p>
+    <p class="fine-print">All plans are charged in INR. USD amounts are indicative only and vary with the exchange rate.</p>
   </div>
 </section>
 
 <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
 <section class="section" aria-labelledby="faq-heading">
   <div class="container">
-    <div class="section-header section-header--center reveal">
-      <p class="section-label">Questions</p>
+    <div class="section__head">
+      <p class="label">Questions</p>
       <h2 id="faq-heading">Common questions</h2>
     </div>
-
-    <div class="grid-2" style="max-width:960px;margin-inline:auto;">
-      <div class="card reveal" data-delay="1">
-        <h3>What happens when I hit my request limit?</h3>
-        <p>On Free and Starter, new requests are blocked at the included quota — upgrade for higher limits. On Growth and Scale, overage requests are charged ($0.50 / $0.25 per 1,000 requests respectively) so your service keeps running.</p>
-      </div>
-      <div class="card reveal" data-delay="2">
-        <h3>Do you take a percentage of my AI spend?</h3>
-        <p>No. A flat monthly fee only; TOLVYN takes no share of what you pay your providers.</p>
-      </div>
-      <div class="card reveal" data-delay="3">
-        <h3>Can I self-host?</h3>
-        <p>Not yet. On the roadmap for Enterprise customers.</p>
-      </div>
-      <div class="card reveal" data-delay="4">
-        <h3>Is there an SLA?</h3>
-        <p>No. No plan includes an SLA or an uptime commitment.</p>
-      </div>
-      <div class="card reveal" data-delay="5">
-        <h3>How can I try TOLVYN?</h3>
-        <p>The Free plan includes 10,000 requests a month, no credit card.</p>
-      </div>
-      <div class="card reveal" data-delay="6">
-        <h3>What counts as a request?</h3>
-        <p>One request equals one API call forwarded through the TOLVYN proxy to any AI provider — regardless of token count or model.</p>
-      </div>
-    </div>
+    <ul class="entries">
+      <li class="entry entry--plain"><h3>What happens when I hit my request limit?</h3><p>On Free and Starter, new requests are blocked at the included quota — upgrade for higher limits. On Growth and Scale, overage requests are charged ($0.50 / $0.25 per 1,000 requests respectively) so your service keeps running.</p></li>
+      <li class="entry entry--plain"><h3>Do you take a percentage of my AI spend?</h3><p>No. A flat monthly fee only; TOLVYN takes no share of what you pay your providers.</p></li>
+      <li class="entry entry--plain"><h3>Can I self-host?</h3><p>Not yet. On the roadmap for Enterprise customers.</p></li>
+      <li class="entry entry--plain"><h3>Is there an SLA?</h3><p>No. No plan includes an SLA or an uptime commitment.</p></li>
+      <li class="entry entry--plain"><h3>How can I try TOLVYN?</h3><p>The Free plan includes 10,000 requests a month, no credit card.</p></li>
+      <li class="entry entry--plain"><h3>What counts as a request?</h3><p>One request equals one API call forwarded through the TOLVYN proxy to any AI provider — regardless of token count or model.</p></li>
+    </ul>
   </div>
 </section>
 
-<!-- ── CONTACT CTA ─────────────────────────────────────────────────── -->
-<section id="contact" class="section-sm" style="text-align:center;">
+<!-- ── CONTACT ─────────────────────────────────────────────────────── -->
+<section id="contact" class="section section--tight">
   <div class="container">
-    <p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;">
+    <p>
       Questions? Email
-      <a href="mailto:founder@tolvyn.io" style="color:var(--accent);font-weight:600;">founder@tolvyn.io</a>
+      <a href="mailto:sales@tolvyn.io">sales@tolvyn.io</a>
       or book a call at
-      <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;">cal.com/tolvyn</a>
+      <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
     </p>
   </div>
 </section>
+</main>
 
 <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer__grid">
-      <div class="footer__brand">
-        <h4>TOLVYN</h4>
-        <p>The control and evidence layer for AI spend. Built in India.</p>
-      </div>
       <div class="footer__col">
         <h5>Product</h5>
         <ul>
-          <li><a href="/pages/how-it-works">How It Works</a></li>
-          <li><a href="https://app.tolvyn.io" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI</a></li>
-          <li><a href="https://pypi.org/project/tolvyn/" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
-          <li><a href="https://www.npmjs.com/package/tolvyn" target="_blank" rel="noopener noreferrer">Node.js SDK</a></li>
-          <li><a href="https://docs.tolvyn.io/sdks/go" target="_blank" rel="noopener noreferrer">Go SDK</a></li>
+          <li><a href="/pages/how-it-works">How it works</a></li>
+          <li><a href="/pages/pricing">Pricing</a></li>
+          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
+          <li><a href="https://docs.tolvyn.io/sdks/python" target="_blank" rel="noopener noreferrer">SDKs</a></li>
+          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
         </ul>
       </div>
       <div class="footer__col">
-        <h5>Resources</h5>
+        <h5>Compare</h5>
         <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/api" target="_blank" rel="noopener noreferrer">API Reference</a></li>
-          <li><a href="https://docs.tolvyn.io/reference/cli" target="_blank" rel="noopener noreferrer">CLI Reference</a></li>
-          <li><a href="/pages/cost-index">Cost Index</a></li>
-          <li><a href="/pages/model-pricing">AI Model Pricing</a></li>
           <li><a href="/compare/helicone">TOLVYN vs Helicone</a></li>
           <li><a href="/compare/portkey">TOLVYN vs Portkey</a></li>
           <li><a href="/compare/langfuse">TOLVYN vs Langfuse</a></li>
-          <li><a href="/use-cases/cost-attribution-per-customer">Cost Attribution</a></li>
-          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit Trail</a></li>
-          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-Based Metering</a></li>
-          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration Guides</a></li>
-          <li><a href="https://github.com/tolvyn/tolvyn-cli/releases" target="_blank" rel="noopener noreferrer">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Guides</h5>
+        <ul>
+          <li><a href="/use-cases/cost-attribution-per-customer">Cost attribution</a></li>
+          <li><a href="/use-cases/audit-trail-for-ai-spend">Audit trail</a></li>
+          <li><a href="/use-cases/metering-ai-to-bill-customers">Usage-based metering</a></li>
+          <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/index" target="_blank" rel="noopener noreferrer">Migration guides</a></li>
+          <li><a href="/pages/model-pricing">AI model pricing</a></li>
+          <li><a href="/pages/cost-index">Cost Index</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h5>Company</h5>
         <ul>
           <li><a href="/pages/company">About</a></li>
-          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="/pages/customers">Customers</a></li>
-          <li><a href="mailto:founder@tolvyn.io">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="/pages/privacy">Privacy Policy</a></li>
-          <li><a href="/pages/terms">Terms of Service</a></li>
           <li><a href="/pages/security">Security</a></li>
-          <li><a href="mailto:legal@tolvyn.io">DPA</a></li>
+          <li><a href="mailto:sales@tolvyn.io">Contact</a></li>
+          <li><a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 TOLVYN. All rights reserved.</p>
-      <div class="footer__social">
-        <a href="https://github.com/tolvyn" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://x.com/tolvyn" target="_blank" rel="noopener noreferrer">@tolvyn</a>
-        <a href="https://linkedin.com/company/tolvyn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </div>
+    <p class="footer__bottom">© 2026 TOLVYN <span aria-hidden="true">·</span> <a href="/pages/privacy">Privacy</a> <span aria-hidden="true">·</span> <a href="/pages/terms">Terms</a> <span aria-hidden="true">·</span> <a href="mailto:privacy@tolvyn.io">DPA</a> <span aria-hidden="true">·</span> Built&nbsp;in&nbsp;India</p>
   </div>
 </footer>
 
 <script src="../js/nav.js" defer></script>
-<script src="../js/animations.js" defer></script>
-<script src="../js/pricing.js" defer></script>
-<script src="../js/main.js" defer></script>
 </body>
 </html>

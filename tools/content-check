@@ -36,7 +36,9 @@ RETIRED = ['financial ' + 'control plane', 'immut' + 'able',
            'community ' + 'support',
            # The liability review of 12 Nov 2026: the old tagline's other form; plan limits are "no fixed limit".
            'financial control ' + 'layer', 'unlimited ' + 'agent', 'unlimited ' + 'teams', 'unlimited ' + 'webhooks',
-           'formal ' + 'sla', 'we commit to ' + 'acknowledging']
+           'formal ' + 'sla', 'we commit to ' + 'acknowledging',
+           # The founder's correction of 12 Nov 2026: this address never appears on the public site.
+           'founder' + '@' + 'tolvyn' + '.io']
 BLOCK = {'p', 'div', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'td', 'th', 'tr', 'section', 'article', 'header',
          'footer', 'nav', 'ul', 'ol', 'table', 'blockquote', 'pre', 'figure', 'figcaption', 'aside', 'main', 'dt',
          'dd', 'summary', 'details', 'form', 'button', 'option', 'title', 'text', 'tspan'}
@@ -250,6 +252,37 @@ def check(site):
             if not resolves(site, url_of(r), h, rw, cache):
                 broken.append('%s -> %s' % (url_of(r), h))
     say(not broken, 'internal links resolve' + ('' if not broken else ': ' + '; '.join(broken)))
+    # The founder's decision of 12 Nov 2026: the Customers page stays in the tree but no page links to it.
+    to_cust = []
+    for r in ps:
+        for h in parse(site, r).hrefs:
+            m = re.match(r'^(?:https?://' + re.escape(SITE_HOST) + r')?(/[^?#]*)', h)
+            path = m.group(1).rstrip('/') if m else ''
+            if path in ('/customers', '/pages/customers', '/pages/customers.html'):
+                to_cust.append('%s -> %s' % (url_of(r), h))
+    say(not to_cust, 'no page links to /pages/customers' + ('' if not to_cust else ': ' + '; '.join(to_cust)))
+    # The founder's decision of 12 Nov 2026 (ledger design): the build fails while any page still shows a placeholder
+    # where a real screenshot belongs. Every placeholder carries data-placeholder="<what belongs there>".
+    held = []
+    for r in ps:
+        src = open(os.path.join(site, r), encoding='utf8').read()
+        held += ['%s: %s' % (url_of(r), html.unescape(m)) for m in re.findall(r'data-placeholder="([^"]*)"', src)]
+        held += ['%s: "Screenshot to come" outside a marked placeholder' % url_of(r)] * max(
+            0, src.count('Screenshot to come') - src.count('data-placeholder="screenshot:'))
+    # The CSS byte budget (45,000 bytes): what a page loads in stylesheets, summed per page. Raise it only on purpose.
+    CSS_BUDGET = 45000
+    heavy = []
+    for r in ps:
+        src = open(os.path.join(site, r), encoding='utf8').read()
+        total = 0
+        for href in re.findall(r'<link rel="stylesheet" href="([^"]+)"', src):
+            path = href if href.startswith('/') else '/' + os.path.normpath(os.path.join(os.path.dirname(r), href))
+            fp = os.path.join(site, path.lstrip('/'))
+            total += os.path.getsize(fp) if os.path.isfile(fp) else 0
+        if total > CSS_BUDGET:
+            heavy.append('%s: %d' % (url_of(r), total))
+    say(not heavy, 'stylesheets per page within %d bytes' % CSS_BUDGET + ('' if not heavy else ': ' + '; '.join(heavy)))
+    say(not held, 'no placeholders left' + ('' if not held else ' (%d): ' % len(held) + '; '.join(held)))
     hits = []
     for root, dirs, files in os.walk(site):
         dirs[:] = [d for d in dirs if d not in SKIP_DIRS]

@@ -1,6 +1,8 @@
 /* TOLVYN — terminal.js
-   Enhanced live terminal: TOLVYN product features in action.
-   Intersection-observer gated, mint green color scheme.
+   The integration section's live terminal: `tolvyn tail` output, typed one row at a time while on
+   screen. The header and every row are cells of one grid (css/main.css) with fixed column widths, so
+   they line up; no divider characters; numbers are right-aligned in tabular figures. On phones the
+   TEAM/SERVICE column is hidden. Reduced motion: everything at once.
 */
 'use strict';
 
@@ -8,79 +10,92 @@
   const container = document.getElementById('terminal-lines');
   if (!container) return;
 
-  // Each line is a list of {cls, text} spans rendered on one line.
-  // Pipe-separated rows are pre-tokenized so each column gets its own color.
-  const LINES = [
-    [{ cls: 'tl-cmd', text: '$ tolvyn tail --service chatbot-api' }],
-    [{ cls: 'tl-hdr', text: 'TIME     | TEAM/SERVICE           | MODEL            |   TOKENS |     COST |  LATENCY' }],
-    [{ cls: 'tl-pipe', text: '─────────┼────────────────────────┼──────────────────┼──────────┼──────────┼─────────' }],
-    row('14:23:01', 'eng/chatbot-api  ', 'gpt-4o          ', '   1,247', ' $0.0089', '   340ms'),
-    row('14:23:02', 'eng/search-svc   ', 'claude-opus-4-6 ', '   2,104', ' $0.0252', '   890ms'),
-    row('14:23:03', 'support/bot      ', 'gpt-4o-mini     ', '     456', ' $0.0003', '   120ms'),
-    row('14:23:05', 'mktg/content     ', 'gpt-4o          ', '   3,847', ' $0.0312', '    1.2s'),
-    row('14:23:07', 'eng/chatbot-api  ', 'gpt-4o          ', '     892', ' $0.0071', '   280ms'),
-    row('14:23:09', 'data/pipeline    ', 'claude-haiku-4-5', '  12,450', ' $0.0094', '    2.1s'),
+  const COMMAND = '$ tolvyn tail --service chatbot-api';
+  const HEADER = ['TIME', 'TEAM/SERVICE', 'MODEL', 'TOKENS', 'COST', 'LATENCY'];
+  const ROWS = [
+    ['14:23:01', 'eng/chatbot-api', 'gpt-4o',           '1,247',  '$0.0089', '340ms'],
+    ['14:23:02', 'eng/search-svc',  'claude-opus-4-6',  '2,104',  '$0.0252', '890ms'],
+    ['14:23:03', 'support/bot',     'gpt-4o-mini',      '456',    '$0.0003', '120ms'],
+    ['14:23:05', 'mktg/content',    'gpt-4o',           '3,847',  '$0.0312', '1.2s'],
+    ['14:23:07', 'eng/chatbot-api', 'gpt-4o',           '892',    '$0.0071', '280ms'],
+    ['14:23:09', 'data/pipeline',   'claude-haiku-4-5', '12,450', '$0.0094', '2.1s'],
   ];
-
-  function row(time, team, model, tokens, cost, latency) {
-    const pipe = (t) => ({ cls: 'tl-pipe', text: t });
-    return [
-      { cls: 'tl-time',    text: time },
-      pipe(' | '),
-      { cls: 'tl-team',    text: team },
-      pipe(' | '),
-      { cls: 'tl-model',   text: model },
-      pipe(' | '),
-      { cls: 'tl-row',     text: tokens },
-      pipe(' | '),
-      { cls: 'tl-cost',    text: cost },
-      pipe(' | '),
-      { cls: 'tl-latency', text: latency },
-    ];
-  }
+  const CLASSES = ['tl-time', 'tl-team', 'tl-model', 'tl-row tl-num', 'tl-cost tl-num', 'tl-latency tl-num'];
 
   const PAUSE_AFTER_LAST = 3000;
   const LINE_DELAY       = 380;
 
-  let lineIndex = 0;
-  let timer     = null;
+  let table = null;
+  let step_ = 0;            // 0 = command, 1 = header, 2.. = rows
+  let timer = null;
 
-  function appendLine(spans) {
-    const el = document.createElement('div');
-    spans.forEach(s => {
-      const span = document.createElement('span');
-      span.className = s.cls;
-      span.textContent = s.text;
-      el.appendChild(span);
-    });
-    container.appendChild(el);
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
   }
 
-  function clearLines() {
-    container.innerHTML = '';
+  function addRow(cells, head) {
+    const tr = el('div', head ? 'tl-tr tl-head' : 'tl-tr');
+    tr.setAttribute('role', 'row');
+    cells.forEach((text, i) => {
+      const td = el('span', head ? (i > 2 ? 'tl-hdr tl-num' : 'tl-hdr') : CLASSES[i], text);
+      td.setAttribute('role', head ? 'columnheader' : 'cell');
+      tr.appendChild(td);
+    });
+    table.appendChild(tr);
+  }
+
+  function next() {
+    if (step_ === 0) {
+      container.appendChild(el('div', 'tl-cmd', COMMAND));
+      table = el('div', 'tl-table');
+      table.setAttribute('role', 'table');
+      table.setAttribute('aria-label', 'tolvyn tail output');
+      container.appendChild(table);
+    } else if (step_ === 1) {
+      addRow(HEADER, true);
+    } else {
+      addRow(ROWS[step_ - 2], false);
+    }
+    step_++;
+  }
+
+  function clear() {
+    container.textContent = '';
+    table = null;
+    step_ = 0;
   }
 
   function step() {
-    if (lineIndex < LINES.length) {
-      appendLine(LINES[lineIndex]);
-      lineIndex++;
+    if (step_ < ROWS.length + 2) {
+      next();
       timer = setTimeout(step, LINE_DELAY);
     } else {
       timer = setTimeout(() => {
-        clearLines();
-        lineIndex = 0;
+        clear();
         timer = setTimeout(step, LINE_DELAY);
       }, PAUSE_AFTER_LAST);
     }
   }
 
+  // Reduced motion: show every line at once and stop there.
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    while (step_ < ROWS.length + 2) next();
+    return;
+  }
+
+  // Types while on screen; pauses (and resumes where it was) when scrolled away.
   const wrap = document.getElementById('terminal-screen');
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          observer.unobserve(entry.target);
-          step();
+          if (!timer) step();
+        } else if (timer) {
+          clearTimeout(timer);
+          timer = null;
         }
       });
     },

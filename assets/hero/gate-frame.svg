@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 520" width="660" height="520">
+<!-- Static frame of the homepage gate (js/hero.js): without JavaScript, below 768px, and with reduced motion. Example data. -->
+<text x="0" y="12" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#828A9B" text-anchor="start" letter-spacing="1">EXAMPLE DATA</text>
+<text x="0" y="44" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="500" fill="#A6ADBB">Spent <tspan fill="#F59E0B">$3.50</tspan> of $5.00</text>
+<text x="0" y="68" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#A6ADBB">Refused <tspan fill="#F59E0B">17 calls</tspan> <tspan fill="#828A9B">&#183;</tspan> <tspan fill="#F59E0B">$0.48</tspan> never charged</text>
+<rect x="0" y="95" width="660" height="6" fill="#3A4254"/>
+<defs><pattern id="h" width="5" height="6" patternUnits="userSpaceOnUse"><path d="M-1 6 L5 0 M4 6 L10 0" stroke="#F59E0B" stroke-width="1.5"/></pattern></defs>
+<rect x="462.0" y="95" width="198.0" height="6" fill="#0B0F1A"/><rect x="462.0" y="95" width="198.0" height="6" fill="url(#h)"/>
+<rect x="0" y="95" width="462.0" height="6" fill="#F59E0B"/>
+<rect x="461.0" y="89" width="2" height="18" fill="#E6E9EF"/>
+<text x="462" y="132" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#E6E9EF" text-anchor="middle">limit $3.50</text>
+<text x="0" y="132" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#828A9B" text-anchor="start">$0</text>
+<text x="660" y="132" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#828A9B" text-anchor="end">$5.00</text>
+<text x="0" y="158" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#828A9B" text-anchor="start">apps and agents &#8594;</text>
+<text x="265" y="158" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="800" fill="#00D9A3" text-anchor="middle" letter-spacing="2.5">TOLVYN</text>
+<line x1="0" y1="200.5" x2="554" y2="200.5" stroke="#3A4254" stroke-dasharray="2 6"/>
+<rect x="564" y="194" width="2" height="12" fill="#3A4254"/>
+<text x="660" y="205" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="500" fill="#A6ADBB" text-anchor="end">OpenAI</text>
+<line x1="0" y1="247.5" x2="554" y2="247.5" stroke="#3A4254" stroke-dasharray="2 6"/>
+<rect x="564" y="241" width="2" height="12" fill="#3A4254"/>
+<text x="660" y="252" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="500" fill="#A6ADBB" text-anchor="end">Anthropic</text>
+<line x1="0" y1="295.5" x2="554" y2="295.5" stroke="#3A4254" stroke-dasharray="2 6"/>
+<rect x="564" y="289" width="2" height="12" fill="#3A4254"/>
+<text x="660" y="300" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="500" fill="#A6ADBB" text-anchor="end">Google</text>
+<line x1="0" y1="342.5" x2="554" y2="342.5" stroke="#3A4254" stroke-dasharray="2 6"/>
+<rect x="564" y="336" width="2" height="12" fill="#3A4254"/>
+<text x="660" y="347" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="14" font-weight="500" fill="#A6ADBB" text-anchor="end">DeepSeek</text>
+<rect x="263" y="164" width="2" height="214" fill="#00D9A3"/>
+<line x1="94.0" y1="199.4" x2="116.0" y2="199.4" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="116.0" cy="199.4" r="2.6" fill="#A6ADBB"/>
+<line x1="178.0" y1="204.3" x2="200.0" y2="204.3" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="200.0" cy="204.3" r="2.6" fill="#A6ADBB"/>
+<line x1="108.0" y1="196.3" x2="130.0" y2="196.3" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="130.0" cy="196.3" r="2.6" fill="#A6ADBB"/>
+<line x1="192.0" y1="203.6" x2="214.0" y2="203.6" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="214.0" cy="203.6" r="2.6" fill="#A6ADBB"/>
+<line x1="94.0" y1="242.1" x2="116.0" y2="242.1" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="116.0" cy="242.1" r="2.6" fill="#A6ADBB"/>
+<line x1="136.0" y1="244.6" x2="158.0" y2="244.6" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="158.0" cy="244.6" r="2.6" fill="#A6ADBB"/>
+<line x1="122.0" y1="242.1" x2="144.0" y2="242.1" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="144.0" cy="242.1" r="2.6" fill="#A6ADBB"/>
+<line x1="24.0" y1="250.7" x2="46.0" y2="250.7" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="46.0" cy="250.7" r="2.6" fill="#A6ADBB"/>
+<line x1="150.0" y1="300.8" x2="172.0" y2="300.8" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="172.0" cy="300.8" r="2.6" fill="#A6ADBB"/>
+<line x1="136.0" y1="300.6" x2="158.0" y2="300.6" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="158.0" cy="300.6" r="2.6" fill="#A6ADBB"/>
+<line x1="0.0" y1="296.8" x2="18.0" y2="296.8" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="18.0" cy="296.8" r="2.6" fill="#A6ADBB"/>
+<line x1="122.0" y1="296.4" x2="144.0" y2="296.4" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="144.0" cy="296.4" r="2.6" fill="#A6ADBB"/>
+<line x1="24.0" y1="336.8" x2="46.0" y2="336.8" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="46.0" cy="336.8" r="2.6" fill="#A6ADBB"/>
+<line x1="122.0" y1="336.4" x2="144.0" y2="336.4" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="144.0" cy="336.4" r="2.6" fill="#A6ADBB"/>
+<line x1="0.0" y1="346.6" x2="18.0" y2="346.6" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="18.0" cy="346.6" r="2.6" fill="#A6ADBB"/>
+<line x1="108.0" y1="343.2" x2="130.0" y2="343.2" stroke="#A6ADBB" stroke-width="2" opacity="0.35"/>
+<circle cx="130.0" cy="343.2" r="2.6" fill="#A6ADBB"/>
+<rect x="261" y="187.7" width="6" height="28" fill="#F59E0B" opacity="0.85"/>
+<circle cx="250" cy="201.7" r="3.4" fill="#F59E0B"/>
+<rect x="232.9" y="203.5" width="2.2" height="2.2" fill="#F59E0B" opacity="0.50"/>
+<rect x="235.5" y="197.6" width="2.2" height="2.2" fill="#F59E0B" opacity="0.40"/>
+<rect x="239.6" y="204.8" width="2.2" height="2.2" fill="#F59E0B" opacity="0.60"/>
+<rect x="226.6" y="210.3" width="2.2" height="2.2" fill="#F59E0B" opacity="0.44"/>
+<text x="274" y="194" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#F59E0B" text-anchor="start">429</text>
+<rect x="261" y="279.5" width="6" height="28" fill="#F59E0B" opacity="0.85"/>
+<circle cx="250" cy="293.5" r="3.4" fill="#F59E0B"/>
+<rect x="220.8" y="293.8" width="2.2" height="2.2" fill="#F59E0B" opacity="0.41"/>
+<rect x="226.2" y="285.7" width="2.2" height="2.2" fill="#F59E0B" opacity="0.45"/>
+<rect x="233.9" y="284.9" width="2.2" height="2.2" fill="#F59E0B" opacity="0.41"/>
+<rect x="222.8" y="287.8" width="2.2" height="2.2" fill="#F59E0B" opacity="0.86"/>
+<text x="274" y="286" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#F59E0B" text-anchor="start">429</text>
+<rect x="261" y="325.3" width="6" height="28" fill="#F59E0B" opacity="0.85"/>
+<circle cx="250" cy="339.3" r="3.4" fill="#F59E0B"/>
+<rect x="231.5" y="343.5" width="2.2" height="2.2" fill="#F59E0B" opacity="0.61"/>
+<rect x="226.1" y="333.3" width="2.2" height="2.2" fill="#F59E0B" opacity="0.74"/>
+<rect x="232.6" y="335.5" width="2.2" height="2.2" fill="#F59E0B" opacity="0.41"/>
+<rect x="230.5" y="347.8" width="2.2" height="2.2" fill="#F59E0B" opacity="0.47"/>
+<text x="274" y="331" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#F59E0B" text-anchor="start">429</text>
+<line x1="332.6" y1="248.7" x2="372.6" y2="248.7" stroke="#00D9A3" stroke-width="2" opacity="0.35"/>
+<circle cx="372.6" cy="248.7" r="2.6" fill="#00D9A3"/>
+<line x1="443.0" y1="243.1" x2="483.0" y2="243.1" stroke="#00D9A3" stroke-width="2" opacity="0.35"/>
+<circle cx="483.0" cy="243.1" r="2.6" fill="#00D9A3"/>
+<line x1="401.6" y1="199.7" x2="441.6" y2="199.7" stroke="#00D9A3" stroke-width="2" opacity="0.35"/>
+<circle cx="441.6" cy="199.7" r="2.6" fill="#00D9A3"/>
+<line x1="470.6" y1="294.9" x2="510.6" y2="294.9" stroke="#00D9A3" stroke-width="2" opacity="0.35"/>
+<circle cx="510.6" cy="294.9" r="2.6" fill="#00D9A3"/>
+<line x1="374.0" y1="343.5" x2="414.0" y2="343.5" stroke="#00D9A3" stroke-width="2" opacity="0.35"/>
+<circle cx="414.0" cy="343.5" r="2.6" fill="#00D9A3"/>
+<rect x="0" y="392" width="660" height="1" fill="#232937"/>
+<text x="0" y="410" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#828A9B" text-anchor="start">LEDGER &#183; example data</text>
+<text x="406" y="410" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#828A9B" text-anchor="start">prev</text>
+<text x="507" y="410" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#828A9B" text-anchor="start">hash</text>
+<text x="0.0" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="0.38">#019267</text>
+<text x="70.2" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="0.38">14:23:01</text>
+<text x="148.2" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="0.38">support-bot</text>
+<text x="249.6" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="0.38">anthropic</text>
+<text x="335.4" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#00D9A3" opacity="0.38">$0.0482</text>
+<text x="405.6" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="0.38">f1ca&#8230;7f1c</text>
+<text x="507.0" y="436" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="0.38">efd9&#8230;729f</text>
+<text x="0.0" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="0.54">#019268</text>
+<text x="70.2" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="0.54">14:23:01</text>
+<text x="148.2" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="0.54">agent/coder</text>
+<text x="249.6" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="0.54">anthropic</text>
+<text x="335.4" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#00D9A3" opacity="0.54">$0.0199</text>
+<text x="405.6" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="0.54">efd9&#8230;729f</text>
+<text x="507.0" y="460" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="0.54">6c03&#8230;9e7e</text>
+<line x1="504.0" y1="432" x2="478.8" y2="451" stroke="#00D9A3" stroke-width="1.5" opacity="0.40"/>
+<text x="0.0" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="0.70">#019269</text>
+<text x="70.2" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="0.70">14:23:02</text>
+<text x="148.2" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="0.70">billing-etl</text>
+<text x="249.6" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="0.70">deepseek</text>
+<text x="335.4" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#00D9A3" opacity="0.70">$0.0446</text>
+<text x="405.6" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="0.70">6c03&#8230;9e7e</text>
+<text x="507.0" y="484" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="0.70">a5df&#8230;9a30</text>
+<line x1="504.0" y1="456" x2="478.8" y2="475" stroke="#00D9A3" stroke-width="1.5" opacity="0.40"/>
+<text x="0.0" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="1.00">#019270</text>
+<text x="70.2" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#828A9B" opacity="1.00">14:23:02</text>
+<text x="148.2" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="1.00">search-svc</text>
+<text x="249.6" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#A6ADBB" opacity="1.00">deepseek</text>
+<text x="335.4" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#00D9A3" opacity="1.00">$0.0132</text>
+<text x="405.6" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#00D9A3" opacity="1.00">a5df&#8230;9a30</text>
+<text x="507.0" y="508" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#E6E9EF" opacity="1.00">8379&#8230;d974</text>
+<line x1="504.0" y1="480" x2="478.8" y2="499" stroke="#00D9A3" stroke-width="1.5" opacity="0.95"/>
+</svg>
