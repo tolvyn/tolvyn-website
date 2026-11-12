@@ -3,7 +3,7 @@
 
   1. an external origin (http:, https: or //) in the src/href of a script, stylesheet, font, preload or preconnect,
      or in a CSS url() or @import
-  2. a file under js/vendor/ or assets/fonts/ that is not in tools/vendor.json, or whose SHA-256 differs from it;
+  2. a file under js/vendor/, assets/fonts/ or fonts/ that is not in tools/vendor.json, or whose SHA-256 differs from it;
      a file listed there that is missing from the upload
   3. innerHTML, outerHTML, insertAdjacentHTML, document.write, eval(, new Function, a string passed to
      setTimeout/setInterval, createContextualFragment, setHTMLUnsafe or setAttribute('style' in any file under js/
@@ -24,7 +24,7 @@ import sys
 from html.parser import HTMLParser
 
 SKIP_DIRS = {'.git', 'docs', 'tools', '.wrangler', 'node_modules'}
-VENDOR_DIRS = ('js/vendor/', 'assets/fonts/')
+VENDOR_DIRS = ('js/vendor/', 'assets/fonts/', 'fonts/')
 MANIFEST = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vendor.json')
 EXTERNAL = re.compile(r'^\s*(?:[a-z][a-z0-9+.-]*:|//)', re.I)          # any scheme, or protocol-relative
 LOAD_RELS = {'stylesheet', 'preload', 'modulepreload', 'prefetch', 'preconnect', 'dns-prefetch'}

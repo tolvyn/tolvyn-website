@@ -259,6 +259,15 @@ def check(site):
             if path in ('/customers', '/pages/customers', '/pages/customers.html'):
                 to_cust.append('%s -> %s' % (url_of(r), h))
     say(not to_cust, 'no page links to /pages/customers' + ('' if not to_cust else ': ' + '; '.join(to_cust)))
+    # The founder's decision of 12 Nov 2026 (ledger design): the build fails while any page still shows a placeholder
+    # where a real screenshot belongs. Every placeholder carries data-placeholder="<what belongs there>".
+    held = []
+    for r in ps:
+        src = open(os.path.join(site, r), encoding='utf8').read()
+        held += ['%s: %s' % (url_of(r), html.unescape(m)) for m in re.findall(r'data-placeholder="([^"]*)"', src)]
+        held += ['%s: "Screenshot to come" outside a marked placeholder' % url_of(r)] * max(
+            0, src.count('Screenshot to come') - src.count('data-placeholder="screenshot:'))
+    say(not held, 'no placeholders left' + ('' if not held else ' (%d): ' % len(held) + '; '.join(held)))
     hits = []
     for root, dirs, files in os.walk(site):
         dirs[:] = [d for d in dirs if d not in SKIP_DIRS]

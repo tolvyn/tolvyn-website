@@ -1,5 +1,5 @@
 {
-  "about": "Every third-party file in the upload, pinned by SHA-256. tools/supply-check fails if a file under js/vendor/ or assets/fonts/ is missing from this list, or its hash differs, or a listed file is missing. To update a file: replace it, then update its entry (version, source, retrieved, sha256, bytes) in the same commit.",
+  "about": "Every third-party file in the upload, pinned by SHA-256. tools/supply-check fails if a file under js/vendor/, assets/fonts/ or fonts/ is missing from this list, or its hash differs, or a listed file is missing. To update a file: replace it, then update its entry (version, source, retrieved, sha256, bytes) in the same commit.",
   "files": [
     {
       "path": "js/vendor/chart.umd.js",
@@ -116,6 +116,149 @@
       "licence": "the licence texts themselves",
       "sha256": "c3c0095da609e776f3413c6cd6813ee91a975eac5adbe64f3faff4e98d1f93cd",
       "bytes": 13865
+    },
+    {
+      "path": "fonts/OFL-IBM-Plex-Mono.txt",
+      "name": "IBM Plex Mono licence",
+      "version": "@fontsource/ibm-plex-mono 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-mono/-/ibm-plex-mono-5.3.0.tgz (package/LICENSE, unmodified)",
+      "source_integrity": "sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==",
+      "licence": "the licence text itself",
+      "sha256": "23b0a9d0c6d3f140a0b77e483c5cfa6bba574325ef5cb189ed9f2fec4884533f",
+      "bytes": 5299
+    },
+    {
+      "path": "fonts/OFL-IBM-Plex-Sans.txt",
+      "name": "IBM Plex Sans licence",
+      "version": "@fontsource/ibm-plex-sans 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-sans/-/ibm-plex-sans-5.3.0.tgz (package/LICENSE, unmodified)",
+      "source_integrity": "sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==",
+      "licence": "the licence text itself",
+      "sha256": "d0283623ef57e722fd0eb688a8041589670c608ab780cd3612d06ba6f153d3fd",
+      "bytes": 4429
+    },
+    {
+      "path": "fonts/OFL-Source-Serif-4.txt",
+      "name": "Source Serif 4 licence",
+      "version": "@fontsource/source-serif-4 5.3.1",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/source-serif-4/-/source-serif-4-5.3.1.tgz (package/LICENSE, unmodified)",
+      "source_integrity": "sha512-cWcTCXjYYrgF9A67fThVir1VSc0lPEYmwQ6jA4pPt01s2MSCi/maINUcZoCzaqnU8fyUReDO97eGcBUkHgOeug==",
+      "licence": "the licence text itself",
+      "sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+      "bytes": 4314
+    },
+    {
+      "path": "fonts/ibm-plex-mono-latin-400-normal.woff2",
+      "name": "IBM Plex Mono (latin subset, weight 400)",
+      "version": "@fontsource/ibm-plex-mono 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-mono/-/ibm-plex-mono-5.3.0.tgz (package/files/ibm-plex-mono-latin-400-normal.woff2, unmodified)",
+      "source_integrity": "sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Mono.txt",
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+      "bytes": 14708
+    },
+    {
+      "path": "fonts/ibm-plex-mono-latin-500-normal.woff2",
+      "name": "IBM Plex Mono (latin subset, weight 500)",
+      "version": "@fontsource/ibm-plex-mono 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-mono/-/ibm-plex-mono-5.3.0.tgz (package/files/ibm-plex-mono-latin-500-normal.woff2, unmodified)",
+      "source_integrity": "sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Mono.txt",
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+      "bytes": 14888
+    },
+    {
+      "path": "fonts/ibm-plex-mono-latin-ext-400-normal.woff2",
+      "name": "IBM Plex Mono (latin-ext subset, weight 400)",
+      "version": "@fontsource/ibm-plex-mono 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-mono/-/ibm-plex-mono-5.3.0.tgz (package/files/ibm-plex-mono-latin-ext-400-normal.woff2, unmodified)",
+      "source_integrity": "sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Mono.txt",
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb",
+      "bytes": 13348
+    },
+    {
+      "path": "fonts/ibm-plex-mono-latin-ext-500-normal.woff2",
+      "name": "IBM Plex Mono (latin-ext subset, weight 500)",
+      "version": "@fontsource/ibm-plex-mono 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-mono/-/ibm-plex-mono-5.3.0.tgz (package/files/ibm-plex-mono-latin-ext-500-normal.woff2, unmodified)",
+      "source_integrity": "sha512-eTgnZjZEGk1QtD3ZstF+Vclo2HLAni8YMy34/DxllwZvyz1lR/1RF/xTiAquOBO7MvqBx8D2Ig2WCPMVfdZu7Q==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Mono.txt",
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea",
+      "bytes": 13432
+    },
+    {
+      "path": "fonts/ibm-plex-sans-latin-400-normal.woff2",
+      "name": "IBM Plex Sans (latin subset, weight 400)",
+      "version": "@fontsource/ibm-plex-sans 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-sans/-/ibm-plex-sans-5.3.0.tgz (package/files/ibm-plex-sans-latin-400-normal.woff2, unmodified)",
+      "source_integrity": "sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Sans.txt",
+      "sha256": "3b646991d30055a93a4ecc499713d4347953a74a947ecab435ab72070cbdab0e",
+      "bytes": 22588
+    },
+    {
+      "path": "fonts/ibm-plex-sans-latin-500-normal.woff2",
+      "name": "IBM Plex Sans (latin subset, weight 500)",
+      "version": "@fontsource/ibm-plex-sans 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-sans/-/ibm-plex-sans-5.3.0.tgz (package/files/ibm-plex-sans-latin-500-normal.woff2, unmodified)",
+      "source_integrity": "sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Sans.txt",
+      "sha256": "0717336fb31fcdcde4b8deb3675bb4a0f7f6d484864afcd6751ac29975962203",
+      "bytes": 24184
+    },
+    {
+      "path": "fonts/ibm-plex-sans-latin-ext-400-normal.woff2",
+      "name": "IBM Plex Sans (latin-ext subset, weight 400)",
+      "version": "@fontsource/ibm-plex-sans 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-sans/-/ibm-plex-sans-5.3.0.tgz (package/files/ibm-plex-sans-latin-ext-400-normal.woff2, unmodified)",
+      "source_integrity": "sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Sans.txt",
+      "sha256": "c93d2a12aaa280f68b9ab7b726ff8dfedda67c99ef9abed047c1847a1cc6d583",
+      "bytes": 15980
+    },
+    {
+      "path": "fonts/ibm-plex-sans-latin-ext-500-normal.woff2",
+      "name": "IBM Plex Sans (latin-ext subset, weight 500)",
+      "version": "@fontsource/ibm-plex-sans 5.3.0",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/ibm-plex-sans/-/ibm-plex-sans-5.3.0.tgz (package/files/ibm-plex-sans-latin-ext-500-normal.woff2, unmodified)",
+      "source_integrity": "sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-IBM-Plex-Sans.txt",
+      "sha256": "2846035d85100f84c79393f80f1442d4ee720129ab8b3ffa8969aae281db8c6c",
+      "bytes": 16456
+    },
+    {
+      "path": "fonts/source-serif-4-latin-600-normal.woff2",
+      "name": "Source Serif 4 (latin subset, weight 600)",
+      "version": "@fontsource/source-serif-4 5.3.1",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/source-serif-4/-/source-serif-4-5.3.1.tgz (package/files/source-serif-4-latin-600-normal.woff2, unmodified)",
+      "source_integrity": "sha512-cWcTCXjYYrgF9A67fThVir1VSc0lPEYmwQ6jA4pPt01s2MSCi/maINUcZoCzaqnU8fyUReDO97eGcBUkHgOeug==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-Source-Serif-4.txt",
+      "sha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7",
+      "bytes": 21532
+    },
+    {
+      "path": "fonts/source-serif-4-latin-ext-600-normal.woff2",
+      "name": "Source Serif 4 (latin-ext subset, weight 600)",
+      "version": "@fontsource/source-serif-4 5.3.1",
+      "retrieved": "2026-11-12",
+      "source": "https://registry.npmjs.org/@fontsource/source-serif-4/-/source-serif-4-5.3.1.tgz (package/files/source-serif-4-latin-ext-600-normal.woff2, unmodified)",
+      "source_integrity": "sha512-cWcTCXjYYrgF9A67fThVir1VSc0lPEYmwQ6jA4pPt01s2MSCi/maINUcZoCzaqnU8fyUReDO97eGcBUkHgOeug==",
+      "licence": "SIL Open Font License 1.1, fonts/OFL-Source-Serif-4.txt",
+      "sha256": "ba70bfd7a5f52800fb9abedfe1926db2b1b614b10cb8ac1e5798a14fb06a02d4",
+      "bytes": 18332
     }
   ]
 }
