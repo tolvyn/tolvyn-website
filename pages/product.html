@@ -93,6 +93,7 @@
         <li><a href="#pricing-changes">Pricing Change Governance</a></li>
         <li><a href="#cost-index">AI Cost Index</a></li>
         <li><a href="#sdks">SDKs &amp; Integration</a></li>
+        <li><a href="#limits">What it doesn&rsquo;t do yet</a></li>
       </ul>
       <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">Start free →</a>
     </aside>
@@ -163,6 +164,10 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
           prompt or response content. There is nothing in the ledger your finance team can't show
           an auditor.
         </p>
+        <figure class="shot">
+          <div class="shot__slot"><span>Screenshot to come</span> <span>Ledger Verify</span></div>
+          <figcaption>Ledger Verify: the chain checked for the month.</figcaption>
+        </figure>
       </section>
 
       <!-- 2. Attribution -->
@@ -230,6 +235,10 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
           request whose estimate would push you over budget rather than incurring the charge and
           refusing the response.
         </p>
+        <figure class="shot">
+          <div class="shot__slot"><span>Screenshot to come</span> <span>A refused call</span></div>
+          <figcaption>A refused call in Events: the budget stopped it before the provider was called.</figcaption>
+        </figure>
       </section>
 
       <!-- 3b. Spend Quotas -->
@@ -340,6 +349,10 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
           The reconciliation report names the model, the gap amount,
           and the date range — so you can hunt down the source.
         </p>
+        <figure class="shot">
+          <div class="shot__slot"><span>Screenshot to come</span> <span>Reconciliation</span></div>
+          <figcaption>TOLVYN&rsquo;s total against the provider&rsquo;s usage export, and the gap between them.</figcaption>
+        </figure>
       </section>
 
       <!-- 7. Savings -->
@@ -393,6 +406,10 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
           admin</strong> — a member who can arm a kill switch cannot necessarily disarm it, which is
           deliberate.
         </p>
+        <figure class="shot">
+          <div class="shot__slot"><span>Screenshot to come</span> <span>Agents</span></div>
+          <figcaption>Spend per agent, with Kill on each row.</figcaption>
+        </figure>
       </section>
 
       <!-- 9. Pricing changes -->
@@ -492,6 +509,20 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
         <div class="docs-sidebar__cta">
           <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Start free — 10,000 requests</a>
         </div>
+      </section>
+
+      <section id="limits">
+        <h2>What TOLVYN doesn&rsquo;t do yet</h2>
+        <ul class="limits">
+          <li><strong>Budgets per end customer.</strong> End customers are attributed and reported, but a budget can only be set on the organization, a team, a service, an agent or an API key.</li>
+          <li><strong>Limits per agent run or task.</strong> Budgets and quotas are per period; there is no per-run limit yet.</li>
+          <li><strong>Amazon Bedrock, Azure OpenAI and Vertex AI.</strong> The providers TOLVYN proxies natively are OpenAI, Anthropic, Google's Gemini API and DeepSeek.</li>
+          <li><strong>Single sign-on.</strong> There is no SAML or OIDC sign-in yet; you sign in with email and password.</li>
+          <li><strong>A SOC 2 report.</strong> There is none yet. What an auditor gets today is the evidence package and the ledger it verifies.</li>
+          <li><strong>Gemini's Files API upload and Gemini's OpenAI-compatible endpoint.</strong> Both are answered with a named 501. Upload files to Google directly and pass the file reference through TOLVYN.</li>
+          <li><strong>A fallback in proxy mode.</strong> If TOLVYN is unreachable, a base-URL integration fails. Fail-open lives in the SDKs and needs your own provider key.</li>
+          <li><strong>More than one region.</strong> TOLVYN is hosted in India only.</li>
+        </ul>
       </section>
 
     </main>

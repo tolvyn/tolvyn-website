@@ -344,3 +344,16 @@ th.sorted .sort-icon {opacity:1;}
 .ci-cta h2 {margin-bottom:var(--s-3);}
 .ci-cta p {max-width:36em; margin-bottom:var(--s-5); font-size:var(--fs-md);}
 .mp-hero .mp-disclaimer {max-width:37em; margin-top:var(--s-3); font-size:var(--fs-xs);}
+.facts {display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--s-5); font-size:var(--fs-sm);}
+.facts li {padding-top:var(--s-3); border-top:1px solid var(--border);}
+.facts b {display:block; font:700 var(--fs-xl)/1.2 var(--display); color:var(--text);}
+.shots {display:grid; gap:var(--s-4); margin-bottom:var(--s-6);}
+.shot {margin-block:var(--s-5);}
+.shots .shot {margin:0;}
+.shot__slot {display:grid; place-content:center; gap:var(--s-1); aspect-ratio:16 / 10; border:1px dashed var(--border-light); border-radius:6px; font:400 var(--fs-xs)/1.5 var(--mono); color:var(--text-muted); text-align:center;}
+.shot figcaption {margin-top:var(--s-2); font-size:var(--fs-sm);}
+.limits {max-width:52em;}
+.limits li {padding-block:var(--s-3); border-bottom:1px solid var(--border);}
+.docs-main .shot, .hiw-step .shot {max-width:40em;}
+.home-limits {border-top:1px solid var(--border);}
+@media (min-width:900px) {.facts {grid-template-columns:repeat(4, minmax(0, 1fr));} .shots {grid-template-columns:repeat(3, minmax(0, 1fr));}}

@@ -108,6 +108,18 @@
   </div>
 </section>
 
+<!-- ── NUMBERS ─────────────────────────────────────────────────────── -->
+<section class="section-sm home-facts" aria-label="TOLVYN in numbers">
+  <div class="container">
+    <ul class="facts">
+      <li><b>4</b> providers through one proxy: OpenAI, Anthropic, Google and DeepSeek</li>
+      <li><b>&asymp;5 ms</b> added at the median, in our own benchmark</li>
+      <li><b>14</b> <a href="/pages/security#acknowledgments">security researchers credited</a></li>
+      <li><b>10,000</b> <a href="/pages/pricing">requests free, no credit card</a></li>
+    </ul>
+  </div>
+</section>
+
 
 <!-- ── THE PROBLEM ─────────────────────────────────────────────────── -->
 <section class="section home-problem" aria-labelledby="problem-heading">
@@ -217,6 +229,21 @@
       <h2 id="diff-heading">Control, and the evidence for it</h2>
     </div>
 
+    <div class="shots">
+      <figure class="shot">
+        <div class="shot__slot"><span>Screenshot to come</span> <span>Agents</span></div>
+        <figcaption>Every agent&rsquo;s spend this month, with a kill switch on each row.</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot__slot"><span>Screenshot to come</span> <span>A refused call</span></div>
+        <figcaption>The budget refused the call before the provider was called.</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot__slot"><span>Screenshot to come</span> <span>Ledger Verify</span></div>
+        <figcaption>The ledger&rsquo;s chain, checked for the month.</figcaption>
+      </figure>
+    </div>
+
     <div class="diff-grid">
       <div class="diff-tile diff-tile--prove reveal" data-delay="1">
         <h3>Tamper-Evident Ledger</h3>
@@ -245,6 +272,27 @@
     </div>
   </div>
 </section>
+
+<!-- ── LIMITS ──────────────────────────────────────────────────────── -->
+<section class="section home-limits" aria-labelledby="limits-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Honest limits</p>
+      <h2 id="limits-heading">What TOLVYN doesn&rsquo;t do yet</h2>
+    </div>
+    <ul class="limits">
+      <li><strong>Budgets per end customer.</strong> End customers are attributed and reported, but a budget can only be set on the organization, a team, a service, an agent or an API key.</li>
+      <li><strong>Limits per agent run or task.</strong> Budgets and quotas are per period; there is no per-run limit yet.</li>
+      <li><strong>Amazon Bedrock, Azure OpenAI and Vertex AI.</strong> The providers TOLVYN proxies natively are OpenAI, Anthropic, Google's Gemini API and DeepSeek.</li>
+      <li><strong>Single sign-on.</strong> There is no SAML or OIDC sign-in yet; you sign in with email and password.</li>
+      <li><strong>A SOC 2 report.</strong> There is none yet. What an auditor gets today is the evidence package and the ledger it verifies.</li>
+      <li><strong>Gemini's Files API upload and Gemini's OpenAI-compatible endpoint.</strong> Both are answered with a named 501. Upload files to Google directly and pass the file reference through TOLVYN.</li>
+      <li><strong>A fallback in proxy mode.</strong> If TOLVYN is unreachable, a base-URL integration fails. Fail-open lives in the SDKs and needs your own provider key.</li>
+      <li><strong>More than one region.</strong> TOLVYN is hosted in India only.</li>
+    </ul>
+  </div>
+</section>
+
 
 <!-- ── INTEGRATION (5-min proof) ───────────────────────────────────── -->
 <section class="section home-integration" aria-labelledby="integration-heading">
@@ -344,6 +392,17 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
       <h3 id="cost-index-heading">TOLVYN AI Cost Index</h3>
       <p>Anonymized cost benchmarks aggregated from real production AI traffic. A figure is published only when at least three organisations contribute to it, so the index shows what clears that floor &mdash; and nothing else.</p>
       <a href="/pages/cost-index" class="btn btn-secondary">View the data →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── DESIGN PARTNERS ─────────────────────────────────────────────── -->
+<section class="section-sm" aria-labelledby="partners-heading">
+  <div class="container">
+    <div class="card home-partners reveal">
+      <h3 id="partners-heading">Design partners wanted</h3>
+      <p>Up to five teams. Run one non-critical service through TOLVYN for 30 days, free, with the Growth plan&rsquo;s features, and tell us honestly what worked and what didn&rsquo;t. Afterwards, design partners keep Founding Partner pricing: 50% off for as long as they stay. Write to <a href="mailto:younus@tolvyn.io">younus@tolvyn.io</a>.</p>
+      <a href="/pages/customers" class="btn btn-secondary">Details →</a>
     </div>
   </div>
 </section>
