@@ -11,7 +11,7 @@
 @media (pointer:coarse) {.btn-sm {min-height:44px;}}
 
 .card, .diff-tile, .plan, .migration, .pricing-teaser, .diagram, .code-tabs,
-.discount-banner, .terminal-wrap {position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);}
+.terminal-wrap {position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);}
 .card {padding:var(--s-6); transition:border-color var(--transition);}
 .card:hover {border-color:var(--border-light);}
 .card h3 {margin-bottom:var(--s-2); font-size:var(--fs-md);}
