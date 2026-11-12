@@ -24,7 +24,12 @@ SKIP_DIRS = {'.git', 'docs', 'tools', '.wrangler', 'node_modules'}
 # The phrases no uploaded file may contain after the Nov 2026 copy pass. Built from parts, so this file never matches.
 RETIRED = ['financial ' + 'control plane', 'immut' + 'able',
            # The founder's decision of 12 Nov 2026: no launch-date claim, in any form.
-           'live ' + 'since', 'since ' + 'march', 'launched in ' + 'march']
+           'live ' + 'since', 'since ' + 'march', 'launched in ' + 'march',
+           # The founder's decision of 12 Nov 2026: no public offers or discounts; they are negotiated on a call.
+           'founding ' + 'partner', '% ' + 'off', 'disc' + 'ount', 'free ' + 'forever', 'off ' + 'forever',
+           ', ' + 'forever', 'first 5 ' + 'customers', 'first ' + 'five', 'as long as you ' + 'stay',
+           'as long as they ' + 'stay', 'days ' + 'free', 'free ' + 'pilot', 'spots still ' + 'open',
+           'early ' + 'adopter']
 BLOCK = {'p', 'div', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'td', 'th', 'tr', 'section', 'article', 'header',
          'footer', 'nav', 'ul', 'ol', 'table', 'blockquote', 'pre', 'figure', 'figcaption', 'aside', 'main', 'dt',
          'dd', 'summary', 'details', 'form', 'button', 'option', 'title', 'text', 'tspan'}

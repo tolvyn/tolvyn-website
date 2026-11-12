@@ -415,22 +415,6 @@ p  { color: var(--text-secondary); }
   margin-top: 2px;
 }
 
-/* ── Discount banners ────────────────────────────────────────────── */
-.discount-banner {
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  margin-bottom: 16px;
-}
-.discount-banner--founders {
-  background: linear-gradient(135deg, var(--accent-muted) 0%, rgba(0, 217, 163, 0.04) 100%);
-  border: 1px solid rgba(0, 217, 163, 0.35);
-}
-.discount-banner--early {
-  background: var(--surface);
-  border: 1px solid var(--border);
-}
-.discount-banner h3 { margin-bottom: 6px; font-size: 1.15rem; }
-.discount-banner p  { font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary); }
 
 /* ── Migration strip ─────────────────────────────────────────────── */
 .migration {
