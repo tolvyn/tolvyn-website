@@ -199,7 +199,7 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
         <p class="section-label">Budgets</p>
         <h2>Budgets &amp; Enforcement</h2>
         <p>
-          Set spending limits at four scopes — organization, team, service and agent. Choose how
+          Set spending limits at five scopes — organization, team, service, agent and API key. Choose how
           strictly they're enforced.
           Get pre-request cost estimation so the proxy can refuse a request <em>before</em>
           it hits the provider.
@@ -222,9 +222,11 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
 
         <h3>Scope hierarchy</h3>
         <p>
-          Budgets evaluate in order: <strong>agent → service → team → org</strong>. The first
-          exhausted budget wins. So a $500/mo agent budget will hard-block even when the parent
-          team budget has plenty of headroom — useful for runaway agent protection.
+          Every budget that applies to a call is checked, most specific first:
+          <strong>API key → agent → service → team → organization</strong>. A call goes through only
+          if it fits every hard budget; the first one it would exceed refuses it, and the 429 names
+          that budget. So a $500/mo agent budget will hard-block even when the parent team budget
+          has plenty of headroom — useful for runaway agent protection.
         </p>
 
         <h3>Pre-request cost estimation</h3>
@@ -236,8 +238,8 @@ $ tolvyn ledger verify --from-seq 4000 --to-seq 4821
           refusing the response.
         </p>
         <figure class="shot">
-          <div class="shot__slot"><span>Screenshot to come</span> <span>A refused call</span></div>
-          <figcaption>A refused call in Events: the budget stopped it before the provider was called.</figcaption>
+          <div class="shot__slot"><span>Screenshot to come</span> <span>A budget at its limit</span></div>
+          <figcaption>A hard budget at its limit on the Budgets page: the next call is refused before the provider is called.</figcaption>
         </figure>
       </section>
 
