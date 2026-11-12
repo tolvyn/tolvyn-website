@@ -62,7 +62,7 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .btn:hover {background:var(--green-dark); border-color:var(--green-dark); color:#FFFFFF; text-decoration:none;}
 .btn--sm {min-height:36px; padding:7px 14px; font-size:15px;}
 .arrow {display:inline-flex; align-items:center; min-height:44px; font-weight:500; color:var(--green);}
-.arrow--add::after {content:"\00a0\2192";}
+.ico-arrow {width:0.9em; height:0.9em; vertical-align:-0.08em; flex:none;}
 .actions {display:flex; flex-wrap:wrap; align-items:center; gap:12px 28px; margin-top:28px;}
 
 /* ── Nav ──────────────────────────────────────────────────────────── */
@@ -170,7 +170,7 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .tbl--plans .featured {background:var(--paper-2);}
 .tbl--plans .price td {font:500 22px/1.3 var(--mono); padding-block:14px;}
 .tbl--plans .price small {display:block; font-size:14px; font-weight:400; color:var(--ink-2);}
-.tbl--plans .na, .tbl--plans .ditto {color:var(--ink-2);}
+.tbl--plans .no {color:var(--ink-2);}
 .tbl--plans tfoot th, .tbl--plans tfoot td {border-top:1px solid var(--ink); border-bottom:3px double var(--ink); padding-block:16px;}
 .fine-print {margin-top:16px; font-size:14px; color:var(--ink-2);}
 
@@ -206,7 +206,7 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 /* Plans: one ruled list per plan (each cell labelled), in plan order; one markup, no copy repeated. */
 .tbl--plans {display:grid; grid-template-columns:minmax(0, 1fr);}
 .tbl--plans thead, .tbl--plans tbody, .tbl--plans tfoot, .tbl--plans tr {display:contents;}
-.tbl--plans colgroup, .tbl--plans thead th.corner, .tbl--plans tbody th, .tbl--plans tfoot th, .tbl--plans td.na {display:none;}
+.tbl--plans colgroup, .tbl--plans thead th.corner, .tbl--plans tbody th, .tbl--plans tfoot th {display:none;}
 .tbl--plans td {display:grid; grid-template-columns:minmax(0, 148px) minmax(0, 1fr); gap:12px; padding:10px 0; background:none; border-top:0;}
 .tbl--plans td::before {content:attr(data-label); color:var(--ink-2); font-size:14px; font-family:var(--sans); font-weight:400;}
 .tbl--plans thead th {display:block; padding:36px 0 10px; border-top:0; border-bottom:1px solid var(--ink); background:none;}

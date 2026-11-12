@@ -46,7 +46,6 @@
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
       <li><a href="/pages/pricing">Pricing</a></li>
-      <li><a href="/pages/cost-index">Cost Index</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
       <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
@@ -59,7 +58,6 @@
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
     <a href="/pages/pricing" role="menuitem">Pricing</a>
-    <a href="/pages/cost-index" role="menuitem">Cost Index</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
     <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
@@ -80,7 +78,7 @@
       </p>
       <div class="actions">
         <a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Start free — 10,000 requests</a>
-        <a href="https://docs.tolvyn.io" class="arrow" target="_blank" rel="noopener noreferrer">Read the docs →</a>
+        <a href="https://docs.tolvyn.io" class="arrow" target="_blank" rel="noopener noreferrer">Read the docs&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
       </div>
       <p class="hero__trust">Open-source pricing database · MIT and Apache-2.0 SDKs</p>
     </div>
@@ -95,7 +93,7 @@
   <div class="container">
     <ul class="facts">
       <li><b>4</b> providers through one proxy: OpenAI, Anthropic, Google and DeepSeek</li>
-      <li><b>&asymp;5 ms</b> added at the median, in our own benchmark</li>
+      <li><b>about 5 ms</b> added at the median, in our own benchmark</li>
       <li><b>14</b> <a href="/pages/security#acknowledgments">security researchers credited</a></li>
       <li><b>10,000</b> <a href="/pages/pricing">requests free, no credit card</a></li>
     </ul>
@@ -141,7 +139,7 @@
         <text x="90" y="186" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#1A1A1A">Your App</text>
         <text x="90" y="206" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#5C5A55">SDK / HTTP</text>
 
-        <!-- App → Proxy -->
+        <!-- App to Proxy -->
         <line x1="162" y1="190" x2="328" y2="190" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#arr)"/>
         <text x="245" y="180" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#1F5C45">request</text>
 
@@ -153,7 +151,7 @@
         <text x="420" y="214" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">meter · hash · route</text>
         <text x="420" y="230" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#5C5A55">attribute · govern</text>
 
-        <!-- Proxy → Providers (stacked) -->
+        <!-- Proxy to Providers (stacked) -->
         <line x1="512" y1="150" x2="660" y2="100" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#arr)"/>
         <line x1="512" y1="190" x2="660" y2="190" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#arr)"/>
         <line x1="512" y1="230" x2="660" y2="280" stroke="#1F5C45" stroke-width="1.5" marker-end="url(#arr)"/>
@@ -296,22 +294,22 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
     <figure class="ledger" aria-labelledby="ledger-title">
       <figcaption>
         <h3 id="ledger-title">Sample ledger</h3>
-        <span class="ledger__note">Sample rows, not customer data. TOLVYN time is the time the proxy adds to a call.</span>
+        <span class="ledger__note">Sample rows, not customer data.</span>
       </figcaption>
       <table class="tbl tbl--ledger">
         <thead>
-          <tr><th scope="col">Time</th><th scope="col" class="c-svc">Service</th><th scope="col">Model</th><th scope="col" class="num">Tokens</th><th scope="col" class="num">Cost</th><th scope="col" class="num">TOLVYN time</th></tr>
+          <tr><th scope="col">Time</th><th scope="col" class="c-svc">Service</th><th scope="col">Model</th><th scope="col" class="num">Tokens</th><th scope="col" class="num">Cost</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">14:23:01</th><td class="c-svc">eng/chatbot-api</td><td>gpt-4o</td><td class="num">1,247</td><td class="num">$0.0089</td><td class="num">4 ms</td></tr>
-          <tr><th scope="row">14:23:02</th><td class="c-svc">eng/search-svc</td><td>claude-opus-4-6</td><td class="num">2,104</td><td class="num">$0.0252</td><td class="num">6 ms</td></tr>
-          <tr><th scope="row">14:23:03</th><td class="c-svc">support/bot</td><td>gpt-4o-mini</td><td class="num">456</td><td class="num">$0.0003</td><td class="num">3 ms</td></tr>
-          <tr><th scope="row">14:23:05</th><td class="c-svc">mktg/content</td><td>gpt-4o</td><td class="num">3,847</td><td class="num">$0.0312</td><td class="num">5 ms</td></tr>
-          <tr><th scope="row">14:23:07</th><td class="c-svc">eng/chatbot-api</td><td>gpt-4o</td><td class="num">892</td><td class="num">$0.0071</td><td class="num">4 ms</td></tr>
-          <tr><th scope="row">14:23:09</th><td class="c-svc">data/pipeline</td><td>claude-haiku-4-5</td><td class="num">12,450</td><td class="num">$0.0094</td><td class="num">7 ms</td></tr>
+          <tr><th scope="row">14:23:01</th><td class="c-svc">eng/chatbot-api</td><td>gpt-4o</td><td class="num">1,247</td><td class="num">$0.0089</td></tr>
+          <tr><th scope="row">14:23:02</th><td class="c-svc">eng/search-svc</td><td>claude-opus-4-6</td><td class="num">2,104</td><td class="num">$0.0252</td></tr>
+          <tr><th scope="row">14:23:03</th><td class="c-svc">support/bot</td><td>gpt-4o-mini</td><td class="num">456</td><td class="num">$0.0003</td></tr>
+          <tr><th scope="row">14:23:05</th><td class="c-svc">mktg/content</td><td>gpt-4o</td><td class="num">3,847</td><td class="num">$0.0312</td></tr>
+          <tr><th scope="row">14:23:07</th><td class="c-svc">eng/chatbot-api</td><td>gpt-4o</td><td class="num">892</td><td class="num">$0.0071</td></tr>
+          <tr><th scope="row">14:23:09</th><td class="c-svc">data/pipeline</td><td>claude-haiku-4-5</td><td class="num">12,450</td><td class="num">$0.0094</td></tr>
         </tbody>
         <tfoot>
-          <tr><th scope="row">Total</th><td class="c-svc"></td><td>6 calls</td><td class="num">20,996</td><td class="num">$0.0821</td><td class="num"></td></tr>
+          <tr><th scope="row">Total</th><td class="c-svc"></td><td>6 calls</td><td class="num">20,996</td><td class="num">$0.0821</td></tr>
         </tfoot>
       </table>
     </figure>
@@ -327,9 +325,9 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
     <div class="block">
       <h3 id="migration-heading">Already using another tool? Migration takes minutes.</h3>
       <ul>
-        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-helicone" class="arrow" target="_blank" rel="noopener noreferrer">From Helicone →</a></li>
-        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-portkey" class="arrow" target="_blank" rel="noopener noreferrer">From Portkey →</a></li>
-        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-openai-direct" class="arrow" target="_blank" rel="noopener noreferrer">From OpenAI Direct →</a></li>
+        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-helicone" class="arrow" target="_blank" rel="noopener noreferrer">From Helicone&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-portkey" class="arrow" target="_blank" rel="noopener noreferrer">From Portkey&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+        <li><a href="https://docs.tolvyn.io/migrate-to-tolvyn/from-openai-direct" class="arrow" target="_blank" rel="noopener noreferrer">From OpenAI Direct&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
       </ul>
       <p class="muted">Header-compatible. We read your existing <code>helicone-property-*</code> headers automatically.</p>
     </div>
@@ -337,7 +335,7 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
       <p class="label">Privacy floor: three organisations minimum</p>
       <h3 id="cost-index-heading">TOLVYN AI Cost Index</h3>
       <p>Anonymized cost benchmarks aggregated from real production AI traffic. A figure is published only when at least three organisations contribute to it, so the index shows what clears that floor &mdash; and nothing else.</p>
-      <p><a href="/pages/cost-index" class="arrow">View the data →</a></p>
+      <p><a href="/pages/cost-index" class="arrow">View the data&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
     </div>
     <div class="block">
       <h3 id="partners-heading">Work with us</h3>
@@ -353,10 +351,10 @@ curl https://proxy.tolvyn.io/v1/proxy/openai/v1/chat/completions \
     <h2 id="final-cta-heading">Start free. 10,000 requests. No credit card.</h2>
     <p>Point your base URL at TOLVYN, swap in a TOLVYN key. Cryptographic proof from request one.</p>
     <div class="actions">
-      <a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Create your account →</a>
+      <a href="https://app.tolvyn.io/signup" class="btn" target="_blank" rel="noopener noreferrer">Create your account&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
     <p class="muted">
-      Or book a 15-minute demo →
+      Or book a 15-minute demo&nbsp;<svg class="ico-arrow" viewBox="0 0 16 16" width="0.9em" height="0.9em" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
       <a href="https://cal.com/tolvyn" target="_blank" rel="noopener noreferrer">cal.com/tolvyn</a>
     </p>
   </div>
