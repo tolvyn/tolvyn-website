@@ -29,7 +29,11 @@ RETIRED = ['financial ' + 'control plane', 'immut' + 'able',
            'founding ' + 'partner', '% ' + 'off', 'disc' + 'ount', 'free ' + 'forever', 'off ' + 'forever',
            ', ' + 'forever', 'first 5 ' + 'customers', 'first ' + 'five', 'as long as you ' + 'stay',
            'as long as they ' + 'stay', 'days ' + 'free', 'free ' + 'pilot', 'spots still ' + 'open',
-           'early ' + 'adopter']
+           'early ' + 'adopter',
+           # The liability pass of 12 Nov 2026: no trial, no support promise with a person, channel or response time.
+           'free ' + 'trial', 'trial of ' + 'paid', 'permanently ' + 'free', 'founder-direct ' + 'support',
+           'private ' + 'slack', 'priority ' + 'support', 'dedicated ' + 'support', 'white-glove ' + 'onboarding',
+           'community ' + 'support']
 BLOCK = {'p', 'div', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'td', 'th', 'tr', 'section', 'article', 'header',
          'footer', 'nav', 'ul', 'ol', 'table', 'blockquote', 'pre', 'figure', 'figcaption', 'aside', 'main', 'dt',
          'dd', 'summary', 'details', 'form', 'button', 'option', 'title', 'text', 'tspan'}
