@@ -267,6 +267,19 @@ def check(site):
         held += ['%s: %s' % (url_of(r), html.unescape(m)) for m in re.findall(r'data-placeholder="([^"]*)"', src)]
         held += ['%s: "Screenshot to come" outside a marked placeholder' % url_of(r)] * max(
             0, src.count('Screenshot to come') - src.count('data-placeholder="screenshot:'))
+    # The CSS byte budget (45,000 bytes): what a page loads in stylesheets, summed per page. Raise it only on purpose.
+    CSS_BUDGET = 45000
+    heavy = []
+    for r in ps:
+        src = open(os.path.join(site, r), encoding='utf8').read()
+        total = 0
+        for href in re.findall(r'<link rel="stylesheet" href="([^"]+)"', src):
+            path = href if href.startswith('/') else '/' + os.path.normpath(os.path.join(os.path.dirname(r), href))
+            fp = os.path.join(site, path.lstrip('/'))
+            total += os.path.getsize(fp) if os.path.isfile(fp) else 0
+        if total > CSS_BUDGET:
+            heavy.append('%s: %d' % (url_of(r), total))
+    say(not heavy, 'stylesheets per page within %d bytes' % CSS_BUDGET + ('' if not heavy else ': ' + '; '.join(heavy)))
     say(not held, 'no placeholders left' + ('' if not held else ' (%d): ' % len(held) + '; '.join(held)))
     hits = []
     for root, dirs, files in os.walk(site):

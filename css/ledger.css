@@ -269,6 +269,7 @@ code.mono {background:var(--paper-2);}
 :is(.ci-table, .mp-table) .num {text-align:right;}
 :is(.ci-table, .mp-table) td.mono {font-family:var(--mono);}
 .sort-icon {margin-left:4px; color:var(--ink-2);}
+.ci-table :is(th, td):nth-child(n+3) {text-align:right;}
 .provider-badge {display:inline-block; padding:1px 6px; border:1px solid var(--rule-strong); border-radius:var(--radius); font:500 12px/1.5 var(--mono); letter-spacing:0.04em; color:var(--ink-2);}
 .trend-up {color:var(--red);}
 .trend-down {color:var(--green);}
