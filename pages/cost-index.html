@@ -14,26 +14,20 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="AI API Cost Index — Real Production Benchmarks | TOLVYN">
   <meta property="og:description" content="Real-world GPT-4o, Claude Sonnet, and Gemini costs from production workloads. Monthly benchmarks from anonymized aggregate data.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="AI API Cost Index — Real Production Benchmarks | TOLVYN">
   <meta name="twitter:description" content="Real-world GPT-4o, Claude Sonnet, and Gemini costs from production workloads. Monthly benchmarks from anonymized aggregate data.">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
-  <meta name="theme-color" content="#00D9A3">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-ledger.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-ledger-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-ledger.png">
+  <meta name="theme-color" content="#FAF8F3">
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/nav.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/ledger.css">
   <!-- Chart.js -->
   <script defer src="../js/vendor/chart.umd.js"></script>
   <!-- Umami Analytics -->
@@ -67,62 +61,56 @@
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
-
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
       <li><a href="/pages/pricing">Pricing</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
     </ul>
-
     <div class="nav__actions">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn--sm" target="_blank" rel="noopener noreferrer">Start free</a>
     </div>
-
-    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">Menu</button>
   </div>
-
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
     <a href="/pages/pricing" role="menuitem">Pricing</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
-    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start free</a>
   </div>
 </nav>
 
 <!-- ── Hero ─────────────────────────────────────────────────────────── -->
 <section class="ci-hero" aria-labelledby="ci-hero-heading">
   <div class="container">
-    <div class="eyebrow anim-fade-up">
+    <div class="eyebrow">
       <span class="live-dot" aria-hidden="true"></span>
       Recomputed nightly &middot; published only above the privacy floor
     </div>
-    <h1 id="ci-hero-heading" class="anim-fade-up">TOLVYN AI Cost Index</h1>
-    <p class="anim-fade-up">
+    <h1 id="ci-hero-heading">TOLVYN AI Cost Index</h1>
+    <p>
       Real AI API costs, aggregated from production traffic that actually passed through the
       TOLVYN proxy. No sponsored content, no vendor-submitted figures, no estimates.
       <strong>No figure is published unless at least three organisations contribute to it</strong> —
       a privacy floor applied before any number reaches this page, and the reason the index
       below may show nothing.
     </p>
-    <p class="hero-meta anim-fade-up" id="ci-generated-at">Loading data…</p>
+    <p class="hero-meta" id="ci-generated-at">Loading data…</p>
   </div>
 </section>
 
 <!-- ── Headline Numbers ──────────────────────────────────────────────── -->
 <section class="ci-section" aria-labelledby="headline-heading">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header">
       <p class="label">Top models by volume</p>
       <h2 id="headline-heading">Production cost benchmarks</h2>
       <p>Average cost per API request, based on the last 30 days of production traffic.</p>
     </div>
-    <div class="headline-grid reveal" id="ci-headline-grid">
+    <div class="headline-grid" id="ci-headline-grid">
       <div class="ci-loading">Loading benchmarks…</div>
     </div>
   </div>
@@ -131,12 +119,12 @@
 <!-- ── Model Comparison Table ───────────────────────────────────────── -->
 <section class="ci-section" aria-labelledby="table-heading">
   <div class="container">
-    <div class="section-header section-header--tight reveal">
+    <div class="section-header section-header--tight">
       <p class="label">Last 90 days</p>
       <h2 id="table-heading">Model comparison</h2>
       <p>Click any column header to sort. Click again to reverse.</p>
     </div>
-    <div class="ci-table-wrap reveal" id="ci-table-wrap">
+    <div class="ci-table-wrap" id="ci-table-wrap">
       <div class="ci-loading">Loading data…</div>
     </div>
   </div>
@@ -145,12 +133,12 @@
 <!-- ── 30-day Trend Chart ────────────────────────────────────────────── -->
 <section class="ci-section" aria-labelledby="chart-heading">
   <div class="container">
-    <div class="section-header section-header--tight reveal">
+    <div class="section-header section-header--tight">
       <p class="label">30-day trend</p>
       <h2 id="chart-heading">Avg cost per request over time</h2>
       <p>Top 5 models by request volume. Costs in USD per request.</p>
     </div>
-    <div class="ci-chart-wrap reveal">
+    <div class="ci-chart-wrap">
       <div class="ci-loading" id="ci-chart-loading">Loading chart…</div>
       <canvas id="ci-chart" class="ci-chart" hidden aria-label="Cost trend chart"></canvas>
     </div>
@@ -160,7 +148,7 @@
 <!-- ── Methodology ──────────────────────────────────────────────────── -->
 <section class="ci-section" aria-labelledby="methodology-heading">
   <div class="container">
-    <div class="methodology reveal">
+    <div class="methodology">
       <h2 id="methodology-heading">Methodology</h2>
 
       <p>
@@ -275,7 +263,6 @@
 </footer>
 
 <script src="../js/nav.js" defer></script>
-<script src="../js/animations.js" defer></script>
 <script src="../js/cost-index.js" defer></script>
 </body>
 </html>

@@ -13,30 +13,24 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="Page not found — TOLVYN">
   <meta property="og:description" content="That page does not exist.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="Page not found — TOLVYN">
   <meta name="twitter:description" content="That page does not exist.">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- NO canonical and NO og:url, deliberately. This one file answers every
        unknown path, so it has no URL of its own to name; a canonical here
        would point every bad URL at one page and invite indexing of exactly
        what robots=noindex is there to prevent. It is also NOT in sitemap.xml. -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
-  <meta name="theme-color" content="#00D9A3">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-ledger.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-ledger-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-ledger.png">
+  <meta name="theme-color" content="#FAF8F3">
   <!-- ROOT-ABSOLUTE, not ../css/. This file is served AT the unknown path, so a
        relative href resolves against that path: ../css/ would work from
        /pages/nope and break from /a/b/c/nope. -->
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/nav.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/ledger.css">
   <script defer src="/js/vendor/umami.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21" data-domains="tolvyn.io,www.tolvyn.io" data-do-not-track="true"></script>
 </head>
 <body>
@@ -44,38 +38,32 @@
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
-
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
       <li><a href="/pages/pricing">Pricing</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
     </ul>
-
     <div class="nav__actions">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn--sm" target="_blank" rel="noopener noreferrer">Start free</a>
     </div>
-
-    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">Menu</button>
   </div>
-
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
     <a href="/pages/pricing" role="menuitem">Pricing</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
-    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start free</a>
   </div>
 </nav>
 <section class="page-hero">
   <div class="container">
-    <p class="label anim-fade-up">404</p>
-    <h1 class="anim-fade-up">That page does not exist</h1>
-    <p class="anim-fade-up page-hero__meta">
+    <p class="label">404</p>
+    <h1>That page does not exist</h1>
+    <p class="page-hero__meta">
       The link may be old, or the address may have a typo. Nothing is broken on your side.
     </p>
   </div>
@@ -141,5 +129,6 @@
   </div>
 </footer>
 
+<script src="/js/nav.js" defer></script>
 </body>
 </html>

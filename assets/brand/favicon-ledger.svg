@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<!-- TOLVYN favicon, ledger design (Nov 2026): Source Serif 4 SemiBold "T" as an outline, ink on paper, one deep-green rule. -->
+<rect width="32" height="32" fill="#FAF8F3"/>
+<path transform="translate(6.211 24.000) scale(0.03012 -0.03012)" fill="#1A1A1A" d="M156 0V58L299 66H349L495 58V0ZM256 0Q257 51 257.0 101.5Q257 152 257.0 203.5Q257 255 257 306V358Q257 409 257.0 460.0Q257 511 257.0 562.0Q257 613 256 664H395Q394 614 393.5 563.0Q393 512 393.0 461.0Q393 410 393 358V307Q393 256 393.0 204.5Q393 153 393.5 102.0Q394 51 395 0ZM22 476 28 664H622L628 476H558L524 651L577 604H73L126 651L92 476Z"/>
+<rect x="6" y="26.5" width="20" height="2" fill="#1F5C45"/>
+</svg>

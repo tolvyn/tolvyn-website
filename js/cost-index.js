@@ -5,7 +5,7 @@
   const TIMEOUT_MS = 12000; // a hung request shows the error text instead of loading forever
 
   // ── Chart palette ────────────────────────────────────────────
-  const PALETTE = ['#00D9A3','#E6E9EF','#A6ADBB','#5FB8A0','#828A9B'];
+  const PALETTE = ['#1F5C45','#1A1A1A','#8A867D','#6B8F7E','#5C5A55'];   // ledger palette (css/ledger.css)
 
   // Every value from the API reaches the page as text (textContent, text nodes), never as markup.
   function el(tag, cls, text) {
@@ -40,8 +40,21 @@
     if (pct === null || pct === undefined) return el('span', 'trend-flat', '—');
     const sign = pct > 0 ? '+' : '';
     const cls  = pct > 0 ? 'trend-up' : pct < 0 ? 'trend-down' : 'trend-flat';
-    const arrow = pct > 0 ? '↑' : pct < 0 ? '↓' : '→';
-    return el('span', cls, arrow + sign + pct.toFixed(1) + '%');
+    const out = el('span', cls, (pct > 0 ? '↑' : pct < 0 ? '↓' : '') + sign + pct.toFixed(1) + '%');
+    if (pct === 0) out.prepend(flatArrow());
+    return out;
+  }
+
+  // The site's inline arrow (as in the page markup), built as SVG nodes: no markup strings.
+  function flatArrow() {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    for (const [k, v] of [['class', 'ico-arrow'], ['viewBox', '0 0 16 16'], ['width', '0.9em'], ['height', '0.9em'],
+                          ['aria-hidden', 'true'], ['focusable', 'false']]) svg.setAttribute(k, v);
+    const path = document.createElementNS(NS, 'path');
+    for (const [k, v] of [['d', 'M2 8h11M9 4l4 4-4 4'], ['fill', 'none'], ['stroke', 'currentColor'], ['stroke-width', '1.6']]) path.setAttribute(k, v);
+    svg.appendChild(path);
+    return svg;
   }
 
   // ── Load and render ──────────────────────────────────────────
@@ -325,8 +338,8 @@
           plugins: {
             legend: {
               labels: {
-                color: '#A6ADBB',
-                font: { family: "'Inter', sans-serif", size: 12 },
+                color: '#5C5A55',
+                font: { family: "'IBM Plex Sans', sans-serif", size: 12 },
               },
             },
             tooltip: {
@@ -337,16 +350,16 @@
           },
           scales: {
             x: {
-              ticks: { color: '#828A9B', font: { size: 11 } },
-              grid:  { color: 'rgba(255,255,255,0.04)' },
+              ticks: { color: '#5C5A55', font: { family: "'IBM Plex Mono', monospace", size: 11 } },
+              grid:  { color: '#D9D5CC' },
             },
             y: {
               ticks: {
-                color: '#828A9B',
-                font: { size: 11 },
+                color: '#5C5A55',
+                font: { family: "'IBM Plex Mono', monospace", size: 11 },
                 callback: v => '$' + v.toFixed(5),
               },
-              grid: { color: 'rgba(255,255,255,0.04)' },
+              grid: { color: '#D9D5CC' },
             },
           },
         },

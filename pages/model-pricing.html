@@ -14,27 +14,21 @@
   <meta property="og:site_name"   content="TOLVYN">
   <meta property="og:title"       content="AI Model Pricing — OpenAI, Anthropic, Google &amp; DeepSeek $/MTok | TOLVYN">
   <meta property="og:description" content="Current per-model API pricing (input, output, cached $ per million tokens) across OpenAI, Anthropic, Google, and DeepSeek. Provider list prices from the open-source tolvyn-models database, synced daily.">
-  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta property="og:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:site"        content="@tolvyn">
   <meta name="twitter:title"       content="AI Model Pricing — OpenAI, Anthropic, Google &amp; DeepSeek $/MTok | TOLVYN">
   <meta name="twitter:description" content="Current per-model API pricing (input, output, cached $ per million tokens) across OpenAI, Anthropic, Google, and DeepSeek. Synced daily from the open-source tolvyn-models database.">
-  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-image.png">
+  <meta name="twitter:image"       content="https://tolvyn.io/assets/brand/og-ledger.png">
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-dark.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
-  <meta name="theme-color" content="#00D9A3">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-ledger.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-ledger-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon-ledger.png">
+  <meta name="theme-color" content="#FAF8F3">
   <!-- Security — connect-src extended to raw.githubusercontent.com for the open-source tolvyn-models feed only -->
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/layout.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/nav.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/ledger.css">
   <!-- Umami Analytics -->
   <script defer src="../js/vendor/umami.js" data-website-id="c0c285d3-2ea8-4dc8-a11f-8d0ed95aba21" data-domains="tolvyn.io,www.tolvyn.io" data-do-not-track="true"></script>
   <!-- JSON-LD Structured Data -->
@@ -62,48 +56,42 @@
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="container nav__inner">
     <a href="/" class="nav__logo" aria-label="TOLVYN home">TOLVYN</a>
-
     <ul class="nav__links" role="list">
       <li><a href="/pages/product">Product</a></li>
       <li><a href="/pages/pricing">Pricing</a></li>
       <li><a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer">Docs</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign In</a></li>
+      <li><a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer">Sign in</a></li>
     </ul>
-
     <div class="nav__actions">
-      <a href="https://app.tolvyn.io/signup" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Start Free</a>
+      <a href="https://app.tolvyn.io/signup" class="btn btn--sm" target="_blank" rel="noopener noreferrer">Start free</a>
     </div>
-
-    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">Menu</button>
   </div>
-
   <div class="mobile-menu" role="menu">
     <a href="/pages/product" role="menuitem">Product</a>
     <a href="/pages/pricing" role="menuitem">Pricing</a>
     <a href="https://docs.tolvyn.io" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     <a href="/blog/" role="menuitem">Blog</a>
-    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign In</a>
-    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start Free →</a>
+    <a href="https://app.tolvyn.io/signin" target="_blank" rel="noopener noreferrer" role="menuitem">Sign in</a>
+    <a href="https://app.tolvyn.io/signup" target="_blank" rel="noopener noreferrer" role="menuitem" class="mobile-menu__cta">Start free</a>
   </div>
 </nav>
 
 <!-- ── Hero ─────────────────────────────────────────────────────────── -->
 <section class="mp-hero" aria-labelledby="mp-hero-heading">
   <div class="container">
-    <div class="eyebrow anim-fade-up">
+    <div class="eyebrow">
       <span class="live-dot" aria-hidden="true"></span>
       Model pricing
     </div>
-    <h1 id="mp-hero-heading" class="anim-fade-up">AI model pricing reference</h1>
-    <p class="mp-intro anim-fade-up">
+    <h1 id="mp-hero-heading">AI model pricing reference</h1>
+    <p class="mp-intro">
       Provider list prices from our open-source pricing database (tolvyn-models), synced daily.
       Input, output, and cached rates in USD per million tokens, across OpenAI, Anthropic, Google, and DeepSeek.
     </p>
-    <p class="mp-asof anim-fade-up" id="mp-asof">Loading pricing data…</p>
-    <p class="mp-disclaimer anim-fade-up">
+    <p class="mp-asof" id="mp-asof">Loading pricing data…</p>
+    <p class="mp-disclaimer">
       Prices are providers' published rates as of the date shown; verify with the provider before committing spend.
     </p>
   </div>
@@ -112,12 +100,12 @@
 <!-- ── Pricing table ────────────────────────────────────────────────── -->
 <section class="mp-section" aria-labelledby="mp-table-heading">
   <div class="container">
-    <div class="section-header section-header--tight reveal">
+    <div class="section-header section-header--tight">
       <p class="label">Per-model list prices</p>
       <h2 id="mp-table-heading">Current pricing by model</h2>
       <p>USD per million tokens (MTok). Click any column header to sort. Click again to reverse.</p>
     </div>
-    <div class="mp-table-wrap reveal" id="mp-table-wrap">
+    <div class="mp-table-wrap" id="mp-table-wrap">
       <div class="mp-loading">Loading pricing data…</div>
     </div>
   </div>
@@ -126,7 +114,7 @@
 <!-- ── Source / attribution ─────────────────────────────────────────── -->
 <section class="mp-section" aria-labelledby="mp-source-heading">
   <div class="container">
-    <div class="mp-source reveal">
+    <div class="mp-source">
       <h2 id="mp-source-heading">Source &amp; method</h2>
       <ul>
         <li>
@@ -199,7 +187,6 @@
 </footer>
 
 <script src="../js/nav.js" defer></script>
-<script src="../js/animations.js" defer></script>
 <script src="../js/model-pricing.js" defer></script>
 </body>
 </html>
