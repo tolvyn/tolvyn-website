@@ -96,6 +96,7 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .frame figcaption {padding:10px 4px 2px; font-size:14px; color:var(--ink-2);}
 .placeholder {display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; aspect-ratio:16 / 10; background:var(--paper-2); border:1px dashed var(--rule-strong); color:var(--ink-2); font:400 14px/1.4 var(--mono); text-align:center;}
 .placeholder strong {color:var(--ink); font-weight:500;}
+.frame picture, .frame img {display:block; width:100%; height:auto;}
 
 /* ── Facts ────────────────────────────────────────────────────────── */
 .facts {display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); border-top:1px solid var(--ink); border-bottom:1px solid var(--rule);}
@@ -114,7 +115,9 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .limits strong {color:var(--ink);}
 
 /* ── Screenshot slots ─────────────────────────────────────────────── */
-.shots {display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:24px; margin-bottom:40px;}
+.shots {display:grid; grid-template-columns:minmax(0, 1fr); gap:28px; margin-bottom:40px;}
+.shots .frame {display:grid; grid-template-columns:minmax(0, 2.4fr) minmax(0, 1fr); gap:8px 28px; align-items:end;}
+.shots .frame figcaption {padding:0 0 4px; font-size:15px;}
 
 /* ── Diagram ──────────────────────────────────────────────────────── */
 .diagram {border:1px solid var(--rule); padding:24px; background:var(--paper);}
@@ -216,7 +219,9 @@ code {padding:1px 4px; background:var(--paper-2); border:1px solid var(--rule); 
 .nav__links, .nav__actions {display:none;}
 .nav__hamburger {display:inline-flex; align-items:center;}
 .hero__grid {grid-template-columns:minmax(0, 1fr); gap:40px;}
-.shots, .blocks {grid-template-columns:minmax(0, 1fr);}
+.blocks {grid-template-columns:minmax(0, 1fr);}
+.shots .frame {grid-template-columns:minmax(0, 1fr);}
+.shots .frame figcaption {padding:10px 4px 2px; font-size:14px;}
 .shots {gap:20px;}
 .block, .block:first-child {padding:24px 0; border-left:0; border-bottom:1px solid var(--rule);}
 .entry {grid-template-columns:44px minmax(0, 1fr); gap:6px 12px;}
