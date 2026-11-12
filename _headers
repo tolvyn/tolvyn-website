@@ -2,6 +2,8 @@
 # comma-joined with a later one, and two policies joined that way both apply. So each page rule below first
 # removes the general policy ("! Name") and then sets a complete policy of its own: it replaces, never stacks.
 # The Content-Security-Policy is report-only for now.
+# A report-only policy ignores upgrade-insecure-requests (browsers log a console error on every page), so it
+# is left out until the policy is enforced; HSTS below already keeps every request on HTTPS.
 
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains
@@ -11,23 +13,23 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), midi=(), magnetometer=(), gyroscope=(), accelerometer=(), display-capture=(), browsing-topics=()
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
-  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'
+  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'
 
 # Cost Index: the general policy plus its one data source, at both of its URLs.
 /pages/cost-index
   ! Content-Security-Policy-Report-Only
-  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'
+  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'
 /cost-index
   ! Content-Security-Policy-Report-Only
-  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'
+  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://api.tolvyn.io; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'
 
 # Model pricing: the general policy plus its one data source, at both of its URLs.
 /pages/model-pricing
   ! Content-Security-Policy-Report-Only
-  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://raw.githubusercontent.com; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'
+  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://raw.githubusercontent.com; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'
 /pricing/ai-models
   ! Content-Security-Policy-Report-Only
-  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://raw.githubusercontent.com; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'
+  Content-Security-Policy-Report-Only: default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://gateway.umami.is https://raw.githubusercontent.com; manifest-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'
 
 # Brand images (logo, social card) may be embedded by other sites and email clients: the same replace-not-stack rule.
 /assets/brand/*

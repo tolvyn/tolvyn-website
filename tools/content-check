@@ -250,6 +250,15 @@ def check(site):
             if not resolves(site, url_of(r), h, rw, cache):
                 broken.append('%s -> %s' % (url_of(r), h))
     say(not broken, 'internal links resolve' + ('' if not broken else ': ' + '; '.join(broken)))
+    # The founder's decision of 12 Nov 2026: the Customers page stays in the tree but no page links to it.
+    to_cust = []
+    for r in ps:
+        for h in parse(site, r).hrefs:
+            m = re.match(r'^(?:https?://' + re.escape(SITE_HOST) + r')?(/[^?#]*)', h)
+            path = m.group(1).rstrip('/') if m else ''
+            if path in ('/customers', '/pages/customers', '/pages/customers.html'):
+                to_cust.append('%s -> %s' % (url_of(r), h))
+    say(not to_cust, 'no page links to /pages/customers' + ('' if not to_cust else ': ' + '; '.join(to_cust)))
     hits = []
     for root, dirs, files in os.walk(site):
         dirs[:] = [d for d in dirs if d not in SKIP_DIRS]

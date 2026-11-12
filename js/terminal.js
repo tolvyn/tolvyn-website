@@ -1,7 +1,8 @@
 /* TOLVYN — terminal.js
    The integration section's live terminal: `tolvyn tail` output, typed one row at a time while on
-   screen. The header and every row are cells of one grid (css/main.css), so the columns share one set
-   of widths; dividers are CSS borders, numbers are right-aligned. Reduced motion: everything at once.
+   screen. The header and every row are cells of one grid (css/main.css) with fixed column widths, so
+   they line up; no divider characters; numbers are right-aligned in tabular figures. On phones the
+   TEAM/SERVICE column is hidden. Reduced motion: everything at once.
 */
 'use strict';
 
