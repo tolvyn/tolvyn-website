@@ -36,7 +36,9 @@ RETIRED = ['financial ' + 'control plane', 'immut' + 'able',
            'community ' + 'support',
            # The liability review of 12 Nov 2026: the old tagline's other form; plan limits are "no fixed limit".
            'financial control ' + 'layer', 'unlimited ' + 'agent', 'unlimited ' + 'teams', 'unlimited ' + 'webhooks',
-           'formal ' + 'sla', 'we commit to ' + 'acknowledging']
+           'formal ' + 'sla', 'we commit to ' + 'acknowledging',
+           # The founder's correction of 12 Nov 2026: this address never appears on the public site.
+           'founder' + '@' + 'tolvyn' + '.io']
 BLOCK = {'p', 'div', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'td', 'th', 'tr', 'section', 'article', 'header',
          'footer', 'nav', 'ul', 'ol', 'table', 'blockquote', 'pre', 'figure', 'figcaption', 'aside', 'main', 'dt',
          'dd', 'summary', 'details', 'form', 'button', 'option', 'title', 'text', 'tspan'}
